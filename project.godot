@@ -14,3 +14,7 @@ config/name="Game On"
 run/main_scene="uid://c8ae8g52xg1c0"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Utils="*res://scripts/utils.gd"
