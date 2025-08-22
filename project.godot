@@ -15,6 +15,14 @@ run/main_scene="uid://c8ae8g52xg1c0"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Utils="*res://scripts/utils.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 ui_left={
@@ -32,7 +40,3 @@ ui_right={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
 ]
 }
-
-[autoload]
-
-Utils="*res://scripts/utils.gd"

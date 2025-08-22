@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://c8ae8g52xg1c0"]
+[gd_scene load_steps=2 format=3 uid="uid://c8ae8g52xg1c0"]
+
+[ext_resource type="Script" uid="uid://dgtjw4k4yhdoh" path="res://scripts/main_menu.gd" id="1_yqorp"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_yqorp")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -40,3 +43,6 @@ layout_mode = 2
 layout_mode = 2
 text = "Quit
 "
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

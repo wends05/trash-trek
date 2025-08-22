@@ -7,8 +7,8 @@ extends Node2D
 enum TerrainType {Terrain1, Terrain2}
 
 var terrain_scenes := {
-	TerrainType.Terrain1: preload("res://scene/terrain/Terrain1.tscn"),
-	TerrainType.Terrain2: preload("res://scene/terrain/Terrain2.tscn")
+	TerrainType.Terrain1: preload("res://scenes/terrain/Terrain1.tscn"),
+	TerrainType.Terrain2: preload("res://scenes/terrain/Terrain2.tscn")
 }
 
 func _ready() -> void:
