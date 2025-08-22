@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Trash
+
 @export var type: Utils.TrashType
 
 # Called when the node enters the scene tree for the first time.
