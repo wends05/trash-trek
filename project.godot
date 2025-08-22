@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="New Game Project"
-run/main_scene="uid://dyac4ihj46tig"
+config/name="Game On"
+run/main_scene="uid://c8ae8g52xg1c0"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -32,3 +32,7 @@ ui_right={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
 ]
 }
+
+[autoload]
+
+Utils="*res://scripts/utils.gd"
