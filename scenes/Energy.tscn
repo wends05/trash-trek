@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bn4l6cra8eltk"]
+
+[node name="Energy" type="ProgressBar"]
+offset_left = 39.0
+offset_top = 30.0
+offset_right = 464.0
+offset_bottom = 65.0
+step = 1.0

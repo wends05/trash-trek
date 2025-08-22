@@ -11,6 +11,8 @@ size = Vector2(519.5, 64)
 [node name="Terrain2" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(144, 612)
@@ -23,6 +25,8 @@ shape = SubResource("RectangleShape2D_roftw")
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2(0, 2)
+collision_layer = 3
+collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
 position = Vector2(698.5, 613)
