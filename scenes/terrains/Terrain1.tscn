@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dojoskcwuf8np"]
+[gd_scene load_steps=6 format=3 uid="uid://dojoskcwuf8np"]
 
 [ext_resource type="Texture2D" uid="uid://yahya1nksguv" path="res://icon.svg" id="1_0fxf8"]
 [ext_resource type="Script" uid="uid://b4wp3jwnnilir" path="res://scripts/ground_area.gd" id="3_q0p4e"]
@@ -8,6 +8,9 @@ size = Vector2(898.5, 91)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3xfo"]
 size = Vector2(893, 85)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0p4e"]
+size = Vector2(249, 97)
 
 [node name="Terrain1" type="Node2D"]
 
@@ -24,14 +27,27 @@ texture = ExtResource("1_0fxf8")
 position = Vector2(450, 602)
 shape = SubResource("RectangleShape2D_w20fd")
 
-[node name="GroundAreaGroup" type="Node2D" parent="."]
+[node name="TrashDetectors" type="Node2D" parent="."]
 
-[node name="GroundArea1" type="Area2D" parent="GroundAreaGroup"]
+[node name="Ground" type="Area2D" parent="TrashDetectors"]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 12
 script = ExtResource("3_q0p4e")
-ground_y = 528
+ground_y_above = 448
+ground_y_below = 536
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundAreaGroup/GroundArea1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrashDetectors/Ground"]
 position = Vector2(449.5, 597.5)
 shape = SubResource("RectangleShape2D_s3xfo")
+
+[node name="Gap" type="Area2D" parent="TrashDetectors"]
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("3_q0p4e")
+ground_y_above = 448
+ground_y_below = 536
+is_gap = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrashDetectors/Gap"]
+position = Vector2(1024, 599.5)
+shape = SubResource("RectangleShape2D_q0p4e")

@@ -2,14 +2,15 @@ extends Area2D
 
 class_name GroundArea
 
-@export var ground_y: int
+@export var ground_y_above: int
+@export var ground_y_below: int
+@export var is_gap: bool = false
 
 func _ready() -> void:
-	area_entered.connect(detect_area)
+	pass
 
-func detect_area(area:Area2D):
-	if area.get_parent() is Trash:
-		bring_trash_to_ground(area.get_parent())
-
-func bring_trash_to_ground(trash: Trash):
-	trash.global_position.y = ground_y
+func bring_trash_above(trash: Node2D):
+	if trash is TrashBin:
+		trash.position.y = ground_y_below
+		return
+	trash.position.y = [ground_y_above, ground_y_below].pick_random() if not is_gap else ground_y_above
