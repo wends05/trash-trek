@@ -1,12 +1,19 @@
 extends Node2D
 
-@export var type: Utils.TrashType
+class_name Trash
 
-# Called when the node enters the scene tree for the first time.
+@export var type: Utils.TrashType = Utils.TrashType.Recyclable
+@export var terrain_manager: TerrainManager
+
+@onready var area = $Area
+
 func _ready() -> void:
-	pass # Replace with function body.
+	add_to_group("Trash")
+	
+	$Label.text = "%s" % Utils.get_enum_name(Utils.TrashType, type)
 
+func _physics_process(delta: float) -> void:
+	position.x -= terrain_manager.speed * delta
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func remove():
+	queue_free()

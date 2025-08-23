@@ -1,23 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyac4ihj46tig"]
+[gd_scene load_steps=5 format=3 uid="uid://dyac4ihj46tig"]
 
 [ext_resource type="Script" uid="uid://dofxmaqpmkhp1" path="res://scripts/player.gd" id="1_62i1b"]
 [ext_resource type="Texture2D" uid="uid://yahya1nksguv" path="res://icon.svg" id="1_si3wx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y30ri"]
-size = Vector2(56, 53)
+size = Vector2(64, 61.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6fml"]
+size = Vector2(48, 48)
 
 [node name="Player" type="CharacterBody2D"]
+collision_mask = 6
 script = ExtResource("1_62i1b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(81, 542.5)
+position = Vector2(-4, 2.50003)
 scale = Vector2(0.4375, 0.414063)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(81, 542.5)
-scale = Vector2(0.4375, 0.414063)
+position = Vector2(-1.90735e-06, -1.49997)
+scale = Vector2(0.5, 0.476563)
 texture = ExtResource("1_si3wx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(81, 543)
+position = Vector2(-3.8147e-06, -1.25001)
 shape = SubResource("RectangleShape2D_y30ri")
+
+[node name="TrashCollectionArea" type="Area2D" parent="."]
+collision_mask = 6
+
+[node name="Shape" type="CollisionShape2D" parent="TrashCollectionArea"]
+shape = SubResource("RectangleShape2D_v6fml")
+
+[connection signal="area_entered" from="TrashCollectionArea" to="." method="_on_trash_collection_area_area_entered"]

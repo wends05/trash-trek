@@ -1,6 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqgiuo0067y6w"]
+[gd_scene load_steps=4 format=3 uid="uid://dqgiuo0067y6w"]
 
 [ext_resource type="Script" uid="uid://b6pg52u1v07rs" path="res://scripts/trash.gd" id="1_21d64"]
+[ext_resource type="Texture2D" uid="uid://yahya1nksguv" path="res://icon.svg" id="2_exrr5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_exrr5"]
+size = Vector2(32, 32)
 
 [node name="Trash" type="Node2D"]
 script = ExtResource("1_21d64")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 24.0
+offset_bottom = -9.0
+
+[node name="Area" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
+position = Vector2(0, 4.76837e-07)
+shape = SubResource("RectangleShape2D_exrr5")
+debug_color = Color(7.70092e-07, 0.317908, 0.37484, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="Area"]
+position = Vector2(-1.90735e-06, 1.3113e-06)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_exrr5")
+
+[connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]
