@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bjlwocmldl2p1"]
+[gd_scene load_steps=7 format=3 uid="uid://bjlwocmldl2p1"]
 
 [ext_resource type="Script" uid="uid://djvk4e4r7ppdn" path="res://scripts/main.gd" id="1_h6nst"]
 [ext_resource type="PackedScene" uid="uid://dyac4ihj46tig" path="res://scenes/Player.tscn" id="1_nbc6x"]
 [ext_resource type="PackedScene" uid="uid://dqgiuo0067y6w" path="res://scenes/trash.tscn" id="3_0bbpv"]
 [ext_resource type="PackedScene" uid="uid://bn4l6cra8eltk" path="res://scenes/Energy.tscn" id="4_rarhs"]
+[ext_resource type="Script" uid="uid://d4hebw0k2lxgw" path="res://scenes/terrain_manager.gd" id="4_vcsgt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbc6x"]
 size = Vector2(1139.5, 66)
@@ -17,6 +18,7 @@ script = ExtResource("1_h6nst")
 position = Vector2(306, -89)
 
 [node name="TerrainManager" type="Node2D" parent="."]
+script = ExtResource("4_vcsgt")
 
 [node name="Scaffholding" type="StaticBody2D" parent="."]
 collision_layer = 3
@@ -27,4 +29,4 @@ position = Vector2(573.25, 614)
 shape = SubResource("RectangleShape2D_nbc6x")
 
 [node name="Trash" parent="." instance=ExtResource("3_0bbpv")]
-position = Vector2(324, 488)
+position = Vector2(345, 488)
