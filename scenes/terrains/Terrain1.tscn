@@ -8,6 +8,8 @@ size = Vector2(898.5, 91)
 [node name="Terraain1" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(452, 603.5)

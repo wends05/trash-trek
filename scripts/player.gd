@@ -5,7 +5,9 @@ class_name Player
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
-
+func _ready() -> void:
+	add_to_group("Player")
+		
 func _physics_process(delta: float) -> void:      
 	player_gravity(delta)
 	player_jump()
@@ -34,3 +36,4 @@ func increment_trash(type: Utils.TrashType):
 	if type == Utils.TrashType.ToxicWaste:
 		Game.collected_toxic_waste += 1
 	
+		
