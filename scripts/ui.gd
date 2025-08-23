@@ -27,9 +27,9 @@ func _on_pause_button_pressed() -> void:
 	update_ui_state()
 	toggle_game_state(Utils.GameStateType.Pause)
 
-func update_ui_state(state: Utils.UIStateType = Utils.UIStateType.Pause) -> void:
+func update_ui_state(state: Utils.UIStateType = Utils.UIStateType.PauseMenu) -> void:
 	match state:
-		Utils.UIStateType.Pause:
+		Utils.UIStateType.PauseMenu:
 			toggle_nodes([pause_button, pause_menu])
 
 func toggle_nodes(nodes: Array[Control]) -> void:

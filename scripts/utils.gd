@@ -15,7 +15,9 @@ enum GameStateType {
 
 enum UIStateType {
 	Settings,
-	Pause,
+	PauseMenu,
+	WinScreen,
+	LoseScree,
 }
 
 func get_enum_name(enum_dict: Dictionary, value: int) -> String:
