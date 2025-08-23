@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b1mx2y7p6cxdw" path="res://scenes/trash_spawner.tscn" id="5_vcsgt"]
 [ext_resource type="Script" uid="uid://go4n0wcu27jd" path="res://scripts/trash_remover.gd" id="6_c01mt"]
 [ext_resource type="PackedScene" uid="uid://cnvc3c5c6c8mj" path="res://scenes/ui.tscn" id="7_nxtc6"]
+[ext_resource type="Script" uid="uid://d4hebw0k2lxgw" path="res://scenes/terrain_manager.gd" id="4_vcsgt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbc6x"]
 size = Vector2(1139.5, 66)
@@ -27,6 +28,7 @@ position = Vector2(320, 320)
 energy_bar = NodePath("../Energy")
 
 [node name="TerrainManager" type="Node2D" parent="."]
+script = ExtResource("4_vcsgt")
 
 [node name="Scaffolding" type="StaticBody2D" parent="."]
 collision_layer = 2
