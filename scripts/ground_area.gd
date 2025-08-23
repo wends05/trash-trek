@@ -9,5 +9,8 @@ class_name GroundArea
 func _ready() -> void:
 	pass
 
-func bring_trash_above(trash: Trash):
-	trash.global_position.y = [ground_y_above, ground_y_below].pick_random() if not is_gap else ground_y_above
+func bring_trash_above(trash: Node2D):
+	if trash is TrashBin:
+		trash.position.y = ground_y_below
+		return
+	trash.position.y = [ground_y_above, ground_y_below].pick_random() if not is_gap else ground_y_above

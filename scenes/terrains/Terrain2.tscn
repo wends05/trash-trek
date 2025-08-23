@@ -53,8 +53,8 @@ shape = SubResource("RectangleShape2D_ny86d")
 [node name="TrashDetectors" type="Node2D" parent="."]
 
 [node name="Ground" type="Area2D" parent="TrashDetectors"]
-collision_layer = 2
-collision_mask = 4
+collision_layer = 0
+collision_mask = 12
 script = ExtResource("3_x1ouo")
 ground_y_above = 496
 ground_y_below = 552
@@ -68,6 +68,8 @@ position = Vector2(696, 615.5)
 shape = SubResource("RectangleShape2D_x1ouo")
 
 [node name="Gap" type="Area2D" parent="TrashDetectors"]
+collision_layer = 0
+collision_mask = 12
 script = ExtResource("3_x1ouo")
 ground_y_above = 496
 ground_y_below = 552

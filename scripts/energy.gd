@@ -6,4 +6,4 @@ func _ready() -> void:
 	Game.energy_changed.connect(change_energy_value)
 
 func change_energy_value(energy: int):
-	$".".value = energy
+	value = energy
