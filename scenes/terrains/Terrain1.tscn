@@ -1,15 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dojoskcwuf8np"]
+[gd_scene load_steps=5 format=3 uid="uid://dojoskcwuf8np"]
 
 [ext_resource type="Texture2D" uid="uid://yahya1nksguv" path="res://icon.svg" id="1_0fxf8"]
+[ext_resource type="Script" uid="uid://b4wp3jwnnilir" path="res://scripts/ground_area.gd" id="3_q0p4e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w20fd"]
 size = Vector2(898.5, 91)
 
-[node name="Terraain1" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3xfo"]
+size = Vector2(893, 85)
+
+[node name="Terrain1" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 2
+collision_mask = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
 position = Vector2(452, 603.5)
@@ -19,3 +23,15 @@ texture = ExtResource("1_0fxf8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(450, 602)
 shape = SubResource("RectangleShape2D_w20fd")
+
+[node name="GroundAreaGroup" type="Node2D" parent="."]
+
+[node name="GroundArea1" type="Area2D" parent="GroundAreaGroup"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_q0p4e")
+ground_y = 528
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundAreaGroup/GroundArea1"]
+position = Vector2(449.5, 597.5)
+shape = SubResource("RectangleShape2D_s3xfo")

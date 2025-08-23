@@ -1,24 +1,22 @@
-extends Area2D
+extends Node2D
 
 class_name Trash
 
-@export var type: Utils.TrashType
+@export var type: Utils.TrashType = Utils.TrashType.Recyclable
+@export var main: Main
 
-@onready var energy_bar: ProgressBar = $"../Energy"
-var energy_value: float = 0.0
+@onready var area = $Area
 
 func _ready() -> void:
 	add_to_group("Trash")
+
+	if not main:
+		main = get_tree().get_root().get_node("Main")
 	
-func add_energy(amount: float) -> void:
-	energy_value = clamp(energy_value + amount, 0, 100)
-	energy_bar.value = lerp(energy_bar.value, energy_value, 1)
-	
-func _on_body_entered(body: Node) -> void:
-	pick_trash(body)
-	
-func pick_trash(player: Node):
-	if player.is_in_group('Player'):
-		add_energy(20)
-		queue_free()
-		
+	$Label.text = "%s" % Utils.get_enum_name(Utils.TrashType, type)
+
+func _physics_process(delta: float) -> void:
+	position.x -= main.speed * delta
+
+func remove():
+	queue_free()

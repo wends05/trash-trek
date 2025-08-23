@@ -3,9 +3,7 @@
 [ext_resource type="Script" uid="uid://clw2lea18gqug" path="res://scripts/energy.gd" id="1_eb132"]
 
 [node name="EnergyBar" type="ProgressBar"]
-offset_left = 39.0
-offset_top = 30.0
-offset_right = 464.0
-offset_bottom = 65.0
+offset_right = 425.0
+offset_bottom = 35.0
 step = 1.0
 script = ExtResource("1_eb132")
