@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name TerrainManager
+
 @export var speed: float = 200
 @export var terrain_width: int = 1024
 @onready var terrain_manager: Node = $"."

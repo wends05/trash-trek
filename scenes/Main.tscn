@@ -1,12 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjlwocmldl2p1"]
+[gd_scene load_steps=10 format=3 uid="uid://bjlwocmldl2p1"]
 
 [ext_resource type="Script" uid="uid://djvk4e4r7ppdn" path="res://scripts/main.gd" id="1_h6nst"]
 [ext_resource type="PackedScene" uid="uid://dyac4ihj46tig" path="res://scenes/Player.tscn" id="1_nbc6x"]
 [ext_resource type="PackedScene" uid="uid://decqbrmnhe0kb" path="res://scenes/Energy.tscn" id="4_rarhs"]
+[ext_resource type="Script" uid="uid://d4hebw0k2lxgw" path="res://scenes/terrain_manager.gd" id="4_vcsgt"]
 [ext_resource type="PackedScene" uid="uid://b1mx2y7p6cxdw" path="res://scenes/trash_spawner.tscn" id="5_vcsgt"]
 [ext_resource type="Script" uid="uid://go4n0wcu27jd" path="res://scripts/trash_remover.gd" id="6_c01mt"]
 [ext_resource type="PackedScene" uid="uid://cnvc3c5c6c8mj" path="res://scenes/ui.tscn" id="7_nxtc6"]
-[ext_resource type="Script" uid="uid://d4hebw0k2lxgw" path="res://scenes/terrain_manager.gd" id="4_vcsgt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbc6x"]
 size = Vector2(1139.5, 66)
@@ -30,6 +30,9 @@ energy_bar = NodePath("../Energy")
 [node name="TerrainManager" type="Node2D" parent="."]
 script = ExtResource("4_vcsgt")
 
+[node name="TrashSpawner" parent="." node_paths=PackedStringArray("terrain_manager") instance=ExtResource("5_vcsgt")]
+terrain_manager = NodePath("../TerrainManager")
+
 [node name="Scaffolding" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 0
@@ -38,11 +41,10 @@ collision_mask = 0
 position = Vector2(573.25, 614)
 shape = SubResource("RectangleShape2D_nbc6x")
 
-[node name="TrashSpawner" parent="." node_paths=PackedStringArray("main") instance=ExtResource("5_vcsgt")]
-main = NodePath("..")
-
 [node name="TrashRemover" type="Area2D" parent="."]
-position = Vector2(-24, 520)
+position = Vector2(40, 520)
+collision_layer = 0
+collision_mask = 4
 script = ExtResource("6_c01mt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrashRemover"]
