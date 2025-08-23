@@ -2,8 +2,9 @@ extends Control
 
 class_name UI
 
+
 func _ready() -> void:
-	Game.trash_collected.connect(update_trash_counts)
+	Game.updated_stats.connect(update_trash_counts)
 	
 func update_trash_counts():
 	$TempTrashCount.text =\
