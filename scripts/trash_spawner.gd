@@ -7,7 +7,6 @@ class_name Spawner
 @onready var trash_bin_timer: Timer = $TrashBinTimer
 
 func create_trash():
-	var random_item = randi_range(1, 9)
 	var trash: Trash = preload("res://scenes/trash.tscn").instantiate()
 	
 	var randtype = randi_range(0, 2)
@@ -24,7 +23,6 @@ func create_trash():
 	create_trash()
 
 func create_trash_bins():
-	var random_trash_bin = randi_range(1, 3)
 	var trash_bin: TrashBin = preload("res://scenes/TrashBin.tscn").instantiate()
 	
 	var randtype = randi_range(0, 2)

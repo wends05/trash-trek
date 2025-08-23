@@ -5,10 +5,27 @@ class_name Trash
 @export var type: Utils.TrashType = Utils.TrashType.Recyclable
 @export var terrain_manager: TerrainManager
 
+var trash_item_name: String
+
 func _ready() -> void:
+	# Get a random trash item for this type
+	trash_item_name = Utils.get_random_trash_item(type)
+	var texture_path = Utils.get_trash_texture_path(type, trash_item_name)
+	
+	print("Loading texture from: ", texture_path)
+	
+	# Load the texture (using the correct node path)
+	var texture = load(texture_path)
+	if texture:
+		$Area/Sprite2D.texture = texture
+		print("Successfully loaded texture for: ", trash_item_name)
+	else:
+		print("ERROR: Could not load texture at path: ", texture_path)
+	
 	add_to_group("Trash")
 	
-	$Label.text = "%s" % Utils.get_enum_name(Utils.TrashType, type)
+	# Display the trash type and item name
+	$Label.text = "%s: %s" % [Utils.get_enum_name(Utils.TrashType, type), trash_item_name]
 
 func _physics_process(delta: float) -> void:
 	position.x -= terrain_manager.speed * delta
