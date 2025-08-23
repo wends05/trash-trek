@@ -1,6 +1,5 @@
 extends Node
 
-
 var energy = 0
 
 signal trash_collected(type: Utils.TrashType)
@@ -31,6 +30,9 @@ func update_trash_count(type: Utils.TrashType):
 		collected_toxic_waste += 1
 		add_energy(5)
 	updated_stats.emit()
+
+signal update_ui_state(type: Utils.UIStateType)
+signal update_game_state(type: Utils.GameStateType)
 
 func reset_stats():
 	collected_recyclable = 0

@@ -7,7 +7,6 @@ class_name Trash
 
 func _ready() -> void:
 	add_to_group("Trash")
-	
 	$Label.text = "%s" % Utils.get_enum_name(Utils.TrashType, type)
 
 func _physics_process(delta: float) -> void:

@@ -30,3 +30,4 @@ func _on_trash_collection_area_area_entered(area: Area2D) -> void:
 		var trash_type = trash.type
 		increment_trash(trash_type)
 		trash.remove()
+		
