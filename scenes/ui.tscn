@@ -19,7 +19,7 @@ offset_top = 20.0
 offset_right = 1110.0
 offset_bottom = 55.0
 
-[node name="Button" type="Button" parent="."]
+[node name="PauseButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
@@ -33,3 +33,5 @@ offset_left = 16.0
 offset_top = 64.0
 offset_right = 56.0
 offset_bottom = 87.0
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

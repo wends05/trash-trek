@@ -2,7 +2,6 @@ extends ProgressBar
 
 class_name EnergyBar
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Game.energy_changed.connect(change_energy_value)
 
