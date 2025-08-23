@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnvc3c5c6c8mj"]
+[gd_scene load_steps=3 format=3 uid="uid://cnvc3c5c6c8mj"]
 
 [ext_resource type="Script" uid="uid://cad734vbhmmtg" path="res://scripts/ui.gd" id="1_nt7q6"]
+[ext_resource type="PackedScene" uid="uid://decqbrmnhe0kb" path="res://scenes/Energy.tscn" id="2_x4jx1"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -11,7 +12,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nt7q6")
 
-[node name="Button" type="Button" parent="."]
+[node name="EnergyBar" parent="." instance=ExtResource("2_x4jx1")]
+layout_mode = 0
+offset_left = 685.0
+offset_top = 20.0
+offset_right = 1110.0
+offset_bottom = 55.0
+
+[node name="PauseButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
@@ -25,3 +33,5 @@ offset_left = 16.0
 offset_top = 64.0
 offset_right = 56.0
 offset_bottom = 87.0
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
