@@ -8,8 +8,8 @@ class_name TrashSpawner
 func create_trash():
 	var random_item = randi_range(1, 9)
 	var trash = preload("res://scenes/trash.tscn").instantiate()
-	trash.global_position.x = terrain_manager.terrain_width
-	trash.global_position.y = randi_range(448, 584)
+	trash.global_position.x = terrain_manager.terrain_width + 500
+	trash.global_position.y = 632
 	trash.terrain_manager = terrain_manager
 	var randtype = randi_range(0, 2)
 	

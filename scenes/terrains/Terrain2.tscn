@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dnn5lgq0liff4"]
+[gd_scene load_steps=9 format=3 uid="uid://dnn5lgq0liff4"]
 
 [ext_resource type="Texture2D" uid="uid://yahya1nksguv" path="res://icon.svg" id="1_ny86d"]
 [ext_resource type="Script" uid="uid://b4wp3jwnnilir" path="res://scripts/ground_area.gd" id="3_x1ouo"]
@@ -13,7 +13,13 @@ size = Vector2(519.5, 64)
 size = Vector2(281, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x1ouo"]
-size = Vector2(525, 65)
+size = Vector2(521, 65)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4gsq6"]
+size = Vector2(193, 73)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v2xxn"]
+size = Vector2(141, 66)
 
 [node name="Terrain2" type="Node2D"]
 
@@ -44,16 +50,34 @@ texture = ExtResource("1_ny86d")
 position = Vector2(698, 614)
 shape = SubResource("RectangleShape2D_ny86d")
 
-[node name="TrashDetector" type="Area2D" parent="."]
+[node name="TrashDetectors" type="Node2D" parent="."]
+
+[node name="Ground" type="Area2D" parent="TrashDetectors"]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("3_x1ouo")
-ground_y = 560
+ground_y_above = 496
+ground_y_below = 552
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TrashDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrashDetectors/Ground"]
 position = Vector2(139.5, 609.5)
 shape = SubResource("RectangleShape2D_wdjee")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="TrashDetector"]
-position = Vector2(697.5, 615.5)
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TrashDetectors/Ground"]
+position = Vector2(696, 615.5)
 shape = SubResource("RectangleShape2D_x1ouo")
+
+[node name="Gap" type="Area2D" parent="TrashDetectors"]
+script = ExtResource("3_x1ouo")
+ground_y_above = 496
+ground_y_below = 552
+is_gap = true
+metadata/_custom_type_script = "uid://b4wp3jwnnilir"
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TrashDetectors/Gap"]
+position = Vector2(1055.5, 611.5)
+shape = SubResource("RectangleShape2D_4gsq6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrashDetectors/Gap"]
+position = Vector2(361.5, 608)
+shape = SubResource("RectangleShape2D_v2xxn")
