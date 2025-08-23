@@ -33,6 +33,7 @@ func update_trash_count(type: Utils.TrashType):
 
 signal update_ui_state(type: Utils.UIStateType)
 signal update_game_state(type: Utils.GameStateType)
+
 func reset_stats():
 	collected_recyclable = 0
 	collected_biodegradable = 0
