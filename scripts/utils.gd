@@ -5,6 +5,19 @@ enum TrashType {
 	Biodegradable,
 	ToxicWaste
 }
+enum GameStateType {
+	Win,
+	Lose,
+	Pause,
+	Play,
+}
+
+enum UIStateType {
+	Settings,
+	PauseMenu,
+	WinScreen,
+	LoseScreen,
+}
 
 # Define available trash items for each type (exact file names)
 const TRASH_ITEMS = {
@@ -18,19 +31,6 @@ const TRASH_FOLDERS = {
 	TrashType.Recyclable: "Recyclable",
 	TrashType.Biodegradable: "Biodegradable",
 	TrashType.ToxicWaste: "Toxicwaste"
-}
-enum GameStateType {
-	Win,
-	Lose,
-	Pause,
-	Play,
-}
-
-enum UIStateType {
-	Settings,
-	PauseMenu,
-	WinScreen,
-	LoseScreen,
 }
 
 func get_enum_name(enum_dict: Dictionary, value: int) -> String:
