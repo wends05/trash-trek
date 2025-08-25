@@ -6,5 +6,3 @@
 script = ExtResource("1_nrx2f")
 
 [node name="TrashTimer" type="Timer" parent="."]
-
-[node name="TrashBinTimer" type="Timer" parent="."]

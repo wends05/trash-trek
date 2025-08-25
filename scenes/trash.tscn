@@ -11,9 +11,9 @@ script = ExtResource("1_21d64")
 
 [node name="Label" type="Label" parent="."]
 offset_left = -16.0
-offset_top = -32.0
+offset_top = -56.0
 offset_right = 24.0
-offset_bottom = -9.0
+offset_bottom = -33.0
 
 [node name="Area" type="Area2D" parent="."]
 collision_layer = 4
@@ -25,8 +25,8 @@ shape = SubResource("RectangleShape2D_exrr5")
 debug_color = Color(7.70092e-07, 0.317908, 0.37484, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="Area"]
-position = Vector2(-0.125001, 5.625)
-scale = Vector2(0.110026, 0.117839)
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_exrr5")
 
 [connection signal="area_entered" from="Area" to="." method="_on_area_area_entered"]

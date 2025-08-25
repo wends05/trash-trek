@@ -4,7 +4,9 @@ class_name Spawner
 
 @export var terrain_manager: TerrainManager
 @onready var trash_timer: Timer = $TrashTimer
-@onready var trash_bin_timer: Timer = $TrashBinTimer
+var trash_count = 0
+var trash_countdown = 4
+
 
 func create_trash():
 	var trash: Trash = preload("res://scenes/trash.tscn").instantiate()
@@ -16,13 +18,19 @@ func create_trash():
 	trash.global_position.y = 632
 	trash.terrain_manager = terrain_manager
 	
-	
 	add_child(trash)
-	trash_timer.start(5)
+	var random_timer_time = randi_range(2,3)
+	trash_timer.start(random_timer_time)
 	await trash_timer.timeout
+	if trash_countdown == trash_count:
+		create_trash_bin()
+		trash_count = 0
+		trash_countdown = randi_range(0, 6)
+		return
+	trash_count += 1
 	create_trash()
 
-func create_trash_bins():
+func create_trash_bin():
 	var trash_bin: TrashBin = preload("res://scenes/TrashBin.tscn").instantiate()
 	
 	var randtype = randi_range(0, 2)
@@ -33,10 +41,11 @@ func create_trash_bins():
 	trash_bin.terrain_manager = terrain_manager
 	
 	add_child(trash_bin)
-	trash_bin_timer.start(1)
-	await trash_bin_timer.timeout
-	create_trash_bins()
+	var random_timer_time = randi_range(2,3)
+	trash_timer.start(random_timer_time)
+	await trash_timer.timeout
+	create_trash()
 
 func _ready() -> void:
+	trash_countdown = randi_range(2,4)
 	create_trash()
-	create_trash_bins()

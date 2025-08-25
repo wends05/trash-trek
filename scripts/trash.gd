@@ -35,4 +35,4 @@ func remove():
 
 func _on_area_area_entered(area: Area2D) -> void:
 	if area is GroundArea:
-		area.bring_trash_above(self)
+		area.bring_trash_above(self, 0)
