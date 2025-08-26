@@ -7,10 +7,12 @@ func _on_resume_button_pressed() -> void:
 func _on_restart_button_pressed() -> void:
 	Game.update_game_state.emit(Utils.GameStateType.Play)
 	get_tree().change_scene_to_file("res://scenes/Main.tscn")
+	Game.reset_stats()
 
 func _on_main_menu_button_pressed() -> void:
 	Game.update_game_state.emit(Utils.GameStateType.Play)
 	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+	Game.reset_stats()
 	
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
