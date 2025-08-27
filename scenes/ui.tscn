@@ -84,4 +84,22 @@ offset_bottom = 405.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="GameStatusLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 97.0
+offset_right = 770.0
+offset_bottom = 185.0
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+
+[node name="GameReasonLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 353.0
+offset_top = 177.0
+offset_right = 774.0
+offset_bottom = 208.0
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

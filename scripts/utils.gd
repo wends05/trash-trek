@@ -17,6 +17,13 @@ enum UIStateType {
 	GameOver,
 }
 
+enum GameOverReason {
+	None,
+	OutOfBounds,
+	Fell,
+	OutOfEnergy,
+}
+
 # Define available trash items for each type (exact file names)
 const TRASH_ITEMS = {
 	TrashType.Recyclable: ["Box", "Tin Can", "water bottle"],
