@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cnvc3c5c6c8mj"]
 
 [ext_resource type="Script" uid="uid://cad734vbhmmtg" path="res://scripts/ui.gd" id="1_nt7q6"]
-[ext_resource type="PackedScene" uid="uid://ciuvi7tl2l5wv" path="res://scenes/pause_menu.tscn" id="2_p7vwb"]
+[ext_resource type="PackedScene" uid="uid://ciuvi7tl2l5wv" path="res://scenes/game_menu.tscn" id="2_p7vwb"]
 [ext_resource type="PackedScene" uid="uid://decqbrmnhe0kb" path="res://scenes/Energy.tscn" id="2_x4jx1"]
 [ext_resource type="ButtonGroup" uid="uid://chvwa86vrsf2w" path="res://resources/ToggleGroup.tres" id="3_8dubc"]
 [ext_resource type="Texture2D" uid="uid://bmpxcsb6kpdy1" path="res://assets/Recyclable Logo.png" id="3_wm3ai"]
@@ -16,9 +16,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nt7q6")
-
-[node name="PauseMenu" parent="." instance=ExtResource("2_p7vwb")]
-layout_mode = 1
 
 [node name="EnergyBar" parent="." instance=ExtResource("2_x4jx1")]
 layout_mode = 0
@@ -74,5 +71,17 @@ toggle_mode = true
 button_group = ExtResource("3_8dubc")
 icon = ExtResource("5_p7vwb")
 expand_icon = true
+
+[node name="GameMenu" parent="." instance=ExtResource("2_p7vwb")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 462.0
+offset_top = 234.0
+offset_right = 653.0
+offset_bottom = 405.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

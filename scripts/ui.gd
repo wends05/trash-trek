@@ -4,13 +4,13 @@ class_name UI
 
 @onready var temp_trash_count_display: Node = get_node(NodePath("TempTrashCount"))
 @onready var pause_button: Node = get_node(NodePath("PauseButton"))
-@onready var pause_menu: Node = get_node(NodePath("PauseMenu"))
+@onready var game_menu: Node = get_node(NodePath("GameMenu"))
 
 func _ready() -> void:
 	Game.updated_stats.connect(update_trash_counts)
 	Game.update_ui_state.connect(update_ui_state)
 	Game.update_game_state.connect(toggle_game_state)
-	toggle_nodes([pause_menu])
+	toggle_nodes([game_menu])
 	
 func update_trash_counts():
 	temp_trash_count_display.text =\
@@ -30,7 +30,9 @@ func _on_pause_button_pressed() -> void:
 func update_ui_state(state: Utils.UIStateType = Utils.UIStateType.PauseMenu) -> void:
 	match state:
 		Utils.UIStateType.PauseMenu:
-			toggle_nodes([pause_button, pause_menu])
+			toggle_nodes([pause_button, game_menu, game_menu.retry_button])
+		Utils.UIStateType.GameOver:
+			toggle_nodes([pause_button, game_menu, game_menu.resume_button, game_menu.restart_button])
 
 func toggle_nodes(nodes: Array[Control]) -> void:
 	for node in nodes:
@@ -42,4 +44,4 @@ func toggle_game_state(state: Utils.GameStateType) -> void:
 			get_tree().paused = true
 		Utils.GameStateType.Play:
 			get_tree().paused = false
-	
+		

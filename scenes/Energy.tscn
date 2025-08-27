@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://decqbrmnhe0kb"]
 
 [ext_resource type="Script" uid="uid://clw2lea18gqug" path="res://scripts/energy.gd" id="1_eb132"]
-[ext_resource type="Script" path="res://scenes/TimeLabel..gd" id="2_t2csp"]
+[ext_resource type="Script" uid="uid://ceyfbkxcw2y5t" path="res://scenes/TimeLabel..gd" id="2_t2csp"]
 
 [node name="EnergyBar" type="ProgressBar"]
 offset_left = 75.0
