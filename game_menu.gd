@@ -14,7 +14,6 @@ func _on_restart_button_pressed() -> void:
 	Game.reset_stats()
 
 func _on_retry_button_pressed() -> void:
-	print("test")
 	Game.update_game_state.emit(Utils.GameStateType.Play)
 	get_tree().change_scene_to_file("res://scenes/Main.tscn")
 	Game.reset_stats()
