@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ciuvi7tl2l5wv"]
 
-[ext_resource type="Script" uid="uid://devlsdpi63sk1" path="res://game_menu.gd" id="1_qdaa4"]
+[ext_resource type="Script" uid="uid://devlsdpi63sk1" path="res://scripts/game_menu.gd" id="1_qdaa4"]
 
 [node name="GameMenu" type="VBoxContainer"]
 anchors_preset = 15

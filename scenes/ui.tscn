@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bmpxcsb6kpdy1" path="res://assets/Recyclable Logo.png" id="3_wm3ai"]
 [ext_resource type="Texture2D" uid="uid://bivjrxl5v2s0q" path="res://assets/Biodegradable Logo.png" id="4_8dubc"]
 [ext_resource type="Texture2D" uid="uid://bltap208okx6k" path="res://assets/Toxic Waste Logo.png" id="5_p7vwb"]
-[ext_resource type="Script" uid="uid://fn8obobr73c5" path="res://scenes/ui_text_controller.gd" id="8_ktti3"]
-[ext_resource type="Script" uid="uid://d36dng05atbg8" path="res://scenes/ui_visibility_controller.gd" id="9_cgfq5"]
+[ext_resource type="Script" uid="uid://fn8obobr73c5" path="res://scripts/ui_text_controller.gd" id="8_ktti3"]
+[ext_resource type="Script" uid="uid://d36dng05atbg8" path="res://scripts/ui_visibility_controller.gd" id="9_cgfq5"]
 
 [node name="UI" type="Control"]
 layout_mode = 3

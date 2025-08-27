@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://djvk4e4r7ppdn" path="res://scripts/main.gd" id="1_h6nst"]
 [ext_resource type="PackedScene" uid="uid://dyac4ihj46tig" path="res://scenes/Player.tscn" id="1_nbc6x"]
-[ext_resource type="Script" uid="uid://d4hebw0k2lxgw" path="res://scenes/terrain_manager.gd" id="4_vcsgt"]
+[ext_resource type="Script" uid="uid://d4hebw0k2lxgw" path="res://scripts/terrain_manager.gd" id="4_vcsgt"]
 [ext_resource type="PackedScene" uid="uid://b1mx2y7p6cxdw" path="res://scenes/trash_spawner.tscn" id="5_vcsgt"]
 [ext_resource type="Script" uid="uid://go4n0wcu27jd" path="res://scripts/trash_remover.gd" id="6_c01mt"]
 [ext_resource type="Script" uid="uid://crsxweajtjywv" path="res://scripts/death_zone.gd" id="7_jlsqs"]
