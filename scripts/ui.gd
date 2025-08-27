@@ -1,19 +1,15 @@
 extends Control
-
 class_name UI
 
 @onready var temp_trash_count_display: Label = $TempTrashCount
-@onready var game_status_label: Label = $GameStatusLabel
-@onready var game_reason_label: Label = $GameReasonLabel
-@onready var pause_button: Node = get_node(NodePath("PauseButton"))
-@onready var game_menu: Node = get_node(NodePath("GameMenu"))
+@onready var ui_text_controller: UITextController = $UITextController
+@onready var ui_visibility_controller: UIVisibilityController = $UIVisibilityController
 
 func _ready() -> void:
 	Game.updated_stats.connect(update_trash_counts)
 	Game.update_ui_state.connect(update_ui_state)
 	Game.update_game_state.connect(toggle_game_state)
-	toggle_nodes([game_menu, game_status_label])
-	
+
 func update_trash_counts():
 	temp_trash_count_display.text =\
 	"rec: %s
@@ -30,45 +26,12 @@ func _on_pause_button_pressed() -> void:
 	toggle_game_state(Utils.GameStateType.Pause)
 
 func update_ui_state(state: Utils.UIStateType, reason: Utils.GameOverReason = Utils.GameOverReason.None) -> void:
-	match state:
-		Utils.UIStateType.PauseMenu:
-			toggle_nodes([
-				pause_button, 
-				game_status_label, 
-				game_menu, 
-				game_menu.retry_button
-			])	
-		Utils.UIStateType.GameOver:
-			toggle_nodes([
-				pause_button, 
-				game_status_label, 
-				game_menu, 
-				game_menu.resume_button, 
-				game_menu.restart_button
-			])
-	toggle_text(state, reason)
+	ui_visibility_controller.update_ui_visibility(state)
+	ui_text_controller.update_ui_text(state, reason)
 	
-func toggle_nodes(nodes: Array[Control]) -> void:
-	for node in nodes:
-		node.visible = !node.visible
-
 func toggle_game_state(state: Utils.GameStateType) -> void:
 	match state:
 		Utils.GameStateType.Pause:
 			get_tree().paused = true
 		Utils.GameStateType.Play:
 			get_tree().paused = false
-		
-func toggle_text(state: Utils.UIStateType, reason: Utils.GameOverReason) -> void:
-	match state:
-		Utils.UIStateType.PauseMenu:
-			game_status_label.text = "Paused Menu"
-		Utils.UIStateType.GameOver:
-			game_status_label.text = "Game Over"
-			match reason:
-				Utils.GameOverReason.OutOfBounds:
-					game_reason_label.text = "Player left behind"
-				Utils.GameOverReason.Fell:
-					game_reason_label.text = "Player fell out of the world"
-				Utils.GameOverReason.OutOfEnergy:
-					game_reason_label.text = "Player ran out of energy"
