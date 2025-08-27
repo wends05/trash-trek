@@ -1,17 +1,15 @@
 extends Control
-
 class_name UI
 
-@onready var temp_trash_count_display: Node = get_node(NodePath("TempTrashCount"))
-@onready var pause_button: Node = get_node(NodePath("PauseButton"))
-@onready var pause_menu: Node = get_node(NodePath("PauseMenu"))
+@onready var temp_trash_count_display: Label = $TempTrashCount
+@onready var ui_text_controller: UITextController = $UITextController
+@onready var ui_visibility_controller: UIVisibilityController = $UIVisibilityController
 
 func _ready() -> void:
 	Game.updated_stats.connect(update_trash_counts)
 	Game.update_ui_state.connect(update_ui_state)
 	Game.update_game_state.connect(toggle_game_state)
-	toggle_nodes([pause_menu])
-	
+
 func update_trash_counts():
 	temp_trash_count_display.text =\
 	"rec: %s
@@ -24,22 +22,16 @@ func update_trash_counts():
 	]
 
 func _on_pause_button_pressed() -> void:
-	update_ui_state()
+	update_ui_state(Utils.UIStateType.PauseMenu)
 	toggle_game_state(Utils.GameStateType.Pause)
 
-func update_ui_state(state: Utils.UIStateType = Utils.UIStateType.PauseMenu) -> void:
-	match state:
-		Utils.UIStateType.PauseMenu:
-			toggle_nodes([pause_button, pause_menu])
-
-func toggle_nodes(nodes: Array[Control]) -> void:
-	for node in nodes:
-		node.visible = !node.visible
-
+func update_ui_state(state: Utils.UIStateType, reason: Utils.GameOverReason = Utils.GameOverReason.None) -> void:
+	ui_visibility_controller.update_ui_visibility(state)
+	ui_text_controller.update_ui_text(state, reason)
+	
 func toggle_game_state(state: Utils.GameStateType) -> void:
 	match state:
 		Utils.GameStateType.Pause:
 			get_tree().paused = true
 		Utils.GameStateType.Play:
 			get_tree().paused = false
-	

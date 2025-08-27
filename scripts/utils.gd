@@ -5,9 +5,8 @@ enum TrashType {
 	Biodegradable,
 	ToxicWaste
 }
+
 enum GameStateType {
-	Win,
-	Lose,
 	Pause,
 	Play,
 }
@@ -15,8 +14,14 @@ enum GameStateType {
 enum UIStateType {
 	Settings,
 	PauseMenu,
-	WinScreen,
-	LoseScreen,
+	GameOver,
+}
+
+enum GameOverReason {
+	None,
+	OutOfBounds,
+	Fell,
+	OutOfEnergy,
 }
 
 # Define available trash items for each type (exact file names)
