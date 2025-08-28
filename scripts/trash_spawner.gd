@@ -11,8 +11,6 @@ var trash_countdown = 4
 func create_trash():
 	var trash: Trash = preload("res://scenes/trash.tscn").instantiate()
 	
-	var randtype = randi_range(0, 2)
-	trash.type = randtype as Utils.TrashType
 	
 	trash.global_position.x = terrain_manager.terrain_width + 500
 	trash.global_position.y = 632

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mk8lxdrr85xs"
-path="res://.godot/imported/crumpled-1.png-5b468c3bf1dd184cf069c7eef529ca9b.ctex"
+uid="uid://b11wwcb7c7v3q"
+path="res://.godot/imported/battery.png-fd478c0cec6f57dc4de95a0bcaa140b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/trash/Biodegradable/crumpled-1.png"
-dest_files=["res://.godot/imported/crumpled-1.png-5b468c3bf1dd184cf069c7eef529ca9b.ctex"]
+source_file="res://assets/trash/Toxicwaste/battery.png"
+dest_files=["res://.godot/imported/battery.png-fd478c0cec6f57dc4de95a0bcaa140b9.ctex"]
 
 [params]
 
