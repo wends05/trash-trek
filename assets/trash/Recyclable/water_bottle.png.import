@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b11wwcb7c7v3q"
-path="res://.godot/imported/Battery-1.png-afab2652176a4b49907eb499e98bd533.ctex"
+uid="uid://druwv13nea6qp"
+path="res://.godot/imported/water_bottle.png-b9b535c68ce8e8fa21e760bf58ddf2be.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/trash/Toxicwaste/Battery-1.png"
-dest_files=["res://.godot/imported/Battery-1.png-afab2652176a4b49907eb499e98bd533.ctex"]
+source_file="res://assets/trash/Recyclable/water_bottle.png"
+dest_files=["res://.godot/imported/water_bottle.png-b9b535c68ce8e8fa21e760bf58ddf2be.ctex"]
 
 [params]
 

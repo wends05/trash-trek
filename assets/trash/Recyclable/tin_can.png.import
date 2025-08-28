@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://druwv13nea6qp"
-path="res://.godot/imported/water bottle.png-ac1ef3bed5b2f1d203e8ff6f70858883.ctex"
+uid="uid://cyvq5h56yt4vo"
+path="res://.godot/imported/tin_can.png-47da64064cc59d785587bd8d2356a33e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/trash/Recyclable/water bottle.png"
-dest_files=["res://.godot/imported/water bottle.png-ac1ef3bed5b2f1d203e8ff6f70858883.ctex"]
+source_file="res://assets/trash/Recyclable/tin_can.png"
+dest_files=["res://.godot/imported/tin_can.png-47da64064cc59d785587bd8d2356a33e.ctex"]
 
 [params]
 
