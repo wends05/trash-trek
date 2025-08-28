@@ -9,9 +9,14 @@ func _ready() -> void:
 	Game.updated_stats.connect(update_trash_counts)
 	Game.update_ui_state.connect(update_ui_state)
 	Game.update_game_state.connect(update_game_state)
+	
+	$%BiodegradableButton.connect("pressed", _on_group_pressed.bind(Utils.TrashType.Biodegradable))
+	$%RecyclableButton.connect("pressed", _on_group_pressed.bind(Utils.TrashType.Recyclable))
+	$%ToxicWasteButton.connect("pressed", _on_group_pressed.bind(Utils.TrashType.ToxicWaste))
+	
 
 func update_trash_counts():
-	temp_trash_count_display.text =\
+	temp_trash_count_display.text = \
 	"rec: %s
 	bio: %s
 	tox: %s
@@ -35,3 +40,6 @@ func update_game_state(state: Utils.GameStateType) -> void:
 			get_tree().paused = true
 		Utils.GameStateType.Play:
 			get_tree().paused = false
+
+func _on_group_pressed(type: Utils.TrashType):
+	Game.select_trash_type(type)

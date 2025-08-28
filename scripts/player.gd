@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name Player
 
 const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -600.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 var is_jumping: bool = false
@@ -13,7 +13,7 @@ func _ready() -> void:
 	if animated_sprite:
 		animated_sprite.play("running")
 		
-func _physics_process(delta: float) -> void:      
+func _physics_process(delta: float) -> void:
 	player_gravity(delta)
 	player_jump()
 	animations()
@@ -54,8 +54,11 @@ func increment_trash(type: Utils.TrashType):
 
 func _on_trash_collection_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Trash:
-		var trash : Trash = area.get_parent()
+		var trash: Trash = area.get_parent()
 		var trash_type = trash.type
 		increment_trash(trash_type)
 		trash.remove()
-		
+
+func _on_trash_bin_collection_area_area_entered(area: Area2D) -> void:
+	if area.get_parent() is TrashBin:
+		Game.handle_throw_trash(area.get_parent())

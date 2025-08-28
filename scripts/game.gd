@@ -1,10 +1,10 @@
 extends Node
 
 var energy = 0
-var elapsed_time: float = 0.0  
-var base_wait_time: float = 10.0   
-var base_decrease: int = 1       
-var difficulty_step: float = 30.0 
+var elapsed_time: float = 0.0
+var base_wait_time: float = 10.0
+var base_decrease: int = 1
+var difficulty_step: float = 30.0
 
 signal trash_collected(type: Utils.TrashType)
 signal energy_changed(value: int)
@@ -16,6 +16,9 @@ signal update_game_state(type: Utils.GameStateType)
 var collected_biodegradable = 0
 var collected_recyclable = 0
 var collected_toxic_waste = 0
+
+var selected_trash_type: Utils.TrashType
+signal changed_trash_type(type: Utils.TrashType)
 
 var energy_timer: Timer
 
@@ -38,10 +41,10 @@ func _process(delta: float) -> void:
 	var difficulty_level = int(elapsed_time / difficulty_step)
 
 
-	energy_timer.wait_time = max(1.0, base_wait_time - difficulty_level)  
+	energy_timer.wait_time = max(1.0, base_wait_time - difficulty_level)
 
 	# scale energy drain (more lost per tick)
-	base_decrease = 1 + difficulty_level  
+	base_decrease = 1 + difficulty_level
 
 func add_energy(amount: float) -> void:
 	energy += amount
@@ -82,3 +85,25 @@ func reset_stats():
 	energy_changed.emit(energy)
 	energy_timer.start()
 	time_changed.emit(elapsed_time)
+
+func select_trash_type(type: Utils.TrashType):
+	selected_trash_type = type
+	changed_trash_type.emit(type)
+
+func handle_throw_trash(trash_bin: TrashBin):
+	if selected_trash_type == trash_bin.type:
+		print_debug("Correct Trash, energy_added")
+		add_energy(3)
+		decrease_trash_count(selected_trash_type, 3)
+
+
+func decrease_trash_count(type: Utils.TrashType, amount: int):
+	#TODO: change to percentage later
+	match type:
+		Utils.TrashType.Recyclable:
+			collected_recyclable -= amount
+		Utils.TrashType.Biodegradable:
+			collected_biodegradable -= amount
+		Utils.TrashType.ToxicWaste:
+			collected_toxic_waste -= amount
+	updated_stats.emit()
