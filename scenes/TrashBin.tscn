@@ -1,24 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://ce4uowuphqpho"]
+[gd_scene load_steps=5 format=3 uid="uid://ce4uowuphqpho"]
 
 [ext_resource type="Script" uid="uid://bxxl7ro6e367a" path="res://scripts/trash_bin.gd" id="1_jkt40"]
 [ext_resource type="Texture2D" uid="uid://dkm4slomq5oi2" path="res://assets/trashbins/Recyclable.png" id="2_lq375"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pf1dk"]
-size = Vector2(128, 128)
+size = Vector2(40, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lq375"]
+size = Vector2(64, 104)
 
 [node name="TrashBin" type="Node2D"]
 script = ExtResource("1_jkt40")
-
-[node name="Area" type="Area2D" parent="."]
-collision_layer = 8
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area"]
-shape = SubResource("RectangleShape2D_pf1dk")
 
 [node name="Asset" type="Sprite2D" parent="."]
 position = Vector2(0.499989, 0.500019)
 scale = Vector2(0.181429, 0.181429)
 texture = ExtResource("2_lq375")
 
-[connection signal="area_entered" from="Area" to="." method="_on_area_area_entered"]
+[node name="ThrowCollision" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ThrowCollision"]
+shape = SubResource("RectangleShape2D_pf1dk")
+
+[node name="PlayerCollisionArea" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCollisionArea"]
+position = Vector2(-8, 0)
+shape = SubResource("RectangleShape2D_lq375")
+
+[connection signal="area_entered" from="ThrowCollision" to="." method="_on_area_area_entered"]
