@@ -499,14 +499,14 @@ rotation = 0.363028
 scale = Vector2(0.139591, 0.177586)
 sprite_frames = SubResource("SpriteFrames_5faoh")
 autoplay = "default"
-frame_progress = 0.860947
+frame_progress = 0.869081
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 position = Vector2(875, 438)
 scale = Vector2(0.3001, 0.261)
 sprite_frames = SubResource("SpriteFrames_5faoh")
 autoplay = "default"
-frame_progress = 0.942114
+frame_progress = 0.950245
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

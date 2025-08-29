@@ -14,6 +14,7 @@ func _on_start_pressed() -> void:
 	animation.animation_finished.connect(_on_animation_finished)
 
 func _on_start_mouse_entered() -> void:
+	quit_texture.visible = false
 	play_texture.visible = true
 	animation.play("hover_play")
 	
@@ -26,6 +27,7 @@ func _on_quit_pressed() -> void:
 	animation.animation_finished.connect(_on_animation_finished)
 
 func _on_quit_mouse_entered() -> void:
+	play_texture.visible = false
 	quit_texture.visible = true
 	animation.play("hover_quit")
 
