@@ -24,6 +24,12 @@ enum GameOverReason {
 	OutOfEnergy,
 }
 
+enum PlayerMotion {
+	Jump,
+	Fall,
+	Run,
+}
+
 const TRASHES = [
 	preload("res://trash_resource/biodegradable/branches.tres"),
 	preload("res://trash_resource/biodegradable/crumpled.tres"),
