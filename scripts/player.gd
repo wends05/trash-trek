@@ -3,11 +3,15 @@ extends CharacterBody2D
 class_name Player
 
 @export var jump_force = -400.0
-@export var max_jump_time: float = 0.3 
+@export var max_jump_time: float = 0.3
+@export var max_charge_time: float = 0.2
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
 var jump_timer: float = 0.0
+var charge_timer: float = 0.0
 var is_jumping: bool = false
+var is_charging: bool = false
 
 func _ready() -> void:
 	add_to_group("Player")
@@ -21,19 +25,25 @@ func _physics_process(delta: float) -> void:
 func player_jump(time) -> void:
 	if Input.is_action_just_pressed("left_click") and is_on_floor():
 		is_jumping = true
+		is_charging = true
 		jump_timer = 0.0
+		charge_timer = 0.0
 		
-	if Input.is_action_pressed("left_click") and is_jumping:
-		if jump_timer < max_jump_time:
-			velocity.y = jump_force
-			jump_timer += time
-			play_animation(Utils.PlayerMotion.Jump)
-		else:
-			is_jumping = false 
-			play_animation(Utils.PlayerMotion.Fall)
+	if Input.is_action_pressed("left_click") and is_jumping and is_charging:
+		charge_timer += time
+		play_animation(Utils.PlayerMotion.Jump)
+		if charge_timer > max_charge_time:
+			if jump_timer < max_jump_time:
+				velocity.y = jump_force
+				jump_timer += time
+			else:
+				is_jumping = false 
+				is_charging = false
+				play_animation(Utils.PlayerMotion.Fall)
 			
 	if Input.is_action_just_released("left_click"):
 		is_jumping = false
+		is_charging = false
 		play_animation(Utils.PlayerMotion.Fall)
 	
 func player_fall(delta: float) -> void:
@@ -43,7 +53,7 @@ func player_fall(delta: float) -> void:
 			play_animation(Utils.PlayerMotion.Fall)
 
 func player_run():
-	if is_on_floor():
+	if is_on_floor() and not is_charging:
 		play_animation(Utils.PlayerMotion.Run)
 		
 func play_animation(animation: Utils.PlayerMotion) -> void:
