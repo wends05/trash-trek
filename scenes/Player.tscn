@@ -92,23 +92,23 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y30ri"]
-size = Vector2(64, 160)
+size = Vector2(64, 141)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6fml"]
-size = Vector2(64, 159)
+size = Vector2(64, 141)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3li8b"]
-size = Vector2(64, 160)
+size = Vector2(64, 141)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 14
 script = ExtResource("1_62i1b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(8, 8)
-scale = Vector2(0.365234, 0.400391)
+position = Vector2(8, 3.24995)
+scale = Vector2(0.365234, 0.381836)
 sprite_frames = SubResource("SpriteFrames_70d11")
-animation = &"running"
+animation = &"jump"
 autoplay = "running"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -116,21 +116,21 @@ position = Vector2(-1.90735e-06, -1.49997)
 scale = Vector2(0.5, 0.476563)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-9.53674e-07, 16)
+position = Vector2(-9.53674e-07, 6.5)
 shape = SubResource("RectangleShape2D_y30ri")
 
 [node name="TrashCollectionArea" type="Area2D" parent="."]
 collision_mask = 6
 
 [node name="Shape" type="CollisionShape2D" parent="TrashCollectionArea"]
-position = Vector2(0, 15.5)
+position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_v6fml")
 
 [node name="TrashBinCollectionArea" type="Area2D" parent="."]
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrashBinCollectionArea"]
-position = Vector2(0, 16)
+position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_3li8b")
 
 [connection signal="area_entered" from="TrashCollectionArea" to="." method="_on_trash_collection_area_area_entered"]
