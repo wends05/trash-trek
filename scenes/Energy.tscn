@@ -1,20 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://decqbrmnhe0kb"]
+[gd_scene load_steps=4 format=3 uid="uid://decqbrmnhe0kb"]
 
 [ext_resource type="Script" uid="uid://clw2lea18gqug" path="res://scripts/energy.gd" id="1_eb132"]
-[ext_resource type="Script" uid="uid://ceyfbkxcw2y5t" path="res://scripts/TimeLabel..gd" id="2_t2csp"]
+[ext_resource type="Texture2D" uid="uid://cyve65mkefl3u" path="res://assets/Energy Bar/EnergyBar.png" id="4_llmem"]
 
-[node name="EnergyBar" type="ProgressBar"]
-offset_left = 75.0
-offset_top = 2.0
-offset_right = 500.0
-offset_bottom = 37.0
-step = 1.0
-script = ExtResource("1_eb132")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_kf53p"]
+load_path = "res://.godot/imported/EnergyBarProgress.png-799c472fa21a5cb5886b16fd4599f77e.ctex"
 
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
-offset_left = -66.0
+[node name="TextureProgressBar" type="TextureProgressBar"]
+offset_left = 132.0
 offset_top = 4.0
-offset_right = -6.0
-offset_bottom = 34.0
-script = ExtResource("2_t2csp")
+offset_right = 622.0
+offset_bottom = 161.0
+nine_patch_stretch = true
+texture_under = ExtResource("4_llmem")
+texture_progress = SubResource("CompressedTexture2D_kf53p")
+script = ExtResource("1_eb132")
