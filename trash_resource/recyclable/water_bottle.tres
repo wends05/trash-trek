@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="TrashResource" load_steps=2 format=3 uid="uid://dala1lijfa1pw"]
-
-[ext_resource type="Script" uid="uid://sefvqxy5pk3i" path="res://trash_resource.gd" id="1_t4mco"]
-
-[resource]
-script = ExtResource("1_t4mco")
-trash_name = "water_bottle"
-trash_type = "Recyclable"

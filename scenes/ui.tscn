@@ -142,4 +142,9 @@ offset_right = 644.0
 offset_bottom = 87.0
 script = ExtResource("10_7dvkv")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

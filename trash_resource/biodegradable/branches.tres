@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="TrashResource" load_steps=2 format=3 uid="uid://c41jguupi5bxu"]
-
-[ext_resource type="Script" uid="uid://sefvqxy5pk3i" path="res://trash_resource.gd" id="1_2v6qr"]
-
-[resource]
-script = ExtResource("1_2v6qr")
-trash_name = "branches"
-trash_type = "Biodegradable"
