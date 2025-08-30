@@ -16,6 +16,20 @@ func _ready() -> void:
 	$%RecyclableButton.connect("pressed", _on_group_pressed.bind(Utils.TrashType.Recyclable))
 	$%ToxicWasteButton.connect("pressed", _on_group_pressed.bind(Utils.TrashType.ToxicWaste))
 	
+func _input(event: InputEvent) -> void:
+	if event.is_pressed():
+		if event.is_action_pressed("recyclable"):
+			$%RecyclableButton.button_pressed = true
+			_on_group_pressed(Utils.TrashType.Recyclable)
+			return
+		if event.is_action_pressed("biodegradable"):
+			$%BiodegradableButton.button_pressed = true
+			_on_group_pressed(Utils.TrashType.Biodegradable)
+			return
+		if event.is_action_pressed("toxic_waste"):
+			$%ToxicWasteButton.button_pressed = true
+			_on_group_pressed(Utils.TrashType.ToxicWaste)
+			return
 
 func update_trash_counts():
 	temp_trash_count_display.text = \
@@ -48,4 +62,5 @@ func update_game_state(state: Utils.GameStateType) -> void:
 			get_tree().paused = false
 
 func _on_group_pressed(type: Utils.TrashType):
+	print_debug("Pressed, ", type)
 	Game.select_trash_type(type)

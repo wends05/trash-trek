@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_6iqy8")
 trash_name = "battery"
-trash_type = "ToxicWaste"
+trash_type = 2

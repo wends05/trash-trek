@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_0fckx")
 trash_name = "face_mask"
-trash_type = "ToxicWaste"
+trash_type = 2

@@ -16,6 +16,9 @@ func remove():
 func load_trash() -> void:
 	trash_item_resource = Utils.get_random_trash_item()
 	var texture_path = trash_item_resource.get_trash_texture_path()
+
+	type = trash_item_resource.trash_type
+	
 	var texture = load(texture_path) 
 	trash_texture.texture = texture
-	trash_label.text = "%s: %s" % [trash_item_resource.trash_type, trash_item_resource.trash_name]
+	trash_label.text = "%s: %s" % [Utils.get_enum_name(Utils.TrashType, type), trash_item_resource.trash_name]
