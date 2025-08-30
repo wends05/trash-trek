@@ -54,7 +54,7 @@ func player_fall(delta: float) -> void:
 			play_animation(Utils.PlayerMotion.Fall)
 
 func player_run():
-	if is_on_floor() and not is_charging and not is_hurt:
+	if is_on_floor() and (not is_charging and not is_hurt):
 		play_animation(Utils.PlayerMotion.Run)
 		
 func play_animation(animation: Utils.PlayerMotion) -> void:
@@ -83,9 +83,10 @@ func _on_trash_bin_collection_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is TrashBin:
 		Game.handle_throw_trash(area.get_parent())
 
-func _on_monster_collision_area_entered(area: Area2D) -> void:
+func _on_monster_collision_area_entered(_area: Area2D) -> void:
 	Game.decrease_energy(10)
 	is_hurt = true
 	play_animation(Utils.PlayerMotion.Hurt)
 	await animated_sprite.animation_finished
 	is_hurt = false
+	play_animation(Utils.PlayerMotion.Run)
