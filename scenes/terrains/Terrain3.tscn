@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cj1pwr1ncbm4t"]
+[gd_scene load_steps=11 format=3 uid="uid://cj1pwr1ncbm4t"]
 
 [ext_resource type="Script" uid="uid://cskjjcjavic6o" path="res://scripts/terrain.gd" id="1_l3giw"]
 [ext_resource type="Texture2D" uid="uid://hh1bl1hj407j" path="res://assets/background/emperador.png" id="1_tlmq3"]
+[ext_resource type="Script" uid="uid://q01hxgi1lqgv" path="res://scripts/monster_spawn.gd" id="4_l3giw"]
 [ext_resource type="Texture2D" uid="uid://cyu2yaa6na7hj" path="res://assets/background/tile.png" id="4_lvfhc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w20fd"]
@@ -603,3 +604,7 @@ position = Vector2(712, 448)
 
 [node name="Marker2D6" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(248, 360)
+
+[node name="MonsterSpawner" type="Marker2D" parent="."]
+position = Vector2(464, 450)
+script = ExtResource("4_l3giw")

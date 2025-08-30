@@ -1,5 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://xsbccim4vkhd"]
+[gd_scene load_steps=17 format=3 uid="uid://xsbccim4vkhd"]
 
+[ext_resource type="Script" uid="uid://dmh1s0jblhc0i" path="res://scripts/monster.gd" id="1_dkrhh"]
 [ext_resource type="Texture2D" uid="uid://d14hkxdvvc3f3" path="res://assets/monsters/Rmonster/Rmonster11.png" id="1_g3y70"]
 [ext_resource type="Texture2D" uid="uid://cxktb2fipof8h" path="res://assets/monsters/Rmonster/Rmonster12.png" id="2_dkrhh"]
 [ext_resource type="Texture2D" uid="uid://c8wkxhffuun85" path="res://assets/monsters/Rmonster/Rmonster13.png" id="3_jbiie"]
@@ -70,15 +71,32 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_jbiie")
 }],
-"loop": false,
+"loop": true,
 "name": &"spawn",
-"speed": 5.0
+"speed": 10.0
 }]
 
-[node name="RecyclableMonster" type="AnimatedSprite2D"]
-position = Vector2(-1, 2)
-scale = Vector2(0.124034, 0.124034)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g3y70"]
+size = Vector2(160, 181.913)
+
+[node name="RecyclableMonster" type="Node2D" node_paths=PackedStringArray("anim")]
+script = ExtResource("1_dkrhh")
+anim = NodePath("RecyclableMonster")
+
+[node name="RecyclableMonster" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.14441e-05, -1.14441e-05)
+scale = Vector2(0.125455, 0.125455)
 sprite_frames = SubResource("SpriteFrames_l5q2v")
-animation = &"idle"
+animation = &"spawn"
 autoplay = "spawn"
-frame_progress = 0.288613
+frame_progress = 0.283803
+
+[node name="Area2D" type="Area2D" parent="RecyclableMonster"]
+position = Vector2(0.000187949, -140.936)
+scale = Vector2(6.11111, 6.11111)
+collision_layer = 16
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RecyclableMonster/Area2D"]
+position = Vector2(-8.00005, 26.0188)
+shape = SubResource("RectangleShape2D_g3y70")

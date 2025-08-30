@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dyac4ihj46tig"]
+[gd_scene load_steps=21 format=3 uid="uid://dyac4ihj46tig"]
 
 [ext_resource type="Script" uid="uid://dofxmaqpmkhp1" path="res://scripts/player.gd" id="1_62i1b"]
 [ext_resource type="Texture2D" uid="uid://cswjjo4ww0dm6" path="res://assets/Player/player_sprite_sheet.png" id="2_v6fml"]
@@ -6,6 +6,18 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_d3wef"]
 atlas = ExtResource("2_v6fml")
 region = Rect2(512, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4126"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkdrv"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7iby"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(1536, 512, 512, 512)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6fml"]
 atlas = ExtResource("2_v6fml")
@@ -55,6 +67,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_o4126")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkdrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7iby")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_v6fml")
 }, {
 "duration": 1.0,
@@ -100,6 +126,9 @@ size = Vector2(64, 141)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3li8b"]
 size = Vector2(64, 141)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdl7e"]
+size = Vector2(63, 150.5)
+
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 14
 script = ExtResource("1_62i1b")
@@ -108,8 +137,9 @@ script = ExtResource("1_62i1b")
 position = Vector2(8, 3.24995)
 scale = Vector2(0.365234, 0.381836)
 sprite_frames = SubResource("SpriteFrames_70d11")
-animation = &"jump"
+animation = &"hurt"
 autoplay = "running"
+frame_progress = 0.656152
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.90735e-06, -1.49997)
@@ -133,5 +163,13 @@ collision_mask = 8
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_3li8b")
 
+[node name="MonsterCollision" type="Area2D" parent="."]
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterCollision"]
+position = Vector2(7, 10)
+shape = SubResource("RectangleShape2D_mdl7e")
+
 [connection signal="area_entered" from="TrashCollectionArea" to="." method="_on_trash_collection_area_area_entered"]
 [connection signal="area_entered" from="TrashBinCollectionArea" to="." method="_on_trash_bin_collection_area_area_entered"]
+[connection signal="area_entered" from="MonsterCollision" to="." method="_on_monster_collision_area_entered"]

@@ -78,3 +78,8 @@ func _on_trash_collection_area_area_entered(area: Area2D) -> void:
 func _on_trash_bin_collection_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is TrashBin:
 		Game.handle_throw_trash(area.get_parent())
+
+func _on_monster_collision_area_entered(area: Area2D) -> void:
+	Game.decrease_energy(10)
+	animated_sprite.play("hurt")
+	
