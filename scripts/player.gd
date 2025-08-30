@@ -50,14 +50,16 @@ func player_jump(time) -> void:
 func player_fall(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-		if velocity.y > 0:
+		if velocity.y > 0 and not is_hurt:
 			play_animation(Utils.PlayerMotion.Fall)
 
 func player_run():
-	if is_on_floor() and (not is_charging and not is_hurt):
+	if is_on_floor() and not is_charging and not is_hurt:
 		play_animation(Utils.PlayerMotion.Run)
 		
 func play_animation(animation: Utils.PlayerMotion) -> void:
+	if is_hurt and animation != Utils.PlayerMotion.Hurt:
+		return
 	match animation:
 		Utils.PlayerMotion.Jump:
 			animated_sprite.play('jump')
@@ -85,5 +87,9 @@ func _on_trash_bin_collection_area_area_entered(area: Area2D) -> void:
 
 func _on_monster_collision_area_entered(_area: Area2D) -> void:
 	Game.decrease_energy(10)
+	if is_hurt:
+		return
 	is_hurt = true
 	play_animation(Utils.PlayerMotion.Hurt)
+	await animated_sprite.animation_finished
+	is_hurt = false

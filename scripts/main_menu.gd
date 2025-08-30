@@ -7,7 +7,7 @@ extends Control
 @onready var quit_button = $Quit
 
 func _ready() -> void:
-	$CanvasLayer.show()
+	$CanvasLayer.hide()
 	play_button.disabled = true
 	quit_button.disabled = true
 	play_button.hide()
