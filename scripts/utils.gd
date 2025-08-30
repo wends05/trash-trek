@@ -28,7 +28,6 @@ enum PlayerMotion {
 	Jump,
 	Fall,
 	Run,
-	Hurt,
 }
 
 const TRASHES = [
