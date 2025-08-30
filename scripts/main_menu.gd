@@ -3,17 +3,24 @@ extends Control
 @onready var animation = $AnimationPlayer
 @onready var play_texture = $PlayButtonGlow
 @onready var quit_texture = $QuitButtonGlow
+@onready var play_button = $Start
+@onready var quit_button = $Quit
 
 func _ready() -> void:
-	animation.play("from_intro_transition")
+	play_button.disabled = true
+	quit_button.disabled = true
 	play_texture.visible = false
 	quit_texture.visible = false
-
+	animation.play("from_intro_transition")
+	animation.animation_finished.connect(_on_animation_finished)
+	
 func _on_start_pressed() -> void:
 	animation.play("press_play")
 	animation.animation_finished.connect(_on_animation_finished)
-
+	
 func _on_start_mouse_entered() -> void:
+	if play_button.disabled:
+		return
 	quit_texture.visible = false
 	play_texture.visible = true
 	animation.play("hover_play")
@@ -27,6 +34,8 @@ func _on_quit_pressed() -> void:
 	animation.animation_finished.connect(_on_animation_finished)
 
 func _on_quit_mouse_entered() -> void:
+	if quit_button.disabled:
+		return
 	play_texture.visible = false
 	quit_texture.visible = true
 	animation.play("hover_quit")
@@ -44,6 +53,9 @@ func _on_animation_finished(anim_name: StringName) -> void:
 		play_texture.visible = false
 	if anim_name == "hover_quit" and animation.current_animation_position == 0.0:
 		quit_texture.visible = false
+	if anim_name == "from_intro_transition":
+		play_button.disabled = false
+		quit_button.disabled = false
 		
 func start_game():
 	get_tree().change_scene_to_file("res://scenes/Main.tscn")
