@@ -3,8 +3,8 @@ extends Node
 const MAX_ENERGY = 128.0
 var energy = MAX_ENERGY
 var elapsed_time: float = 0.0
-var base_wait_time: float = 1.0
-var base_decrease: int = 50.0
+var base_wait_time: float = 10.0
+var base_decrease: int = 10.0
 var difficulty_step: float = 10.0
 
 signal trash_collected(type: Utils.TrashType)

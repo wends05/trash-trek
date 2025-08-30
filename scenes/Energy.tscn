@@ -7,10 +7,10 @@
 load_path = "res://.godot/imported/EnergyBarProgress.png-799c472fa21a5cb5886b16fd4599f77e.ctex"
 
 [node name="TextureProgressBar" type="TextureProgressBar"]
-offset_left = 132.0
-offset_top = 4.0
-offset_right = 622.0
-offset_bottom = 161.0
+offset_left = -2.0
+offset_top = 2.0
+offset_right = 488.0
+offset_bottom = 159.0
 nine_patch_stretch = true
 texture_under = ExtResource("4_llmem")
 texture_progress = SubResource("CompressedTexture2D_kf53p")
