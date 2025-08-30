@@ -22,8 +22,6 @@ func load_trash_bin():
 	
 	animated_sprite.play("idle")
 
-func change_player_collision(trash_type: Utils.TrashType) -> void:
-
 
 func change_player_collision(trash_type: Utils.TrashType) -> void:
 	print("CHANGING COLLISION")
