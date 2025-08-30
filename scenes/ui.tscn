@@ -82,24 +82,24 @@ color = Color(0, 0, 0, 0.486275)
 
 [node name="EnergyBar" parent="." instance=ExtResource("2_x4jx1")]
 layout_mode = 0
-offset_left = 272.0
-offset_top = 0.0
-offset_right = 835.0
-offset_bottom = 53.0
+offset_left = 311.0
+offset_top = 18.0
+offset_right = 812.0
+offset_bottom = 65.0
 
 [node name="PauseButton" type="Button" parent="."]
 process_mode = 3
 layout_mode = 0
 offset_left = 29.0
 offset_top = 27.0
-offset_right = 223.0
-offset_bottom = 49.0
+offset_right = 200.0
+offset_bottom = 47.0
 theme = SubResource("Theme_h1mc3")
 toggle_mode = true
 
 [node name="PauseAnimate" type="AnimatedSprite2D" parent="PauseButton"]
-position = Vector2(95.7684, 12.6255)
-scale = Vector2(0.233582, 0.185669)
+position = Vector2(84, 12)
+scale = Vector2(0.209791, 0.173278)
 sprite_frames = SubResource("SpriteFrames_qsv74")
 animation = &"pause_hover"
 speed_scale = 1.5
