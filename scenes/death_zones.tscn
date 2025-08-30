@@ -6,7 +6,7 @@
 size = Vector2(6.5, 760)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c01mt"]
-size = Vector2(1150.5, 10)
+size = Vector2(1276.25, 10)
 
 [node name="DeathZones" type="Node2D"]
 
@@ -21,7 +21,7 @@ shape = SubResource("RectangleShape2D_jlsqs")
 script = ExtResource("1_hp7u1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZoneBelow"]
-position = Vector2(574, 783)
+position = Vector2(511.125, 809)
 shape = SubResource("RectangleShape2D_c01mt")
 
 [connection signal="body_entered" from="DeathZoneLeft" to="DeathZoneBelow" method="_on_death_zone_left_body_entered"]
