@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_m8uuc")
 trash_name = "box"
-trash_type = "Recyclable"
+trash_type = 0

@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_t4mco")
 trash_name = "water_bottle"
-trash_type = "Recyclable"
+trash_type = 0

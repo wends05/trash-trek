@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_abpi1")
 trash_name = "tin_can"
-trash_type = "Recyclable"
+trash_type = 0
