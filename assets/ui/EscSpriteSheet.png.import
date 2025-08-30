@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4dllmycwldy6"
-path="res://.godot/imported/branches.png-03c8a9e7cd5820696ee427c4faae758d.ctex"
+uid="uid://ct8hkm8bync56"
+path="res://.godot/imported/EscSpriteSheet.png-d720a1359a95d05414608436a6c930e4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/trash/Biodegradable/branches.png"
-dest_files=["res://.godot/imported/branches.png-03c8a9e7cd5820696ee427c4faae758d.ctex"]
+source_file="res://assets/ui/EscSpriteSheet.png"
+dest_files=["res://.godot/imported/EscSpriteSheet.png-d720a1359a95d05414608436a6c930e4.ctex"]
 
 [params]
 

@@ -1,12 +1,19 @@
-[gd_scene load_steps=15 format=3 uid="uid://cnvc3c5c6c8mj"]
+[gd_scene load_steps=23 format=3 uid="uid://cnvc3c5c6c8mj"]
 
 [ext_resource type="Script" uid="uid://cad734vbhmmtg" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="PackedScene" uid="uid://ciuvi7tl2l5wv" path="res://scenes/game_menu.tscn" id="2_p7vwb"]
 [ext_resource type="PackedScene" uid="uid://decqbrmnhe0kb" path="res://scenes/Energy.tscn" id="2_x4jx1"]
 [ext_resource type="ButtonGroup" uid="uid://chvwa86vrsf2w" path="res://resources/ToggleGroup.tres" id="3_8dubc"]
+
+[ext_resource type="Texture2D" uid="uid://ct8hkm8bync56" path="res://assets/ui/EscSpriteSheet.png" id="3_vdcm2"]
+[ext_resource type="Texture2D" uid="uid://dkm4slomq5oi2" path="res://assets/trashbins/Recyclable.png" id="4_cgfq5"]
+[ext_resource type="Texture2D" uid="uid://dvwb8wipre66u" path="res://assets/trashbins/Biodegradable.png" id="5_7dvkv"]
+[ext_resource type="Texture2D" uid="uid://5xuj16tj4173" path="res://assets/trashbins/ToxicWaste.png" id="6_vdcm2"]
+
 [ext_resource type="Texture2D" uid="uid://0gcgna3ra4o8" path="res://assets/buttons/button1.png" id="4_vsj0x"]
 [ext_resource type="Texture2D" uid="uid://dxqu4vculyhv8" path="res://assets/buttons/button2.png" id="5_qsv74"]
 [ext_resource type="Texture2D" uid="uid://bj3rk0rmmgxjw" path="res://assets/buttons/button3.png" id="6_h1mc3"]
+
 [ext_resource type="Script" uid="uid://fn8obobr73c5" path="res://scripts/ui_text_controller.gd" id="8_ktti3"]
 [ext_resource type="Script" uid="uid://d36dng05atbg8" path="res://scripts/ui_visibility_controller.gd" id="9_cgfq5"]
 [ext_resource type="Script" path="res://scenes/time.gd" id="10_7dvkv"]
@@ -15,6 +22,51 @@
 [ext_resource type="Texture2D" uid="uid://bg72nmvcnnmu" path="res://assets/buttons/red-C.png" id="13_8k7j3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vsj0x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vdcm2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6rmj2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vsj0x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qsv74"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1mc3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cof4p"]
+
+[sub_resource type="Theme" id="Theme_h1mc3"]
+Button/fonts/font = null
+Button/styles/disabled = SubResource("StyleBoxEmpty_vdcm2")
+Button/styles/focus = SubResource("StyleBoxEmpty_6rmj2")
+Button/styles/hover = SubResource("StyleBoxEmpty_vsj0x")
+Button/styles/hover_pressed = SubResource("StyleBoxEmpty_qsv74")
+Button/styles/normal = SubResource("StyleBoxEmpty_h1mc3")
+Button/styles/pressed = SubResource("StyleBoxEmpty_cof4p")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6rmj2"]
+atlas = ExtResource("3_vdcm2")
+region = Rect2(0, 0, 1024, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsj0x"]
+atlas = ExtResource("3_vdcm2")
+region = Rect2(1024, 0, 1024, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qsv74"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6rmj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsj0x")
+}],
+"loop": false,
+"name": &"pause_hover",
+"speed": 15.0
+}]
+
+[sub_resource type="Theme" id="Theme_7dvkv"]
 
 [node name="UI" type="Control"]
 process_mode = 3
@@ -26,6 +78,14 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nt7q6")
 
+[node name="BacgroundRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -16.0
+offset_right = 1150.0
+offset_bottom = 645.0
+color = Color(0, 0, 0, 0.486275)
+
 [node name="EnergyBar" parent="." instance=ExtResource("2_x4jx1")]
 layout_mode = 0
 offset_left = 272.0
@@ -36,12 +96,19 @@ offset_bottom = 53.0
 [node name="PauseButton" type="Button" parent="."]
 process_mode = 3
 layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 112.0
-offset_bottom = 40.0
+offset_left = 29.0
+offset_top = 27.0
+offset_right = 223.0
+offset_bottom = 49.0
+theme = SubResource("Theme_h1mc3")
 toggle_mode = true
-text = "Pause"
+
+[node name="PauseAnimate" type="AnimatedSprite2D" parent="PauseButton"]
+position = Vector2(95.7684, 12.6255)
+scale = Vector2(0.233582, 0.185669)
+sprite_frames = SubResource("SpriteFrames_qsv74")
+animation = &"pause_hover"
+speed_scale = 1.5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -103,7 +170,9 @@ offset_left = 344.0
 offset_top = 97.0
 offset_right = 770.0
 offset_bottom = 185.0
+theme = SubResource("Theme_7dvkv")
 theme_override_font_sizes/font_size = 64
+text = "Game Over"
 horizontal_alignment = 1
 
 [node name="GameReasonLabel" type="Label" parent="."]
@@ -123,7 +192,7 @@ script = ExtResource("8_ktti3")
 game_status_label = NodePath("../GameStatusLabel")
 game_reason_label = NodePath("../GameReasonLabel")
 
-[node name="UIVisibilityController" type="Control" parent="." node_paths=PackedStringArray("pause_button", "game_status_label", "game_menu")]
+[node name="UIVisibilityController" type="Control" parent="." node_paths=PackedStringArray("pause_button", "game_status_label", "game_menu", "background_rect")]
 anchors_preset = 0
 offset_left = 16.0
 offset_top = 16.0
@@ -133,6 +202,7 @@ script = ExtResource("9_cgfq5")
 pause_button = NodePath("../PauseButton")
 game_status_label = NodePath("../GameStatusLabel")
 game_menu = NodePath("../GameMenu")
+background_rect = NodePath("../BacgroundRect")
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 0
@@ -143,6 +213,9 @@ offset_bottom = 122.0
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("10_7dvkv")
+
+[connection signal="mouse_entered" from="PauseButton" to="." method="_on_pause_button_mouse_entered"]
+[connection signal="mouse_exited" from="PauseButton" to="." method="_on_pause_button_mouse_exited"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
