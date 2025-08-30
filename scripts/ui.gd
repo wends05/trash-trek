@@ -5,6 +5,7 @@ class_name UI
 @onready var temp_trash_countdown_display: Label = $TempTrashCountdownCount
 @onready var ui_text_controller: UITextController = $UITextController
 @onready var ui_visibility_controller: UIVisibilityController = $UIVisibilityController
+@onready var pause_animation = $PauseButton/PauseAnimate
 
 func _ready() -> void:
 	Game.updated_stats.connect(update_trash_counts)
@@ -48,6 +49,12 @@ func toggle_pause():
 func _on_pause_button_pressed() -> void:
 	update_ui_state(Utils.UIStateType.PauseMenu)
 	update_game_state(Utils.GameStateType.Pause)
+
+func _on_pause_button_mouse_entered() -> void:
+	pause_animation.play("pause_hover")
+
+func _on_pause_button_mouse_exited() -> void:
+	pause_animation.play_backwards("pause_hover")
 
 func update_ui_state(state: Utils.UIStateType, reason: Utils.GameOverReason = Utils.GameOverReason.None) -> void:
 	ui_visibility_controller.update_ui_visibility(state)

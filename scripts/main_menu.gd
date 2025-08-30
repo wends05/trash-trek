@@ -7,15 +7,17 @@ extends Control
 @onready var quit_button = $Quit
 
 func _ready() -> void:
-	$CanvasLayer.visible = false
+	$CanvasLayer.show()
 	play_button.disabled = true
 	quit_button.disabled = true
-	play_texture.visible = false
-	quit_texture.visible = false
+	play_button.hide()
+	quit_button.hide()
+	play_texture.hide()
+	quit_texture.hide()
 	get_tree().process_frame.connect(_start_menu_animation, CONNECT_ONE_SHOT)
 	
 func _start_menu_animation() -> void:
-	$CanvasLayer.visible = true
+	$CanvasLayer.show()
 	animation.play("from_intro_transition")
 	animation.animation_finished.connect(_on_animation_finished)
 	
@@ -26,8 +28,8 @@ func _on_start_pressed() -> void:
 func _on_start_mouse_entered() -> void:
 	if play_button.disabled:
 		return
-	quit_texture.visible = false
-	play_texture.visible = true
+	quit_texture.hide()
+	play_texture.show()
 	animation.play("hover_play")
 	
 func _on_start_mouse_exited() -> void:
@@ -41,8 +43,8 @@ func _on_quit_pressed() -> void:
 func _on_quit_mouse_entered() -> void:
 	if quit_button.disabled:
 		return
-	play_texture.visible = false
-	quit_texture.visible = true
+	play_texture.hide()
+	quit_texture.show()
 	animation.play("hover_quit")
 
 func _on_quit_mouse_exited() -> void:
@@ -55,12 +57,14 @@ func _on_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "press_quit":
 		quit_game()
 	if anim_name == "hover_play" and animation.current_animation_position == 0.0:
-		play_texture.visible = false
+		play_texture.hide()
 	if anim_name == "hover_quit" and animation.current_animation_position == 0.0:
-		quit_texture.visible = false
+		quit_texture.hide()
 	if anim_name == "from_intro_transition":
 		play_button.disabled = false
 		quit_button.disabled = false
+		play_button.show()
+		quit_button.show()
 		
 func start_game():
 	get_tree().change_scene_to_file("res://scenes/Main.tscn")
