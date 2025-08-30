@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cnvc3c5c6c8mj"]
+[gd_scene load_steps=15 format=3 uid="uid://cnvc3c5c6c8mj"]
 
 [ext_resource type="Script" uid="uid://cad734vbhmmtg" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="PackedScene" uid="uid://ciuvi7tl2l5wv" path="res://scenes/game_menu.tscn" id="2_p7vwb"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://bjpn81jww2cou" path="res://assets/buttons/blue-Z.png" id="11_cof4p"]
 [ext_resource type="Texture2D" uid="uid://wq2c1b0lf2a8" path="res://assets/buttons/green-X.png" id="12_f7tlh"]
 [ext_resource type="Texture2D" uid="uid://bg72nmvcnnmu" path="res://assets/buttons/red-C.png" id="13_8k7j3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vsj0x"]
 
 [node name="UI" type="Control"]
 process_mode = 3
@@ -47,6 +49,7 @@ offset_left = 92.0
 offset_top = 551.0
 offset_right = 280.0
 offset_bottom = 574.0
+label_settings = SubResource("LabelSettings_vsj0x")
 
 [node name="TempTrashCountdownCount" type="Label" parent="."]
 layout_mode = 0
