@@ -1,6 +1,6 @@
 extends Node
 
-const MAX_ENERGY = 128.0
+const MAX_ENERGY = 100.0
 var energy = MAX_ENERGY
 var elapsed_time: float = 0.0
 var base_wait_time: float = 10.0
@@ -21,7 +21,7 @@ var collected_toxic_waste = 0
 var is_game_over: bool = false
 var is_game_pause: bool = false
 
-var trash_bin_countdown = 4
+var trash_bin_countdown = randi_range(2, 4)
 signal trash_bin_countdown_changed
 
 var selected_trash_type: Utils.TrashType
@@ -98,18 +98,18 @@ func handle_throw_trash(trash_bin: TrashBin):
 	if selected_trash_type == trash_bin.type:
 		print_debug("Correct Trash, energy_added")
 		add_energy(10)
-		decrease_trash_count(selected_trash_type, 3)
+		decrease_trash_count(selected_trash_type)
 
 
-func decrease_trash_count(type: Utils.TrashType, amount: int):
-	#TODO: change to percentage later
+func decrease_trash_count(type: Utils.TrashType):
+	var percent_decrease = randf_range(0.2, 0.4)
 	match type:
 		Utils.TrashType.Recyclable:
-			collected_recyclable -= amount
+			collected_recyclable -= int(collected_recyclable * percent_decrease)
 		Utils.TrashType.Biodegradable:
-			collected_biodegradable -= amount
+			collected_biodegradable -= int(collected_biodegradable * percent_decrease)
 		Utils.TrashType.ToxicWaste:
-			collected_toxic_waste -= amount
+			collected_toxic_waste -= int(collected_toxic_waste * percent_decrease)
 	updated_stats.emit()
 
 func reset_trash_bin_countdown():

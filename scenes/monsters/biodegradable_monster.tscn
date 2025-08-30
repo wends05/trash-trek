@@ -1,3 +1,117 @@
-[gd_scene format=3 uid="uid://c4tm82jbftk3x"]
+[gd_scene load_steps=16 format=3 uid="uid://c4tm82jbftk3x"]
 
-[node name="BiodegradableMonster" type="Node2D"]
+[ext_resource type="Script" uid="uid://dmh1s0jblhc0i" path="res://scripts/monster.gd" id="1_2mxn6"]
+[ext_resource type="Texture2D" uid="uid://74hl5m40dsdc" path="res://assets/monsters/biodegradable_monster-Sheet.png" id="1_vk10a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vk10a"]
+atlas = ExtResource("1_vk10a")
+region = Rect2(1440, 0, 360, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hh8e"]
+atlas = ExtResource("1_vk10a")
+region = Rect2(1800, 0, 360, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuaul"]
+atlas = ExtResource("1_vk10a")
+region = Rect2(2160, 0, 360, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mxn6"]
+atlas = ExtResource("1_vk10a")
+region = Rect2(0, 0, 360, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7moko"]
+atlas = ExtResource("1_vk10a")
+region = Rect2(360, 0, 360, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x5bsv"]
+atlas = ExtResource("1_vk10a")
+region = Rect2(720, 0, 360, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3m36a"]
+atlas = ExtResource("1_vk10a")
+region = Rect2(1080, 0, 360, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgyqc"]
+atlas = ExtResource("1_vk10a")
+region = Rect2(1440, 0, 360, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v5h0o"]
+atlas = ExtResource("1_vk10a")
+region = Rect2(1800, 0, 360, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idyf2"]
+atlas = ExtResource("1_vk10a")
+region = Rect2(2160, 0, 360, 360)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cmfv"]
+atlas = ExtResource("1_vk10a")
+region = Rect2(2520, 0, 360, 360)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1hh8e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vk10a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hh8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuaul")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mxn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7moko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x5bsv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3m36a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgyqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v5h0o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idyf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cmfv")
+}],
+"loop": true,
+"name": &"spawn",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cuaul"]
+size = Vector2(304.164, 276.445)
+
+[node name="Bio_monster" type="Node2D" node_paths=PackedStringArray("anim")]
+script = ExtResource("1_2mxn6")
+anim = NodePath("BiodegradableMonster")
+
+[node name="BiodegradableMonster" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.49999, -2.49999)
+scale = Vector2(0.397222, 0.397222)
+sprite_frames = SubResource("SpriteFrames_1hh8e")
+animation = &"spawn"
+autoplay = "spawn"
+frame_progress = 0.899285
+
+[node name="Area2D" type="Area2D" parent="BiodegradableMonster"]
+collision_layer = 16
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BiodegradableMonster/Area2D"]
+position = Vector2(8.81117, -61.6783)
+shape = SubResource("RectangleShape2D_cuaul")

@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="TrashResource" load_steps=2 format=3 uid="uid://bymbhyyk1m37d"]
+
+[ext_resource type="Script" uid="uid://sefvqxy5pk3i" path="res://scripts/trash_resource.gd" id="1_m8uuc"]
+
+[resource]
+script = ExtResource("1_m8uuc")
+trash_name = "box"
+trash_type = 0

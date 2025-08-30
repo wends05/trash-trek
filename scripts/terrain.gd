@@ -26,7 +26,7 @@ func spawn_trashes():
 	for i in chosen_spawners:
 		var trash: Trash = preload("res://scenes/trash.tscn").instantiate()
 
-		var randtype = randi_range(0, Utils.TrashType.size())
+		var randtype = randi_range(0, Utils.TrashType.size() - 1)
 		trash.type = randtype as Utils.TrashType
 		trash_spawns.get_children()[i].add_child(trash)
 
@@ -37,7 +37,7 @@ func spawn_trash_bin():
 		printerr("No trash bin spawn set")
 	var trash_bin: TrashBin = preload("res://scenes/TrashBin.tscn").instantiate()
 
-	var randtype = randi_range(0, Utils.TrashType.size())
+	var randtype = randi_range(0, Utils.TrashType.size() - 1)
 	trash_bin.type = randtype as Utils.TrashType
 
 
