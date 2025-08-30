@@ -6,12 +6,17 @@ class_name TerrainManager
 @export var terrain_width: int = 1024
 @onready var terrain_manager: Node = $"."
 
-enum TerrainType {Terrain1, Terrain2}
+enum TerrainType {Start, Terrain1, Terrain2, Terrain3}
 
 var terrain_scenes := {
+	TerrainType.Start: preload("res://scenes/terrains/Start.tscn"),
 	TerrainType.Terrain1: preload("res://scenes/terrains/Terrain1.tscn"),
-	TerrainType.Terrain2: preload("res://scenes/terrains/Terrain2.tscn")
+	TerrainType.Terrain2: preload("res://scenes/terrains/Terrain2.tscn"),
+	TerrainType.Terrain3: preload("res://scenes/terrains/Terrain3.tscn")
 }
+
+var current_terrain_index := 0
+var start_terrain_loaded := false
 
 func _ready() -> void:
 	randomize() #for randi to generate random result each run
@@ -32,7 +37,15 @@ func scroll_terrain(delta: float) -> void:
 			area.queue_free()
 
 func load_terrain(x, y):
-	var terrain_type = randi() % TerrainType.size()
-	var scene = terrain_scenes[terrain_type].instantiate()
-	scene.position = Vector2(x, y)
-	terrain_manager.add_child(scene)		
+	if not start_terrain_loaded:
+		var scene = terrain_scenes[TerrainType.Start].instantiate()
+		scene.position = Vector2(x, y)
+		terrain_manager.add_child(scene)
+		start_terrain_loaded = true
+	else:
+		var terrain_types = [TerrainType.Terrain1, TerrainType.Terrain2, TerrainType.Terrain3]
+		var terrain_type = terrain_types[current_terrain_index]
+		current_terrain_index = (current_terrain_index + 1) % terrain_types.size()
+		var scene = terrain_scenes[terrain_type].instantiate()
+		scene.position = Vector2(x, y)
+		terrain_manager.add_child(scene)

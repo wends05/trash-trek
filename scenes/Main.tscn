@@ -1,11 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjlwocmldl2p1"]
+[gd_scene load_steps=15 format=3 uid="uid://bjlwocmldl2p1"]
 
 [ext_resource type="Script" uid="uid://djvk4e4r7ppdn" path="res://scripts/main.gd" id="1_h6nst"]
 [ext_resource type="PackedScene" uid="uid://dyac4ihj46tig" path="res://scenes/Player.tscn" id="1_nbc6x"]
+[ext_resource type="Texture2D" uid="uid://c36ux6awwi56f" path="res://assets/background/sky.jpg" id="2_bjd11"]
+[ext_resource type="Texture2D" uid="uid://cf3y580tv5shs" path="res://assets/background/21.png" id="3_qmy6f"]
+[ext_resource type="Texture2D" uid="uid://bxug1ni6gb5ru" path="res://assets/background/23.png" id="4_mwfav"]
 [ext_resource type="Script" uid="uid://d4hebw0k2lxgw" path="res://scripts/terrain_manager.gd" id="4_vcsgt"]
+[ext_resource type="Texture2D" uid="uid://cj7r2pyy74b8d" path="res://assets/background/5.png" id="5_3p2gp"]
 [ext_resource type="PackedScene" uid="uid://b1mx2y7p6cxdw" path="res://scenes/trash_spawner.tscn" id="5_vcsgt"]
 [ext_resource type="Script" uid="uid://go4n0wcu27jd" path="res://scripts/trash_remover.gd" id="6_c01mt"]
-[ext_resource type="Script" uid="uid://crsxweajtjywv" path="res://scripts/death_zone.gd" id="7_jlsqs"]
+[ext_resource type="Texture2D" uid="uid://bo5gvumie1le6" path="res://assets/background/underground.png" id="6_cvmbd"]
+[ext_resource type="PackedScene" uid="uid://b3evh0nyta6a3" path="res://scenes/death_zones.tscn" id="7_jlsqs"]
 [ext_resource type="PackedScene" uid="uid://cnvc3c5c6c8mj" path="res://scenes/ui.tscn" id="7_nxtc6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxtc6"]
@@ -14,16 +19,11 @@ size = Vector2(20, 328)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nbc6x"]
 size = Vector2(1139.5, 66)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jlsqs"]
-size = Vector2(6.5, 760)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_c01mt"]
-size = Vector2(1150.5, 10)
-
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h6nst")
 
 [node name="Player" parent="." instance=ExtResource("1_nbc6x")]
+z_index = 1
 position = Vector2(320, 320)
 
 [node name="TerrainManager" type="Node2D" parent="."]
@@ -54,22 +54,53 @@ disabled = true
 [node name="UI" parent="." instance=ExtResource("7_nxtc6")]
 size_flags_horizontal = 4
 
-[node name="DeathZones" type="Node2D" parent="."]
+[node name="DeathZones" parent="." instance=ExtResource("7_jlsqs")]
 
-[node name="DeathZoneLeft" type="Area2D" parent="DeathZones"]
-script = ExtResource("7_jlsqs")
+[node name="Sky" type="Sprite2D" parent="."]
+z_index = -1
+scale = Vector2(1.5625, 1.35266)
+texture = ExtResource("2_bjd11")
+centered = false
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathZones/DeathZoneLeft"]
-position = Vector2(-142.25, 377)
-shape = SubResource("RectangleShape2D_jlsqs")
+[node name="Background" type="Node" parent="."]
 
-[node name="DeathZoneBelow" type="Area2D" parent="DeathZones"]
-script = ExtResource("7_jlsqs")
+[node name="Background" type="Parallax2D" parent="Background"]
+z_index = -1
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(-50, 0)
+repeat_times = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DeathZones/DeathZoneBelow"]
-position = Vector2(574, 783)
-shape = SubResource("RectangleShape2D_c01mt")
+[node name="Sprite2D" type="Sprite2D" parent="Background/Background"]
+position = Vector2(576, 306.5)
+scale = Vector2(1.98958, 1.55864)
+texture = ExtResource("3_qmy6f")
+
+[node name="Midground" type="Parallax2D" parent="Background"]
+z_index = -1
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Midground"]
+scale = Vector2(2.00347, 1.73765)
+texture = ExtResource("4_mwfav")
+centered = false
+
+[node name="Foreground" type="Parallax2D" parent="Background"]
+z_index = -1
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(-150, 0)
+repeat_times = 2
+
+[node name="Sprite2D2" type="Sprite2D" parent="Background/Foreground"]
+scale = Vector2(2.01215, 1.74383)
+texture = ExtResource("5_3p2gp")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Foreground"]
+position = Vector2(0, 471)
+scale = Vector2(1.00435, 1.045)
+texture = ExtResource("6_cvmbd")
+centered = false
 
 [connection signal="area_entered" from="TrashRemover" to="TrashRemover" method="_on_area_entered"]
-[connection signal="body_entered" from="DeathZones/DeathZoneLeft" to="DeathZones/DeathZoneBelow" method="_on_death_zone_left_body_entered"]
-[connection signal="body_entered" from="DeathZones/DeathZoneBelow" to="DeathZones/DeathZoneLeft" method="_on_death_zone_below_body_entered"]

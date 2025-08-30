@@ -2,52 +2,68 @@ extends CharacterBody2D
 
 class_name Player
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -600.0
+@export var jump_force = -400.0
+@export var max_jump_time: float = 0.3
+@export var max_charge_time: float = 0.2
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+var jump_timer: float = 0.0
+var charge_timer: float = 0.0
 var is_jumping: bool = false
+var is_charging: bool = false
 
 func _ready() -> void:
 	add_to_group("Player")
-	if animated_sprite:
-		animated_sprite.play("running")
 		
 func _physics_process(delta: float) -> void:
-	player_gravity(delta)
-	player_jump()
-	animations()
+	player_fall(delta)
+	player_jump(delta)
+	player_run()
 	move_and_slide()
-	
-func player_jump() -> void:
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+
+func player_jump(time) -> void:
+	if Input.is_action_just_pressed("left_click") and is_on_floor():
 		is_jumping = true
-		play_jump_animation()
-
-func play_jump_animation():
-	if animated_sprite:
-		animated_sprite.play("jump")
-
-func player_gravity(delta: float) -> void:
+		is_charging = true
+		jump_timer = 0.0
+		charge_timer = 0.0
+		
+	if Input.is_action_pressed("left_click") and is_jumping and is_charging:
+		charge_timer += time
+		play_animation(Utils.PlayerMotion.Jump)
+		if charge_timer > max_charge_time:
+			if jump_timer < max_jump_time:
+				velocity.y = jump_force
+				jump_timer += time
+			else:
+				is_jumping = false 
+				is_charging = false
+				play_animation(Utils.PlayerMotion.Fall)
+			
+	if Input.is_action_just_released("left_click"):
+		is_jumping = false
+		is_charging = false
+		play_animation(Utils.PlayerMotion.Fall)
+	
+func player_fall(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	else:
-		if is_jumping:
-			is_jumping = false
+		if velocity.y > 0:
+			play_animation(Utils.PlayerMotion.Fall)
 
-			if animated_sprite:
-				animated_sprite.play("running")
-
-func animations():
-	if not animated_sprite:
-		return
-	
-
-	if is_on_floor() and not is_jumping:
-			animated_sprite.play("running")
-	elif not is_on_floor() and velocity.y > 0:
-			animated_sprite.play("falling")
+func player_run():
+	if is_on_floor() and not is_charging:
+		play_animation(Utils.PlayerMotion.Run)
+		
+func play_animation(animation: Utils.PlayerMotion) -> void:
+	match animation:
+		Utils.PlayerMotion.Jump:
+			animated_sprite.play('jump')
+		Utils.PlayerMotion.Fall:
+			animated_sprite.play('falling')
+		Utils.PlayerMotion.Run:
+			animated_sprite.play('running')
 
 func increment_trash(type: Utils.TrashType):
 	Game.trash_collected.emit(type)

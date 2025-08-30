@@ -24,19 +24,12 @@ enum GameOverReason {
 	OutOfEnergy,
 }
 
-## Define available trash items for each type (exact file names)
-#const TRASH_ITEMS = {
-	#TrashType.Recyclable: ["Box", "Tin Can", "water bottle"],
-	#TrashType.Biodegradable: ["Branches", "crumpled-1", "pile of leaves (1)"],
-	#TrashType.ToxicWaste: ["Battery-1", "face mask", "gloves"]
-#}
-#
-## Define folder names for each type (to match actual folder structure)
-#const TRASH_FOLDERS = {
-	#TrashType.Recyclable: "Recyclable",
-	#TrashType.Biodegradable: "Biodegradable",
-	#TrashType.ToxicWaste: "Toxicwaste"
-#}
+enum PlayerMotion {
+	Jump,
+	Fall,
+	Run,
+}
+
 const TRASHES = [
 	preload("res://trash_resource/biodegradable/branches.tres"),
 	preload("res://trash_resource/biodegradable/crumpled.tres"),
