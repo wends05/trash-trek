@@ -53,3 +53,7 @@ left_click={
 2d_physics/layer_2="Terrain"
 2d_physics/layer_3="Trash"
 2d_physics/layer_4="Trash Bin"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
