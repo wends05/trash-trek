@@ -40,9 +40,9 @@ Button/styles/pressed = SubResource("StyleBoxEmpty_cof4p")
 atlas = ExtResource("3_vdcm2")
 region = Rect2(0, 0, 1024, 1024)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vsj0x"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qsv74"]
 atlas = ExtResource("3_vdcm2")
-region = Rect2(1024, 0, 1024, 1024)
+region = Rect2(1024, 341, 1024, 341)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qsv74"]
 animations = [{
@@ -51,7 +51,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_6rmj2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vsj0x")
+"texture": SubResource("AtlasTexture_qsv74")
 }],
 "loop": false,
 "name": &"pause_hover",

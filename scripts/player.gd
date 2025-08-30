@@ -87,6 +87,3 @@ func _on_monster_collision_area_entered(_area: Area2D) -> void:
 	Game.decrease_energy(10)
 	is_hurt = true
 	play_animation(Utils.PlayerMotion.Hurt)
-	await animated_sprite.animation_finished
-	is_hurt = false
-	play_animation(Utils.PlayerMotion.Run)
