@@ -86,6 +86,14 @@ button_group = ExtResource("3_8dubc")
 icon = ExtResource("6_vdcm2")
 expand_icon = true
 
+[node name="TempTrashCount" type="Label" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 551.0
+offset_right = 280.0
+offset_bottom = 574.0
+label_settings = SubResource("LabelSettings_vsj0x")
+
 [node name="GameMenu" parent="." instance=ExtResource("2_p7vwb")]
 layout_mode = 0
 anchors_preset = 0
