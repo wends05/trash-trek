@@ -46,6 +46,7 @@ func _on_animation_finished(anim_name: StringName) -> void:
 		quit_texture.visible = false
 		
 func start_game():
+	Game.reset_stats()
 	get_tree().change_scene_to_file("res://scenes/Main.tscn")
 
 func quit_game():
