@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_mx18a")
 trash_name = "gloves"
-trash_type = "ToxicWaste"
+trash_type = 2

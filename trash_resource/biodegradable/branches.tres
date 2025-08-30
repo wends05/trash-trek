@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource("1_2v6qr")
 trash_name = "branches"
-trash_type = "Biodegradable"
+trash_type = 1
