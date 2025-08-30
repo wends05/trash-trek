@@ -1,17 +1,23 @@
-[gd_scene load_steps=9 format=3 uid="uid://dojoskcwuf8np"]
+[gd_scene load_steps=12 format=3 uid="uid://dnp6ljvs2pcb"]
 
-[ext_resource type="Texture2D" uid="uid://cjycekvxg3hbt" path="res://assets/background/ktown1.png" id="1_qm0yi"]
-[ext_resource type="Script" uid="uid://b4wp3jwnnilir" path="res://scripts/ground_area.gd" id="3_q0p4e"]
-[ext_resource type="Texture2D" uid="uid://cyu2yaa6na7hj" path="res://assets/background/tile.png" id="3_qm0yi"]
+[ext_resource type="Texture2D" uid="uid://hh1bl1hj407j" path="res://assets/background/emperador.png" id="1_scr0v"]
+[ext_resource type="Script" uid="uid://b4wp3jwnnilir" path="res://scripts/ground_area.gd" id="2_01fo8"]
+[ext_resource type="Texture2D" uid="uid://cyu2yaa6na7hj" path="res://assets/background/tile.png" id="3_i4max"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w20fd"]
-size = Vector2(366.438, 76.25)
+size = Vector2(114, 76.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tlmq3"]
+size = Vector2(256, 148)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3giw"]
+size = Vector2(144.5, 94)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qm0yi"]
-size = Vector2(370, 75)
+size = Vector2(370, 74)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hjqgp"]
-texture = ExtResource("3_qm0yi")
+texture = ExtResource("3_i4max")
 texture_region_size = Vector2i(37, 37)
 3:4/0 = 0
 4:4/0 = 0
@@ -540,8 +546,11 @@ texture_region_size = Vector2i(37, 37)
 tile_size = Vector2i(37, 37)
 sources/2 = SubResource("TileSetAtlasSource_hjqgp")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejf2b"]
+size = Vector2(184, 89)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q0p4e"]
-size = Vector2(182.5, 91.5)
+size = Vector2(150, 95.75)
 
 [node name="Terrain1" type="Node2D"]
 
@@ -551,41 +560,55 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 z_index = 1
-position = Vector2(405.219, 610.25)
+position = Vector2(128, 610.25)
 shape = SubResource("RectangleShape2D_w20fd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+z_index = 1
+position = Vector2(462, 573)
+shape = SubResource("RectangleShape2D_tlmq3")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+z_index = 1
+position = Vector2(999, 546)
+shape = SubResource("RectangleShape2D_l3giw")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 z_index = 1
-position = Vector2(962, 609.5)
+position = Vector2(962, 610)
 shape = SubResource("RectangleShape2D_qm0yi")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
-position = Vector2(541, 74)
+position = Vector2(565, 162)
 scale = Vector2(1, 1.034)
-texture = ExtResource("1_qm0yi")
+texture = ExtResource("1_scr0v")
 
 [node name="TrashDetectors" type="Node2D" parent="."]
 
 [node name="Ground" type="Area2D" parent="TrashDetectors"]
 collision_layer = 2
 collision_mask = 12
-script = ExtResource("3_q0p4e")
+script = ExtResource("2_01fo8")
 ground_y_above = 448
 ground_y_below = 536
 
 [node name="TileMap" type="TileMap" parent="TrashDetectors/Ground"]
 tile_set = SubResource("TileSet_hyh5j")
 format = 2
-layer_0/tile_data = PackedInt32Array(983046, 131074, 0, 1048582, 131074, 1, 1114118, 131074, 2, 1179654, 131074, 3, 983047, 196610, 0, 1048583, 196610, 1, 1114119, 196610, 2, 1179655, 196610, 3, 983048, 2, 0, 1048584, 2, 1, 1114120, 2, 2, 1179656, 2, 3, 983049, 65538, 0, 1048585, 65538, 1, 1114121, 65538, 2, 1179657, 65538, 3, 983050, 131074, 0, 1048586, 131074, 1, 1114122, 131074, 2, 1179658, 131074, 3, 983051, 196610, 0, 1048587, 196610, 1, 1114123, 196610, 2, 1179659, 196610, 3, 983052, 2, 0, 1048588, 2, 1, 1114124, 2, 2, 1179660, 2, 3, 983053, 65538, 0, 1048589, 65538, 1, 1114125, 65538, 2, 1179661, 65538, 3, 983054, 131074, 0, 1048590, 131074, 1, 1114126, 131074, 2, 1179662, 131074, 3, 983055, 196610, 0, 1048591, 196610, 1, 1114127, 196610, 2, 1179663, 196610, 3, 983061, 2, 0, 1048597, 2, 1, 1114133, 2, 2, 1179669, 2, 3, 983062, 65538, 0, 1048598, 65538, 1, 1114134, 65538, 2, 1179670, 65538, 3, 983063, 131074, 0, 1048599, 131074, 1, 1114135, 131074, 2, 1179671, 131074, 3, 983064, 196610, 0, 1048600, 196610, 1, 1114136, 196610, 2, 1179672, 196610, 3, 983065, 2, 0, 1048601, 2, 1, 1114137, 2, 2, 1179673, 2, 3, 983066, 65538, 0, 1048602, 65538, 1, 1114138, 65538, 2, 1179674, 65538, 3, 983067, 131074, 0, 1048603, 131074, 1, 1114139, 131074, 2, 1179675, 131074, 3, 983068, 196610, 0, 1048604, 196610, 1, 1114140, 196610, 2, 1179676, 196610, 3, 983069, 2, 0, 1048605, 2, 1, 1114141, 2, 2, 1179677, 2, 3, 983070, 65538, 0, 1048606, 65538, 1, 1114142, 65538, 2, 1179678, 65538, 3)
+layer_0/tile_data = PackedInt32Array(1114114, 131074, 2, 1179650, 131074, 3, 1114115, 196610, 2, 1179651, 196610, 3, 1114121, 65538, 2, 1179657, 65538, 3, 1114122, 131074, 2, 1179658, 131074, 3, 983051, 196610, 2, 1114123, 196610, 2, 1179659, 196610, 3, 983061, 2, 0, 1048597, 2, 1, 1114133, 2, 2, 1179669, 2, 3, 983062, 65538, 0, 1048598, 65538, 1, 1114134, 65538, 2, 1179670, 65538, 3, 983063, 131074, 0, 1048599, 131074, 1, 1114135, 131074, 2, 1179671, 131074, 3, 983064, 196610, 0, 1048600, 196610, 1, 1114136, 196610, 2, 1179672, 196610, 3, 983065, 2, 2, 1048601, 2, 3, 1114137, 2, 2, 1179673, 2, 3, 983066, 65538, 2, 1048602, 65538, 3, 1114138, 65538, 2, 1179674, 65538, 3, 983067, 131074, 2, 1048603, 131074, 3, 1114139, 131074, 2, 1179675, 131074, 3, 983068, 196610, 2, 1048604, 196610, 3, 1114140, 196610, 2, 1179676, 196610, 3, 1048587, 196610, 3, 1048586, 131074, 3, 1048585, 65538, 3, 1048579, 196610, 1, 1048578, 131074, 1, 983042, 131074, 0, 983043, 196610, 0, 983049, 65538, 2, 983050, 131074, 2, 851977, 65538, 0, 917513, 65538, 1, 851978, 131074, 0, 917514, 131074, 1, 851979, 196610, 0, 917515, 196610, 1, 851980, 2, 0, 917516, 2, 1, 983052, 2, 2, 1048588, 2, 3, 851981, 65538, 0, 917517, 65538, 1, 983053, 65538, 2, 1048589, 65538, 3, 851982, 131074, 0, 917518, 131074, 1, 983054, 131074, 2, 1048590, 131074, 3, 851983, 196610, 0, 917519, 196610, 1, 983055, 196610, 2, 1048591, 196610, 3, 851995, 131074, 0, 917531, 131074, 1, 851996, 196610, 0, 917532, 196610, 1, 1114124, 2, 2, 1179660, 2, 3, 1114125, 65538, 2, 1179661, 65538, 3, 1114126, 131074, 2, 1179662, 131074, 3, 1114127, 196610, 2, 1179663, 196610, 3, 851993, 2, 0, 917529, 2, 1, 851994, 65538, 0, 917530, 65538, 1, 983044, 196610, 0, 1048580, 196610, 1, 1114116, 196610, 2, 1179652, 196610, 3)
 
 [node name="Gap" type="Area2D" parent="TrashDetectors"]
 collision_layer = 2
 collision_mask = 12
-script = ExtResource("3_q0p4e")
+script = ExtResource("2_01fo8")
 ground_y_above = 448
 ground_y_below = 536
 is_gap = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrashDetectors/Gap"]
-position = Vector2(683.75, 601.75)
+position = Vector2(683, 601.5)
+shape = SubResource("RectangleShape2D_ejf2b")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TrashDetectors/Gap"]
+position = Vector2(259, 600.125)
 shape = SubResource("RectangleShape2D_q0p4e")
