@@ -18,6 +18,10 @@ var collected_biodegradable = 0
 var collected_recyclable = 0
 var collected_toxic_waste = 0
 
+
+var trash_bin_countdown = 4
+signal trash_bin_countdown_changed
+
 var selected_trash_type: Utils.TrashType
 signal changed_trash_type(type: Utils.TrashType)
 
@@ -105,3 +109,11 @@ func decrease_trash_count(type: Utils.TrashType, amount: int):
 		Utils.TrashType.ToxicWaste:
 			collected_toxic_waste -= amount
 	updated_stats.emit()
+
+func reset_trash_bin_countdown():
+	trash_bin_countdown = randi_range(2, 4)
+	trash_bin_countdown_changed.emit()
+
+func decrease_trash_bin_countdown():
+	trash_bin_countdown -= 1
+	trash_bin_countdown_changed.emit()

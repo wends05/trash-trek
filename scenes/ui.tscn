@@ -44,6 +44,13 @@ offset_top = 64.0
 offset_right = 56.0
 offset_bottom = 87.0
 
+[node name="TempTrashCountdownCount" type="Label" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 384.0
+offset_right = 56.0
+offset_bottom = 407.0
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 64.0

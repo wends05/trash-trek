@@ -1,6 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dp76dpjp7isbq"]
+[gd_scene load_steps=6 format=3 uid="uid://dp76dpjp7isbq"]
 
-[ext_resource type="Script" uid="uid://b4wp3jwnnilir" path="res://scripts/ground_area.gd" id="2_01fo8"]
+[ext_resource type="PackedScene" uid="uid://ce4uowuphqpho" path="res://scenes/TrashBin.tscn" id="2_vobiu"]
 [ext_resource type="Texture2D" uid="uid://cyu2yaa6na7hj" path="res://assets/background/tile.png" id="3_i4max"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w20fd"]
@@ -536,9 +536,6 @@ texture_region_size = Vector2i(37, 37)
 tile_size = Vector2i(37, 37)
 sources/2 = SubResource("TileSetAtlasSource_hjqgp")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vobiu"]
-size = Vector2(119.25, 91.5)
-
 [node name="Terrain1" type="Node2D"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -550,28 +547,11 @@ z_index = 1
 position = Vector2(517, 610.25)
 shape = SubResource("RectangleShape2D_w20fd")
 
-[node name="TrashDetectors" type="Node2D" parent="."]
-
-[node name="Ground" type="Area2D" parent="TrashDetectors"]
-collision_layer = 2
-collision_mask = 12
-script = ExtResource("2_01fo8")
-ground_y_above = 448
-ground_y_below = 536
-
-[node name="TileMap" type="TileMap" parent="TrashDetectors/Ground"]
+[node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_hyh5j")
 format = 2
 layer_0/tile_data = PackedInt32Array(1114114, 131074, 2, 1179650, 131074, 3, 1114115, 196610, 2, 1179651, 196610, 3, 1114121, 65538, 2, 1179657, 65538, 3, 1114122, 131074, 2, 1179658, 131074, 3, 1114123, 196610, 2, 1179659, 196610, 3, 1048597, 65538, 1, 1114133, 65538, 2, 1179669, 65538, 3, 1048598, 131074, 1, 1114134, 131074, 2, 1179670, 131074, 3, 1048599, 196610, 1, 1114135, 196610, 2, 1179671, 196610, 3, 1048600, 2, 1, 1114136, 2, 2, 1179672, 2, 3, 1048601, 65538, 1, 1114137, 65538, 2, 1179673, 65538, 3, 1048602, 131074, 1, 1114138, 131074, 2, 1179674, 131074, 3, 1048603, 196610, 1, 1114139, 196610, 2, 1179675, 196610, 3, 1048587, 196610, 1, 1048586, 131074, 1, 1048585, 65538, 1, 1048579, 196610, 1, 1048578, 131074, 1, 983042, 131074, 0, 983043, 196610, 0, 1048588, 2, 1, 1048589, 65538, 1, 1114124, 2, 2, 1179660, 2, 3, 1114125, 65538, 2, 1179661, 65538, 3, 1114126, 131074, 2, 1179662, 131074, 3, 1114127, 196610, 2, 1179663, 196610, 3, 983044, 2, 0, 1048580, 2, 1, 1114116, 2, 2, 1179652, 2, 3, 983040, 2, 0, 1048576, 2, 1, 1114112, 2, 2, 1179648, 2, 3, 983041, 65538, 0, 1048577, 65538, 1, 1179649, 65538, 3, 983045, 65538, 0, 1048581, 65538, 1, 1179653, 65538, 3, 983046, 131074, 0, 1048582, 131074, 1, 1114118, 131074, 2, 1179654, 131074, 3, 983047, 196610, 0, 1048583, 196610, 1, 1114119, 196610, 2, 1179655, 196610, 3, 983048, 2, 0, 1048584, 2, 1, 1114120, 2, 2, 1179656, 2, 3, 983049, 65538, 0, 983050, 131074, 0, 983051, 196610, 0, 983052, 2, 0, 983053, 65538, 0, 983054, 131074, 0, 1048590, 131074, 1, 983055, 196610, 0, 1048591, 196610, 1, 983056, 2, 0, 1048592, 2, 1, 1114128, 2, 2, 1179664, 2, 3, 983057, 65538, 0, 1048593, 65538, 1, 1179665, 65538, 3, 983058, 131074, 0, 1048594, 131074, 1, 1114130, 131074, 2, 1179666, 131074, 3, 983059, 196610, 0, 1048595, 196610, 1, 1114131, 196610, 2, 1179667, 196610, 3, 1114113, 65538, 2, 1114117, 65538, 2, 1114129, 65538, 2, 983060, 2, 0, 1048596, 2, 1, 1114132, 2, 2, 1179668, 2, 3, 983061, 65538, 0, 983062, 131074, 0, 983063, 196610, 0, 983064, 2, 0, 983065, 65538, 0, 983066, 131074, 0, 983067, 196610, 0)
 
-[node name="Gap" type="Area2D" parent="TrashDetectors"]
-collision_layer = 2
-collision_mask = 12
-script = ExtResource("2_01fo8")
-ground_y_above = 448
-ground_y_below = 536
-is_gap = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TrashDetectors/Gap"]
-position = Vector2(1093.38, 600)
-shape = SubResource("RectangleShape2D_vobiu")
+[node name="TrashBin" parent="." instance=ExtResource("2_vobiu")]
+position = Vector2(536, 176)
+type = 1
