@@ -12,6 +12,7 @@ var jump_timer: float = 0.0
 var charge_timer: float = 0.0
 var is_jumping: bool = false
 var is_charging: bool = false
+var is_hurt: bool = false
 
 func _ready() -> void:
 	add_to_group("Player")
@@ -53,7 +54,7 @@ func player_fall(delta: float) -> void:
 			play_animation(Utils.PlayerMotion.Fall)
 
 func player_run():
-	if is_on_floor() and not is_charging:
+	if is_on_floor() and not is_charging and not is_hurt:
 		play_animation(Utils.PlayerMotion.Run)
 		
 func play_animation(animation: Utils.PlayerMotion) -> void:
@@ -64,6 +65,9 @@ func play_animation(animation: Utils.PlayerMotion) -> void:
 			animated_sprite.play('falling')
 		Utils.PlayerMotion.Run:
 			animated_sprite.play('running')
+		Utils.PlayerMotion.Hurt:
+			animated_sprite.play("hurt")
+		
 
 func increment_trash(type: Utils.TrashType):
 	Game.trash_collected.emit(type)
@@ -83,5 +87,8 @@ func _on_trash_bin_collection_area_area_entered(area: Area2D) -> void:
 
 func _on_monster_collision_area_entered(area: Area2D) -> void:
 	Game.decrease_energy(10)
-	animated_sprite.play("hurt")
+	is_hurt = true
+	play_animation(Utils.PlayerMotion.Hurt)
+	await animated_sprite.animation_finished
+	is_hurt = false
 	
