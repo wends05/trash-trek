@@ -2,7 +2,7 @@ extends Control
 class_name UI
 
 @onready var temp_trash_count_display: Label = $TempTrashCount
-@onready var temp_trash_countdown_display: Label = $TempTrashCountdownCount
+@onready var temp_trash_countdown_display: Label = $TempTrashCount
 @onready var ui_text_controller: UITextController = $UITextController
 @onready var ui_visibility_controller: UIVisibilityController = $UIVisibilityController
 @onready var pause_animation = $PauseButton/PauseAnimate

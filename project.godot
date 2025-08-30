@@ -75,10 +75,7 @@ esc={
 2d_physics/layer_3="Trash"
 2d_physics/layer_4="Trash Bin"
 
-
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-
 2d_physics/layer_5="Monster"
-
