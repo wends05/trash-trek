@@ -37,7 +37,7 @@ func player_jump(time) -> void:
 				velocity.y = jump_force
 				jump_timer += time
 			else:
-				is_jumping = false 
+				is_jumping = false
 				is_charging = false
 				play_animation(Utils.PlayerMotion.Fall)
 			
@@ -77,6 +77,8 @@ func _on_trash_collection_area_area_entered(area: Area2D) -> void:
 
 func _on_trash_bin_collection_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is TrashBin:
+		var trash_bin: TrashBin = area.get_parent()
+		trash_bin.throw_trash()
 		Game.handle_throw_trash(area.get_parent())
 
 func _on_monster_collision_area_entered(area: Area2D) -> void:
