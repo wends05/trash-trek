@@ -13,14 +13,13 @@ func _ready() -> void:
 	quit_button.disabled = true
 	play_texture.visible = false
 	quit_texture.visible = false
-	print("hasent  laoded")
-	call_deferred("_start_intro_animation")
-	animation.animation_finished.connect(_on_animation_finished)
-
-func _start_intro_animation() -> void:
+	get_tree().process_frame.connect(_start_menu_animation, CONNECT_ONE_SHOT)
+	
+func _start_menu_animation() -> void:
 	$CanvasLayer.visible = true
 	animation.play("from_intro_transition")
-
+	animation.animation_finished.connect(_on_animation_finished)
+	
 func _on_start_pressed() -> void:
 	animation.play("press_play")
 	animation.animation_finished.connect(_on_animation_finished)

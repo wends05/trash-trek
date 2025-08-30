@@ -269,7 +269,7 @@ offset_top = 263.0
 offset_right = 913.0
 offset_bottom = 356.0
 theme = SubResource("Theme_i2l1n")
-text = "Trashpack Proodutions"
+text = "Vhea's Entourage"
 horizontal_alignment = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

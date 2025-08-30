@@ -18,6 +18,8 @@ var collected_biodegradable = 0
 var collected_recyclable = 0
 var collected_toxic_waste = 0
 
+var is_game_over: bool = false
+var is_game_pause: bool = false
 
 var trash_bin_countdown = 4
 signal trash_bin_countdown_changed

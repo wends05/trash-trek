@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cnvc3c5c6c8mj"]
+[gd_scene load_steps=12 format=3 uid="uid://cnvc3c5c6c8mj"]
 
 [ext_resource type="Script" uid="uid://cad734vbhmmtg" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="PackedScene" uid="uid://ciuvi7tl2l5wv" path="res://scenes/game_menu.tscn" id="2_p7vwb"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://d36dng05atbg8" path="res://scripts/ui_visibility_controller.gd" id="9_cgfq5"]
 [ext_resource type="Script" uid="uid://dpd8tl7w64utr" path="res://scenes/time.gd" id="10_7dvkv"]
 
+[sub_resource type="Theme" id="Theme_7dvkv"]
+
 [node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -19,6 +21,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nt7q6")
+
+[node name="BacgroundRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 649.0
+color = Color(0, 0, 0, 0.486275)
 
 [node name="EnergyBar" parent="." instance=ExtResource("2_x4jx1")]
 layout_mode = 0
@@ -103,7 +111,9 @@ offset_left = 344.0
 offset_top = 97.0
 offset_right = 770.0
 offset_bottom = 185.0
+theme = SubResource("Theme_7dvkv")
 theme_override_font_sizes/font_size = 64
+text = "Game Over"
 horizontal_alignment = 1
 
 [node name="GameReasonLabel" type="Label" parent="."]
@@ -123,7 +133,7 @@ script = ExtResource("8_ktti3")
 game_status_label = NodePath("../GameStatusLabel")
 game_reason_label = NodePath("../GameReasonLabel")
 
-[node name="UIVisibilityController" type="Control" parent="." node_paths=PackedStringArray("pause_button", "game_status_label", "game_menu")]
+[node name="UIVisibilityController" type="Control" parent="." node_paths=PackedStringArray("pause_button", "game_status_label", "game_menu", "background_rect")]
 anchors_preset = 0
 offset_left = 16.0
 offset_top = 16.0
@@ -133,6 +143,7 @@ script = ExtResource("9_cgfq5")
 pause_button = NodePath("../PauseButton")
 game_status_label = NodePath("../GameStatusLabel")
 game_menu = NodePath("../GameMenu")
+background_rect = NodePath("../BacgroundRect")
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 0
