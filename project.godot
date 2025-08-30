@@ -69,3 +69,4 @@ toxic_waste={
 2d_physics/layer_2="Terrain"
 2d_physics/layer_3="Trash"
 2d_physics/layer_4="Trash Bin"
+2d_physics/layer_5="Monster"

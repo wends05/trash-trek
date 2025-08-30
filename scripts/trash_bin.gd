@@ -12,6 +12,6 @@ func _ready() -> void:
 	Game.changed_trash_type.connect(change_player_collision)
 
 
-func change_player_collision(trash_type: Utils.TrashType) -> void:
+#func change_player_collision(trash_type: Utils.TrashType) -> void:
 	print("CHANGING COLLISION")
 	player_collision_area.set_collision_layer_value(4, type != trash_type)
