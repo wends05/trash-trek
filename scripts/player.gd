@@ -23,13 +23,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func player_jump(time) -> void:
-	if Input.is_action_just_pressed("left_click") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		is_jumping = true
 		is_charging = true
 		jump_timer = 0.0
 		charge_timer = 0.0
 		
-	if Input.is_action_pressed("left_click") and is_jumping and is_charging:
+	if Input.is_action_pressed("jump") and is_jumping and is_charging:
 		charge_timer += time
 		play_animation(Utils.PlayerMotion.Jump)
 		if charge_timer > max_charge_time:
@@ -41,7 +41,7 @@ func player_jump(time) -> void:
 				is_charging = false
 				play_animation(Utils.PlayerMotion.Fall)
 			
-	if Input.is_action_just_released("left_click"):
+	if Input.is_action_just_released("jump"):
 		is_jumping = false
 		is_charging = false
 		play_animation(Utils.PlayerMotion.Fall)
