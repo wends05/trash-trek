@@ -24,52 +24,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mipys"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8a8k8"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2nypq"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ucygd"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bky6r"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l4mxc"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7la6k"]
-
-[sub_resource type="Theme" id="Theme_826wr"]
-Button/styles/disabled = SubResource("StyleBoxEmpty_mipys")
-Button/styles/focus = SubResource("StyleBoxEmpty_8a8k8")
-Button/styles/hover = SubResource("StyleBoxEmpty_2nypq")
-Button/styles/hover_pressed = SubResource("StyleBoxEmpty_ucygd")
-Button/styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_bky6r")
-Button/styles/normal = SubResource("StyleBoxEmpty_l4mxc")
-Button/styles/pressed = SubResource("StyleBoxEmpty_7la6k")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5faoh"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ptake"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hubol"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8vx4p"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tdapf"]
-
-[sub_resource type="Theme" id="Theme_v41fp"]
-Button/styles/disabled = SubResource("StyleBoxEmpty_5faoh")
-Button/styles/focus = SubResource("StyleBoxEmpty_ptake")
-Button/styles/hover = SubResource("StyleBoxEmpty_hubol")
-Button/styles/normal = SubResource("StyleBoxEmpty_8vx4p")
-Button/styles/pressed = SubResource("StyleBoxEmpty_tdapf")
-
-[sub_resource type="Environment" id="Environment_2wh52"]
-background_mode = 3
-glow_enabled = true
-glow_strength = 0.95
-glow_bloom = 0.22
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_826wr"]
 atlas = ExtResource("5_l72w3")
 region = Rect2(1001, 0, 499, 500)
@@ -134,12 +88,58 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mipys"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8a8k8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2nypq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ucygd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bky6r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l4mxc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7la6k"]
+
+[sub_resource type="Theme" id="Theme_826wr"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_mipys")
+Button/styles/focus = SubResource("StyleBoxEmpty_8a8k8")
+Button/styles/hover = SubResource("StyleBoxEmpty_2nypq")
+Button/styles/hover_pressed = SubResource("StyleBoxEmpty_ucygd")
+Button/styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_bky6r")
+Button/styles/normal = SubResource("StyleBoxEmpty_l4mxc")
+Button/styles/pressed = SubResource("StyleBoxEmpty_7la6k")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5faoh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ptake"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hubol"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8vx4p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tdapf"]
+
+[sub_resource type="Theme" id="Theme_v41fp"]
+Button/styles/disabled = SubResource("StyleBoxEmpty_5faoh")
+Button/styles/focus = SubResource("StyleBoxEmpty_ptake")
+Button/styles/hover = SubResource("StyleBoxEmpty_hubol")
+Button/styles/normal = SubResource("StyleBoxEmpty_8vx4p")
+Button/styles/pressed = SubResource("StyleBoxEmpty_tdapf")
+
+[sub_resource type="Environment" id="Environment_2wh52"]
+background_mode = 3
+glow_enabled = true
+glow_strength = 0.95
+glow_bloom = 0.22
+
 [sub_resource type="Animation" id="Animation_mipys"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayButtonGlow:scale")
+tracks/0/path = NodePath("CanvasLayer/PlayButtonGlow:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -151,7 +151,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayButtonGlow:position")
+tracks/1/path = NodePath("CanvasLayer/PlayButtonGlow:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -163,7 +163,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("QuitButtonGlow:scale")
+tracks/2/path = NodePath("CanvasLayer/QuitButtonGlow:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -175,7 +175,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("QuitButtonGlow:position")
+tracks/3/path = NodePath("CanvasLayer/QuitButtonGlow:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -187,7 +187,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Mural:position")
+tracks/4/path = NodePath("CanvasLayer/Mural:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -199,7 +199,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("SignPost:position")
+tracks/5/path = NodePath("CanvasLayer/SignPost:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -211,7 +211,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("TrashDump:position")
+tracks/6/path = NodePath("CanvasLayer/TrashDump:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -223,7 +223,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("AnimatedSprite2D3:position")
+tracks/7/path = NodePath("CanvasLayer/AnimatedSprite2D3:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -235,7 +235,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("AnimatedSprite2D2:position")
+tracks/8/path = NodePath("CanvasLayer/AnimatedSprite2D2:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -251,7 +251,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mural:position")
+tracks/0/path = NodePath("CanvasLayer/Mural:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -263,7 +263,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SignPost:position")
+tracks/1/path = NodePath("CanvasLayer/SignPost:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -275,7 +275,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("TrashDump:position")
+tracks/2/path = NodePath("CanvasLayer/TrashDump:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -287,7 +287,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AnimatedSprite2D3:position")
+tracks/3/path = NodePath("CanvasLayer/AnimatedSprite2D3:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -299,7 +299,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AnimatedSprite2D2:position")
+tracks/4/path = NodePath("CanvasLayer/AnimatedSprite2D2:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -315,7 +315,7 @@ length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayButtonGlow:scale")
+tracks/0/path = NodePath("CanvasLayer/PlayButtonGlow:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -327,7 +327,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayButtonGlow:position")
+tracks/1/path = NodePath("CanvasLayer/PlayButtonGlow:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -343,7 +343,7 @@ length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("QuitButtonGlow:scale")
+tracks/0/path = NodePath("CanvasLayer/QuitButtonGlow:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -355,7 +355,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("QuitButtonGlow:position")
+tracks/1/path = NodePath("CanvasLayer/QuitButtonGlow:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -371,7 +371,7 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("PlayButtonGlow:scale")
+tracks/0/path = NodePath("CanvasLayer/PlayButtonGlow:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -383,7 +383,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("PlayButtonGlow:position")
+tracks/1/path = NodePath("CanvasLayer/PlayButtonGlow:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -399,7 +399,7 @@ length = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("QuitButtonGlow:scale")
+tracks/0/path = NodePath("CanvasLayer/QuitButtonGlow:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -411,7 +411,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("QuitButtonGlow:position")
+tracks/1/path = NodePath("CanvasLayer/QuitButtonGlow:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -440,35 +440,52 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yqorp")
 
-[node name="Mural" type="Sprite2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Mural" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(576.5, 326.047)
 scale = Vector2(0.753255, 0.630951)
 texture = ExtResource("2_2wh52")
 
-[node name="TrashDump" type="Sprite2D" parent="."]
+[node name="TrashDump" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(577, 462)
 scale = Vector2(0.608466, 0.309104)
 texture = ExtResource("4_ow34m")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer"]
 position = Vector2(320, 376.385)
 scale = Vector2(0.467, 0.44)
 sprite_frames = SubResource("SpriteFrames_2wh52")
 
-[node name="SignPost" type="Sprite2D" parent="."]
+[node name="SignPost" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(727, 485)
 scale = Vector2(0.285417, 0.268812)
 texture = ExtResource("5_826wr")
 
-[node name="PlayButtonGlow" type="Sprite2D" parent="."]
+[node name="PlayButtonGlow" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(727, 488.663)
 scale = Vector2(0.298889, 0.298895)
 texture = ExtResource("6_ucygd")
 
-[node name="QuitButtonGlow" type="Sprite2D" parent="."]
+[node name="QuitButtonGlow" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(726, 485)
 scale = Vector2(0.284656, 0.266761)
 texture = ExtResource("7_mipys")
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(875, 438)
+scale = Vector2(0.3001, 0.261)
+sprite_frames = SubResource("SpriteFrames_5faoh")
+autoplay = "default"
+frame_progress = 0.141535
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="CanvasLayer"]
+position = Vector2(349, 470)
+rotation = 0.363028
+scale = Vector2(0.139591, 0.177586)
+sprite_frames = SubResource("SpriteFrames_5faoh")
+autoplay = "default"
+frame_progress = 0.060372
 
 [node name="Start" type="Button" parent="."]
 layout_mode = 2
@@ -492,21 +509,6 @@ text = "
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2wh52")
-
-[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
-position = Vector2(349, 470)
-rotation = 0.363028
-scale = Vector2(0.139591, 0.177586)
-sprite_frames = SubResource("SpriteFrames_5faoh")
-autoplay = "default"
-frame_progress = 0.060372
-
-[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
-position = Vector2(875, 438)
-scale = Vector2(0.3001, 0.261)
-sprite_frames = SubResource("SpriteFrames_5faoh")
-autoplay = "default"
-frame_progress = 0.141535
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

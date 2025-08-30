@@ -1,19 +1,26 @@
 extends Control
 
 @onready var animation = $AnimationPlayer
-@onready var play_texture = $PlayButtonGlow
-@onready var quit_texture = $QuitButtonGlow
+@onready var play_texture = $CanvasLayer/PlayButtonGlow
+@onready var quit_texture = $CanvasLayer/QuitButtonGlow
 @onready var play_button = $Start
 @onready var quit_button = $Quit
 
 func _ready() -> void:
+	$CanvasLayer.visible = false
+	$CanvasLayer.visible = false
 	play_button.disabled = true
 	quit_button.disabled = true
 	play_texture.visible = false
 	quit_texture.visible = false
-	animation.play("from_intro_transition")
+	print("hasent  laoded")
+	call_deferred("_start_intro_animation")
 	animation.animation_finished.connect(_on_animation_finished)
-	
+
+func _start_intro_animation() -> void:
+	$CanvasLayer.visible = true
+	animation.play("from_intro_transition")
+
 func _on_start_pressed() -> void:
 	animation.play("press_play")
 	animation.animation_finished.connect(_on_animation_finished)
