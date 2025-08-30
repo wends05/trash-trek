@@ -9,7 +9,6 @@ var type: Utils.TrashType
 var trash_bin_resource: TrashBinResource
 
 func _ready() -> void:
-	change_player_collision(Game.selected_trash_type)
 	Game.changed_trash_type.connect(change_player_collision)
 	load_trash_bin()
 	
@@ -19,6 +18,7 @@ func load_trash_bin():
 
 	animated_sprite.sprite_frames = trash_bin_resource.sprite_frames
 	type = trash_bin_resource.type
+	change_player_collision(Game.selected_trash_type)
 	
 	animated_sprite.play("idle")
 

@@ -10,7 +10,7 @@ func _ready() -> void:
 	Game.updated_stats.connect(update_trash_counts)
 	Game.update_ui_state.connect(update_ui_state)
 	Game.update_game_state.connect(update_game_state)
-	Game.trash_bin_countdown_changed.connect(update_trash_bin_countdown)
+	#Game.trash_bin_countdown_changed.connect(update_trash_bin_countdown)
 	
 	$%BiodegradableButton.connect("pressed", _on_group_pressed.bind(Utils.TrashType.Biodegradable))
 	$%RecyclableButton.connect("pressed", _on_group_pressed.bind(Utils.TrashType.Recyclable))
@@ -40,9 +40,9 @@ func update_trash_counts():
 		Game.collected_toxic_waste
 	]
 
-func update_trash_bin_countdown():
-	temp_trash_countdown_display.text = \
-	"Trash Bin Countdown: %s" % Game.trash_bin_countdown
+#func update_trash_bin_countdown():
+	#temp_trash_countdown_display.text = \
+	#"Trash Bin Countdown: %s" % Game.trash_bin_countdown
 	
 func _on_pause_button_pressed() -> void:
 	update_ui_state(Utils.UIStateType.PauseMenu)

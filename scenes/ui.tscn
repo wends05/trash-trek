@@ -43,21 +43,6 @@ offset_bottom = 40.0
 toggle_mode = true
 text = "Pause"
 
-[node name="TempTrashCount" type="Label" parent="."]
-layout_mode = 0
-offset_left = 92.0
-offset_top = 551.0
-offset_right = 280.0
-offset_bottom = 574.0
-label_settings = SubResource("LabelSettings_vsj0x")
-
-[node name="TempTrashCountdownCount" type="Label" parent="."]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 384.0
-offset_right = 56.0
-offset_bottom = 407.0
-
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 35.0
@@ -91,6 +76,14 @@ toggle_mode = true
 button_group = ExtResource("3_8dubc")
 icon = ExtResource("6_h1mc3")
 expand_icon = true
+
+[node name="TempTrashCount" type="Label" parent="."]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 551.0
+offset_right = 280.0
+offset_bottom = 574.0
+label_settings = SubResource("LabelSettings_vsj0x")
 
 [node name="GameMenu" parent="." instance=ExtResource("2_p7vwb")]
 layout_mode = 0
