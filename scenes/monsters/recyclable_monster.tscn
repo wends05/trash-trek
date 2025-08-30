@@ -1,3 +1,84 @@
-[gd_scene format=3 uid="uid://xsbccim4vkhd"]
+[gd_scene load_steps=15 format=3 uid="uid://xsbccim4vkhd"]
 
-[node name="RecyclableMonster" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://d14hkxdvvc3f3" path="res://assets/monsters/Rmonster/Rmonster11.png" id="1_g3y70"]
+[ext_resource type="Texture2D" uid="uid://cxktb2fipof8h" path="res://assets/monsters/Rmonster/Rmonster12.png" id="2_dkrhh"]
+[ext_resource type="Texture2D" uid="uid://c8wkxhffuun85" path="res://assets/monsters/Rmonster/Rmonster13.png" id="3_jbiie"]
+[ext_resource type="Texture2D" uid="uid://dg0i7014cwx0q" path="res://assets/monsters/Rmonster/RMonster1.png" id="4_nxr34"]
+[ext_resource type="Texture2D" uid="uid://dswmu3otfcn4l" path="res://assets/monsters/Rmonster/Rmonster2.png" id="5_0u5g8"]
+[ext_resource type="Texture2D" uid="uid://ye2ut6jscd0k" path="res://assets/monsters/Rmonster/Rmonster3.png" id="6_vdedv"]
+[ext_resource type="Texture2D" uid="uid://3ty3pqcm046y" path="res://assets/monsters/Rmonster/Rmonster4.png" id="7_8ic41"]
+[ext_resource type="Texture2D" uid="uid://l3nomc3q0ott" path="res://assets/monsters/Rmonster/Rmonster5.png" id="8_222wc"]
+[ext_resource type="Texture2D" uid="uid://bhbhbderqsxdm" path="res://assets/monsters/Rmonster/Rmonster6.png" id="9_d0hx1"]
+[ext_resource type="Texture2D" uid="uid://c51l8hsvwh187" path="res://assets/monsters/Rmonster/Rmonster7.png" id="10_tq2t5"]
+[ext_resource type="Texture2D" uid="uid://d4l88uy3mioqv" path="res://assets/monsters/Rmonster/Rmonster8.png" id="11_7cufh"]
+[ext_resource type="Texture2D" uid="uid://btidswqk2xepi" path="res://assets/monsters/Rmonster/Rmonster9.png" id="12_g8217"]
+[ext_resource type="Texture2D" uid="uid://dt32eqrpwknlm" path="res://assets/monsters/Rmonster/Rmonster10.png" id="13_vrqp7"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l5q2v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g3y70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dkrhh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jbiie")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nxr34")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0u5g8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vdedv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8ic41")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_222wc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_d0hx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tq2t5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7cufh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_g8217")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vrqp7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_g3y70")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_dkrhh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jbiie")
+}],
+"loop": false,
+"name": &"spawn",
+"speed": 5.0
+}]
+
+[node name="RecyclableMonster" type="AnimatedSprite2D"]
+position = Vector2(-1, 2)
+scale = Vector2(0.124034, 0.124034)
+sprite_frames = SubResource("SpriteFrames_l5q2v")
+animation = &"idle"
+autoplay = "spawn"
+frame_progress = 0.288613
