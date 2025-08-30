@@ -8,7 +8,6 @@ extends Control
 
 func _ready() -> void:
 	$CanvasLayer.visible = false
-	$CanvasLayer.visible = false
 	play_button.disabled = true
 	quit_button.disabled = true
 	play_texture.visible = false
