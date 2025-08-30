@@ -4,7 +4,6 @@ class_name TrashBin
 
 
 @export var type: Utils.TrashType
-@export var terrain_manager: TerrainManager
 @onready var player_collision_area: StaticBody2D = $PlayerCollisionArea
 
 func _ready() -> void:
@@ -12,12 +11,6 @@ func _ready() -> void:
 	$Asset.texture = load(texture_path)
 	Game.changed_trash_type.connect(change_player_collision)
 
-func _physics_process(delta: float) -> void:
-	position.x -= terrain_manager.speed * delta
-
-func _on_area_area_entered(area: Area2D) -> void:
-	if area is GroundArea:
-		area.bring_trash_above(self, 25)
 
 func change_player_collision(trash_type: Utils.TrashType) -> void:
 	print("CHANGING COLLISION")
