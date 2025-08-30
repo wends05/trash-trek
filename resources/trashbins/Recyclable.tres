@@ -1,0 +1,53 @@
+[gd_resource type="Resource" script_class="TrashBinResource" load_steps=8 format=3 uid="uid://bwkgydalyylei"]
+
+[ext_resource type="Script" uid="uid://dywqk6eaqhfmn" path="res://scripts/trash_bin_resource.gd" id="1_e7sie"]
+[ext_resource type="Texture2D" uid="uid://doly0jgfe62ix" path="res://assets/trashbins/Trashbins_Assets.png" id="2_f3ala"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nok21"]
+atlas = ExtResource("2_f3ala")
+region = Rect2(2100, 0, 700, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wp5jb"]
+atlas = ExtResource("2_f3ala")
+region = Rect2(2100, 0, 700, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lcx1"]
+atlas = ExtResource("2_f3ala")
+region = Rect2(0, 700, 700, 700)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jf28"]
+atlas = ExtResource("2_f3ala")
+region = Rect2(700, 700, 700, 700)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r330n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nok21")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wp5jb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lcx1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8jf28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lcx1")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_e7sie")
+type = 0
+sprite_frames = SubResource("SpriteFrames_r330n")
