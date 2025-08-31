@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bj3rk0rmmgxjw" path="res://assets/buttons/button3.png" id="6_h1mc3"]
 [ext_resource type="Script" uid="uid://fn8obobr73c5" path="res://scripts/ui_text_controller.gd" id="8_ktti3"]
 [ext_resource type="Script" uid="uid://d36dng05atbg8" path="res://scripts/ui_visibility_controller.gd" id="9_cgfq5"]
-[ext_resource type="Script" uid="uid://dpd8tl7w64utr" path="res://scenes/time.gd" id="10_7dvkv"]
+[ext_resource type="Script" uid="uid://dpd8tl7w64utr" path="res://time.gd" id="10_7dvkv"]
 [ext_resource type="Texture2D" uid="uid://bjpn81jww2cou" path="res://assets/buttons/blue-Z.png" id="11_cof4p"]
 [ext_resource type="Texture2D" uid="uid://wq2c1b0lf2a8" path="res://assets/buttons/green-X.png" id="12_f7tlh"]
 [ext_resource type="Texture2D" uid="uid://bg72nmvcnnmu" path="res://assets/buttons/red-C.png" id="13_8k7j3"]
@@ -138,7 +138,7 @@ button_group = ExtResource("3_8dubc")
 icon = ExtResource("6_h1mc3")
 expand_icon = true
 
-[node name="TempTrashCount" type="Label" parent="."]
+[node name="TrashCount" type="Label" parent="."]
 layout_mode = 0
 offset_left = 92.0
 offset_top = 551.0
