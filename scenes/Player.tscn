@@ -142,8 +142,10 @@ script = ExtResource("1_62i1b")
 position = Vector2(8, 3.24995)
 scale = Vector2(0.365234, 0.381836)
 sprite_frames = SubResource("SpriteFrames_70d11")
-animation = &"falling"
+animation = &"jump"
 autoplay = "running"
+frame = 5
+frame_progress = 0.366184
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.90735e-06, -1.49997)
