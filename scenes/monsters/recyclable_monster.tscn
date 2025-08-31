@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://xsbccim4vkhd"]
 
-[ext_resource type="Script" uid="uid://dmh1s0jblhc0i" path="res://scripts/monster.gd" id="1_dkrhh"]
+[ext_resource type="Script" path="res://scripts/monster.gd" id="1_dkrhh"]
 [ext_resource type="Texture2D" uid="uid://d14hkxdvvc3f3" path="res://assets/monsters/Rmonster/Rmonster11.png" id="1_g3y70"]
 [ext_resource type="Texture2D" uid="uid://cxktb2fipof8h" path="res://assets/monsters/Rmonster/Rmonster12.png" id="2_dkrhh"]
 [ext_resource type="Texture2D" uid="uid://c8wkxhffuun85" path="res://assets/monsters/Rmonster/Rmonster13.png" id="3_jbiie"]
