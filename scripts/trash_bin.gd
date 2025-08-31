@@ -13,6 +13,7 @@ var trash_bin_resource: TrashBinResource
 @onready var debug_label: Label = $"debug label"
 
 var animating = false
+var collected = false
 
 var amount_required: int = 0
 @onready var amount_required_label: Label = $AmountRequiredLabel
@@ -56,6 +57,9 @@ func throw_trash() -> void:
 		return
 	if Game.get_trash_count(type) < amount_required:
 		return
+	if collected:
+		return
+	collected = true
 	Game.decrease_trash_count(type, amount_required)
 	Game.add_energy(amount_required)
 	animating = true

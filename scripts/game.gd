@@ -101,12 +101,6 @@ func select_trash_type(type: Utils.TrashType):
 	selected_trash_type = type
 	changed_trash_type.emit(type)
 
-func handle_throw_trash(trash_bin: TrashBin):
-	if selected_trash_type == trash_bin.type:
-		print_debug("Correct Trash, energy_added")
-		add_energy(10)
-		var percent_decrease = randf_range(0.2, 0.4)
-		decrease_trash_count(selected_trash_type, int(collected_recyclable * percent_decrease))
 
 func get_trash_count(type: Utils.TrashType):
 	match type:
