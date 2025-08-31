@@ -12,13 +12,16 @@ var trash_bin_resource: TrashBinResource
 
 @onready var debug_label: Label = $"debug label"
 
+var animating = false
+var collected = false
+
 var amount_required: int = 0
 @onready var amount_required_label: Label = $AmountRequiredLabel
 
 func _ready() -> void:
 	load_trash_bin()
 	Game.changed_trash_type.connect(change_player_collision)
-	Game.trash_collected.connect(check_collection)
+	Game.trash_collected.connect(change_player_collision)
 	amount_required = [3, 6, 9].pick_random()
 	amount_required_label.text = "%s" % amount_required
 
@@ -36,20 +39,11 @@ func load_trash_bin():
 
 
 func change_player_collision(trash_type: Utils.TrashType) -> void:
-	if trash_type != type:
-		player_collision_area.set_collision_layer_value(4, true)
-	else:
-		player_collision_area.set_collision_layer_value(4, false)
-	check_collection(trash_type)
-
-func check_collection(trash_type: Utils.TrashType) -> void:
-	if trash_type != type:
-		return
-	if Game.get_trash_count(trash_type) >= amount_required:
-		player_collision_area.set_collision_layer_value(4, false)
-	else:
-		player_collision_area.set_collision_layer_value(4, true)
+	var has_enough: bool = Game.get_trash_count(trash_type) >= amount_required
+	var should_block: bool = not (has_enough and trash_type == type)
+	player_collision_area.set_collision_layer_value(4, should_block)
 	update_debug_label()
+
 
 func update_debug_label() -> void:
 	debug_label.text = \
@@ -59,8 +53,18 @@ func update_debug_label() -> void:
 		]
 
 func throw_trash() -> void:
+	if animating:
+		return
+	if Game.get_trash_count(type) < amount_required:
+		return
+	if collected:
+		return
+	collected = true
 	Game.decrease_trash_count(type, amount_required)
 	Game.add_energy(amount_required)
+	animating = true
 	animated_sprite.play("open")
 	await animated_sprite.animation_finished
 	animated_sprite.play("idle")
+	animating = false
+	change_player_collision(Game.selected_trash_type)

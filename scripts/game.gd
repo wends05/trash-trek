@@ -18,6 +18,8 @@ var collected_biodegradable = 0
 var collected_recyclable = 0
 var collected_toxic_waste = 0
 
+var accumulated_energy = 0
+
 var is_game_over: bool = false
 var is_game_pause: bool = false
 
@@ -52,12 +54,16 @@ func _process(delta: float) -> void:
 	base_decrease = 0.1
 
 func add_energy(amount: float) -> void:
-	energy += min(amount, MAX_ENERGY - energy)
+	var final_energy_increase = min(amount, MAX_ENERGY - energy)
+	energy += final_energy_increase
 	energy_changed.emit(energy)
+	accumulated_energy += final_energy_increase
 
 func decrease_energy(amount: float) -> void:
-	energy = max(0, energy - amount)
-	energy_changed.emit(int(energy))
+	var final_energy_decrease = max(0, energy - amount)
+	energy = final_energy_decrease
+	energy_changed.emit(energy)
+	accumulated_energy -= final_energy_decrease
 
 func _on_energy_timer_timeout() -> void:
 	decrease_energy(base_decrease)
@@ -77,6 +83,9 @@ func update_trash_count(type: Utils.TrashType):
 
 	updated_stats.emit()
 
+func calculate_score():
+	return accumulated_energy + elapsed_time
+
 func reset_stats():
 	collected_recyclable = 0
 	collected_biodegradable = 0
@@ -92,12 +101,6 @@ func select_trash_type(type: Utils.TrashType):
 	selected_trash_type = type
 	changed_trash_type.emit(type)
 
-func handle_throw_trash(trash_bin: TrashBin):
-	if selected_trash_type == trash_bin.type:
-		print_debug("Correct Trash, energy_added")
-		add_energy(10)
-		var percent_decrease = randf_range(0.2, 0.4)
-		decrease_trash_count(selected_trash_type, int(collected_recyclable * percent_decrease))
 
 func get_trash_count(type: Utils.TrashType):
 	match type:

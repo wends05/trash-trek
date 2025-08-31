@@ -137,6 +137,9 @@ size = Vector2(73, 114)
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 14
 script = ExtResource("1_62i1b")
+jump_force = null
+max_jump_time = null
+max_charge_time = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, 3.24995)
