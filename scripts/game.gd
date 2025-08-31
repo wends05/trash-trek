@@ -3,8 +3,8 @@ extends Node
 const MAX_ENERGY = 100.0
 var energy = MAX_ENERGY
 var elapsed_time: float = 0.0
-var base_wait_time: float = 10.0
-var base_decrease: int = 10.0
+var base_wait_time: float = 0.5
+var base_decrease: float = 0.5
 var difficulty_step: float = 10.0
 
 signal trash_collected(type: Utils.TrashType)
@@ -35,7 +35,7 @@ func _ready() -> void:
 	trash_collected.connect(update_trash_count)
 
 	energy_timer = Timer.new()
-	energy_timer.wait_time = base_wait_time
+	energy_timer.wait_time = 1.0
 	energy_timer.one_shot = false
 	energy_timer.autostart = true
 	add_child(energy_timer)
@@ -50,10 +50,8 @@ func _process(delta: float) -> void:
 	var difficulty_level = int(elapsed_time / difficulty_step)
 
 
-	energy_timer.wait_time = max(1.0, base_wait_time - difficulty_level)
-
-	# scale energy drain (more lost per tick)
-	base_decrease = 5 + difficulty_level
+	energy_timer.wait_time = 0.5
+	base_decrease = 0.1
 
 func add_energy(amount: float) -> void:
 	var final_energy_increase = min(amount, MAX_ENERGY - energy)
@@ -95,7 +93,7 @@ func reset_stats():
 	energy = MAX_ENERGY
 	elapsed_time = 0.0
 	updated_stats.emit()
-	energy_changed.emit(energy)
+	energy_changed.emit(int(energy))
 	time_changed.emit(elapsed_time)
 	energy_timer.start()
 
