@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8djme6vt6yn5"
-path="res://.godot/imported/bioquantity.png-e7ad423bc8b5feb9974dfe0f23186330.ctex"
+uid="uid://dp41dtvp61olp"
+path="res://.godot/imported/Recyclable.png-9c26b278cfa874f6712d43613ce13ca3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/trashbins/bioquantity.png"
-dest_files=["res://.godot/imported/bioquantity.png-e7ad423bc8b5feb9974dfe0f23186330.ctex"]
+source_file="res://assets/trashbins/labels/Recyclable.png"
+dest_files=["res://.godot/imported/Recyclable.png-9c26b278cfa874f6712d43613ce13ca3.ctex"]
 
 [params]
 

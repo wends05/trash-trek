@@ -52,8 +52,8 @@ func _process(delta: float) -> void:
 	base_decrease = 0.1
 
 func add_energy(amount: float) -> void:
-	energy += amount
-	energy_changed.emit(int(energy))
+	energy += min(amount, MAX_ENERGY - energy)
+	energy_changed.emit(energy)
 
 func decrease_energy(amount: float) -> void:
 	energy = max(0, energy - amount)
@@ -96,18 +96,26 @@ func handle_throw_trash(trash_bin: TrashBin):
 	if selected_trash_type == trash_bin.type:
 		print_debug("Correct Trash, energy_added")
 		add_energy(10)
-		decrease_trash_count(selected_trash_type)
+		var percent_decrease = randf_range(0.2, 0.4)
+		decrease_trash_count(selected_trash_type, int(collected_recyclable * percent_decrease))
 
-
-func decrease_trash_count(type: Utils.TrashType):
-	var percent_decrease = randf_range(0.2, 0.4)
+func get_trash_count(type: Utils.TrashType):
 	match type:
 		Utils.TrashType.Recyclable:
-			collected_recyclable -= int(collected_recyclable * percent_decrease)
+			return collected_recyclable
 		Utils.TrashType.Biodegradable:
-			collected_biodegradable -= int(collected_biodegradable * percent_decrease)
+			return collected_biodegradable
 		Utils.TrashType.ToxicWaste:
-			collected_toxic_waste -= int(collected_toxic_waste * percent_decrease)
+			return collected_toxic_waste
+
+func decrease_trash_count(type: Utils.TrashType, amount: int):
+	match type:
+		Utils.TrashType.Recyclable:
+			collected_recyclable -= amount
+		Utils.TrashType.Biodegradable:
+			collected_biodegradable -= amount
+		Utils.TrashType.ToxicWaste:
+			collected_toxic_waste -= amount
 	updated_stats.emit()
 
 func reset_trash_bin_countdown():

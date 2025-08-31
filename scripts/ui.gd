@@ -1,8 +1,7 @@
 extends Control
 class_name UI
 
-@onready var temp_trash_count_display: Label = $TempTrashCount
-@onready var temp_trash_countdown_display: Label = $TempTrashCount
+@onready var trash_count_display: Label = $TrashCount
 @onready var ui_text_controller: UITextController = $UITextController
 @onready var ui_visibility_controller: UIVisibilityController = $UIVisibilityController
 @onready var pause_animation = $PauseButton/PauseAnimate
@@ -12,13 +11,12 @@ func _ready() -> void:
 	Game.update_ui_state.connect(update_ui_state)
 	Game.update_game_state.connect(update_game_state)
 
-	Game.trash_bin_countdown_changed.connect(update_trash_bin_countdown)
-	process_mode = Node.PROCESS_MODE_ALWAYS
-
 	
 	$%BiodegradableButton.connect("pressed", _on_group_pressed.bind(Utils.TrashType.Biodegradable))
 	$%RecyclableButton.connect("pressed", _on_group_pressed.bind(Utils.TrashType.Recyclable))
 	$%ToxicWasteButton.connect("pressed", _on_group_pressed.bind(Utils.TrashType.ToxicWaste))
+	
+	update_trash_counts()
 	
 func _process(delta: float) -> void:
 	toggle_pause()
@@ -39,7 +37,7 @@ func _input(event: InputEvent) -> void:
 			return
 
 func update_trash_counts():
-	temp_trash_count_display.text = \
+	trash_count_display.text = \
 	"%s                %s                %s
 	" % [
 		Game.collected_recyclable,
@@ -47,9 +45,6 @@ func update_trash_counts():
 		Game.collected_toxic_waste
 	]
 
-func update_trash_bin_countdown():
-	temp_trash_countdown_display.text = \
-	"Trash Bin Countdown: %s" % Game.trash_bin_countdown
 
 func toggle_pause():
 	if Input.is_action_just_pressed("esc") and not Game.is_game_over:
