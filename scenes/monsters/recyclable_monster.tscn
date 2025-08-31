@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://xsbccim4vkhd"]
 
-[ext_resource type="Script" path="res://scripts/monster.gd" id="1_dkrhh"]
+[ext_resource type="Script" uid="uid://dmh1s0jblhc0i" path="res://scripts/monster.gd" id="1_dkrhh"]
 [ext_resource type="Texture2D" uid="uid://d14hkxdvvc3f3" path="res://assets/monsters/Rmonster/Rmonster11.png" id="1_g3y70"]
 [ext_resource type="Texture2D" uid="uid://cxktb2fipof8h" path="res://assets/monsters/Rmonster/Rmonster12.png" id="2_dkrhh"]
 [ext_resource type="Texture2D" uid="uid://c8wkxhffuun85" path="res://assets/monsters/Rmonster/Rmonster13.png" id="3_jbiie"]
@@ -77,7 +77,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g3y70"]
-size = Vector2(112.956, 148.695)
+size = Vector2(94.1083, 139.565)
 
 [node name="RecyclableMonster" type="Node2D" node_paths=PackedStringArray("anim")]
 script = ExtResource("1_dkrhh")
@@ -99,6 +99,6 @@ collision_layer = 16
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RecyclableMonster/Area2D"]
-position = Vector2(-20.8695, 23.0623)
+position = Vector2(-20.9673, 28.2796)
 scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_g3y70")

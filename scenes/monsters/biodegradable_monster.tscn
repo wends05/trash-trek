@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://c4tm82jbftk3x"]
 
-[ext_resource type="Script" path="res://scripts/monster.gd" id="1_2mxn6"]
+[ext_resource type="Script" uid="uid://dmh1s0jblhc0i" path="res://scripts/monster.gd" id="1_2mxn6"]
 [ext_resource type="Texture2D" uid="uid://74hl5m40dsdc" path="res://assets/monsters/biodegradable_monster-Sheet.png" id="1_vk10a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vk10a"]
@@ -94,7 +94,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cuaul"]
-size = Vector2(196.368, 218.782)
+size = Vector2(177.506, 205.055)
 
 [node name="Bio_monster" type="Node2D" node_paths=PackedStringArray("anim")]
 script = ExtResource("1_2mxn6")
@@ -114,5 +114,5 @@ collision_layer = 16
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BiodegradableMonster/Area2D"]
-position = Vector2(-17.2383, -1.25877)
+position = Vector2(-26.6693, 5.60453)
 shape = SubResource("RectangleShape2D_cuaul")

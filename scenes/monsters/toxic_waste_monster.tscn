@@ -80,7 +80,7 @@ animations = [{
 }],
 "loop": true,
 "name": &" spawn",
-"speed": 1.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -101,7 +101,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_adjeo"]
-size = Vector2(185.015, 168.089)
+size = Vector2(166.208, 159.575)
 
 [node name="ToxicWasteMonster" type="Node2D" node_paths=PackedStringArray("anim")]
 script = ExtResource("1_tbwfn")
@@ -113,8 +113,7 @@ scale = Vector2(0.352778, 0.436907)
 sprite_frames = SubResource("SpriteFrames_ca4pr")
 animation = &" spawn"
 autoplay = " spawn"
-frame = 7
-frame_progress = 0.348792
+frame_progress = 0.616183
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 position = Vector2(-4.14106, 0.549746)
@@ -122,5 +121,6 @@ collision_layer = 16
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
-position = Vector2(-22.7881, 2.48778)
+position = Vector2(-19.9534, 4.77659)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_adjeo")
