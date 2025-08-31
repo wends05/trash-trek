@@ -44,9 +44,15 @@ const TRASHES = [
 	]
 
 const TRASHBINS = [
-	preload("res://resources/trashbins/Biodegradable.tres"),
 	preload("res://resources/trashbins/Recyclable.tres"),
+	preload("res://resources/trashbins/Biodegradable.tres"),
 	preload("res://resources/trashbins/ToxicWaste.tres"),
+]
+
+const TRASHBINICONS := [
+	preload("res://assets/trashbins/labels/Recyclable.png"),
+	preload("res://assets/trashbins/labels/Biodegradable.png"),
+	preload("res://assets/trashbins/labels/ToxicWaste.png")
 ]
 
 func get_enum_name(enum_dict: Dictionary, value: int) -> String:
@@ -59,5 +65,10 @@ func get_random_trash_item() -> TrashResource:
 	var items = TRASHES
 	return items[randi() % items.size()]
 
-func get_random_trash_bin() -> TrashBinResource:
-	return TRASHBINS[randi() % TRASHBINS.size()]
+func get_trash_bin(trash_type: Utils.TrashType) -> TrashBinResource:
+	var items = TRASHBINS
+	return items[trash_type]
+
+func get_trash_bin_icon(trash_type: Utils.TrashType) -> Texture:
+	var items = TRASHBINICONS
+	return items[trash_type]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp41dtvp61olp"
-path="res://.godot/imported/recquantity.png-090f7cc5b34549cf714e87ee99b367cf.ctex"
+uid="uid://casfwfe4l3c2m"
+path="res://.godot/imported/ToxicWaste.png-e2ce4b18c1b44ddaed6ffa365d287fa2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/trashbins/recquantity.png"
-dest_files=["res://.godot/imported/recquantity.png-090f7cc5b34549cf714e87ee99b367cf.ctex"]
+source_file="res://assets/trashbins/labels/ToxicWaste.png"
+dest_files=["res://.godot/imported/ToxicWaste.png-e2ce4b18c1b44ddaed6ffa365d287fa2.ctex"]
 
 [params]
 
