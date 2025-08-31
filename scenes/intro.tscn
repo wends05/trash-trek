@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://k87148muibsn"]
 
-[ext_resource type="Script" uid="uid://gl6npkx1xsch" path="res://scenes/intro.gd" id="1_yjqpq"]
+[ext_resource type="Script" uid="uid://gl6npkx1xsch" path="res://scripts/intro.gd" id="1_yjqpq"]
 [ext_resource type="FontFile" uid="uid://b2wi0sk77gq42" path="res://fonts/Tropical Taste Demo.otf" id="2_4bx60"]
 [ext_resource type="Texture2D" uid="uid://cswjjo4ww0dm6" path="res://assets/Player/player_sprite_sheet.png" id="3_i2l1n"]
 
