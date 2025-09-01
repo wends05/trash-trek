@@ -1,0 +1,197 @@
+[gd_scene load_steps=26 format=3 uid="uid://dyac4ihj46tig"]
+
+[ext_resource type="Script" uid="uid://dofxmaqpmkhp1" path="res://scripts/player.gd" id="1_62i1b"]
+[ext_resource type="Texture2D" uid="uid://cswjjo4ww0dm6" path="res://assets/Player/player_sprite_sheet.png" id="2_v6fml"]
+[ext_resource type="Script" uid="uid://djtoedaaltfjp" path="res://scripts/player/state_machine.gd" id="3_mdl7e"]
+[ext_resource type="Script" uid="uid://c8o5govvsasps" path="res://scripts/player/states/running.gd" id="4_cw2d6"]
+[ext_resource type="Script" uid="uid://4xbjs1rmmluc" path="res://scripts/player/states/jump.gd" id="5_khinc"]
+[ext_resource type="Script" uid="uid://bg3y0ph05g1fe" path="res://scripts/player/states/falling.gd" id="6_bruh7"]
+[ext_resource type="Script" uid="uid://cb8qsps8nhegl" path="res://scripts/player/states/hurt.gd" id="7_6eyey"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3wef"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(512, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4126"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkdrv"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7iby"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6fml"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70d11"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cw2d6"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_khinc"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(1536, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bruh7"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(0, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6eyey"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(512, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3li8b"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdl7e"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qu4a1"]
+atlas = ExtResource("2_v6fml")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_70d11"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3wef")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4126")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkdrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7iby")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6fml")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_70d11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cw2d6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_khinc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bruh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6eyey")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3li8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdl7e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qu4a1")
+}],
+"loop": true,
+"name": &"running",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y30ri"]
+size = Vector2(64, 141)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6fml"]
+size = Vector2(64, 141)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3li8b"]
+size = Vector2(64, 141)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mdl7e"]
+size = Vector2(73, 114)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 14
+script = ExtResource("1_62i1b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, 3.24995)
+scale = Vector2(0.365234, 0.381836)
+sprite_frames = SubResource("SpriteFrames_70d11")
+animation = &"jump"
+autoplay = "running"
+frame = 5
+frame_progress = 0.366184
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.90735e-06, -1.49997)
+scale = Vector2(0.5, 0.476563)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9.53674e-07, 6.5)
+shape = SubResource("RectangleShape2D_y30ri")
+
+[node name="TrashCollectionArea" type="Area2D" parent="."]
+collision_mask = 6
+
+[node name="Shape" type="CollisionShape2D" parent="TrashCollectionArea"]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_v6fml")
+
+[node name="TrashBinCollectionArea" type="Area2D" parent="."]
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrashBinCollectionArea"]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_3li8b")
+
+[node name="MonsterCollision" type="Area2D" parent="."]
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterCollision"]
+position = Vector2(9, -8)
+shape = SubResource("RectangleShape2D_mdl7e")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_mdl7e")
+initial_state = NodePath("Running")
+
+[node name="Running" type="Node" parent="StateMachine"]
+script = ExtResource("4_cw2d6")
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("5_khinc")
+
+[node name="Falling" type="Node" parent="StateMachine"]
+script = ExtResource("6_bruh7")
+
+[node name="Hurt" type="Node" parent="StateMachine"]
+script = ExtResource("7_6eyey")
+
+[connection signal="area_entered" from="TrashCollectionArea" to="." method="_on_trash_collection_area_area_entered"]
+[connection signal="area_entered" from="TrashBinCollectionArea" to="." method="_on_trash_bin_collection_area_area_entered"]
+[connection signal="area_entered" from="MonsterCollision" to="." method="_on_monster_collision_area_entered"]
