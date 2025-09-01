@@ -132,7 +132,7 @@ size = Vector2(64, 141)
 size = Vector2(64, 141)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mdl7e"]
-size = Vector2(73, 114)
+size = Vector2(63, 150.5)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 14
@@ -173,7 +173,7 @@ shape = SubResource("RectangleShape2D_3li8b")
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterCollision"]
-position = Vector2(9, -8)
+position = Vector2(7, 10)
 shape = SubResource("RectangleShape2D_mdl7e")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]

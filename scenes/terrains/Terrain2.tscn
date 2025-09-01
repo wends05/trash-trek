@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cskjjcjavic6o" path="res://scripts/terrain.gd" id="1_wdjee"]
 [ext_resource type="Texture2D" uid="uid://qas3koyaoy7h" path="res://assets/background/ktown2.png" id="1_x1ouo"]
 [ext_resource type="Texture2D" uid="uid://cyu2yaa6na7hj" path="res://assets/background/tile.png" id="3_4gsq6"]
-[ext_resource type="Script" uid="uid://q01hxgi1lqgv" path="res://scripts/monster_spawn.gd" id="4_4gsq6"]
+[ext_resource type="Script" path="res://scripts/monster_spawn.gd" id="4_4gsq6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_roftw"]
 size = Vector2(259, 74.25)

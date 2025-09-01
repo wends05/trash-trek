@@ -2,7 +2,7 @@ extends State
 
 class_name Running
 
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animated_sprite: AnimatedSprite2D = get_parent().get_parent().get_node("AnimatedSprite2D")
 @onready var player: Player = get_parent().get_parent()
 
 func enter():
@@ -19,7 +19,6 @@ func physics_update(_delta: float):
 		transitioned.emit(self, "jump")
 		return
 
-	# Auto-run forward at constant speed
-	player.velocity.x = 300.0 # Set your desired speed
+	
 
 	player.move_and_slide()
