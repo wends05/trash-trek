@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c8ae8g52xg1c0"]
+[gd_scene load_steps=51 format=3 uid="uid://c8ae8g52xg1c0"]
 
 [ext_resource type="Script" uid="uid://dgtjw4k4yhdoh" path="res://scripts/main_menu.gd" id="1_yqorp"]
 [ext_resource type="Texture2D" uid="uid://cswjjo4ww0dm6" path="res://assets/Player/player_sprite_sheet.png" id="2_0ykhv"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bpqbbkwbo0q66" path="res://assets/menu/Fly.png" id="5_l72w3"]
 [ext_resource type="Texture2D" uid="uid://cautkdww71qye" path="res://assets/menu/PlayButtonGlow.png" id="6_ucygd"]
 [ext_resource type="Texture2D" uid="uid://do1eaqty6oxpv" path="res://assets/menu/QuitButtonGlow.png" id="7_mipys"]
+[ext_resource type="Texture2D" uid="uid://bxmsa748i02ap" path="res://assets/menu/MainMenuOutline.png" id="9_7la6k"]
+[ext_resource type="Texture2D" uid="uid://btydpvtj1ac7o" path="res://assets/menu/StartGame-Sheet.png" id="9_8a8k8"]
+[ext_resource type="Texture2D" uid="uid://bpt8oixuoxios" path="res://assets/menu/ExitGame-Sheet.png" id="10_2nypq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ykhv"]
 atlas = ExtResource("2_0ykhv")
@@ -431,6 +434,30 @@ _data = {
 &"press_quit": SubResource("Animation_viowm")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vx4p"]
+atlas = ExtResource("10_2nypq")
+region = Rect2(0, 0, 393, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdapf"]
+atlas = ExtResource("10_2nypq")
+region = Rect2(786.039, 0, 392.961, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v41fp"]
+atlas = ExtResource("10_2nypq")
+region = Rect2(393, 0, 393, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5faoh"]
+atlas = ExtResource("9_8a8k8")
+region = Rect2(0, 0, 600, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptake"]
+atlas = ExtResource("9_8a8k8")
+region = Rect2(1200.24, 0, 599.759, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hubol"]
+atlas = ExtResource("9_8a8k8")
+region = Rect2(600, 0, 600, 123)
+
 [node name="Main Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -441,6 +468,7 @@ grow_vertical = 2
 script = ExtResource("1_yqorp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Mural" type="Sprite2D" parent="CanvasLayer"]
 position = Vector2(576.5, 326.047)
@@ -488,6 +516,7 @@ autoplay = "default"
 frame_progress = 0.060372
 
 [node name="Start" type="Button" parent="."]
+visible = false
 layout_mode = 2
 offset_left = 589.0
 offset_top = 374.0
@@ -497,6 +526,7 @@ rotation = -0.0872665
 theme = SubResource("Theme_826wr")
 
 [node name="Quit" type="Button" parent="."]
+visible = false
 layout_mode = 2
 offset_left = 614.0
 offset_top = 449.0
@@ -514,6 +544,36 @@ environment = SubResource("Environment_2wh52")
 libraries = {
 &"": SubResource("AnimationLibrary_8a8k8")
 }
+
+[node name="MainMenuOutline" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(577.5, 331)
+scale = Vector2(0.745443, 0.650391)
+texture = ExtResource("9_7la6k")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="ExitButton" type="TextureButton" parent="CanvasLayer2"]
+offset_left = 432.0
+offset_top = 422.0
+offset_right = 721.0
+offset_bottom = 505.0
+texture_normal = SubResource("AtlasTexture_8vx4p")
+texture_pressed = SubResource("AtlasTexture_tdapf")
+texture_hover = SubResource("AtlasTexture_v41fp")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="StartButton" type="TextureButton" parent="CanvasLayer2"]
+offset_left = 363.0
+offset_top = 325.0
+offset_right = 791.0
+offset_bottom = 404.0
+texture_normal = SubResource("AtlasTexture_5faoh")
+texture_pressed = SubResource("AtlasTexture_ptake")
+texture_hover = SubResource("AtlasTexture_hubol")
+ignore_texture_size = true
+stretch_mode = 0
 
 [connection signal="mouse_entered" from="Start" to="." method="_on_start_mouse_entered"]
 [connection signal="mouse_exited" from="Start" to="." method="_on_start_mouse_exited"]
