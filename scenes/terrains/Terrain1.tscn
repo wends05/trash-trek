@@ -1,8 +1,9 @@
 [gd_scene load_steps=9 format=4 uid="uid://dojoskcwuf8np"]
+
 [ext_resource type="Texture2D" uid="uid://cjycekvxg3hbt" path="res://assets/background/ktown1.png" id="1_qm0yi"]
 [ext_resource type="Script" uid="uid://cskjjcjavic6o" path="res://scripts/terrain.gd" id="1_s3xfo"]
 [ext_resource type="Texture2D" uid="uid://cyu2yaa6na7hj" path="res://assets/background/tile.png" id="3_qm0yi"]
-[ext_resource type="Script" path="res://scripts/monster_spawn.gd" id="4_qm0yi"]
+[ext_resource type="Script" uid="uid://q01hxgi1lqgv" path="res://scripts/monster_spawn.gd" id="4_qm0yi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w20fd"]
 size = Vector2(296, 76.25)
@@ -29,6 +30,7 @@ texture_region_size = Vector2i(37, 37)
 2:3/0 = 0
 1:3/0 = 0
 0:3/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_hyh5j"]
 tile_size = Vector2i(37, 37)
 sources/2 = SubResource("TileSetAtlasSource_hjqgp")
@@ -61,6 +63,7 @@ tile_map_data = PackedByteArray("AAAIAA8AAgACAAAAAAAIABAAAgACAAEAAAAIABEAAgACAAI
 tile_set = SubResource("TileSet_hyh5j")
 
 [node name="TrashSpawns" type="Node2D" parent="."]
+
 [node name="Marker2D2" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(538, 522)
 
@@ -69,8 +72,10 @@ position = Vector2(408, 522)
 
 [node name="Marker2D4" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(1074, 522)
+
 [node name="Marker2D5" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(1072, 416)
+
 [node name="Marker2D6" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(840, 416)
 

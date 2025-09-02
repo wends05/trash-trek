@@ -1,3 +1,13 @@
+[gd_scene load_steps=27 format=3 uid="uid://cnvc3c5c6c8mj"]
+
+[ext_resource type="Script" uid="uid://cad734vbhmmtg" path="res://scripts/ui.gd" id="1_nt7q6"]
+[ext_resource type="PackedScene" uid="uid://ciuvi7tl2l5wv" path="res://scenes/game_menu.tscn" id="2_p7vwb"]
+[ext_resource type="PackedScene" uid="uid://decqbrmnhe0kb" path="res://scenes/Energy.tscn" id="2_x4jx1"]
+[ext_resource type="ButtonGroup" uid="uid://chvwa86vrsf2w" path="res://resources/ToggleGroup.tres" id="3_8dubc"]
+[ext_resource type="Texture2D" uid="uid://ct8hkm8bync56" path="res://assets/ui/EscSpriteSheet.png" id="3_vdcm2"]
+[ext_resource type="Texture2D" uid="uid://0gcgna3ra4o8" path="res://assets/buttons/button1.png" id="4_vsj0x"]
+[ext_resource type="Texture2D" uid="uid://dxqu4vculyhv8" path="res://assets/buttons/button2.png" id="5_qsv74"]
+[ext_resource type="Texture2D" uid="uid://bj3rk0rmmgxjw" path="res://assets/buttons/button3.png" id="6_h1mc3"]
 [ext_resource type="Script" uid="uid://fn8obobr73c5" path="res://scripts/ui_text_controller.gd" id="8_ktti3"]
 [ext_resource type="Script" uid="uid://d36dng05atbg8" path="res://scripts/ui_visibility_controller.gd" id="9_cgfq5"]
 [ext_resource type="Texture2D" uid="uid://bjpn81jww2cou" path="res://assets/buttons/blue-Z.png" id="11_cof4p"]
@@ -6,11 +16,17 @@
 [ext_resource type="Texture2D" uid="uid://bg72nmvcnnmu" path="res://assets/buttons/red-C.png" id="13_8k7j3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vdcm2"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6rmj2"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vsj0x"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qsv74"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1mc3"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cof4p"]
+
 [sub_resource type="Theme" id="Theme_h1mc3"]
 Button/fonts/font = null
 Button/styles/disabled = SubResource("StyleBoxEmpty_vdcm2")
@@ -19,12 +35,15 @@ Button/styles/hover = SubResource("StyleBoxEmpty_vsj0x")
 Button/styles/hover_pressed = SubResource("StyleBoxEmpty_qsv74")
 Button/styles/normal = SubResource("StyleBoxEmpty_h1mc3")
 Button/styles/pressed = SubResource("StyleBoxEmpty_cof4p")
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6rmj2"]
 atlas = ExtResource("3_vdcm2")
 region = Rect2(0, 0, 1024, 1024)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_qsv74"]
 atlas = ExtResource("3_vdcm2")
 region = Rect2(1024, 341, 1024, 341)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_qsv74"]
 animations = [{
 "frames": [{
@@ -36,7 +55,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"pause_hover",
-	@@ -66,28 +65,26 @@
+"speed": 15.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vsj0x"]
+
+[sub_resource type="Theme" id="Theme_7dvkv"]
+
+[node name="UI" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -45,6 +71,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nt7q6")
+
 [node name="BackgroundRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = -2.0
@@ -52,6 +79,7 @@ offset_top = -16.0
 offset_right = 1150.0
 offset_bottom = 645.0
 color = Color(0, 0, 0, 0.486275)
+
 [node name="EnergyBar" parent="." instance=ExtResource("2_x4jx1")]
 layout_mode = 0
 offset_left = 311.0
@@ -70,18 +98,21 @@ offset_right = 200.0
 offset_bottom = 47.0
 theme = SubResource("Theme_h1mc3")
 toggle_mode = true
+
 [node name="PauseAnimate" type="AnimatedSprite2D" parent="PauseButton"]
 position = Vector2(84, 12)
 scale = Vector2(0.209791, 0.173278)
 sprite_frames = SubResource("SpriteFrames_qsv74")
 animation = &"pause_hover"
 speed_scale = 1.5
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 552.0
 offset_right = 268.0
 offset_bottom = 627.0
+
 [node name="RecyclableButton" type="Button" parent="HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
@@ -90,6 +121,7 @@ toggle_mode = true
 button_group = ExtResource("3_8dubc")
 icon = ExtResource("4_vsj0x")
 expand_icon = true
+
 [node name="BiodegradableButton" type="Button" parent="HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
@@ -98,6 +130,7 @@ toggle_mode = true
 button_group = ExtResource("3_8dubc")
 icon = ExtResource("5_qsv74")
 expand_icon = true
+
 [node name="ToxicWasteButton" type="Button" parent="HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(75, 75)
@@ -106,6 +139,7 @@ toggle_mode = true
 button_group = ExtResource("3_8dubc")
 icon = ExtResource("6_h1mc3")
 expand_icon = true
+
 [node name="TrashCount" type="Label" parent="."]
 layout_mode = 0
 offset_left = 92.0
@@ -113,6 +147,7 @@ offset_top = 551.0
 offset_right = 280.0
 offset_bottom = 574.0
 label_settings = SubResource("LabelSettings_vsj0x")
+
 [node name="GameMenu" parent="." instance=ExtResource("2_p7vwb")]
 layout_mode = 0
 anchors_preset = 0
@@ -124,6 +159,7 @@ offset_right = 653.0
 offset_bottom = 405.0
 grow_horizontal = 1
 grow_vertical = 1
+
 [node name="GameStatusLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 344.0
@@ -134,6 +170,7 @@ theme = SubResource("Theme_7dvkv")
 theme_override_font_sizes/font_size = 64
 text = "Game Over"
 horizontal_alignment = 1
+
 [node name="GameReasonLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 353.0
@@ -142,6 +179,7 @@ offset_right = 774.0
 offset_bottom = 208.0
 theme_override_font_sizes/font_size = 22
 horizontal_alignment = 1
+
 [node name="UITextController" type="Control" parent="." node_paths=PackedStringArray("game_status_label", "game_reason_label")]
 anchors_preset = 0
 offset_right = 40.0
@@ -149,6 +187,7 @@ offset_bottom = 40.0
 script = ExtResource("8_ktti3")
 game_status_label = NodePath("../GameStatusLabel")
 game_reason_label = NodePath("../GameReasonLabel")
+
 [node name="UIVisibilityController" type="Control" parent="." node_paths=PackedStringArray("pause_button", "game_status_label", "game_menu", "background_rect")]
 anchors_preset = 0
 offset_left = 16.0
@@ -160,6 +199,7 @@ pause_button = NodePath("../PauseButton")
 game_status_label = NodePath("../GameStatusLabel")
 game_menu = NodePath("../GameMenu")
 background_rect = NodePath("../BackgroundRect")
+
 [node name="Time" type="Label" parent="."]
 layout_mode = 0
 offset_left = 469.0
@@ -178,27 +218,33 @@ offset_right = 255.0
 offset_bottom = 536.0
 pivot_offset = Vector2(1, 0)
 alignment = 1
+
 [node name="ZSprite" type="TextureRect" parent="HBoxContainer2"]
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("11_cof4p")
 expand_mode = 2
+
 [node name="gap" type="Control" parent="HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+
 [node name="XSprite" type="TextureRect" parent="HBoxContainer2"]
 layout_mode = 2
 texture = ExtResource("12_f7tlh")
 expand_mode = 2
 stretch_mode = 4
+
 [node name="gap2" type="Control" parent="HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+
 [node name="CSprite" type="TextureRect" parent="HBoxContainer2"]
 layout_mode = 2
 texture = ExtResource("13_8k7j3")
 expand_mode = 2
 stretch_mode = 4
+
 [connection signal="mouse_entered" from="PauseButton" to="." method="_on_pause_button_mouse_entered"]
 [connection signal="mouse_exited" from="PauseButton" to="." method="_on_pause_button_mouse_exited"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
