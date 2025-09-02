@@ -290,16 +290,16 @@ animations = [{
 "duration": 1.5,
 "texture": SubResource("AtlasTexture_4rqjj")
 }, {
-"duration": 2.0,
+"duration": 1.6,
 "texture": SubResource("AtlasTexture_24ra2")
 }, {
-"duration": 2.0,
+"duration": 1.6,
 "texture": SubResource("AtlasTexture_egsv4")
 }, {
-"duration": 2.0,
+"duration": 1.6,
 "texture": SubResource("AtlasTexture_xbdup")
 }, {
-"duration": 2.0,
+"duration": 1.6,
 "texture": SubResource("AtlasTexture_5is2y")
 }, {
 "duration": 4.0,
@@ -359,7 +359,7 @@ script = ExtResource("1_yqorp")
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-color = Color(0, 0, 0, 1)
+color = Color(1, 1, 1, 0.356863)
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
@@ -374,6 +374,8 @@ position = Vector2(575, 147)
 scale = Vector2(0.591748, 0.387234)
 sprite_frames = SubResource("SpriteFrames_f6838")
 animation = &"text_pop"
+frame = 10
+frame_progress = 1.0
 
 [node name="TutorialButton" type="TextureButton" parent="CanvasLayer2"]
 offset_left = 23.0
