@@ -35,7 +35,6 @@ func _on_trash_bin_collection_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is TrashBin:
 		var trash_bin: TrashBin = area.get_parent()
 		trash_bin.throw_trash()
-		Game.handle_throw_trash(trash_bin)
 
 func _on_monster_collision_area_entered(_area: Area2D) -> void:
 	Game.decrease_energy(10)
