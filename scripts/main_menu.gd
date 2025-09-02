@@ -15,8 +15,6 @@ func is_intro_scene():
 	if SceneHandler.last_scene_path == "res://scenes/intro.tscn":
 		GameTitle.play("text_pop")
 		await GameTitle.animation_finished
-		GameTitle.play("flicker")
-		await GameTitle.animation_finished
 		GameTitle.play("default")
 		
 func start_game():

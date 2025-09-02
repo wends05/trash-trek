@@ -64,7 +64,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"fill",
-"speed": 10.0
+"speed": 15.0
 }]
 
 [node name="SceneTransition" type="CanvasLayer"]
@@ -75,4 +75,3 @@ position = Vector2(578, 322.5)
 scale = Vector2(0.61164, 0.456598)
 sprite_frames = SubResource("SpriteFrames_ovque")
 animation = &"fill"
-frame_progress = 0.397438
