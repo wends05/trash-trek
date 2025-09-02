@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="TrashBinResource" load_steps=9 format=3 uid="uid://bwkgydalyylei"]
+[gd_resource type="Resource" script_class="TrashBinResource" load_steps=8 format=3 uid="uid://bwkgydalyylei"]
 
 [ext_resource type="Script" uid="uid://dy8r3pdphby1h" path="res://scripts/trash_bin_resource.gd" id="1_e7sie"]
-[ext_resource type="Texture2D" uid="uid://dp41dtvp61olp" path="res://assets/trashbins/labels/Recyclable.png" id="1_f3ala"]
 [ext_resource type="Texture2D" uid="uid://doly0jgfe62ix" path="res://assets/trashbins/Trashbins_Assets.png" id="2_f3ala"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nok21"]
@@ -52,4 +51,3 @@ animations = [{
 script = ExtResource("1_e7sie")
 type = 0
 sprite_frames = SubResource("SpriteFrames_r330n")
-icon_image = ExtResource("1_f3ala")

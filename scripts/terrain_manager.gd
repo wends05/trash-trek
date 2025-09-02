@@ -49,4 +49,3 @@ func load_terrain(x, y):
 		var scene = terrain_scenes[terrain_type].instantiate()
 		scene.position = Vector2(x, y)
 		terrain_manager.add_child(scene)
-		start_terrain_loaded = true
