@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-@export var base_jump_force: float = -260.0            # Initial impulse (negative = up)
+@export var base_jump_force: float = -290.0            # Initial impulse (negative = up)
 @export var peak_additional_force: float = -260.0      # Additional negative force reached after full sustain
 @export var charge_time: float = 0.2                   # Wind-up time before sustained boost starts
 @export var sustain_time: float = 0.3                  # Time over which we lerp toward peak (after charge)
@@ -30,13 +30,13 @@ func _on_trash_collection_area_area_entered(area: Area2D) -> void:
 		var trash: Trash = area.get_parent()
 		increment_trash(trash.type)
 		trash.remove()
-
+		
 func _on_trash_bin_collection_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is TrashBin:
 		var trash_bin: TrashBin = area.get_parent()
 		trash_bin.throw_trash()
 		Game.handle_throw_trash(trash_bin)
-
+		
 func _on_monster_collision_area_entered(_area: Area2D) -> void:
 	Game.decrease_energy(10)
 	if is_hurt:
