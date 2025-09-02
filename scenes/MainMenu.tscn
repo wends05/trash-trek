@@ -1,11 +1,11 @@
-[gd_scene load_steps=45 format=3 uid="uid://c8ae8g52xg1c0"]
+[gd_scene load_steps=54 format=3 uid="uid://c8ae8g52xg1c0"]
 
 [ext_resource type="Script" uid="uid://dgtjw4k4yhdoh" path="res://scripts/main_menu.gd" id="1_yqorp"]
+[ext_resource type="Texture2D" uid="uid://b1hx2ogiy3qao" path="res://assets/menu/GameTitle-Sheet.png" id="3_mipys"]
 [ext_resource type="Texture2D" uid="uid://ds86tgtgcmsy4" path="res://assets/menu/Earth-Sheet.png" id="3_ucygd"]
 [ext_resource type="Texture2D" uid="uid://npk1dj5ta1ka" path="res://assets/menu/Tutorial-Sheet.png" id="6_826wr"]
 [ext_resource type="Texture2D" uid="uid://btydpvtj1ac7o" path="res://assets/menu/StartGame-Sheet.png" id="9_8a8k8"]
 [ext_resource type="Texture2D" uid="uid://bpt8oixuoxios" path="res://assets/menu/ExitGame-Sheet.png" id="10_2nypq"]
-[ext_resource type="Texture2D" uid="uid://bae7gpamc3t2s" path="res://assets/menu/TrashTrekTitle.png" id="12_bky6r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7la6k"]
 atlas = ExtResource("3_ucygd")
@@ -217,6 +217,95 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6838"]
+atlas = ExtResource("3_mipys")
+region = Rect2(0, 0, 921, 705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24ra2"]
+atlas = ExtResource("3_mipys")
+region = Rect2(5526, 0, 921, 705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v41fp"]
+atlas = ExtResource("3_mipys")
+region = Rect2(0, 0, 921, 705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr3el"]
+atlas = ExtResource("3_mipys")
+region = Rect2(921, 0, 921, 705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cpub"]
+atlas = ExtResource("3_mipys")
+region = Rect2(1842, 0, 921, 705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyf07"]
+atlas = ExtResource("3_mipys")
+region = Rect2(2763, 0, 921, 705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prsce"]
+atlas = ExtResource("3_mipys")
+region = Rect2(3684, 0, 921, 705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rqjj"]
+atlas = ExtResource("3_mipys")
+region = Rect2(4605, 0, 921, 705)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f6838"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6838")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_24ra2")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_f6838")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_24ra2")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_f6838")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_24ra2")
+}],
+"loop": false,
+"name": &"flicker",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_v41fp")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_qr3el")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_0cpub")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_eyf07")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_prsce")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_4rqjj")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_v41fp")
+}],
+"loop": false,
+"name": &"text_pop",
+"speed": 14.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ucygd"]
 atlas = ExtResource("6_826wr")
 region = Rect2(0, 0, 320, 97)
@@ -276,17 +365,11 @@ scale = Vector2(0.611406, 0.6)
 sprite_frames = SubResource("SpriteFrames_826wr")
 autoplay = "default"
 
-[node name="GameTitle" type="TextureRect" parent="CanvasLayer2"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -271.5
-offset_top = 8.0
-offset_right = 271.5
-offset_bottom = 292.0
-grow_horizontal = 2
-texture = ExtResource("12_bky6r")
-expand_mode = 1
+[node name="GameTitle" type="AnimatedSprite2D" parent="CanvasLayer2"]
+position = Vector2(575, 147)
+scale = Vector2(0.591748, 0.387234)
+sprite_frames = SubResource("SpriteFrames_f6838")
+animation = &"text_pop"
 
 [node name="TutorialButton" type="TextureButton" parent="CanvasLayer2"]
 offset_left = 23.0

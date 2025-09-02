@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://41pdkr7cyd1k"]
+
+[ext_resource type="Texture2D" uid="uid://b271yps1f810d" path="res://assets/menu/GarbageTransition-Sheet.png" id="1_0wykx"]
+[ext_resource type="Script" uid="uid://cgceewwcvxwth" path="res://scenes/scene_transition.gd" id="1_rujfs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rujfs"]
+atlas = ExtResource("1_0wykx")
+region = Rect2(0, 0, 1890, 1417)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sgj6"]
+atlas = ExtResource("1_0wykx")
+region = Rect2(1890, 0, 1890, 1417)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgfgv"]
+atlas = ExtResource("1_0wykx")
+region = Rect2(3780, 0, 1890, 1417)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85h84"]
+atlas = ExtResource("1_0wykx")
+region = Rect2(5670, 0, 1890, 1417)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ooyqd"]
+atlas = ExtResource("1_0wykx")
+region = Rect2(7560, 0, 1890, 1417)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_non66"]
+atlas = ExtResource("1_0wykx")
+region = Rect2(9450, 0, 1890, 1417)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8vuu"]
+atlas = ExtResource("1_0wykx")
+region = Rect2(11340, 0, 1890, 1417)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5v6o"]
+atlas = ExtResource("1_0wykx")
+region = Rect2(13230, 0, 1890, 1417)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ovque"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rujfs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2sgj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgfgv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85h84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ooyqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_non66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8vuu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5v6o")
+}],
+"loop": false,
+"name": &"fill",
+"speed": 10.0
+}]
+
+[node name="SceneTransition" type="CanvasLayer"]
+script = ExtResource("1_rujfs")
+
+[node name="GarbageTrans" type="AnimatedSprite2D" parent="."]
+position = Vector2(578, 322.5)
+scale = Vector2(0.61164, 0.456598)
+sprite_frames = SubResource("SpriteFrames_ovque")
+animation = &"fill"
+frame_progress = 0.397438
