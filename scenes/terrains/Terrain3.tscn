@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cskjjcjavic6o" path="res://scripts/terrain.gd" id="1_l3giw"]
 [ext_resource type="Texture2D" uid="uid://hh1bl1hj407j" path="res://assets/background/emperador.png" id="1_tlmq3"]
-[ext_resource type="Script" uid="uid://q01hxgi1lqgv" path="res://scripts/monster_spawn.gd" id="4_l3giw"]
+[ext_resource type="Script" path="res://scripts/monster_spawn.gd" id="4_l3giw"]
 [ext_resource type="Texture2D" uid="uid://cyu2yaa6na7hj" path="res://assets/background/tile.png" id="4_lvfhc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w20fd"]
@@ -41,7 +41,7 @@ texture_region_size = Vector2i(37, 37)
 tile_size = Vector2i(37, 37)
 sources/2 = SubResource("TileSetAtlasSource_hjqgp")
 
-[node name="Terrain2" type="Node2D" node_paths=PackedStringArray("trash_bin_spawn")]
+[node name="Terrain3" type="Node2D" node_paths=PackedStringArray("trash_bin_spawn")]
 script = ExtResource("1_l3giw")
 trash_bin_spawn = NodePath("TrashSpawns/Marker2D4")
 
