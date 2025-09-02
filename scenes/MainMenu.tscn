@@ -332,7 +332,7 @@ region = Rect2(786, 0, 393, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_826wr"]
 atlas = ExtResource("10_2nypq")
-region = Rect2(392, 0, 394, 115)
+region = Rect2(393, 0, 393, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5faoh"]
 atlas = ExtResource("9_8a8k8")
