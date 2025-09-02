@@ -355,27 +355,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yqorp")
 
-[node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 0
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(1, 1, 1, 0.356863)
 
-[node name="Earth" type="AnimatedSprite2D" parent="."]
+[node name="Earth" type="AnimatedSprite2D" parent="CanvasLayer2"]
 position = Vector2(596, 565)
 scale = Vector2(0.611406, 0.6)
 sprite_frames = SubResource("SpriteFrames_826wr")
 autoplay = "default"
 
-[node name="ColorRect2" type="ColorRect" parent="."]
-layout_mode = 0
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer2"]
 offset_left = -2.0
 offset_top = -1.0
 offset_right = 1158.0
 offset_bottom = 650.0
 color = Color(0, 0, 0, 0.380392)
-
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="GameTitle" type="AnimatedSprite2D" parent="CanvasLayer2"]
 position = Vector2(575, 147)
