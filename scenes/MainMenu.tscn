@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://c8ae8g52xg1c0"]
+[gd_scene load_steps=52 format=3 uid="uid://c8ae8g52xg1c0"]
 
 [ext_resource type="Script" uid="uid://dgtjw4k4yhdoh" path="res://scripts/main_menu.gd" id="1_yqorp"]
 [ext_resource type="Texture2D" uid="uid://cswjjo4ww0dm6" path="res://assets/Player/player_sprite_sheet.png" id="2_0ykhv"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bxmsa748i02ap" path="res://assets/menu/MainMenuOutline.png" id="9_7la6k"]
 [ext_resource type="Texture2D" uid="uid://btydpvtj1ac7o" path="res://assets/menu/StartGame-Sheet.png" id="9_8a8k8"]
 [ext_resource type="Texture2D" uid="uid://bpt8oixuoxios" path="res://assets/menu/ExitGame-Sheet.png" id="10_2nypq"]
+[ext_resource type="Texture2D" uid="uid://bae7gpamc3t2s" path="res://assets/menu/TrashTrekTitle.png" id="12_bky6r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ykhv"]
 atlas = ExtResource("2_0ykhv")
@@ -515,6 +516,13 @@ sprite_frames = SubResource("SpriteFrames_5faoh")
 autoplay = "default"
 frame_progress = 0.060372
 
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1143.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
+
 [node name="Start" type="Button" parent="."]
 visible = false
 layout_mode = 2
@@ -553,11 +561,29 @@ texture = ExtResource("9_7la6k")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
+[node name="GameTitle" type="TextureRect" parent="CanvasLayer2"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -271.5
+offset_right = 271.5
+offset_bottom = 284.0
+grow_horizontal = 2
+texture = ExtResource("12_bky6r")
+expand_mode = 1
+
 [node name="ExitButton" type="TextureButton" parent="CanvasLayer2"]
-offset_left = 432.0
-offset_top = 422.0
-offset_right = 721.0
-offset_bottom = 505.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.0
+offset_top = 73.0
+offset_right = 110.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = SubResource("AtlasTexture_8vx4p")
 texture_pressed = SubResource("AtlasTexture_tdapf")
 texture_hover = SubResource("AtlasTexture_v41fp")
@@ -565,10 +591,17 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="StartButton" type="TextureButton" parent="CanvasLayer2"]
-offset_left = 363.0
-offset_top = 325.0
-offset_right = 791.0
-offset_bottom = 404.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -131.0
+offset_top = -20.0
+offset_right = 165.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
 texture_normal = SubResource("AtlasTexture_5faoh")
 texture_pressed = SubResource("AtlasTexture_ptake")
 texture_hover = SubResource("AtlasTexture_hubol")
