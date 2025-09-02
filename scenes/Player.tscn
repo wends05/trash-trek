@@ -1,12 +1,7 @@
-[gd_scene load_steps=26 format=3 uid="uid://dyac4ihj46tig"]
+[gd_scene load_steps=21 format=3 uid="uid://dyac4ihj46tig"]
 
 [ext_resource type="Script" uid="uid://dofxmaqpmkhp1" path="res://scripts/player.gd" id="1_62i1b"]
 [ext_resource type="Texture2D" uid="uid://cswjjo4ww0dm6" path="res://assets/Player/player_sprite_sheet.png" id="2_v6fml"]
-[ext_resource type="Script" uid="uid://djtoedaaltfjp" path="res://scripts/player/state_machine.gd" id="3_mdl7e"]
-[ext_resource type="Script" uid="uid://c8o5govvsasps" path="res://scripts/player/states/running.gd" id="4_cw2d6"]
-[ext_resource type="Script" uid="uid://4xbjs1rmmluc" path="res://scripts/player/states/jump.gd" id="5_khinc"]
-[ext_resource type="Script" uid="uid://bg3y0ph05g1fe" path="res://scripts/player/states/falling.gd" id="6_bruh7"]
-[ext_resource type="Script" uid="uid://cb8qsps8nhegl" path="res://scripts/player/states/hurt.gd" id="7_6eyey"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d3wef"]
 atlas = ExtResource("2_v6fml")
@@ -132,7 +127,7 @@ size = Vector2(64, 141)
 size = Vector2(64, 141)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mdl7e"]
-size = Vector2(73, 114)
+size = Vector2(63, 150.5)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 14
@@ -142,10 +137,8 @@ script = ExtResource("1_62i1b")
 position = Vector2(8, 3.24995)
 scale = Vector2(0.365234, 0.381836)
 sprite_frames = SubResource("SpriteFrames_70d11")
-animation = &"jump"
+animation = &"falling"
 autoplay = "running"
-frame = 5
-frame_progress = 0.366184
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.90735e-06, -1.49997)
@@ -173,24 +166,8 @@ shape = SubResource("RectangleShape2D_3li8b")
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterCollision"]
-position = Vector2(9, -8)
+position = Vector2(7, 10)
 shape = SubResource("RectangleShape2D_mdl7e")
-
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("3_mdl7e")
-initial_state = NodePath("Running")
-
-[node name="Running" type="Node" parent="StateMachine"]
-script = ExtResource("4_cw2d6")
-
-[node name="Jump" type="Node" parent="StateMachine"]
-script = ExtResource("5_khinc")
-
-[node name="Falling" type="Node" parent="StateMachine"]
-script = ExtResource("6_bruh7")
-
-[node name="Hurt" type="Node" parent="StateMachine"]
-script = ExtResource("7_6eyey")
 
 [connection signal="area_entered" from="TrashCollectionArea" to="." method="_on_trash_collection_area_area_entered"]
 [connection signal="area_entered" from="TrashBinCollectionArea" to="." method="_on_trash_bin_collection_area_area_entered"]
