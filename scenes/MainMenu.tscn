@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://c8ae8g52xg1c0"]
+[gd_scene load_steps=45 format=3 uid="uid://c8ae8g52xg1c0"]
 
 [ext_resource type="Script" uid="uid://dgtjw4k4yhdoh" path="res://scripts/main_menu.gd" id="1_yqorp"]
 [ext_resource type="Texture2D" uid="uid://ds86tgtgcmsy4" path="res://assets/menu/Earth-Sheet.png" id="3_ucygd"]
@@ -6,46 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://btydpvtj1ac7o" path="res://assets/menu/StartGame-Sheet.png" id="9_8a8k8"]
 [ext_resource type="Texture2D" uid="uid://bpt8oixuoxios" path="res://assets/menu/ExitGame-Sheet.png" id="10_2nypq"]
 [ext_resource type="Texture2D" uid="uid://bae7gpamc3t2s" path="res://assets/menu/TrashTrekTitle.png" id="12_bky6r"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mipys"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8a8k8"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2nypq"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ucygd"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bky6r"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l4mxc"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7la6k"]
-
-[sub_resource type="Theme" id="Theme_826wr"]
-Button/styles/disabled = SubResource("StyleBoxEmpty_mipys")
-Button/styles/focus = SubResource("StyleBoxEmpty_8a8k8")
-Button/styles/hover = SubResource("StyleBoxEmpty_2nypq")
-Button/styles/hover_pressed = SubResource("StyleBoxEmpty_ucygd")
-Button/styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_bky6r")
-Button/styles/normal = SubResource("StyleBoxEmpty_l4mxc")
-Button/styles/pressed = SubResource("StyleBoxEmpty_7la6k")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5faoh"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ptake"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hubol"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8vx4p"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tdapf"]
-
-[sub_resource type="Theme" id="Theme_v41fp"]
-Button/styles/disabled = SubResource("StyleBoxEmpty_5faoh")
-Button/styles/focus = SubResource("StyleBoxEmpty_ptake")
-Button/styles/hover = SubResource("StyleBoxEmpty_hubol")
-Button/styles/normal = SubResource("StyleBoxEmpty_8vx4p")
-Button/styles/pressed = SubResource("StyleBoxEmpty_tdapf")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7la6k"]
 atlas = ExtResource("3_ucygd")
@@ -275,11 +235,11 @@ region = Rect2(0, 0, 393, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tdapf"]
 atlas = ExtResource("10_2nypq")
-region = Rect2(786.039, 0, 392.961, 115)
+region = Rect2(786, 0, 393, 115)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v41fp"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_826wr"]
 atlas = ExtResource("10_2nypq")
-region = Rect2(393, 0, 393, 115)
+region = Rect2(392, 0, 394, 115)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5faoh"]
 atlas = ExtResource("9_8a8k8")
@@ -303,39 +263,10 @@ grow_vertical = 2
 script = ExtResource("1_yqorp")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 layout_mode = 0
-offset_right = 1143.0
+offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0, 0, 0, 1)
-
-[node name="Start" type="Button" parent="."]
-visible = false
-layout_mode = 2
-offset_left = 589.0
-offset_top = 374.0
-offset_right = 821.0
-offset_bottom = 441.0
-rotation = -0.0872665
-theme = SubResource("Theme_826wr")
-
-[node name="Quit" type="Button" parent="."]
-visible = false
-layout_mode = 2
-offset_left = 614.0
-offset_top = 449.0
-offset_right = 827.0
-offset_bottom = 511.0
-rotation = -0.0698132
-theme = SubResource("Theme_v41fp")
-text = "
-"
-
-[node name="ColorRect2" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1156.0
-offset_bottom = 648.0
-color = Color(0, 0, 0, 0.458824)
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
@@ -344,17 +275,6 @@ position = Vector2(596, 565)
 scale = Vector2(0.611406, 0.6)
 sprite_frames = SubResource("SpriteFrames_826wr")
 autoplay = "default"
-
-[node name="TutorialButton" type="TextureButton" parent="CanvasLayer2"]
-offset_left = 23.0
-offset_top = 458.0
-offset_right = 241.0
-offset_bottom = 511.0
-texture_normal = SubResource("AtlasTexture_ucygd")
-texture_pressed = SubResource("AtlasTexture_mipys")
-texture_hover = SubResource("AtlasTexture_8a8k8")
-ignore_texture_size = true
-stretch_mode = 0
 
 [node name="GameTitle" type="TextureRect" parent="CanvasLayer2"]
 anchors_preset = 5
@@ -368,6 +288,17 @@ grow_horizontal = 2
 texture = ExtResource("12_bky6r")
 expand_mode = 1
 
+[node name="TutorialButton" type="TextureButton" parent="CanvasLayer2"]
+offset_left = 23.0
+offset_top = 458.0
+offset_right = 241.0
+offset_bottom = 511.0
+texture_normal = SubResource("AtlasTexture_ucygd")
+texture_pressed = SubResource("AtlasTexture_mipys")
+texture_hover = SubResource("AtlasTexture_8a8k8")
+ignore_texture_size = true
+stretch_mode = 0
+
 [node name="ExitButton" type="TextureButton" parent="CanvasLayer2"]
 anchors_preset = 8
 anchor_left = 0.5
@@ -376,13 +307,13 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -553.0
 offset_top = 208.0
-offset_right = -350.0
-offset_bottom = 256.0
+offset_right = -362.0
+offset_bottom = 254.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = SubResource("AtlasTexture_8vx4p")
 texture_pressed = SubResource("AtlasTexture_tdapf")
-texture_hover = SubResource("AtlasTexture_v41fp")
+texture_hover = SubResource("AtlasTexture_826wr")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -404,9 +335,5 @@ texture_hover = SubResource("AtlasTexture_hubol")
 ignore_texture_size = true
 stretch_mode = 0
 
-[connection signal="mouse_entered" from="Start" to="." method="_on_start_mouse_entered"]
-[connection signal="mouse_exited" from="Start" to="." method="_on_start_mouse_exited"]
-[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
-[connection signal="mouse_entered" from="Quit" to="." method="_on_quit_mouse_entered"]
-[connection signal="mouse_exited" from="Quit" to="." method="_on_quit_mouse_exited"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer2/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer2/StartButton" to="." method="_on_start_button_pressed"]
