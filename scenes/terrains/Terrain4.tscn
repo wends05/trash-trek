@@ -60,7 +60,7 @@ shape = SubResource("RectangleShape2D_tlmq3")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 z_index = 1
-position = Vector2(999, 546)
+position = Vector2(1074, 546)
 shape = SubResource("RectangleShape2D_l3giw")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]

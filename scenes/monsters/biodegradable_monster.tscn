@@ -17,35 +17,35 @@ region = Rect2(2160, 0, 360, 360)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2mxn6"]
 atlas = ExtResource("1_vk10a")
-region = Rect2(0, 0, 360, 360)
+region = Rect2(0, 0, 360, 304)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7moko"]
 atlas = ExtResource("1_vk10a")
-region = Rect2(360, 0, 360, 360)
+region = Rect2(360, 0, 360, 304)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x5bsv"]
 atlas = ExtResource("1_vk10a")
-region = Rect2(720, 0, 360, 360)
+region = Rect2(720, 0, 360, 304)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3m36a"]
 atlas = ExtResource("1_vk10a")
-region = Rect2(1080, 0, 360, 360)
+region = Rect2(1080, 0, 360, 304)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cgyqc"]
 atlas = ExtResource("1_vk10a")
-region = Rect2(1440, 0, 360, 360)
+region = Rect2(1440, 0, 360, 304)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v5h0o"]
 atlas = ExtResource("1_vk10a")
-region = Rect2(1800, 0, 360, 360)
+region = Rect2(1800, 0, 360, 304)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idyf2"]
 atlas = ExtResource("1_vk10a")
-region = Rect2(2160, 0, 360, 360)
+region = Rect2(2160, 0, 360, 304)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cmfv"]
 atlas = ExtResource("1_vk10a")
-region = Rect2(2520, 0, 360, 360)
+region = Rect2(2520, 0, 360, 304)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1hh8e"]
 animations = [{
@@ -94,24 +94,25 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cuaul"]
-size = Vector2(304.164, 276.445)
+size = Vector2(177.506, 205.055)
 
 [node name="Bio_monster" type="Node2D" node_paths=PackedStringArray("anim")]
 script = ExtResource("1_2mxn6")
 anim = NodePath("BiodegradableMonster")
 
 [node name="BiodegradableMonster" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2.49999, -2.49999)
-scale = Vector2(0.397222, 0.397222)
+position = Vector2(-1.89543e-05, -0.49999)
+scale = Vector2(0.327778, 0.397222)
 sprite_frames = SubResource("SpriteFrames_1hh8e")
 animation = &"spawn"
 autoplay = "spawn"
-frame_progress = 0.899285
+frame_progress = 0.421316
 
 [node name="Area2D" type="Area2D" parent="BiodegradableMonster"]
+position = Vector2(5.03497, 5.03497)
 collision_layer = 16
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BiodegradableMonster/Area2D"]
-position = Vector2(8.81117, -61.6783)
+position = Vector2(-26.6693, 5.60453)
 shape = SubResource("RectangleShape2D_cuaul")
