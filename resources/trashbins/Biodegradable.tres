@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="TrashBinResource" load_steps=8 format=3 uid="uid://c6x1l1hunrcg2"]
+[gd_resource type="Resource" script_class="TrashBinResource" load_steps=9 format=3 uid="uid://c6x1l1hunrcg2"]
 
+[ext_resource type="Texture2D" uid="uid://c8djme6vt6yn5" path="res://assets/trashbins/labels/Biodegradable.png" id="1_jx0s7"]
 [ext_resource type="Script" uid="uid://dy8r3pdphby1h" path="res://scripts/trash_bin_resource.gd" id="1_lkeyv"]
 [ext_resource type="Texture2D" uid="uid://doly0jgfe62ix" path="res://assets/trashbins/Trashbins_Assets.png" id="2_jx0s7"]
 
@@ -51,4 +52,5 @@ animations = [{
 script = ExtResource("1_lkeyv")
 type = 1
 sprite_frames = SubResource("SpriteFrames_accb2")
+icon_image = ExtResource("1_jx0s7")
 metadata/_custom_type_script = "uid://dywqk6eaqhfmn"
