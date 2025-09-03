@@ -16,10 +16,16 @@ var target_peak_force: float = 0.0
 @onready var player: Player = get_parent().get_parent()
 
 func enter():
+	# If a hurt-triggered lockout is active, immediately abort to running/falling (don't allow buffered jump)
+	if player.block_jump_after_hurt:
+		# Decide appropriate fallback state
+		if player.is_on_floor():
+			transitioned.emit(self, "running")
+		else:
+			transitioned.emit(self, "falling")
+		return
 	animated_sprite.play("jump")
-	# Set starting upward velocity
 	player.velocity.y = base_jump_force
-	# Precompute final target (more negative means higher)
 	target_peak_force = base_jump_force + max_additional_force
 	hold_timer = 0.0
 
