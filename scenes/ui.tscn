@@ -75,9 +75,8 @@ script = ExtResource("1_nt7q6")
 [node name="BackgroundRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = -2.0
-offset_top = -16.0
-offset_right = 1150.0
-offset_bottom = 645.0
+offset_right = 1152.0
+offset_bottom = 648.0
 color = Color(0, 0, 0, 0.486275)
 
 [node name="EnergyBar" parent="." instance=ExtResource("2_x4jx1")]
