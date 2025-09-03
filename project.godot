@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 Utils="*res://scripts/utils.gd"
 Game="*res://scripts/game.gd"
-SceneHandler="*res://scripts/scene_handler.gd"
+SceneHandler="*res://scripts/scene/scene_handler.gd"
 SceneTransition="*res://scenes/scene_transition.tscn"
 
 [display]
