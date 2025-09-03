@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 Utils="*res://scripts/utils.gd"
 Game="*res://scripts/game.gd"
+SceneHandler="*res://scripts/scene/scene_handler.gd"
+SceneTransition="*res://scenes/scene_transition.tscn"
 
 [display]
 
@@ -85,9 +87,4 @@ esc={
 2d_physics/layer_2="Terrain"
 2d_physics/layer_3="Trash"
 2d_physics/layer_4="Trash Bin"
-2d_physics/layer_5="Monster"
-
-[rendering]
-
-textures/canvas_textures/default_texture_filter=0
 2d_physics/layer_5="Monster"
