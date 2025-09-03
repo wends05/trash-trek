@@ -358,7 +358,7 @@ script = ExtResource("1_yqorp")
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer2"]
-offset_right = 1152.0
+offset_right = 1156.0
 offset_bottom = 648.0
 color = Color(1, 1, 1, 0.356863)
 
