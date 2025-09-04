@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://dnt5jfq015qn3" path="res://assets/menu/clouds/cloud4.png" id="7_ptake"]
 [ext_resource type="Texture2D" uid="uid://b4bxcpyirarat" path="res://assets/menu/trashes/TrashMount1.png" id="7_ucygd"]
 [ext_resource type="Texture2D" uid="uid://btydpvtj1ac7o" path="res://assets/menu/StartGame-Sheet.png" id="9_8a8k8"]
-[ext_resource type="Texture2D" uid="uid://15j160l7c6g8" path="res://assets/menu/building.png" id="9_8vx4p"]
-[ext_resource type="Texture2D" uid="uid://dgnaek6yt4met" path="res://assets/menu/building2.png" id="9_tdapf"]
+[ext_resource type="Texture2D" uid="uid://15j160l7c6g8" path="res://assets/menu/buildings/building.png" id="9_8vx4p"]
+[ext_resource type="Texture2D" uid="uid://dgnaek6yt4met" path="res://assets/menu/buildings/building2.png" id="9_tdapf"]
 [ext_resource type="Texture2D" uid="uid://bpt8oixuoxios" path="res://assets/menu/ExitGame-Sheet.png" id="10_2nypq"]
 [ext_resource type="Texture2D" uid="uid://cwtbps22uhhwl" path="res://assets/menu/clouds/cloud5.png" id="10_hubol"]
 [ext_resource type="Texture2D" uid="uid://b0wiwv8fwgkwc" path="res://assets/menu/clouds/cloud3.png" id="14_5faoh"]
@@ -661,9 +661,9 @@ position = Vector2(225, 551)
 scale = Vector2(0.23763, 0.205259)
 texture = ExtResource("7_ucygd")
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="Buttons" type="CanvasLayer" parent="."]
 
-[node name="TutorialButton" type="TextureButton" parent="CanvasLayer2"]
+[node name="TutorialButton" type="TextureButton" parent="Buttons"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -682,7 +682,7 @@ texture_hover = SubResource("AtlasTexture_8a8k8")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="ExitButton" type="TextureButton" parent="CanvasLayer2"]
+[node name="ExitButton" type="TextureButton" parent="Buttons"]
 modulate = Color(0.97, 0.307167, 0, 1)
 texture_filter = 1
 anchors_preset = 7
@@ -702,7 +702,7 @@ texture_hover = SubResource("AtlasTexture_826wr")
 ignore_texture_size = true
 stretch_mode = 0
 
-[node name="StartButton" type="TextureButton" parent="CanvasLayer2"]
+[node name="StartButton" type="TextureButton" parent="Buttons"]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -722,5 +722,5 @@ texture_hover = SubResource("AtlasTexture_hubol")
 ignore_texture_size = true
 stretch_mode = 0
 
-[connection signal="pressed" from="CanvasLayer2/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="pressed" from="CanvasLayer2/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Buttons/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Buttons/StartButton" to="." method="_on_start_button_pressed"]
