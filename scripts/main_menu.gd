@@ -1,6 +1,6 @@
 extends Control
 
-@onready var GameTitle = $CanvasLayer2/GameTitle
+@onready var GameTitle = $ParallaxBackground/Misc/GameTitle
 
 func _ready():
 	is_intro_scene()
