@@ -168,6 +168,7 @@ libraries = {
 }
 
 [node name="GarbageTrans" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.601223, 0.601223, 0.601223, 1)
 position = Vector2(577.5, 323.5)
 scale = Vector2(0.615344, 0.45801)
 sprite_frames = SubResource("SpriteFrames_ovque")

@@ -1,6 +1,7 @@
 extends Control
 
-@onready var GameTitle = $ParallaxBackground/Misc/GameTitle
+@onready var gameTitle = $ParallaxBackground/Misc/GameTitle
+#@onready var clouds = $ParallaxBackground/Background/AnimationPlayer
 
 func _ready():
 	is_intro_scene()
@@ -13,9 +14,11 @@ func _on_exit_button_pressed() -> void:
 
 func is_intro_scene():
 	if SceneHandler.last_scene_path == "res://scenes/intro.tscn":
-		GameTitle.play("text_pop")
-		await GameTitle.animation_finished
-		GameTitle.play("default")
+		gameTitle.play("text_pop")
+		#clouds.play("cloud_fade_out")
+		await gameTitle.animation_finished
+		gameTitle.play("default")
+		#clouds.play("cloud_fade_in")
 		
 func start_game():
 	SceneHandler.last_scene_path = get_tree().current_scene.scene_file_path
