@@ -1,140 +1,15 @@
-[gd_scene load_steps=59 format=3 uid="uid://c8ae8g52xg1c0"]
+[gd_scene load_steps=63 format=3 uid="uid://c8ae8g52xg1c0"]
 
 [ext_resource type="Script" uid="uid://dgtjw4k4yhdoh" path="res://scripts/main_menu.gd" id="1_yqorp"]
+[ext_resource type="Texture2D" uid="uid://cxway0xgyufg3" path="res://assets/menu/TrashMount2.png" id="3_8a8k8"]
 [ext_resource type="Texture2D" uid="uid://b1hx2ogiy3qao" path="res://assets/menu/GameTitle-Sheet.png" id="3_mipys"]
 [ext_resource type="Texture2D" uid="uid://ds86tgtgcmsy4" path="res://assets/menu/Earth-Sheet.png" id="3_ucygd"]
+[ext_resource type="Texture2D" uid="uid://ds2eqyahb3eu1" path="res://assets/menu/TrashMount1.png" id="4_mipys"]
+[ext_resource type="Texture2D" uid="uid://cxk1nybgl1cqg" path="res://assets/menu/TrashMount3.png" id="5_8a8k8"]
 [ext_resource type="Texture2D" uid="uid://npk1dj5ta1ka" path="res://assets/menu/Tutorial-Sheet.png" id="6_826wr"]
+[ext_resource type="Texture2D" uid="uid://b4bxcpyirarat" path="res://assets/menu/TrashMount.png" id="7_ucygd"]
 [ext_resource type="Texture2D" uid="uid://btydpvtj1ac7o" path="res://assets/menu/StartGame-Sheet.png" id="9_8a8k8"]
 [ext_resource type="Texture2D" uid="uid://bpt8oixuoxios" path="res://assets/menu/ExitGame-Sheet.png" id="10_2nypq"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f6838"]
-atlas = ExtResource("3_mipys")
-region = Rect2(0, 0, 921, 705)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v41fp"]
-atlas = ExtResource("3_mipys")
-region = Rect2(0, 0, 921, 705)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qr3el"]
-atlas = ExtResource("3_mipys")
-region = Rect2(921, 0, 921, 705)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0cpub"]
-atlas = ExtResource("3_mipys")
-region = Rect2(1842, 0, 921, 705)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eyf07"]
-atlas = ExtResource("3_mipys")
-region = Rect2(2763, 0, 921, 705)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_prsce"]
-atlas = ExtResource("3_mipys")
-region = Rect2(3684, 0, 921, 705)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4rqjj"]
-atlas = ExtResource("3_mipys")
-region = Rect2(4605, 0, 921, 705)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_24ra2"]
-atlas = ExtResource("3_mipys")
-region = Rect2(5526, 0, 921, 705)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_egsv4"]
-atlas = ExtResource("3_mipys")
-region = Rect2(6447, 0, 921, 705)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xbdup"]
-atlas = ExtResource("3_mipys")
-region = Rect2(7368, 0, 921, 705)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5is2y"]
-atlas = ExtResource("3_mipys")
-region = Rect2(8289, 0, 921, 705)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_f6838"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_f6838")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 8.0,
-"texture": SubResource("AtlasTexture_v41fp")
-}, {
-"duration": 1.5,
-"texture": SubResource("AtlasTexture_qr3el")
-}, {
-"duration": 1.5,
-"texture": SubResource("AtlasTexture_0cpub")
-}, {
-"duration": 1.5,
-"texture": SubResource("AtlasTexture_eyf07")
-}, {
-"duration": 1.5,
-"texture": SubResource("AtlasTexture_prsce")
-}, {
-"duration": 1.5,
-"texture": SubResource("AtlasTexture_4rqjj")
-}, {
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_24ra2")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_egsv4")
-}, {
-"duration": 1.8,
-"texture": SubResource("AtlasTexture_xbdup")
-}, {
-"duration": 1.8,
-"texture": SubResource("AtlasTexture_5is2y")
-}, {
-"duration": 4.0,
-"texture": SubResource("AtlasTexture_v41fp")
-}],
-"loop": false,
-"name": &"text_pop",
-"speed": 14.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ucygd"]
-atlas = ExtResource("6_826wr")
-region = Rect2(0, 0, 320, 97)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mipys"]
-atlas = ExtResource("6_826wr")
-region = Rect2(640, 0, 320, 97)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8a8k8"]
-atlas = ExtResource("6_826wr")
-region = Rect2(320, 0, 320, 97)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8vx4p"]
-atlas = ExtResource("10_2nypq")
-region = Rect2(0, 0, 393, 115)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tdapf"]
-atlas = ExtResource("10_2nypq")
-region = Rect2(786, 0, 393, 115)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_826wr"]
-atlas = ExtResource("10_2nypq")
-region = Rect2(393, 0, 393, 115)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5faoh"]
-atlas = ExtResource("9_8a8k8")
-region = Rect2(0, 0, 600, 123)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ptake"]
-atlas = ExtResource("9_8a8k8")
-region = Rect2(1200.24, 0, 599.759, 123)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hubol"]
-atlas = ExtResource("9_8a8k8")
-region = Rect2(600, 0, 600, 123)
 
 [sub_resource type="Gradient" id="Gradient_826wr"]
 offsets = PackedFloat32Array(0, 0.495413, 0.633027, 0.793578, 0.848624, 1)
@@ -356,6 +231,135 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6838"]
+atlas = ExtResource("3_mipys")
+region = Rect2(0, 0, 921, 705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v41fp"]
+atlas = ExtResource("3_mipys")
+region = Rect2(0, 0, 921, 705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qr3el"]
+atlas = ExtResource("3_mipys")
+region = Rect2(921, 0, 921, 705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0cpub"]
+atlas = ExtResource("3_mipys")
+region = Rect2(1842, 0, 921, 705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyf07"]
+atlas = ExtResource("3_mipys")
+region = Rect2(2763, 0, 921, 705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prsce"]
+atlas = ExtResource("3_mipys")
+region = Rect2(3684, 0, 921, 705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4rqjj"]
+atlas = ExtResource("3_mipys")
+region = Rect2(4605, 0, 921, 705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_24ra2"]
+atlas = ExtResource("3_mipys")
+region = Rect2(5526, 0, 921, 705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egsv4"]
+atlas = ExtResource("3_mipys")
+region = Rect2(6447, 0, 921, 705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbdup"]
+atlas = ExtResource("3_mipys")
+region = Rect2(7368, 0, 921, 705)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5is2y"]
+atlas = ExtResource("3_mipys")
+region = Rect2(8289, 0, 921, 705)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f6838"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6838")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 8.0,
+"texture": SubResource("AtlasTexture_v41fp")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_qr3el")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_0cpub")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_eyf07")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_prsce")
+}, {
+"duration": 1.5,
+"texture": SubResource("AtlasTexture_4rqjj")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_24ra2")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_egsv4")
+}, {
+"duration": 1.8,
+"texture": SubResource("AtlasTexture_xbdup")
+}, {
+"duration": 1.8,
+"texture": SubResource("AtlasTexture_5is2y")
+}, {
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_v41fp")
+}],
+"loop": false,
+"name": &"text_pop",
+"speed": 14.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucygd"]
+atlas = ExtResource("6_826wr")
+region = Rect2(0, 0, 320, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mipys"]
+atlas = ExtResource("6_826wr")
+region = Rect2(640, 0, 320, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8a8k8"]
+atlas = ExtResource("6_826wr")
+region = Rect2(320, 0, 320, 97)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vx4p"]
+atlas = ExtResource("10_2nypq")
+region = Rect2(0, 0, 393, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tdapf"]
+atlas = ExtResource("10_2nypq")
+region = Rect2(786, 0, 393, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_826wr"]
+atlas = ExtResource("10_2nypq")
+region = Rect2(393, 0, 393, 115)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5faoh"]
+atlas = ExtResource("9_8a8k8")
+region = Rect2(0, 0, 600, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptake"]
+atlas = ExtResource("9_8a8k8")
+region = Rect2(1200.24, 0, 599.759, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hubol"]
+atlas = ExtResource("9_8a8k8")
+region = Rect2(600, 0, 600, 123)
+
 [node name="Main Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -364,6 +368,86 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yqorp")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/Background"]
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_right = 1152.0
+offset_bottom = 652.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ucygd")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+z_index = 1
+
+[node name="Earth" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2(580, 525)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_826wr")
+autoplay = "default"
+frame = 18
+frame_progress = 0.713431
+
+[node name="Foreground" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="TrashMount2" type="Sprite2D" parent="ParallaxBackground/Foreground"]
+z_index = 2
+position = Vector2(961.586, 542)
+scale = Vector2(0.254445, 0.217)
+texture = ExtResource("3_8a8k8")
+
+[node name="TrashMount1" type="Sprite2D" parent="ParallaxBackground/Foreground"]
+z_index = 1
+position = Vector2(200.984, 571)
+scale = Vector2(0.269552, 0.161612)
+texture = ExtResource("7_ucygd")
+flip_h = true
+
+[node name="TrashMount3" type="Sprite2D" parent="ParallaxBackground/Foreground"]
+z_index = 1
+position = Vector2(951, 580)
+scale = Vector2(0.209025, 0.14709)
+texture = ExtResource("5_8a8k8")
+
+[node name="Middleground" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="TrashMount1" type="Sprite2D" parent="ParallaxBackground/Middleground"]
+modulate = Color(0.621523, 0.621524, 0.621524, 1)
+position = Vector2(1044.02, 495.83)
+rotation = -0.366519
+scale = Vector2(0.196497, 0.167036)
+texture = ExtResource("4_mipys")
+
+[node name="TrashMount4" type="Sprite2D" parent="ParallaxBackground/Middleground"]
+modulate = Color(0.544974, 0.544974, 0.544974, 1)
+position = Vector2(285, 492)
+scale = Vector2(0.378906, 0.272931)
+texture = ExtResource("3_8a8k8")
+flip_h = true
+
+[node name="TrashMount" type="Sprite2D" parent="ParallaxBackground/Middleground"]
+modulate = Color(0.466181, 0.466181, 0.466181, 1)
+z_index = -1
+position = Vector2(1061, 243)
+rotation = -1.5324
+scale = Vector2(0.323, 0.207)
+texture = ExtResource("7_ucygd")
+
+[node name="TrashMount2" type="Sprite2D" parent="ParallaxBackground/Middleground"]
+modulate = Color(0.597176, 0.597176, 0.597176, 1)
+position = Vector2(225, 551)
+scale = Vector2(0.23763, 0.205259)
+texture = ExtResource("7_ucygd")
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
@@ -399,8 +483,8 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -119.0
 offset_top = -155.0
-offset_right = 119.0
-offset_bottom = -96.0
+offset_right = 117.0
+offset_bottom = -104.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = SubResource("AtlasTexture_8vx4p")
@@ -426,33 +510,6 @@ texture_pressed = SubResource("AtlasTexture_ptake")
 texture_hover = SubResource("AtlasTexture_hubol")
 ignore_texture_size = true
 stretch_mode = 0
-
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 1.0
-offset_right = 1152.0
-offset_bottom = 652.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("GradientTexture2D_ucygd")
-
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
-z_index = 1
-
-[node name="Earth" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer2"]
-modulate = Color(0, 0, 0, 0.326)
-position = Vector2(596, 565)
-scale = Vector2(0.611406, 0.6)
-sprite_frames = SubResource("SpriteFrames_826wr")
-autoplay = "default"
 
 [connection signal="pressed" from="CanvasLayer2/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="CanvasLayer2/StartButton" to="." method="_on_start_button_pressed"]

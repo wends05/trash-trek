@@ -168,7 +168,7 @@ libraries = {
 }
 
 [node name="GarbageTrans" type="AnimatedSprite2D" parent="."]
-position = Vector2(577.5, 322.5)
-scale = Vector2(0.615344, 0.456598)
+position = Vector2(577.5, 323.5)
+scale = Vector2(0.615344, 0.45801)
 sprite_frames = SubResource("SpriteFrames_ovque")
 animation = &"fill"
