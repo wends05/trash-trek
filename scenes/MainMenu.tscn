@@ -399,10 +399,10 @@ scale = Vector2(0.411519, 0.437869)
 sprite_frames = SubResource("SpriteFrames_826wr")
 autoplay = "default"
 
-[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/Misc"]
+[node name="TVPlaceholder" type="ColorRect" parent="ParallaxBackground/Misc"]
 offset_left = 187.0
 offset_top = 269.0
-offset_right = 949.0
+offset_right = 911.0
 offset_bottom = 653.0
 
 [node name="GameTitle" type="AnimatedSprite2D" parent="ParallaxBackground/Misc"]
