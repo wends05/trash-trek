@@ -81,45 +81,48 @@ _data = {
 &"fade_out": SubResource("Animation_hgfgv")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rujfs"]
+atlas = ExtResource("2_rujfs")
+region = Rect2(0, 0, 1890, 1417)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2sgj6"]
 atlas = ExtResource("2_rujfs")
-region = Rect2(0, 0, 945, 708)
+region = Rect2(1890, 0, 1890, 1417)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hgfgv"]
 atlas = ExtResource("2_rujfs")
-region = Rect2(945, 0, 945, 708)
+region = Rect2(3780, 0, 1890, 1417)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85h84"]
 atlas = ExtResource("2_rujfs")
-region = Rect2(1890, 0, 945, 708)
+region = Rect2(0, 1417, 1890, 1417)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ooyqd"]
 atlas = ExtResource("2_rujfs")
-region = Rect2(2835, 0, 945, 708)
+region = Rect2(1890, 1417, 1890, 1417)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_non66"]
 atlas = ExtResource("2_rujfs")
-region = Rect2(3780, 0, 945, 708)
+region = Rect2(3780, 1417, 1890, 1417)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h8vuu"]
 atlas = ExtResource("2_rujfs")
-region = Rect2(4725, 0, 945, 708)
+region = Rect2(0, 2834, 1890, 1417)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l5v6o"]
 atlas = ExtResource("2_rujfs")
-region = Rect2(5670, 0, 945, 708)
+region = Rect2(1890, 2834, 1890, 1417)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_73nkw"]
 atlas = ExtResource("2_rujfs")
-region = Rect2(6615, 0, 945, 708)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4qi5g"]
-atlas = ExtResource("2_rujfs")
-region = Rect2(7560, 0, 945, 708)
+region = Rect2(3780, 2834, 1890, 1417)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ovque"]
 animations = [{
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rujfs")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2sgj6")
 }, {
@@ -143,9 +146,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_73nkw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4qi5g")
 }],
 "loop": false,
 "name": &"fill",
@@ -168,7 +168,7 @@ libraries = {
 }
 
 [node name="GarbageTrans" type="AnimatedSprite2D" parent="."]
-position = Vector2(580, 328)
-scale = Vector2(1.22751, 0.926554)
+position = Vector2(575.5, 324)
+scale = Vector2(0.610053, 0.457304)
 sprite_frames = SubResource("SpriteFrames_ovque")
 animation = &"fill"
