@@ -1,6 +1,9 @@
 extends Control
 
-@onready var GameTitle = $CanvasLayer2/GameTitle
+@onready var gameTitle = $ParallaxBackground/Misc/GameTitle
+@onready var videoPlay = $ParallaxBackground/Misc/VideoStreamPlayer
+@onready var camPlay = $AnimationPlayer
+@onready var camPos = $Camera2D
 
 func _ready():
 	is_intro_scene()
@@ -13,10 +16,16 @@ func _on_exit_button_pressed() -> void:
 
 func is_intro_scene():
 	if SceneHandler.last_scene_path == "res://scenes/intro.tscn":
-		GameTitle.play("text_pop")
-		await GameTitle.animation_finished
-		GameTitle.play("default")
-		
+		camPlay.play("cam_in")
+		await camPlay.animation_finished
+		gameTitle.play("text_pop")
+		videoPlay.paused = true
+		await gameTitle.animation_finished
+		gameTitle.play("default")
+		videoPlay.paused = false
+	else:
+		camPos.position = Vector2(0, 0)
+
 func start_game():
 	SceneHandler.last_scene_path = get_tree().current_scene.scene_file_path
 	Game.reset_stats()

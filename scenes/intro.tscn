@@ -1,8 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://k87148muibsn"]
+[gd_scene load_steps=18 format=3 uid="uid://k87148muibsn"]
 
 [ext_resource type="Script" uid="uid://gl6npkx1xsch" path="res://scripts/intro.gd" id="1_yjqpq"]
 [ext_resource type="FontFile" uid="uid://b2wi0sk77gq42" path="res://fonts/Tropical Taste Demo.otf" id="2_4bx60"]
 [ext_resource type="Texture2D" uid="uid://cswjjo4ww0dm6" path="res://assets/Player/player_sprite_sheet.png" id="3_i2l1n"]
+
+[sub_resource type="Gradient" id="Gradient_4bx60"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.128919, 0.369691, 0.525504, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4bx60"]
+gradient = SubResource("Gradient_4bx60")
+use_hdr = true
+fill_from = Vector2(0, 0.179487)
+fill_to = Vector2(0, 0.636752)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wfs7u"]
 atlas = ExtResource("3_i2l1n")
@@ -215,7 +225,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(2.83333, 3.46667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(571, 300), Vector2(650, 4050.03)]
+"values": [Vector2(571, 300), Vector2(742.39, 3600)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -224,10 +234,10 @@ tracks/5/path = NodePath("Camera2D:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(2.86667, 3.43333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(2.86667, 3.33333, 3.43333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(576, 320), Vector2(900, 4000)]
+"values": [Vector2(576, 320), Vector2(900, 3100), Vector2(900, 3000)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i2l1n"]
@@ -245,6 +255,22 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yjqpq")
 
+[node name="Sky" type="TextureRect" parent="."]
+z_index = -3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -552.0
+offset_top = 1120.0
+offset_right = 1218.0
+offset_bottom = 4010.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_4bx60")
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = 16.0
@@ -254,6 +280,7 @@ offset_bottom = 1453.0
 color = Color(0, 0, 0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(571, 300)
 scale = Vector2(0.467323, 0.440212)
 sprite_frames = SubResource("SpriteFrames_37iue")
@@ -263,6 +290,7 @@ environment = SubResource("Environment_4bx60")
 
 [node name="Label" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
+texture_filter = 1
 layout_mode = 0
 offset_left = 201.0
 offset_top = 263.0
