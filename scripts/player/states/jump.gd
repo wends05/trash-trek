@@ -12,7 +12,7 @@ class_name Jump
 var hold_timer: float = 0.0
 var target_peak_force: float = 0.0
 
-@onready var animated_sprite: AnimatedSprite2D = get_parent().get_parent().get_node("AnimatedSprite2D")
+@onready var animation: AnimationPlayer= get_parent().get_parent().get_node("AnimationPlayer")
 @onready var player: Player = get_parent().get_parent()
 
 func enter():
@@ -24,7 +24,7 @@ func enter():
 		else:
 			transitioned.emit(self, "falling")
 		return
-	animated_sprite.play("jump")
+	animation.play("jump")
 	player.velocity.y = base_jump_force
 	target_peak_force = base_jump_force + max_additional_force
 	hold_timer = 0.0
