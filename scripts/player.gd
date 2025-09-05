@@ -8,7 +8,7 @@ class_name Player
 @export var short_hop_gravity_multiplier: float = 2.0 # Extra gravity when released early
 @export var fall_gravity_multiplier: float = 1.0 # Multiplier while descending
 
-@onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var state_machine: Node = get_node_or_null("StateMachine")
 
 var is_hurt: bool = false
