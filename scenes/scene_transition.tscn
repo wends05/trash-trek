@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://41pdkr7cyd1k"]
 
-[ext_resource type="Texture2D" uid="uid://b271yps1f810d" path="res://assets/menu/GarbageTransition-Sheet.png" id="1_0wykx"]
 [ext_resource type="Script" uid="uid://cgceewwcvxwth" path="res://scripts/scene/scene_transition.gd" id="1_rujfs"]
+[ext_resource type="Texture2D" uid="uid://b271yps1f810d" path="res://assets/menu/GarbageTransition-Sheet.png" id="2_rujfs"]
 
 [sub_resource type="Animation" id="Animation_2sgj6"]
 length = 0.001
@@ -81,70 +81,70 @@ _data = {
 &"fade_out": SubResource("Animation_hgfgv")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rujfs"]
-atlas = ExtResource("1_0wykx")
-region = Rect2(0, 0, 1890, 1417)
+[sub_resource type="AtlasTexture" id="AtlasTexture_2sgj6"]
+atlas = ExtResource("2_rujfs")
+region = Rect2(0, 0, 945, 708)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hgfgv"]
-atlas = ExtResource("1_0wykx")
-region = Rect2(1890, 0, 1890, 1417)
+atlas = ExtResource("2_rujfs")
+region = Rect2(945, 0, 945, 708)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_85h84"]
-atlas = ExtResource("1_0wykx")
-region = Rect2(3780, 0, 1890, 1417)
+atlas = ExtResource("2_rujfs")
+region = Rect2(1890, 0, 945, 708)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ooyqd"]
-atlas = ExtResource("1_0wykx")
-region = Rect2(5670, 0, 1890, 1417)
+atlas = ExtResource("2_rujfs")
+region = Rect2(2835, 0, 945, 708)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_non66"]
-atlas = ExtResource("1_0wykx")
-region = Rect2(7560, 0, 1890, 1417)
+atlas = ExtResource("2_rujfs")
+region = Rect2(3780, 0, 945, 708)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h8vuu"]
-atlas = ExtResource("1_0wykx")
-region = Rect2(9450, 0, 1890, 1417)
+atlas = ExtResource("2_rujfs")
+region = Rect2(4725, 0, 945, 708)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l5v6o"]
-atlas = ExtResource("1_0wykx")
-region = Rect2(11340, 0, 1890, 1417)
+atlas = ExtResource("2_rujfs")
+region = Rect2(5670, 0, 945, 708)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_73nkw"]
-atlas = ExtResource("1_0wykx")
-region = Rect2(13230, 0, 1890, 1417)
+atlas = ExtResource("2_rujfs")
+region = Rect2(6615, 0, 945, 708)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4qi5g"]
-atlas = ExtResource("1_0wykx")
-region = Rect2(15120, 0, 1890, 1417)
+atlas = ExtResource("2_rujfs")
+region = Rect2(7560, 0, 945, 708)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ovque"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rujfs")
+"texture": SubResource("AtlasTexture_2sgj6")
 }, {
-"duration": 1.1,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_hgfgv")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_85h84")
 }, {
-"duration": 0.8,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ooyqd")
 }, {
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_non66")
 }, {
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_h8vuu")
 }, {
-"duration": 0.7,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_l5v6o")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_73nkw")
 }, {
-"duration": 0.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_4qi5g")
 }],
 "loop": false,
@@ -158,7 +158,7 @@ script = ExtResource("1_rujfs")
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 offset_right = 1160.0
-offset_bottom = 647.0
+offset_bottom = 656.0
 color = Color(0, 0, 0, 1)
 
 [node name="GarbageAnimation" type="AnimationPlayer" parent="."]
@@ -168,8 +168,7 @@ libraries = {
 }
 
 [node name="GarbageTrans" type="AnimatedSprite2D" parent="."]
-modulate = Color(0.601223, 0.601223, 0.601223, 1)
-position = Vector2(577.5, 323.5)
-scale = Vector2(0.615344, 0.45801)
+position = Vector2(580, 328)
+scale = Vector2(1.22751, 0.926554)
 sprite_frames = SubResource("SpriteFrames_ovque")
 animation = &"fill"
