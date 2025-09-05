@@ -107,10 +107,10 @@ speed_scale = 1.5
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 35.0
-offset_top = 552.0
-offset_right = 268.0
-offset_bottom = 627.0
+offset_left = 443.0
+offset_top = 568.0
+offset_right = 676.0
+offset_bottom = 643.0
 
 [node name="RecyclableButton" type="Button" parent="HBoxContainer"]
 unique_name_in_owner = true
@@ -141,10 +141,10 @@ expand_icon = true
 
 [node name="TrashCount" type="Label" parent="."]
 layout_mode = 0
-offset_left = 92.0
-offset_top = 551.0
-offset_right = 280.0
-offset_bottom = 574.0
+offset_left = 492.0
+offset_top = 567.0
+offset_right = 680.0
+offset_bottom = 590.0
 label_settings = SubResource("LabelSettings_vsj0x")
 
 [node name="GameMenu" parent="." instance=ExtResource("2_p7vwb")]
@@ -211,10 +211,10 @@ script = ExtResource("11_qsv74")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_mode = 2
-offset_left = 48.0
-offset_top = 487.0
-offset_right = 255.0
-offset_bottom = 536.0
+offset_left = 455.0
+offset_top = 527.0
+offset_right = 662.0
+offset_bottom = 576.0
 pivot_offset = Vector2(1, 0)
 alignment = 1
 

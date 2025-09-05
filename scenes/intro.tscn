@@ -254,6 +254,7 @@ offset_bottom = 1453.0
 color = Color(0, 0, 0, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
 position = Vector2(571, 300)
 scale = Vector2(0.467323, 0.440212)
 sprite_frames = SubResource("SpriteFrames_37iue")
@@ -263,6 +264,7 @@ environment = SubResource("Environment_4bx60")
 
 [node name="Label" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
+texture_filter = 1
 layout_mode = 0
 offset_left = 201.0
 offset_top = 263.0
