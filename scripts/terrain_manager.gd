@@ -3,8 +3,9 @@ extends Node2D
 class_name TerrainManager
 
 @export var speed: float = 200
-@export var terrain_width: int = 1024
+@export var terrain_width: int = 1152
 @onready var terrain_manager: Node = $"."
+var last_terrain_used = null
 
 enum TerrainType {Start, Terrain1, Terrain2, Terrain3}
 
@@ -32,9 +33,10 @@ func initialize_terrain() -> void:
 func scroll_terrain(delta: float) -> void:
 	for area in terrain_manager.get_children():
 		area.position.x -= speed * delta
-		if area.position.x < -1024:
-			load_terrain(area.position.x + 2048, 0)
+		if area.position.x < -terrain_width:
+			load_terrain(area.position.x + terrain_width * 2 - 10, 0)
 			area.queue_free()
+
 
 func load_terrain(x, y):
 	if not start_terrain_loaded:
@@ -42,11 +44,21 @@ func load_terrain(x, y):
 		scene.position = Vector2(x, y)
 		terrain_manager.add_child(scene)
 		start_terrain_loaded = true
+		last_terrain_used = null  # No previous terrain yet
 	else:
 		var terrain_types = [TerrainType.Terrain1, TerrainType.Terrain2, TerrainType.Terrain3]
-		var terrain_type = terrain_types[current_terrain_index]
-		current_terrain_index = (current_terrain_index + 1) % terrain_types.size()
+		
+		# Remove the last used terrain from available options
+		if last_terrain_used != null:
+			terrain_types.erase(last_terrain_used)
+		
+		# Randomly select from remaining terrains
+		var terrain_type = terrain_types[randi() % terrain_types.size()]
+		
+		# Store this terrain as the last used
+		last_terrain_used = terrain_type
+		
+		# Instantiate the selected terrain
 		var scene = terrain_scenes[terrain_type].instantiate()
 		scene.position = Vector2(x, y)
 		terrain_manager.add_child(scene)
-		start_terrain_loaded = true
