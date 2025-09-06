@@ -13,9 +13,8 @@ func change_scene(target: String) -> void:
 	player_anim.show()
 	scene_trans.play("fade_in")
 	await scene_trans.animation_finished
-	scene_trans.play("fade_out")
 	SceneHandler.last_background_scroll_offset = $Parallax/Background.scroll_offset
 	SceneHandler.last_midground_scroll_offset = $Parallax/Midground.scroll_offset
 	SceneHandler.last_foreground_scroll_offset = $Parallax/Foreground.scroll_offset
 	get_tree().change_scene_to_file(target)
-	
+	scene_trans.play("fade_out")

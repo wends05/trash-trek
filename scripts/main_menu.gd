@@ -1,6 +1,7 @@
 extends Control
 
 @onready var game_title = $ParallaxBackground/Misc/GameTitle
+@onready var buttons_player = $Buttons/ButtonsPlayer
 @onready var props_play = $PropsPlayer
 @onready var cam_pos = $Camera2D
 @onready var player = $ParallaxBackground/Player
@@ -8,15 +9,17 @@ extends Control
 @onready var tutorial_button = $Buttons/TutorialButton
 @onready var exit_button = $Buttons/ExitButton
 
+
 func _ready():
 	is_intro_scene()
 	cam_pos.make_current()
 	
 func _on_start_button_pressed() -> void:
-	print("test")
 	start_game()
 
 func _on_exit_button_pressed() -> void:
+	buttons_player.play("exit_press")
+	await buttons_player.animation_finished
 	quit_game()
 
 func is_intro_scene():
@@ -45,11 +48,15 @@ func start_game():
 func quit_game():
 	get_tree().quit()
 
+func _on_tutorial_button_pressed() -> void:
+	buttons_player.play("tutorial_press")
+	await buttons_player.animation_finished
+
 func _on_tutorial_button_mouse_entered() -> void:
-		$Buttons/TutorialButton/TutorialLabel.add_theme_color_override("font_color", Color.html("f07a00"))
+	$Buttons/TutorialButton/TutorialLabel.add_theme_color_override("font_color", Color.html("f07a00"))
 		
 func _on_tutorial_button_mouse_exited() -> void:
-		$Buttons/TutorialButton/TutorialLabel.add_theme_color_override("font_color", Color.html("da6800"))
+	$Buttons/TutorialButton/TutorialLabel.add_theme_color_override("font_color", Color.html("da6800"))
 
 func _on_exit_button_mouse_entered() -> void:
 	$Buttons/ExitButton/ExitLabel.add_theme_color_override("font_color", Color.html("f07a00"))
