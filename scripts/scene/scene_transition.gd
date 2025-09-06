@@ -7,7 +7,8 @@ var last_position
 
 func _ready() -> void:
 	player_anim.hide()
-		
+	$Start/StaticBody2D/CollisionShape2D.disabled = true
+	
 func change_scene(target: String) -> void:
 	player_anim.show()
 	scene_trans.play("fade_in")

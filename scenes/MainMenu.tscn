@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://c8ae8g52xg1c0"]
+[gd_scene load_steps=74 format=3 uid="uid://c8ae8g52xg1c0"]
 
 [ext_resource type="Script" uid="uid://dgtjw4k4yhdoh" path="res://scripts/main_menu.gd" id="1_yqorp"]
 [ext_resource type="Texture2D" uid="uid://cxway0xgyufg3" path="res://assets/menu/trashes/TrashMount3.png" id="3_8a8k8"]
@@ -596,11 +596,15 @@ tracks/8/keys = {
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_1n6yq"]
+resource_name = "hover_button"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_viowm"]
 _data = {
 &"RESET": SubResource("Animation_7shrw"),
 &"cam_in": SubResource("Animation_v41fp"),
-&"fade_out": SubResource("Animation_viowm")
+&"fade_out": SubResource("Animation_viowm"),
+&"hover_button": SubResource("Animation_1n6yq")
 }
 
 [node name="Main Menu" type="Control"]
@@ -1073,6 +1077,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Label" type="Label" parent="Buttons"]
+texture_filter = 1
 offset_left = 378.0
 offset_top = 562.0
 offset_right = 786.0

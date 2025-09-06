@@ -489,8 +489,6 @@ centered = false
 
 [node name="Start" parent="." instance=ExtResource("3_hgfgv")]
 visible = false
-light_mask = 512
-visibility_layer = 512
 
 [node name="SceneAnimation" type="AnimationPlayer" parent="."]
 libraries = {
