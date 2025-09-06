@@ -230,9 +230,6 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_v41fp"]
-file = "assets/menu/Display.ogg"
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_f6838"]
 atlas = ExtResource("3_mipys")
 region = Rect2(0, 0, 921, 705)
@@ -298,12 +295,12 @@ animations = [{
 "speed": 14.0
 }]
 
-[sub_resource type="Gradient" id="Gradient_v41fp"]
+[sub_resource type="Gradient" id="Gradient_viowm"]
 offsets = PackedFloat32Array(0, 0.495413, 0.633027, 0.793578, 0.848624, 1)
 colors = PackedColorArray(0.184314, 0.478431, 0.670588, 1, 0.313726, 0.619608, 0.756863, 1, 0.345098, 0.658824, 0.772549, 1, 0.419608, 0.709804, 0.784314, 1, 0.447059, 0.72549, 0.792157, 1, 0.443137, 0.721569, 0.788235, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ucygd"]
-gradient = SubResource("Gradient_v41fp")
+gradient = SubResource("Gradient_viowm")
 use_hdr = true
 fill_from = Vector2(0, 0.179487)
 fill_to = Vector2(0, 0.636752)
@@ -363,15 +360,15 @@ tracks/0/path = NodePath("Camera2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.0333333),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, -1112)]
+"values": [Vector2(-3, -1112)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ParallaxBackground/Misc/GameTitle:modulate")
+tracks/1/path = NodePath("ParallaxBackground/Misc:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -383,14 +380,86 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ParallaxBackground/Misc/GameTitle:scale")
+tracks/2/path = NodePath("ParallaxBackground/Parallax2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.6, 0.393)]
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ParallaxBackground/Parallax2D3:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ParallaxBackground/Foreground:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ParallaxBackground/StaticBackground:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ParallaxBackground/Middleground:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("ParallaxBackground/Parallax2D2:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Buttons/StartButton:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_v41fp"]
@@ -408,14 +477,114 @@ tracks/0/keys = {
 "values": [Vector2(-3, -1112), Vector2(-3, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_viowm"]
+resource_name = "fade_out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParallaxBackground/Misc:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ParallaxBackground/Parallax2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ParallaxBackground/Parallax2D3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ParallaxBackground/Foreground:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ParallaxBackground/StaticBackground:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("ParallaxBackground/Middleground:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ParallaxBackground/Parallax2D2:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Buttons/StartButton:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_viowm"]
 _data = {
 &"RESET": SubResource("Animation_7shrw"),
-&"cam_in": SubResource("Animation_v41fp")
+&"cam_in": SubResource("Animation_v41fp"),
+&"fade_out": SubResource("Animation_viowm")
 }
 
 [node name="Main Menu" type="Control"]
-modulate = Color(1, 1, 1, 0.132)
 texture_filter = 1
 use_parent_material = true
 layout_mode = 3
@@ -436,6 +605,7 @@ follow_viewport_enabled = true
 [node name="Misc" type="ParallaxLayer" parent="ParallaxBackground"]
 z_index = 1
 texture_filter = 1
+motion_scale = Vector2(0, 0)
 
 [node name="Earth" type="AnimatedSprite2D" parent="ParallaxBackground/Misc"]
 modulate = Color(0.629675, 0.629675, 0.629675, 1)
@@ -447,21 +617,9 @@ scale = Vector2(0.411519, 0.437869)
 sprite_frames = SubResource("SpriteFrames_826wr")
 autoplay = "default"
 
-[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="ParallaxBackground/Misc"]
-visible = false
-offset_left = 216.0
-offset_top = 274.0
-offset_right = 2830.0
-offset_bottom = 1755.0
-scale = Vector2(0.273554, 0.265961)
-stream = SubResource("VideoStreamTheora_v41fp")
-autoplay = true
-expand = true
-loop = true
-
 [node name="GameTitle" type="AnimatedSprite2D" parent="ParallaxBackground/Misc"]
 texture_filter = 1
-position = Vector2(556, 164)
+position = Vector2(572, 140)
 scale = Vector2(0.6, 0.393)
 sprite_frames = SubResource("SpriteFrames_f6838")
 animation = &"text_pop"
@@ -470,6 +628,7 @@ frame_progress = 1.0
 
 [node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground"]
 texture_filter = 1
+scroll_scale = Vector2(0, 0)
 repeat_size = Vector2(1300, 0)
 autoscroll = Vector2(-50, 0)
 repeat_times = 2
@@ -510,6 +669,7 @@ texture = ExtResource("5_bky6r")
 metadata/_edit_lock_ = true
 
 [node name="Parallax2D2" type="Parallax2D" parent="ParallaxBackground"]
+scroll_scale = Vector2(0, 0)
 repeat_size = Vector2(1300, 0)
 autoscroll = Vector2(-20, 0)
 repeat_times = 2
@@ -551,6 +711,7 @@ metadata/_edit_lock_ = true
 
 [node name="Parallax2D3" type="Parallax2D" parent="ParallaxBackground"]
 z_index = -2
+scroll_scale = Vector2(0, 0)
 repeat_size = Vector2(1000, 0)
 autoscroll = Vector2(-40, 0)
 repeat_times = 2
@@ -575,6 +736,7 @@ metadata/_edit_lock_ = true
 
 [node name="Foreground" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
+motion_scale = Vector2(0, 0)
 metadata/_edit_lock_ = true
 
 [node name="TrashRight_1" type="Sprite2D" parent="ParallaxBackground/Foreground"]
@@ -605,6 +767,7 @@ metadata/_edit_lock_ = true
 
 [node name="StaticBackground" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
+motion_scale = Vector2(0, 0)
 
 [node name="Sky" type="TextureRect" parent="ParallaxBackground/StaticBackground"]
 z_index = -3
@@ -668,6 +831,7 @@ z_index = -2
 position = Vector2(824.165, 465.35)
 rotation = -0.0698132
 scale = Vector2(0.404362, 0.228709)
+skew = 0.0610865
 texture = ExtResource("9_tdapf")
 
 [node name="Building4" type="Sprite2D" parent="ParallaxBackground/StaticBackground"]
@@ -686,7 +850,7 @@ z_index = -2
 position = Vector2(505.433, 423.612)
 rotation = -0.00872665
 scale = Vector2(0.30921, 0.342698)
-skew = -0.0541052
+skew = -0.010472
 texture = ExtResource("9_8vx4p")
 flip_h = true
 
@@ -751,8 +915,16 @@ scale = Vector2(0.260302, 0.151607)
 texture = ExtResource("5_8a8k8")
 metadata/_edit_lock_ = true
 
+[node name="Player" type="Sprite2D" parent="ParallaxBackground"]
+texture_filter = 1
+position = Vector2(600.18, 497.523)
+scale = Vector2(0.13, 0.137)
+texture = ExtResource("9_v41fp")
+flip_h = true
+
 [node name="Middleground" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
+motion_scale = Vector2(0, 0)
 metadata/_edit_lock_ = true
 
 [node name="TrashRight_1" type="Sprite2D" parent="ParallaxBackground/Middleground"]
@@ -763,13 +935,6 @@ rotation = -0.366519
 scale = Vector2(0.196497, 0.167036)
 texture = ExtResource("4_mipys")
 metadata/_edit_lock_ = true
-
-[node name="Player" type="Sprite2D" parent="ParallaxBackground/Middleground"]
-texture_filter = 1
-position = Vector2(575.18, 459.523)
-scale = Vector2(0.221892, 0.21572)
-texture = ExtResource("9_v41fp")
-flip_h = true
 
 [node name="TrashMount6" type="Sprite2D" parent="ParallaxBackground/Middleground"]
 modulate = Color(0.654232, 0.654232, 0.654232, 1)
@@ -831,18 +996,21 @@ metadata/_edit_lock_ = true
 follow_viewport_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="Buttons"]
-offset_left = 114.0
-offset_top = 344.0
-offset_right = 296.0
-offset_bottom = 398.0
+visible = false
+offset_left = 129.0
+offset_top = 332.0
+offset_right = 311.0
+offset_bottom = 386.0
 
 [node name="ColorRect" type="ColorRect" parent="Buttons/ColorRect"]
+layout_mode = 0
 offset_left = 1.0
 offset_top = 89.0
 offset_right = 183.0
 offset_bottom = 143.0
 
 [node name="ColorRect" type="ColorRect" parent="Buttons/ColorRect/ColorRect"]
+layout_mode = 0
 offset_left = 1.0
 offset_top = 84.0
 offset_right = 183.0
@@ -890,7 +1058,6 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="StartButton" type="TextureButton" parent="Buttons"]
-visible = false
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -911,7 +1078,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -1112)
+position = Vector2(-3, -1112)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
