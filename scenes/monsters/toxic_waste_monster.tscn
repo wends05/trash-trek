@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://dyk6c1165mdad"]
 
-[ext_resource type="Texture2D" uid="uid://dd3tvniu4kq5" path="res://assets/monsters/toxic_waste_monster-Sheet.png" id="1_fqt0m"]
+[ext_resource type="Texture2D" uid="uid://cje0ly6tsr0xi" path="res://assets/monsters/toxic_waste_monster-Sheet.png" id="1_fqt0m"]
 [ext_resource type="Script" uid="uid://dmh1s0jblhc0i" path="res://scripts/monster.gd" id="1_tbwfn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tbwfn"]
