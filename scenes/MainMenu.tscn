@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://c8ae8g52xg1c0"]
+[gd_scene load_steps=74 format=3 uid="uid://c8ae8g52xg1c0"]
 
 [ext_resource type="Script" uid="uid://dgtjw4k4yhdoh" path="res://scripts/main_menu.gd" id="1_yqorp"]
 [ext_resource type="Texture2D" uid="uid://cxway0xgyufg3" path="res://assets/menu/trashes/TrashMount3.png" id="3_8a8k8"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://btydpvtj1ac7o" path="res://assets/menu/StartGame-Sheet.png" id="9_8a8k8"]
 [ext_resource type="Texture2D" uid="uid://15j160l7c6g8" path="res://assets/menu/buildings/building.png" id="9_8vx4p"]
 [ext_resource type="Texture2D" uid="uid://dgnaek6yt4met" path="res://assets/menu/buildings/building2.png" id="9_tdapf"]
+[ext_resource type="Texture2D" uid="uid://cc2jkuc0ih2pe" path="res://assets/menu/Player.png" id="9_v41fp"]
 [ext_resource type="Texture2D" uid="uid://bpt8oixuoxios" path="res://assets/menu/ExitGame-Sheet.png" id="10_2nypq"]
 [ext_resource type="Texture2D" uid="uid://cwtbps22uhhwl" path="res://assets/menu/clouds/cloud5.png" id="10_hubol"]
 [ext_resource type="Texture2D" uid="uid://b0wiwv8fwgkwc" path="res://assets/menu/clouds/cloud3.png" id="14_5faoh"]
@@ -260,22 +261,6 @@ region = Rect2(3684, 0, 921, 705)
 atlas = ExtResource("3_mipys")
 region = Rect2(4605, 0, 921, 705)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_24ra2"]
-atlas = ExtResource("3_mipys")
-region = Rect2(5526, 0, 921, 705)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_egsv4"]
-atlas = ExtResource("3_mipys")
-region = Rect2(6447, 0, 921, 705)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xbdup"]
-atlas = ExtResource("3_mipys")
-region = Rect2(7368, 0, 921, 705)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5is2y"]
-atlas = ExtResource("3_mipys")
-region = Rect2(8289, 0, 921, 705)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_f6838"]
 animations = [{
 "frames": [{
@@ -287,7 +272,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 10.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_v41fp")
 }, {
 "duration": 1.6,
@@ -304,18 +289,6 @@ animations = [{
 }, {
 "duration": 1.2,
 "texture": SubResource("AtlasTexture_4rqjj")
-}, {
-"duration": 2.2,
-"texture": SubResource("AtlasTexture_24ra2")
-}, {
-"duration": 2.1,
-"texture": SubResource("AtlasTexture_egsv4")
-}, {
-"duration": 1.9,
-"texture": SubResource("AtlasTexture_xbdup")
-}, {
-"duration": 2.0,
-"texture": SubResource("AtlasTexture_5is2y")
 }, {
 "duration": 3.3,
 "texture": SubResource("AtlasTexture_v41fp")
@@ -395,6 +368,30 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, -1112)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ParallaxBackground/Misc/GameTitle:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ParallaxBackground/Misc/GameTitle:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.393)]
+}
 
 [sub_resource type="Animation" id="Animation_v41fp"]
 resource_name = "cam_in"
@@ -420,6 +417,7 @@ _data = {
 [node name="Main Menu" type="Control"]
 modulate = Color(1, 1, 1, 0.132)
 texture_filter = 1
+use_parent_material = true
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
@@ -467,7 +465,7 @@ position = Vector2(559, 147)
 scale = Vector2(0.6, 0.393)
 sprite_frames = SubResource("SpriteFrames_f6838")
 animation = &"text_pop"
-frame = 10
+frame = 6
 frame_progress = 1.0
 
 [node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground"]
@@ -477,6 +475,7 @@ autoscroll = Vector2(-50, 0)
 repeat_times = 2
 follow_viewport = false
 ignore_camera_scroll = true
+metadata/_edit_lock_ = true
 
 [node name="Cloud11" type="Sprite2D" parent="ParallaxBackground/Parallax2D"]
 modulate = Color(1, 1, 1, 0.11)
@@ -485,6 +484,7 @@ position = Vector2(989, 88)
 scale = Vector2(0.532682, 0.515396)
 texture = ExtResource("14_5faoh")
 flip_h = true
+metadata/_edit_lock_ = true
 
 [node name="Cloud8" type="Sprite2D" parent="ParallaxBackground/Parallax2D"]
 modulate = Color(1, 1, 1, 0.287)
@@ -493,18 +493,21 @@ position = Vector2(844, 103)
 scale = Vector2(0.452389, 0.490987)
 texture = ExtResource("5_bky6r")
 flip_h = true
+metadata/_edit_lock_ = true
 
 [node name="Cloud3" type="Sprite2D" parent="ParallaxBackground/Parallax2D"]
 texture_filter = 1
 position = Vector2(-497, 271)
 scale = Vector2(0.755357, 0.599398)
 texture = ExtResource("14_5faoh")
+metadata/_edit_lock_ = true
 
 [node name="Cloud1" type="Sprite2D" parent="ParallaxBackground/Parallax2D"]
 texture_filter = 1
 position = Vector2(772, 123)
 scale = Vector2(0.497125, 0.446186)
 texture = ExtResource("5_bky6r")
+metadata/_edit_lock_ = true
 
 [node name="Parallax2D2" type="Parallax2D" parent="ParallaxBackground"]
 repeat_size = Vector2(1300, 0)
@@ -512,6 +515,7 @@ autoscroll = Vector2(-20, 0)
 repeat_times = 2
 follow_viewport = false
 ignore_camera_scroll = true
+metadata/_edit_lock_ = true
 
 [node name="Cloud7" type="Sprite2D" parent="ParallaxBackground/Parallax2D2"]
 modulate = Color(1, 1, 1, 0.353)
@@ -519,12 +523,14 @@ texture_filter = 1
 position = Vector2(286.995, 178.988)
 scale = Vector2(0.356052, 0.388048)
 texture = ExtResource("10_hubol")
+metadata/_edit_lock_ = true
 
 [node name="Cloud5" type="Sprite2D" parent="ParallaxBackground/Parallax2D2"]
 texture_filter = 1
 position = Vector2(198.031, 194)
 scale = Vector2(0.348672, 0.355658)
 texture = ExtResource("10_hubol")
+metadata/_edit_lock_ = true
 
 [node name="Cloud12" type="Sprite2D" parent="ParallaxBackground/Parallax2D2"]
 modulate = Color(1, 1, 1, 0.248)
@@ -533,6 +539,7 @@ position = Vector2(163, 91)
 scale = Vector2(0.243468, 0.258658)
 texture = ExtResource("7_ptake")
 flip_h = true
+metadata/_edit_lock_ = true
 
 [node name="Cloud9" type="Sprite2D" parent="ParallaxBackground/Parallax2D2"]
 modulate = Color(1, 1, 1, 0.165)
@@ -540,6 +547,7 @@ texture_filter = 1
 position = Vector2(253, 59)
 scale = Vector2(0.384016, 0.380319)
 texture = ExtResource("7_ptake")
+metadata/_edit_lock_ = true
 
 [node name="Parallax2D3" type="Parallax2D" parent="ParallaxBackground"]
 z_index = -2
@@ -548,12 +556,14 @@ autoscroll = Vector2(-40, 0)
 repeat_times = 2
 follow_viewport = false
 ignore_camera_scroll = true
+metadata/_edit_lock_ = true
 
 [node name="Cloud4" type="Sprite2D" parent="ParallaxBackground/Parallax2D3"]
 texture_filter = 1
 position = Vector2(138, 320)
 scale = Vector2(0.77541, 0.734043)
 texture = ExtResource("7_ptake")
+metadata/_edit_lock_ = true
 
 [node name="Cloud2" type="Sprite2D" parent="ParallaxBackground/Parallax2D3"]
 modulate = Color(1, 1, 1, 0.79)
@@ -561,6 +571,37 @@ texture_filter = 1
 position = Vector2(966, 290)
 scale = Vector2(0.514908, 0.548245)
 texture = ExtResource("5_l4mxc")
+metadata/_edit_lock_ = true
+
+[node name="Foreground" type="ParallaxLayer" parent="ParallaxBackground"]
+texture_filter = 1
+metadata/_edit_lock_ = true
+
+[node name="TrashRight_1" type="Sprite2D" parent="ParallaxBackground/Foreground"]
+z_index = 2
+texture_filter = 1
+position = Vector2(961.586, 542)
+scale = Vector2(0.254445, 0.217)
+texture = ExtResource("3_8a8k8")
+metadata/_edit_lock_ = true
+
+[node name="TrashLeft_1" type="Sprite2D" parent="ParallaxBackground/Foreground"]
+z_index = 1
+texture_filter = 1
+position = Vector2(200.984, 571)
+scale = Vector2(0.269552, 0.161612)
+texture = ExtResource("7_ucygd")
+flip_h = true
+metadata/_edit_lock_ = true
+
+[node name="TrashRight_2" type="Sprite2D" parent="ParallaxBackground/Foreground"]
+z_index = 1
+texture_filter = 1
+position = Vector2(944.023, 580.672)
+rotation = -0.0959931
+scale = Vector2(0.218152, 0.14709)
+texture = ExtResource("5_8a8k8")
+metadata/_edit_lock_ = true
 
 [node name="StaticBackground" type="ParallaxLayer" parent="ParallaxBackground"]
 texture_filter = 1
@@ -610,6 +651,7 @@ texture_filter = 1
 position = Vector2(721, 540)
 scale = Vector2(1.52811, 1.80702)
 texture = ExtResource("5_l4mxc")
+metadata/_edit_lock_ = true
 
 [node name="Cloud6" type="Sprite2D" parent="ParallaxBackground/StaticBackground"]
 modulate = Color(1, 1, 1, 0.724)
@@ -621,32 +663,40 @@ texture = ExtResource("5_l4mxc")
 flip_h = true
 
 [node name="Building3" type="Sprite2D" parent="ParallaxBackground/StaticBackground"]
-visible = false
 modulate = Color(0.122252, 0.122252, 0.122252, 1)
 z_index = -2
-position = Vector2(912.154, 306.129)
-rotation = -0.226893
-scale = Vector2(0.519156, 0.360485)
+position = Vector2(824.165, 465.35)
+rotation = -0.0698132
+scale = Vector2(0.404362, 0.228709)
 texture = ExtResource("9_tdapf")
 
+[node name="Building4" type="Sprite2D" parent="ParallaxBackground/StaticBackground"]
+modulate = Color(0.0728427, 0.0728426, 0.0728426, 1)
+z_index = -2
+position = Vector2(1064, 337)
+rotation = -0.331613
+scale = Vector2(0.170514, 0.198125)
+skew = 0.225147
+texture = ExtResource("9_8vx4p")
+flip_h = true
+
 [node name="Building2" type="Sprite2D" parent="ParallaxBackground/StaticBackground"]
-visible = false
 modulate = Color(0.118581, 0.118581, 0.118581, 1)
 z_index = -2
-position = Vector2(938, 338)
-rotation = -0.200713
-scale = Vector2(0.363779, 0.375081)
-skew = -0.000996709
+position = Vector2(505.433, 423.612)
+rotation = -0.00872665
+scale = Vector2(0.30921, 0.342698)
+skew = -0.0541052
 texture = ExtResource("9_8vx4p")
 flip_h = true
 
 [node name="Building" type="Sprite2D" parent="ParallaxBackground/StaticBackground"]
-visible = false
 modulate = Color(0.162066, 0.162066, 0.162066, 1)
 z_index = -2
-position = Vector2(165.304, 318.987)
+position = Vector2(137.245, 301.553)
 rotation = 0.18326
-scale = Vector2(0.348023, 0.436425)
+scale = Vector2(0.325931, 0.421211)
+skew = -0.232129
 texture = ExtResource("9_8vx4p")
 
 [node name="TrashMount1" type="Sprite2D" parent="ParallaxBackground/StaticBackground"]
@@ -695,39 +745,9 @@ metadata/_edit_lock_ = true
 modulate = Color(0.201527, 0.201527, 0.201527, 1)
 z_index = -2
 texture_filter = 1
-position = Vector2(978.071, 451.491)
+position = Vector2(978.228, 451.416)
 rotation = -0.445059
-scale = Vector2(0.260075, 0.151607)
-texture = ExtResource("5_8a8k8")
-metadata/_edit_lock_ = true
-
-[node name="Foreground" type="ParallaxLayer" parent="ParallaxBackground"]
-texture_filter = 1
-metadata/_edit_lock_ = true
-
-[node name="TrashRight_1" type="Sprite2D" parent="ParallaxBackground/Foreground"]
-z_index = 2
-texture_filter = 1
-position = Vector2(961.586, 542)
-scale = Vector2(0.254445, 0.217)
-texture = ExtResource("3_8a8k8")
-metadata/_edit_lock_ = true
-
-[node name="TrashLeft_1" type="Sprite2D" parent="ParallaxBackground/Foreground"]
-z_index = 1
-texture_filter = 1
-position = Vector2(200.984, 571)
-scale = Vector2(0.269552, 0.161612)
-texture = ExtResource("7_ucygd")
-flip_h = true
-metadata/_edit_lock_ = true
-
-[node name="TrashRight_2" type="Sprite2D" parent="ParallaxBackground/Foreground"]
-z_index = 1
-texture_filter = 1
-position = Vector2(944.023, 580.672)
-rotation = -0.0959931
-scale = Vector2(0.218152, 0.14709)
+scale = Vector2(0.260302, 0.151607)
 texture = ExtResource("5_8a8k8")
 metadata/_edit_lock_ = true
 
@@ -743,6 +763,13 @@ rotation = -0.366519
 scale = Vector2(0.196497, 0.167036)
 texture = ExtResource("4_mipys")
 metadata/_edit_lock_ = true
+
+[node name="Player" type="Sprite2D" parent="ParallaxBackground/Middleground"]
+texture_filter = 1
+position = Vector2(569.68, 463.023)
+scale = Vector2(0.226484, 0.210637)
+texture = ExtResource("9_v41fp")
+flip_h = true
 
 [node name="TrashMount6" type="Sprite2D" parent="ParallaxBackground/Middleground"]
 modulate = Color(0.654232, 0.654232, 0.654232, 1)
@@ -801,6 +828,7 @@ texture = ExtResource("5_8a8k8")
 metadata/_edit_lock_ = true
 
 [node name="Buttons" type="CanvasLayer" parent="."]
+visible = false
 follow_viewport_enabled = true
 
 [node name="TutorialButton" type="TextureButton" parent="Buttons"]
@@ -810,10 +838,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -526.0
-offset_top = 105.0
-offset_right = -287.0
-offset_bottom = 170.0
+offset_left = -470.0
+offset_top = 95.0
+offset_right = -214.0
+offset_bottom = 156.0
 grow_horizontal = 2
 grow_vertical = 2
 texture_normal = SubResource("AtlasTexture_ucygd")
@@ -830,10 +858,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -529.0
-offset_top = -124.0
-offset_right = -291.0
-offset_bottom = -61.0
+offset_left = -469.0
+offset_top = -136.0
+offset_right = -218.0
+offset_bottom = -80.0
 grow_horizontal = 2
 grow_vertical = 0
 texture_normal = SubResource("AtlasTexture_8vx4p")
@@ -849,10 +877,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -540.0
-offset_top = 9.99997
-offset_right = -228.0
-offset_bottom = 79.0
+offset_left = -471.0
+offset_top = -4.0
+offset_right = -206.0
+offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.00024951
