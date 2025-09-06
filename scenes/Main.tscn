@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjlwocmldl2p1"]
+[gd_scene load_steps=18 format=3 uid="uid://bjlwocmldl2p1"]
 
 [ext_resource type="Script" uid="uid://djvk4e4r7ppdn" path="res://scripts/main.gd" id="1_h6nst"]
 [ext_resource type="PackedScene" uid="uid://dyac4ihj46tig" path="res://scenes/Player.tscn" id="1_nbc6x"]
@@ -11,6 +11,44 @@
 [ext_resource type="Texture2D" uid="uid://bo5gvumie1le6" path="res://assets/background/underground.png" id="6_cvmbd"]
 [ext_resource type="PackedScene" uid="uid://b3evh0nyta6a3" path="res://scenes/death_zones.tscn" id="7_jlsqs"]
 [ext_resource type="PackedScene" uid="uid://cnvc3c5c6c8mj" path="res://scenes/ui.tscn" id="7_nxtc6"]
+
+[sub_resource type="Gradient" id="Gradient_wp0k4"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.1, 0.5)
+colors = PackedColorArray(0.21, 0.21, 0.21, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bjd11"]
+gradient = SubResource("Gradient_wp0k4")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[sub_resource type="GDScript" id="GDScript_wp0k4"]
+script/source = "extends Sprite2D
+
+@export var player: Player
+
+var collided_bodies
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	global_position.x = player.global_position.x
+	
+	check_collision()
+	
+func check_collision():
+	var collided_bodies = $Area2D.get_overlapping_bodies()
+	if collided_bodies.size() > 0:
+		show() 
+		#print(\"name \", collided_bodies[0])
+		var node = collided_bodies[0].get_node(\"CollisionShape2D\")
+		global_position.y = node.global_position.y - (node.shape.size.y / 2)
+	else:
+		hide()
+		global_position.y = 630
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qmy6f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxtc6"]
 size = Vector2(20, 328)
@@ -27,6 +65,23 @@ position = Vector2(320, 320)
 
 [node name="TerrainManager" type="Node2D" parent="."]
 script = ExtResource("4_vcsgt")
+
+[node name="Shadow" type="Sprite2D" parent="." node_paths=PackedStringArray("player")]
+light_mask = 0
+visibility_layer = 2
+position = Vector2(329.359, 557.558)
+scale = Vector2(2.21059, 0.890918)
+skew = -1.2514
+texture = SubResource("GradientTexture2D_bjd11")
+script = SubResource("GDScript_wp0k4")
+player = NodePath("../Player")
+
+[node name="Area2D" type="Area2D" parent="Shadow"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shadow/Area2D"]
+shape = SubResource("CircleShape2D_qmy6f")
 
 [node name="TrashRemover" type="Area2D" parent="."]
 position = Vector2(40, 520)

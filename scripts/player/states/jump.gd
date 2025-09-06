@@ -3,16 +3,16 @@ extends State
 class_name Jump
 
 # Tweakable jump parameters (export so you can tune in Inspector)
-@export var max_hold_time: float = 0.2 # seconds the jump button can influence ascent
-@export var base_jump_force: float = -290.0 # initial impulse (negative = up)
-@export var max_additional_force: float = -260.0 # additional force reached at full hold (added ON TOP of base resulting target ~ base + additional)
+@export var max_hold_time: float = 0.1 # seconds the jump button can influence ascent
+@export var base_jump_force: float = -300.0 # initial impulse (negative = up)
+@export var max_additional_force: float = -300.0 # additional force reached at full hold (added ON TOP of base resulting target ~ base + additional)
 @export var short_hop_gravity_multiplier: float = 2.0 # extra gravity when button released early
-@export var fall_gravity_multiplier: float = 1.0 # gravity once upward velocity ends
+@export var fall_gravity_multiplier: float = 1.5 # gravity once upward velocity ends
 
-var hold_timer: float = 0.0
-var target_peak_force: float = 0.0
+var hold_timer: float = 0.3
+var target_peak_force: float = 0.5
 
-@onready var animation: AnimationPlayer= get_parent().get_parent().get_node("AnimationPlayer")
+@onready var animation: AnimationPlayer = get_parent().get_parent().get_node("AnimationPlayer")
 @onready var player: Player = get_parent().get_parent()
 
 func enter():
