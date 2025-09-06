@@ -461,7 +461,7 @@ loop = true
 
 [node name="GameTitle" type="AnimatedSprite2D" parent="ParallaxBackground/Misc"]
 texture_filter = 1
-position = Vector2(559, 147)
+position = Vector2(556, 164)
 scale = Vector2(0.6, 0.393)
 sprite_frames = SubResource("SpriteFrames_f6838")
 animation = &"text_pop"
@@ -693,10 +693,10 @@ flip_h = true
 [node name="Building" type="Sprite2D" parent="ParallaxBackground/StaticBackground"]
 modulate = Color(0.162066, 0.162066, 0.162066, 1)
 z_index = -2
-position = Vector2(137.245, 301.553)
-rotation = 0.18326
+texture_filter = 1
+position = Vector2(141.46, 321.165)
+rotation = 0.0349066
 scale = Vector2(0.325931, 0.421211)
-skew = -0.232129
 texture = ExtResource("9_8vx4p")
 
 [node name="TrashMount1" type="Sprite2D" parent="ParallaxBackground/StaticBackground"]
@@ -766,8 +766,8 @@ metadata/_edit_lock_ = true
 
 [node name="Player" type="Sprite2D" parent="ParallaxBackground/Middleground"]
 texture_filter = 1
-position = Vector2(569.68, 463.023)
-scale = Vector2(0.226484, 0.210637)
+position = Vector2(575.18, 459.523)
+scale = Vector2(0.221892, 0.21572)
 texture = ExtResource("9_v41fp")
 flip_h = true
 
@@ -828,10 +828,28 @@ texture = ExtResource("5_8a8k8")
 metadata/_edit_lock_ = true
 
 [node name="Buttons" type="CanvasLayer" parent="."]
-visible = false
 follow_viewport_enabled = true
 
+[node name="ColorRect" type="ColorRect" parent="Buttons"]
+offset_left = 114.0
+offset_top = 344.0
+offset_right = 296.0
+offset_bottom = 398.0
+
+[node name="ColorRect" type="ColorRect" parent="Buttons/ColorRect"]
+offset_left = 1.0
+offset_top = 89.0
+offset_right = 183.0
+offset_bottom = 143.0
+
+[node name="ColorRect" type="ColorRect" parent="Buttons/ColorRect/ColorRect"]
+offset_left = 1.0
+offset_top = 84.0
+offset_right = 183.0
+offset_bottom = 138.0
+
 [node name="TutorialButton" type="TextureButton" parent="Buttons"]
+visible = false
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -851,6 +869,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="ExitButton" type="TextureButton" parent="Buttons"]
+visible = false
 modulate = Color(0.97, 0.307167, 0, 1)
 texture_filter = 1
 anchors_preset = 7
@@ -871,6 +890,7 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="StartButton" type="TextureButton" parent="Buttons"]
+visible = false
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
