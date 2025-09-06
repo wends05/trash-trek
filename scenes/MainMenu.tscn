@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://c8ae8g52xg1c0"]
+[gd_scene load_steps=73 format=3 uid="uid://c8ae8g52xg1c0"]
 
 [ext_resource type="Script" uid="uid://dgtjw4k4yhdoh" path="res://scripts/main_menu.gd" id="1_yqorp"]
 [ext_resource type="Texture2D" uid="uid://cxway0xgyufg3" path="res://assets/menu/trashes/TrashMount3.png" id="3_8a8k8"]
@@ -12,13 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://npk1dj5ta1ka" path="res://assets/menu/Tutorial-Sheet.png" id="6_826wr"]
 [ext_resource type="Texture2D" uid="uid://dnt5jfq015qn3" path="res://assets/menu/clouds/cloud4.png" id="7_ptake"]
 [ext_resource type="Texture2D" uid="uid://b4bxcpyirarat" path="res://assets/menu/trashes/TrashMount1.png" id="7_ucygd"]
-[ext_resource type="Texture2D" uid="uid://btydpvtj1ac7o" path="res://assets/menu/StartGame-Sheet.png" id="9_8a8k8"]
 [ext_resource type="Texture2D" uid="uid://15j160l7c6g8" path="res://assets/menu/buildings/building.png" id="9_8vx4p"]
 [ext_resource type="Texture2D" uid="uid://dgnaek6yt4met" path="res://assets/menu/buildings/building2.png" id="9_tdapf"]
 [ext_resource type="Texture2D" uid="uid://cc2jkuc0ih2pe" path="res://assets/menu/Player.png" id="9_v41fp"]
 [ext_resource type="Texture2D" uid="uid://bpt8oixuoxios" path="res://assets/menu/ExitGame-Sheet.png" id="10_2nypq"]
 [ext_resource type="Texture2D" uid="uid://cwtbps22uhhwl" path="res://assets/menu/clouds/cloud5.png" id="10_hubol"]
 [ext_resource type="Texture2D" uid="uid://b0wiwv8fwgkwc" path="res://assets/menu/clouds/cloud3.png" id="14_5faoh"]
+[ext_resource type="FontFile" uid="uid://fp7rfneeiohe" path="res://fonts/SearchingForSignal.ttf" id="19_v41fp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7la6k"]
 atlas = ExtResource("3_ucygd")
@@ -339,17 +339,13 @@ region = Rect2(786, 0, 393, 115)
 atlas = ExtResource("10_2nypq")
 region = Rect2(393, 0, 393, 115)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5faoh"]
-atlas = ExtResource("9_8a8k8")
-region = Rect2(0, 0, 600, 123)
+[sub_resource type="Theme" id="Theme_v41fp"]
+Label/colors/font_color = Color(1, 0.647059, 0, 1)
+Label/font_sizes/font_size = 30
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ptake"]
-atlas = ExtResource("9_8a8k8")
-region = Rect2(1200.24, 0, 599.759, 123)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hubol"]
-atlas = ExtResource("9_8a8k8")
-region = Rect2(600, 0, 600, 123)
+[sub_resource type="FontVariation" id="FontVariation_7shrw"]
+base_font = ExtResource("19_v41fp")
+spacing_glyph = 3
 
 [sub_resource type="Animation" id="Animation_7shrw"]
 length = 0.001
@@ -461,6 +457,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Buttons/Label:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_v41fp"]
 resource_name = "cam_in"
@@ -479,7 +487,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_viowm"]
 resource_name = "fade_out"
-length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -487,7 +494,7 @@ tracks/0/path = NodePath("ParallaxBackground/Misc:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0.534905, 0.734905),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -499,7 +506,7 @@ tracks/1/path = NodePath("ParallaxBackground/Parallax2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0.534905, 0.734905),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -511,7 +518,7 @@ tracks/2/path = NodePath("ParallaxBackground/Parallax2D3:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0.534905, 0.734905),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -523,7 +530,7 @@ tracks/3/path = NodePath("ParallaxBackground/Foreground:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0.534905, 0.734905),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -535,7 +542,7 @@ tracks/4/path = NodePath("ParallaxBackground/StaticBackground:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0.534905, 0.734905),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -547,7 +554,7 @@ tracks/5/path = NodePath("ParallaxBackground/Middleground:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0.534905, 0.734905),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -559,7 +566,7 @@ tracks/6/path = NodePath("ParallaxBackground/Parallax2D2:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0.534905, 0.734905),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -571,7 +578,19 @@ tracks/7/path = NodePath("Buttons/StartButton:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0.534905, 0.734905),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Buttons/Label:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.533333, 0.734905),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -917,7 +936,7 @@ metadata/_edit_lock_ = true
 
 [node name="Player" type="Sprite2D" parent="ParallaxBackground"]
 texture_filter = 1
-position = Vector2(600.18, 497.523)
+position = Vector2(600.18, 503.72)
 scale = Vector2(0.13, 0.137)
 texture = ExtResource("9_v41fp")
 flip_h = true
@@ -995,27 +1014,6 @@ metadata/_edit_lock_ = true
 [node name="Buttons" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="ColorRect" type="ColorRect" parent="Buttons"]
-visible = false
-offset_left = 129.0
-offset_top = 332.0
-offset_right = 311.0
-offset_bottom = 386.0
-
-[node name="ColorRect" type="ColorRect" parent="Buttons/ColorRect"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 89.0
-offset_right = 183.0
-offset_bottom = 143.0
-
-[node name="ColorRect" type="ColorRect" parent="Buttons/ColorRect/ColorRect"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = 84.0
-offset_right = 183.0
-offset_bottom = 138.0
-
 [node name="TutorialButton" type="TextureButton" parent="Buttons"]
 visible = false
 texture_filter = 1
@@ -1064,18 +1062,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -471.0
-offset_top = -4.0
-offset_right = -206.0
-offset_bottom = 57.0
+offset_left = -584.0
+offset_top = -329.0
+offset_right = 582.0
+offset_bottom = 326.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.00024951
-texture_normal = SubResource("AtlasTexture_5faoh")
-texture_pressed = SubResource("AtlasTexture_ptake")
-texture_hover = SubResource("AtlasTexture_hubol")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="Label" type="Label" parent="Buttons"]
+offset_left = 378.0
+offset_top = 562.0
+offset_right = 786.0
+offset_bottom = 627.0
+theme = SubResource("Theme_v41fp")
+theme_override_fonts/font = SubResource("FontVariation_7shrw")
+text = "Press Any Key to Start or Click to Play
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-3, -1112)
