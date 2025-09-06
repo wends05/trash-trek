@@ -9,7 +9,7 @@
 size = Vector2(142.125, 94)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qm0yi"]
-size = Vector2(1182, 74)
+size = Vector2(1182, 71)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hjqgp"]
 texture = ExtResource("4_lvfhc")
@@ -50,7 +50,7 @@ shape = SubResource("RectangleShape2D_l3giw")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 z_index = 1
-position = Vector2(591, 610)
+position = Vector2(591, 611.5)
 shape = SubResource("RectangleShape2D_qm0yi")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D"]
@@ -65,10 +65,10 @@ tile_set = SubResource("TileSet_hyh5j")
 [node name="TrashSpawns" type="Node2D" parent="."]
 
 [node name="Marker2D2" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(378, 450)
+position = Vector2(320, 496)
 
 [node name="Marker2D3" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(632, 450)
+position = Vector2(936, 416)
 
 [node name="trashbin" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(936, 520)

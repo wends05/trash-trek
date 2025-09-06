@@ -7,13 +7,15 @@ class_name TerrainManager
 @onready var terrain_manager: Node = $"."
 var last_terrain_used = null
 
-enum TerrainType {Start, Terrain1, Terrain2, Terrain3}
+enum TerrainType {Start, Terrain1, Terrain2, Terrain3, Terrain4, Terrain5}
 
 var terrain_scenes := {
 	TerrainType.Start: preload("res://scenes/terrains/Start.tscn"),
 	TerrainType.Terrain1: preload("res://scenes/terrains/Terrain1.tscn"),
 	TerrainType.Terrain2: preload("res://scenes/terrains/Terrain2.tscn"),
-	TerrainType.Terrain3: preload("res://scenes/terrains/Terrain3.tscn")
+	TerrainType.Terrain3: preload("res://scenes/terrains/Terrain3.tscn"),
+	TerrainType.Terrain4: preload("res://scenes/terrains/Terrain4.tscn"),
+	TerrainType.Terrain5: preload("res://scenes/terrains/Terrain5.tscn")
 }
 
 var current_terrain_index := 0
@@ -46,7 +48,7 @@ func load_terrain(x, y):
 		start_terrain_loaded = true
 		last_terrain_used = null  # No previous terrain yet
 	else:
-		var terrain_types = [TerrainType.Terrain1, TerrainType.Terrain2, TerrainType.Terrain3]
+		var terrain_types = [TerrainType.Terrain1, TerrainType.Terrain2, TerrainType.Terrain3, TerrainType.Terrain4, TerrainType.Terrain5 ]
 		
 		# Remove the last used terrain from available options
 		if last_terrain_used != null:
