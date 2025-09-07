@@ -1,7 +1,11 @@
-from os import getenv
+import os
 from pymongo import AsyncMongoClient
+from dotenv import load_dotenv
 
-URI = getenv("MONGO_URL")
+load_dotenv()
+URI = os.getenv("MONGO_URL")
+print("MongoDB URL: ", URI)
+
 client = AsyncMongoClient(URI)
 
 db = client["trashtrek"]

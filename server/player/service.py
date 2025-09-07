@@ -1,11 +1,10 @@
 from fastapi.exceptions import HTTPException
-from bson.objectid import ObjectId
-from db import players_collection
-from player.schemas import PlayerIn, PlayerOut
+from pymongo.asynchronous.collection import AsyncCollection
+from player.schemas import PlayerEdit, PlayerIn, PlayerOut
 
 class PlayerService:
-    def __init__(self):
-        self.collection = players_collection
+    def __init__(self, collection: AsyncCollection):
+        self.collection = collection
 
     async def create_player(self, player: PlayerIn):
 
@@ -35,18 +34,35 @@ class PlayerService:
         
         return PlayerOut(**player)
 
-    async def update_player(self, device_id: str, new_player: PlayerIn):
+    async def update_player(self, device_id: str, new_player: PlayerEdit):
         player_dict = new_player.model_dump()
 
-        res = await self.collection.update_one({"device_id": device_id}, {"$set": player_dict})
+        filtered_player_dict = {k: v for k, v in player_dict.items() if v is not None}
+
+        if not filtered_player_dict:
+            raise HTTPException(status_code=400, detail={
+                "message": "No fields to update",
+                "device_id": device_id
+            })
+        
+        res = await self.collection.update_one({"device_id": device_id}, {"$set": filtered_player_dict})
+
+        if not res.modified_count:
+            raise HTTPException(status_code=404, detail={
+                "message": "Player not modified. Fields may be the same",
+                "device_id": device_id
+            })
+
         updated_player = await self.collection.find_one({"device_id": device_id})
         return PlayerOut(**updated_player) if updated_player else None
     
     async def delete_player(self, device_id: str):
         res = await self.collection.delete_one({"device_id": device_id})
+
+        if not res.deleted_count:
+            raise HTTPException(status_code=404, detail={
+                "message": "Player not deleted",
+                "device_id": device_id
+            })
+        
         return res.deleted_count > 0
-    
-    async def add_coins(self, device_id: str, increment: int):
-        res = await self.collection.update_one({"device_id": device_id}, {"$inc": {"coins": increment}})
-        updated_player = await self.collection.find_one({"device_id": device_id})
-        return PlayerOut(**updated_player) if updated_player else None

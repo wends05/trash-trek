@@ -1,13 +1,22 @@
 from typing import Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 class Player(BaseModel):
     device_id: str
     name: str
     coins: int
     
-class PlayerIn(Player):
-    pass
+class PlayerIn(BaseModel):
+    device_id: str
+    name: str
+    coins: int
 
-class PlayerOut(PlayerIn):
-    pass
+class PlayerEdit(BaseModel):
+    name: Optional[str] = None
+    coins: Optional[int] = None
+
+class PlayerOut(BaseModel):
+    _id: str
+    device_id: str
+    name: str
+    coins: int
