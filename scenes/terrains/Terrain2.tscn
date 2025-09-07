@@ -72,8 +72,8 @@ position = Vector2(816, 610)
 shape = SubResource("RectangleShape2D_ny86d")
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D2"]
-position = Vector2(592, 286)
-scale = Vector2(1.97719, 1.58714)
+position = Vector2(560, 278)
+scale = Vector2(1.91635, 1.58714)
 texture = ExtResource("2_4gsq6")
 
 [node name="TileMap" type="TileMapLayer" parent="."]
