@@ -8,7 +8,7 @@ player_router = APIRouter(
     tags=["players"]
 )
 
-def get_player_service():
+def get_player_service() -> PlayerService:
     return PlayerService(players_collection)
 
 @player_router.post("/")
