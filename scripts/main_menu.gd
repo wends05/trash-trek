@@ -26,6 +26,8 @@ func _ready():
 func exit_credits():
 	enable_buttons([credits_button, exit_button, start_button, tutorial_button])
 	props_player.play_backwards("credit_scene")
+	await props_player.animation_finished
+	Utils.anim_player(props_player, "hover_button")
 
 func _on_start_button_pressed() -> void:
 	start_game()

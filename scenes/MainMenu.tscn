@@ -528,7 +528,7 @@ Label/font_sizes/font_size = 62
 
 [sub_resource type="FontVariation" id="FontVariation_1n6yq"]
 base_font = ExtResource("19_v41fp")
-variation_transform = Transform2D(1.26, 0.03, -0.05, 0.865, 0, 0)
+variation_transform = Transform2D(1.26, 0.055, 0, 0.855, 0, 0)
 spacing_glyph = 7
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xbdup"]
@@ -548,7 +548,7 @@ Label/font_sizes/font_size = 62
 
 [sub_resource type="FontVariation" id="FontVariation_v41fp"]
 base_font = ExtResource("19_v41fp")
-variation_transform = Transform2D(1.275, 0.07, -0.05, 0.865, 0, 0)
+variation_transform = Transform2D(1.375, 0.075, 0, 0.865, 0, 0)
 spacing_glyph = 7
 
 [sub_resource type="Animation" id="Animation_2axsc"]
@@ -651,7 +651,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(9, -10), Vector2(12.005, -6.755), Vector2(9, -10)]
+"values": [Vector2(9, -10), Vector2(16.86, -6.755), Vector2(9, -10)]
 }
 
 [sub_resource type="Animation" id="Animation_yovvs"]
@@ -707,7 +707,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.16, 0.34),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(28.1343, -10.6521), Vector2(32.529, -6.252), Vector2(28.1343, -10.6521)]
+"values": [Vector2(28.1343, -10.6521), Vector2(36.004, -6.252), Vector2(28.1343, -10.6521)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2axsc"]
