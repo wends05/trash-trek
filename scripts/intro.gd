@@ -1,7 +1,9 @@
 extends Control
 
+@onready var intro_player = $IntroPlayer
+
 func _ready() -> void:
-	$AnimationPlayer.play("introduction")
+	Utils.anim_player(intro_player, "introduction")
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
