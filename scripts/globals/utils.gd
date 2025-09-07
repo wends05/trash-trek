@@ -31,6 +31,13 @@ enum PlayerMotion {
 	Hurt
 }
 
+enum ErrorType {
+	OK,
+	REQUEST_ERROR,
+	INVALID_JSON,
+	HTTP_ERROR
+}
+
 const TRASHES = [
 	preload("res://resources/trash_resource/biodegradable/branches.tres"),
 	preload("res://resources/trash_resource/biodegradable/crumpled.tres"),
@@ -72,3 +79,49 @@ func get_trash_bin(trash_type: Utils.TrashType) -> TrashBinResource:
 func get_trash_bin_icon(trash_type: Utils.TrashType) -> Texture:
 	var items = TRASHBINICONS
 	return items[trash_type]
+
+func http_json(
+	node: Node,
+	success_callable: Callable,
+	url: String,
+	method: int = HTTPClient.METHOD_GET,
+	headers: PackedStringArray = PackedStringArray(),
+	body: Variant = null,
+) -> Dictionary:
+	var req := HTTPRequest.new()
+	node.add_child(req)
+	req.request_completed.connect(success_callable)
+
+	var body_str := ""
+	if body != null:
+		match typeof(body):
+			TYPE_DICTIONARY, TYPE_ARRAY:
+				body_str = JSON.stringify(body)
+				headers.append("Content-Type: application/json")
+			TYPE_STRING:
+				body_str = body
+			_:
+				body_str = str(body)
+
+	var err := req.request(url, headers, method, body_str)
+	print_debug("HTTP request: ", err)
+	if err != OK:
+		printerr("HTTP request failed: ", err)
+		# req.queue_free()
+		return {"ok": false, "error": ErrorType.REQUEST_ERROR, "code": 0}
+
+	var result = await req.request_completed
+	# req.queue_free()
+
+	var response_code: int = result[1]
+	var body_bytes: PackedByteArray = result[3]
+
+	if response_code >= 200 and response_code < 300:
+		var text := body_bytes.get_string_from_utf8()
+		var json := JSON.new()
+		if json.parse(text) == OK:
+			return {"ok": true, "code": response_code, "data": json}
+		else:
+			return {"ok": false, "error": ErrorType.INVALID_JSON, "code": response_code}
+	else:
+		return {"ok": false, "error": ErrorType.HTTP_ERROR, "code": response_code}
