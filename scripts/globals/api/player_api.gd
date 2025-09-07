@@ -24,7 +24,6 @@ func _ready() -> void:
 	device_id = get_device_id()
 	print_debug("Device ID: ", device_id)
 
-	get_user_success.connect(_on_get_user_success)
 	get_user_failed.connect(_on_get_user_failed)
 	user_name_set.connect(_on_name_set)
 
