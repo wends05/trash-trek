@@ -5,7 +5,8 @@ class_name TerrainManager
 @export var speed: float = 200
 @export var terrain_width: int = 1152
 @onready var terrain_manager: Node = $"."
-var last_terrain_used = null
+var last_terrains := []  # stores recent terrain types (most recent appended)
+const MAX_HISTORY := 2  # Number of terrains to remember and avoid
 
 enum TerrainType {Start, Terrain1, Terrain2, Terrain3, Terrain4, Terrain5, Terrain6}
 
@@ -47,19 +48,30 @@ func load_terrain(x, y):
 		scene.position = Vector2(x, y)
 		terrain_manager.add_child(scene)
 		start_terrain_loaded = true
-		last_terrain_used = null  # No previous terrain yet
+		last_terrains.clear()  # Clear terrain history at start
 	else:
 		var terrain_types = [TerrainType.Terrain1, TerrainType.Terrain2, TerrainType.Terrain3, TerrainType.Terrain4, TerrainType.Terrain5, TerrainType.Terrain6 ]
 		
-		# Remove the last used terrain from available options
-		if last_terrain_used != null:
-			terrain_types.erase(last_terrain_used)
+		# Remove the last two used terrains from available options
+		for used_terrain in last_terrains:
+			terrain_types.erase(used_terrain)
+		
+		# If we've run out of terrain types (shouldn't happen with 6+ terrains)
+		if terrain_types.is_empty():
+			terrain_types = [TerrainType.Terrain1, TerrainType.Terrain2, TerrainType.Terrain3, 
+						   TerrainType.Terrain4, TerrainType.Terrain5, TerrainType.Terrain6]
+			# Still avoid the most recent terrain if possible
+			if not last_terrains.is_empty():
+				terrain_types.erase(last_terrains[0])
 		
 		# Randomly select from remaining terrains
 		var terrain_type = terrain_types[randi() % terrain_types.size()]
 		
-		# Store this terrain as the last used
-		last_terrain_used = terrain_type
+		# Update the history of used terrains
+		last_terrains.push_front(terrain_type)
+		# Keep only the last MAX_HISTORY terrains
+		if last_terrains.size() > MAX_HISTORY:
+			last_terrains.pop_back()
 		
 		# Instantiate the selected terrain
 		var scene = terrain_scenes[terrain_type].instantiate()
