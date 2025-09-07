@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjlwocmldl2p1"]
+[gd_scene load_steps=19 format=3 uid="uid://bjlwocmldl2p1"]
 
 [ext_resource type="Script" uid="uid://djvk4e4r7ppdn" path="res://scripts/main.gd" id="1_h6nst"]
 [ext_resource type="PackedScene" uid="uid://dyac4ihj46tig" path="res://scenes/Player.tscn" id="1_nbc6x"]
@@ -11,6 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://bo5gvumie1le6" path="res://assets/background/underground.png" id="6_cvmbd"]
 [ext_resource type="PackedScene" uid="uid://b3evh0nyta6a3" path="res://scenes/death_zones.tscn" id="7_jlsqs"]
 [ext_resource type="PackedScene" uid="uid://cnvc3c5c6c8mj" path="res://scenes/ui.tscn" id="7_nxtc6"]
+[ext_resource type="Texture2D" uid="uid://dln2x4ct1xx31" path="res://assets/background/buildings2.png" id="12_cvmbd"]
+[ext_resource type="Texture2D" uid="uid://bfs2wl0nyi5fb" path="res://assets/background/cloud2.png" id="13_cvmbd"]
+[ext_resource type="Texture2D" uid="uid://5ujsxqanrh5a" path="res://assets/background/buildings1.png" id="13_ft6cd"]
+[ext_resource type="Texture2D" uid="uid://b2jhac5s0fjxr" path="res://assets/background/cloud1.png" id="14_cvmbd"]
+[ext_resource type="Texture2D" uid="uid://cuw6cjwve1kgy" path="res://assets/background/river.png" id="14_mwfav"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxtc6"]
 size = Vector2(20, 328)
@@ -59,42 +64,106 @@ scale = Vector2(1.5625, 1.35266)
 texture = ExtResource("2_bjd11")
 centered = false
 
-[node name="Background" type="Node" parent="."]
+[node name="Backgrounds" type="Node" parent="."]
 
-[node name="Background" type="Parallax2D" parent="Background"]
+[node name="Background2" type="Node" parent="Backgrounds"]
+
+[node name="Background" type="Parallax2D" parent="Backgrounds/Background2"]
+z_index = -1
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 6
+
+[node name="Sprite2D2" type="Sprite2D" parent="Backgrounds/Background2/Background"]
+position = Vector2(580, 325)
+scale = Vector2(0.743871, 0.8675)
+texture = ExtResource("12_cvmbd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Background2/Background"]
+position = Vector2(271, 175)
+scale = Vector2(0.39, 0.3895)
+texture = ExtResource("13_cvmbd")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Backgrounds/Background2/Background"]
+position = Vector2(896, 120)
+scale = Vector2(0.458, 0.405)
+texture = ExtResource("14_cvmbd")
+
+[node name="Midground" type="Parallax2D" parent="Backgrounds/Background2"]
+z_index = -1
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(-100, 0)
+repeat_times = 6
+
+[node name="Sprite2D2" type="Sprite2D" parent="Backgrounds/Background2/Midground"]
+position = Vector2(574.5, 326)
+scale = Vector2(0.742581, 0.82)
+texture = ExtResource("13_ft6cd")
+
+[node name="Foreground" type="Parallax2D" parent="Backgrounds/Background2"]
+z_index = -1
+scroll_offset = Vector2(-133, 159)
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-120, 0)
+repeat_times = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Background2/Foreground"]
+position = Vector2(708, 329)
+scale = Vector2(0.745161, 0.81375)
+texture = ExtResource("14_mwfav")
+
+[node name="Background" type="Node" parent="Backgrounds"]
+
+[node name="Background" type="Parallax2D" parent="Backgrounds/Background"]
 z_index = -1
 repeat_size = Vector2(1150, 0)
 autoscroll = Vector2(-50, 0)
 repeat_times = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/Background"]
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Background/Background"]
+visible = false
 position = Vector2(576, 306.5)
 scale = Vector2(1.98958, 1.55864)
 texture = ExtResource("3_qmy6f")
 
-[node name="Midground" type="Parallax2D" parent="Background"]
+[node name="Background2" type="Parallax2D" parent="Backgrounds/Background"]
+z_index = -1
+repeat_size = Vector2(1150, 0)
+autoscroll = Vector2(-50, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Background/Background2"]
+visible = false
+position = Vector2(576, 306.5)
+scale = Vector2(1.98958, 1.55864)
+texture = ExtResource("3_qmy6f")
+
+[node name="Midground" type="Parallax2D" parent="Backgrounds/Background"]
 z_index = -1
 repeat_size = Vector2(1150, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/Midground"]
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Background/Midground"]
+visible = false
 scale = Vector2(2.00347, 1.73765)
 texture = ExtResource("4_mwfav")
 centered = false
 
-[node name="Foreground" type="Parallax2D" parent="Background"]
+[node name="Foreground" type="Parallax2D" parent="Backgrounds/Background"]
 z_index = -1
 repeat_size = Vector2(1150, 0)
 autoscroll = Vector2(-150, 0)
 repeat_times = 2
 
-[node name="Sprite2D2" type="Sprite2D" parent="Background/Foreground"]
+[node name="Sprite2D2" type="Sprite2D" parent="Backgrounds/Background/Foreground"]
+visible = false
 scale = Vector2(2.01215, 1.74383)
 texture = ExtResource("5_3p2gp")
 centered = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/Foreground"]
+[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Background/Foreground"]
+visible = false
 position = Vector2(0, 471)
 scale = Vector2(1.00435, 1.045)
 texture = ExtResource("6_cvmbd")
