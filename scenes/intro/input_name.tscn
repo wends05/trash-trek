@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=3 uid="uid://8ew00ia876bg"]
+
+[ext_resource type="Script" uid="uid://cvqadl4lpmkf3" path="res://scripts/input_name.gd" id="1_5so1s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5so1s"]
+
+[node name="InputName" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5so1s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00688539, 0.0068854, 0.00688539, 1)
+
+[node name="Container" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(192, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Loading" type="Label" parent="Container"]
+layout_mode = 2
+text = "Loading..."
+label_settings = SubResource("LabelSettings_5so1s")
+horizontal_alignment = 1
+
+[node name="NameInput" type="TextEdit" parent="Container"]
+visible = false
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+placeholder_text = "Your name"
+wrap_mode = 1
+
+[node name="Enter" type="Button" parent="Container"]
+visible = false
+layout_mode = 2
+text = "Proceed"
+
+[node name="Message" type="Label" parent="Container"]
+visible = false
+layout_mode = 2
+
+[connection signal="pressed" from="Container/Enter" to="." method="_on_enter_pressed"]
