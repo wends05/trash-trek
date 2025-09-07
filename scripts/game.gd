@@ -82,7 +82,7 @@ func update_trash_count(type: Utils.TrashType):
 		energy_timer.start()
 
 	updated_stats.emit()
-	add_energy(2)
+	add_energy(1)
 
 func calculate_score():
 	return accumulated_energy + elapsed_time
