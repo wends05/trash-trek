@@ -38,6 +38,14 @@ enum ErrorType {
 	HTTP_ERROR
 }
 
+enum SceneType {
+	Gameplay,
+	Menu,
+	Credits,
+	Tutorial,
+	GameOver,
+}
+
 const TRASHES = [
 	preload("res://resources/trash_resource/biodegradable/branches.tres"),
 	preload("res://resources/trash_resource/biodegradable/crumpled.tres"),

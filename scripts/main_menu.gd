@@ -50,7 +50,7 @@ func start_game():
 	Game.reset_stats()
 	SceneHandler.last_scene_path = get_tree().current_scene.scene_file_path
 	Utils.anim_player(props_player, "fade_out")
-	SceneTransition.change_scene("res://scenes/Main.tscn")
+	SceneTransition.change_scene("res://scenes/Main.tscn", Utils.SceneType.Gameplay)
 
 func quit_game():
 	get_tree().quit()

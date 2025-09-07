@@ -1476,6 +1476,7 @@ rotation = -0.0124002
 texture_normal = SubResource("AtlasTexture_egsv4")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_lock_ = true
 
 [node name="Tutorial" type="Sprite2D" parent="Buttons/TutorialButton"]
 modulate = Color(1, 1, 1, 0.564706)
@@ -1506,6 +1507,7 @@ offset_left = 877.0
 offset_top = 490.0
 offset_right = 1117.0
 offset_bottom = 545.0
+metadata/_edit_lock_ = true
 
 [node name="Credits" type="Sprite2D" parent="Buttons/CreditsButton"]
 modulate = Color(1, 1, 1, 0.568627)
@@ -1543,6 +1545,7 @@ grow_vertical = 0
 rotation = -0.00729343
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_lock_ = true
 
 [node name="Exit" type="Sprite2D" parent="Buttons/ExitButton"]
 modulate = Color(1, 1, 1, 0.572549)
