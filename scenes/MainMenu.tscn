@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=4 uid="uid://c8ae8g52xg1c0"]
+[gd_scene load_steps=88 format=4 uid="uid://c8ae8g52xg1c0"]
 
 [ext_resource type="Script" uid="uid://dgtjw4k4yhdoh" path="res://scripts/main_menu.gd" id="1_yqorp"]
 [ext_resource type="Texture2D" uid="uid://cxway0xgyufg3" path="res://assets/menu/trashes/TrashMount3.png" id="3_8a8k8"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://b0wiwv8fwgkwc" path="res://assets/menu/clouds/cloud3.png" id="14_5faoh"]
 [ext_resource type="Texture2D" uid="uid://dahp43gna1p8n" path="res://assets/menu/BrushStrokes.png" id="18_tdapf"]
 [ext_resource type="FontFile" uid="uid://fp7rfneeiohe" path="res://fonts/SearchingForSignal.ttf" id="19_v41fp"]
+[ext_resource type="Texture2D" uid="uid://vtxnw3gfa8by" path="res://assets/menu/BrushStroke.png" id="21_viowm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7la6k"]
 atlas = ExtResource("3_ucygd")
@@ -452,6 +453,22 @@ base_font = ExtResource("19_v41fp")
 variation_transform = Transform2D(1.26, 0.07, -0.05, 0.865, 0, 0)
 spacing_glyph = 7
 
+[sub_resource type="Theme" id="Theme_viowm"]
+Label/colors/font_color = Color(0.854902, 0.407843, 0, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0.403922, 0, 0, 0.670588)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_offset_y = 0
+Label/constants/shadow_outline_size = 5
+Label/font_sizes/font_size = 62
+
+[sub_resource type="FontVariation" id="FontVariation_1n6yq"]
+base_font = ExtResource("19_v41fp")
+variation_transform = Transform2D(1.26, 0.03, -0.05, 0.865, 0, 0)
+spacing_glyph = 7
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_xbdup"]
 atlas = ExtResource("18_tdapf")
 region = Rect2(329, 208, 928, 272)
@@ -469,7 +486,7 @@ Label/font_sizes/font_size = 62
 
 [sub_resource type="FontVariation" id="FontVariation_v41fp"]
 base_font = ExtResource("19_v41fp")
-variation_transform = Transform2D(1.26, 0.07, -0.05, 0.865, 0, 0)
+variation_transform = Transform2D(1.275, 0.07, -0.05, 0.865, 0, 0)
 spacing_glyph = 7
 
 [sub_resource type="Animation" id="Animation_2axsc"]
@@ -521,6 +538,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(28.1343, -10.6521)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CreditsButton/CreditsLabel:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CreditsButton/CreditsLabel:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(9, -10)]
 }
 
 [sub_resource type="Animation" id="Animation_yovvs"]
@@ -579,9 +620,38 @@ tracks/1/keys = {
 "values": [Vector2(28.1343, -10.6521), Vector2(32.529, -6.252), Vector2(28.1343, -10.6521)]
 }
 
+[sub_resource type="Animation" id="Animation_wrgne"]
+resource_name = "credits_press"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CreditsButton/CreditsLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.915, 0.915), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CreditsButton/CreditsLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(9, -10), Vector2(12.005, -6.755), Vector2(9, -10)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2axsc"]
 _data = {
 &"RESET": SubResource("Animation_2axsc"),
+&"credits_press": SubResource("Animation_wrgne"),
 &"exit_press": SubResource("Animation_yovvs"),
 &"tutorial_press": SubResource("Animation_tdapf")
 }
@@ -1373,9 +1443,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 287.0
-offset_top = 171.0
+offset_top = 104.0
 offset_right = 541.0
-offset_bottom = 220.0
+offset_bottom = 153.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.0124002
@@ -1407,11 +1477,31 @@ text = "Tutorial"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CreditButton" type="TextureButton" parent="Buttons"]
-offset_left = 863.0
-offset_top = 495.0
-offset_right = 903.0
-offset_bottom = 535.0
+[node name="CreditsButton" type="TextureButton" parent="Buttons"]
+offset_left = 877.0
+offset_top = 490.0
+offset_right = 1117.0
+offset_bottom = 545.0
+
+[node name="Credits" type="Sprite2D" parent="Buttons/CreditsButton"]
+modulate = Color(1, 1, 1, 0.568627)
+position = Vector2(171, 47)
+scale = Vector2(0.350794, 0.265835)
+texture = ExtResource("21_viowm")
+
+[node name="CreditsLabel" type="Label" parent="Buttons/CreditsButton"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 9.0
+offset_top = -10.0
+offset_right = 215.0
+offset_bottom = 70.0
+rotation = -0.0191986
+theme = SubResource("Theme_viowm")
+theme_override_fonts/font = SubResource("FontVariation_1n6yq")
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ExitButton" type="TextureButton" parent="Buttons"]
 texture_filter = 1
@@ -1440,12 +1530,12 @@ texture = SubResource("AtlasTexture_xbdup")
 flip_v = true
 
 [node name="ExitLabel" type="Label" parent="Buttons/ExitButton"]
-layout_mode = 0
+layout_mode = 1
 offset_left = 36.9916
 offset_top = 1.2802
 offset_right = 271.992
 offset_bottom = 67.2802
-rotation = -0.0226893
+rotation = -0.0139626
 scale = Vector2(1.026, 0.941)
 theme = SubResource("Theme_tdapf")
 theme_override_fonts/font = SubResource("FontVariation_v41fp")
@@ -1468,6 +1558,9 @@ libraries = {
 [connection signal="mouse_entered" from="Buttons/TutorialButton" to="." method="_on_tutorial_button_mouse_entered"]
 [connection signal="mouse_exited" from="Buttons/TutorialButton" to="." method="_on_tutorial_button_mouse_exited"]
 [connection signal="pressed" from="Buttons/TutorialButton" to="." method="_on_tutorial_button_pressed"]
+[connection signal="mouse_entered" from="Buttons/CreditsButton" to="." method="_on_credits_button_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/CreditsButton" to="." method="_on_credits_button_mouse_exited"]
+[connection signal="pressed" from="Buttons/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="mouse_entered" from="Buttons/ExitButton" to="." method="_on_exit_button_mouse_entered"]
 [connection signal="mouse_exited" from="Buttons/ExitButton" to="." method="_on_exit_button_mouse_exited"]
 [connection signal="pressed" from="Buttons/ExitButton" to="." method="_on_exit_button_pressed"]
