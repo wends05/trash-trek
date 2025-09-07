@@ -5,6 +5,7 @@ class_name UI
 @onready var ui_text_controller: UITextController = $UITextController
 @onready var ui_visibility_controller: UIVisibilityController = $UIVisibilityController
 @onready var pause_animation = $PauseButton/PauseAnimate
+@onready var game_stats_label = $"Text Labels/Game Stats"
 
 func _ready() -> void:
 	Game.updated_stats.connect(update_trash_counts)
@@ -26,25 +27,21 @@ func _input(event: InputEvent) -> void:
 		if event.is_action_pressed("recyclable"):
 			$%RecyclableButton.button_pressed = true
 			_on_group_pressed(Utils.TrashType.Recyclable)
-			return
-		if event.is_action_pressed("biodegradable"):
+		elif event.is_action_pressed("biodegradable"):
 			$%BiodegradableButton.button_pressed = true
 			_on_group_pressed(Utils.TrashType.Biodegradable)
-			return
-		if event.is_action_pressed("toxic_waste"):
+		elif event.is_action_pressed("toxic_waste"):
 			$%ToxicWasteButton.button_pressed = true
 			_on_group_pressed(Utils.TrashType.ToxicWaste)
-			return
 
 func update_trash_counts():
 	trash_count_display.text = \
-	"%s                %s                %s
+	"%s              %s              %s
 	" % [
 		Game.collected_recyclable,
 		Game.collected_biodegradable,
 		Game.collected_toxic_waste
 	]
-
 
 func toggle_pause():
 	if Input.is_action_just_pressed("esc") and not Game.is_game_over:
@@ -55,10 +52,6 @@ func toggle_pause():
 		else:
 			update_ui_state(Utils.UIStateType.PauseMenu)
 			update_game_state(Utils.GameStateType.Play)
-					
-#func update_trash_bin_countdown():
-	#temp_trash_countdown_display.text = \
-	#"Trash Bin Countdown: %s" % Game.trash_bin_countdown
 
 func _on_pause_button_pressed() -> void:
 	update_ui_state(Utils.UIStateType.PauseMenu)
