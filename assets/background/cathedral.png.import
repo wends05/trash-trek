@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uh30vrojts7y"
-path="res://.godot/imported/face_mask.png-d42872cd3fac920f83017f402a11fbef.ctex"
+uid="uid://bpf8jfqclvju4"
+path="res://.godot/imported/cathedral.png-1c0c78762fa771abe3e23f2a05ef6021.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/trash/Toxicwaste/face_mask.png"
-dest_files=["res://.godot/imported/face_mask.png-d42872cd3fac920f83017f402a11fbef.ctex"]
+source_file="res://assets/background/cathedral.png"
+dest_files=["res://.godot/imported/cathedral.png-1c0c78762fa771abe3e23f2a05ef6021.ctex"]
 
 [params]
 

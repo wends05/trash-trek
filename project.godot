@@ -11,16 +11,17 @@ config_version=5
 [application]
 
 config/name="Game On"
-run/main_scene="uid://k87148muibsn"
+run/main_scene="uid://8ew00ia876bg"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Utils="*res://scripts/utils.gd"
-Game="*res://scripts/game.gd"
 SceneHandler="*res://scripts/scene/scene_handler.gd"
 SceneTransition="*res://scenes/scene_transition.tscn"
+Game="*res://scripts/globals/game.gd"
+Utils="*res://scripts/globals/utils.gd"
+PlayerApi="*res://scripts/globals/api/player_api.gd"
 
 [display]
 
