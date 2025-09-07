@@ -7,6 +7,9 @@ extends Control
 
 @onready var player = $ParallaxBackground/Player
 
+@export var credits_scene: PackedScene
+@export var game_scene: PackedScene
+
 @onready var start_button = $Buttons/StartButton
 @onready var tutorial_button = $Buttons/TutorialButton
 @onready var credits_button = $Buttons/CreditsButton
@@ -31,6 +34,7 @@ func _on_tutorial_button_pressed() -> void:
 func _on_credits_button_pressed() -> void:
 	Utils.anim_player(buttons_player, "credits_press")
 	await buttons_player.animation_finished
+	SceneTransition.change_scene(credits_scene, Utils.SceneType.Credits)
 
 func is_intro_scene():
 	if SceneHandler.last_scene_path == "res://scenes/intro.tscn":
@@ -50,7 +54,7 @@ func start_game():
 	Game.reset_stats()
 	SceneHandler.last_scene_path = get_tree().current_scene.scene_file_path
 	Utils.anim_player(props_player, "fade_out")
-	SceneTransition.change_scene("res://scenes/Main.tscn", Utils.SceneType.Gameplay)
+	SceneTransition.change_scene(game_scene, Utils.SceneType.Gameplay)
 
 func quit_game():
 	get_tree().quit()
