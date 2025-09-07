@@ -9,10 +9,11 @@ func set_header_and_footer() -> void:
 	header_space.custom_minimum_size.y = size.y
 	footer_space.custom_minimum_size.y = size.y
 	credits_label.custom_minimum_size.x = size.x
-
+	
 func _on_scroll_container_end_reached() -> void:
-	end_reached.emit()
-
+	SceneTransition.credits_end.emit()
+	$".".queue_free()
+	
 func _on_resized() -> void:
 	set_header_and_footer()
 

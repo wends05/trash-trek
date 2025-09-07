@@ -15,10 +15,18 @@ extends Control
 @onready var credits_button = $Buttons/CreditsButton
 @onready var exit_button = $Buttons/ExitButton
 
+@onready var scene_container = $SceneContainer
+
+
 func _ready():
+	SceneTransition.credits_end.connect(exit_credits)
 	is_intro_scene()
 	cam.make_current()
-	
+
+func exit_credits():
+	enable_buttons([credits_button, exit_button, start_button, tutorial_button])
+	props_player.play_backwards("credit_scene")
+
 func _on_start_button_pressed() -> void:
 	start_game()
 
@@ -34,8 +42,11 @@ func _on_tutorial_button_pressed() -> void:
 func _on_credits_button_pressed() -> void:
 	Utils.anim_player(buttons_player, "credits_press")
 	await buttons_player.animation_finished
-	SceneTransition.change_scene(credits_scene, Utils.SceneType.Credits)
-
+	disable_buttons([credits_button, exit_button, start_button, tutorial_button])
+	Utils.anim_player(props_player, "credit_scene")
+	await props_player.animation_finished
+	SceneTransition.change_scene(credits_scene, Utils.SceneType.Credits, scene_container)
+	
 func is_intro_scene():
 	if SceneHandler.last_scene_path == "res://scenes/intro.tscn":
 		Utils.anim_player(props_player, "cam_in")
@@ -62,6 +73,10 @@ func quit_game():
 func disable_buttons(buttons: Array):
 	for button in buttons:
 		button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+func enable_buttons(buttons: Array):
+	for button in buttons:
+		button.mouse_filter = Control.MOUSE_FILTER_PASS
 
 func _on_tutorial_button_mouse_entered() -> void:
 	$Buttons/TutorialButton/TutorialLabel.add_theme_color_override("font_color", Color.html("f07a00"))

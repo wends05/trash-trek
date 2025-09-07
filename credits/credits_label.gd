@@ -1,8 +1,8 @@
 @tool
 extends RichTextLabel
 
-const HEADING_STRING_REPLACEMENT = "$1[font_size=%d]$2[/font_size]"
-const BOLD_HEADING_STRING_REPLACEMENT = "$1[b][font_size=%d]$2[/font_size][/b]"
+const HEADING_STRING_REPLACEMENT = "$1[color=%s][font_size=%d]$2[/font_size][/color]"
+const BOLD_HEADING_STRING_REPLACEMENT = "$1[color=%s][b][font_size=%d]$2[/font_size][/b][/color]"
 
 @export_file("*.md") var attribution_file_path: String
 @export var auto_update : bool = true
@@ -22,6 +22,9 @@ const BOLD_HEADING_STRING_REPLACEMENT = "$1[b][font_size=%d]$2[/font_size][/b]"
 @export var disable_urls : bool = false
 ## For platforms that don't permit linking to other domains or products.
 @export var disable_opening_links: bool = false
+
+@export var h1_color: Color = Color.html("86d818")
+@export var h2_color: Color = Color.html("86d818")
 
 func load_file(file_path) -> String:
 	var file_string = FileAccess.get_file_as_string(file_path)
@@ -60,18 +63,22 @@ func regex_replace_titles(credits:String) -> String:
 	var iter = 0
 	var heading_font_sizes : Array[int] = [
 		h1_font_size,
-		h2_font_size,
-		h3_font_size,
-		h4_font_size,
-		h5_font_size,
-		h6_font_size]
-	for heading_font_size in heading_font_sizes:
+		h2_font_size,]
+	var heading_colors:  Array[Color] = [
+		h1_color,
+		h2_color,
+	]
+	
+	for i in range(heading_font_sizes.size()):
 		iter += 1
 		var regex = RegEx.new()
 		var match_string : String = "([^#]|^)#{%d}\\s([^\n]*)" % iter
-		var replace_string := HEADING_STRING_REPLACEMENT % [heading_font_size]
+		
+		var color_hex = heading_colors[i].to_html(false)
+		
+		var replace_string := HEADING_STRING_REPLACEMENT % [color_hex, heading_font_sizes[i]]
 		if bold_headings:
-			replace_string = BOLD_HEADING_STRING_REPLACEMENT % [heading_font_size]
+			replace_string = BOLD_HEADING_STRING_REPLACEMENT % [color_hex, heading_font_sizes[i]]
 		regex.compile(match_string)
 		credits = regex.sub(credits, replace_string, true)
 	return credits
@@ -81,11 +88,12 @@ func _update_text_from_file() -> void:
 	if file_text == "":
 		return
 	var _end_of_first_line = file_text.find("\n") + 1
-	file_text = file_text.right(-_end_of_first_line) # Trims first line "ATTRIBUTION"
+	file_text = file_text.right(-_end_of_first_line)
 	file_text = regex_replace_imgs(file_text)
 	file_text = regex_replace_urls(file_text)
 	file_text = regex_replace_titles(file_text)
 	text = "[center]%s[/center]" % [file_text]
+
 
 func set_file_path(file_path:String) -> void:
 	attribution_file_path = file_path

@@ -7,7 +7,7 @@ signal end_reached
 @onready var credits_label : Control = %CreditsLabel
 var timer : Timer = Timer.new()
 
-@export var auto_scroll_speed: float = 60.0
+@export var auto_scroll_speed: float = 70.0
 @export var input_scroll_speed : float = 400.0
 @export var scroll_restart_delay : float = 1.5
 
