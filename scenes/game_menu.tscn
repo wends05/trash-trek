@@ -3,11 +3,8 @@
 [ext_resource type="Script" uid="uid://devlsdpi63sk1" path="res://scripts/game_menu.gd" id="1_qdaa4"]
 
 [node name="GameMenu" type="VBoxContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 96.0
+offset_bottom = 171.0
 script = ExtResource("1_qdaa4")
 
 [node name="ResumeButton" type="Button" parent="."]

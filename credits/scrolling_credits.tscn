@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=3 uid="uid://t2dui8ppm3a4"]
+
+[ext_resource type="Script" uid="uid://gmrv6pgchkwc" path="res://credits/auto_scroll_container.gd" id="2_ak7hi"]
+[ext_resource type="Script" uid="uid://cc2wtqasev7le" path="res://credits/credits_label.gd" id="3_kngql"]
+[ext_resource type="Script" uid="uid://bnub0cq2y0deh" path="res://credits/scrolling_credits.gd" id="4"]
+[ext_resource type="FontFile" uid="uid://fp7rfneeiohe" path="res://fonts/SearchingForSignal.ttf" id="4_wp0k2"]
+
+[sub_resource type="Theme" id="Theme_wp0k2"]
+RichTextLabel/colors/default_color = Color(0.968627, 0.635294, 0.298039, 1)
+RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
+RichTextLabel/colors/font_shadow_color = Color(0.717647, 0, 0, 0.690196)
+RichTextLabel/constants/outline_size = 2
+RichTextLabel/constants/shadow_offset_x = 2
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/constants/shadow_outline_size = 3
+RichTextLabel/font_sizes/normal_font_size = 37
+
+[sub_resource type="FontVariation" id="FontVariation_052lj"]
+base_font = ExtResource("4_wp0k2")
+variation_transform = Transform2D(1.625, 0, 0, 1, -0.01, 1.49)
+spacing_glyph = 13
+spacing_space = 5
+spacing_top = 8
+
+[node name="ScrollingCredits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("2_ak7hi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HeaderSpace" type="Control" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 720)
+layout_mode = 2
+
+[node name="CreditsLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(1280, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_wp0k2")
+theme_override_fonts/normal_font = SubResource("FontVariation_052lj")
+bbcode_enabled = true
+text = "[center]
+[img=600x300]res://credits/GameTitle.png[/img]  
+
+
+
+
+
+
+[color=86d818][font_size=70]Lead Developer[/font_size][/color]
+
+Wendell Terence Dador
+
+
+
+
+
+
+
+[color=86d818][font_size=70]Developers [/font_size][/color]
+
+Vhea Asesor
+John Patrick Gerona
+Paul Andrei Ardiente 
+Dainz Andrei Trasadas
+[/center]"
+fit_content = true
+scroll_active = false
+script = ExtResource("3_kngql")
+attribution_file_path = "res://credits/ATTRIBUTION.md"
+h1_font_size = 70
+h2_font_size = 48
+h3_font_size = 70
+h4_font_size = 24
+h5_font_size = 20
+h6_font_size = 16
+max_image_width = 600
+max_image_height = 300
+h1_color = Color(0.52549, 0.847059, 0.0941176, 1)
+h2_color = Color(0.52549, 0.847059, 0.0941176, 1)
+
+[node name="FooterSpace" type="Control" parent="ScrollContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 720)
+layout_mode = 2
+
+[connection signal="end_reached" from="ScrollContainer" to="." method="_on_scroll_container_end_reached"]

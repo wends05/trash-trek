@@ -1,6 +1,6 @@
 extends Node
 
-@export var api_base_url: String = "http://localhost:8000" # change to your server URL
+@export var api_base_url: String = "http://127.0.0.1:8000" # change to your server URL
 
 var device_id = ""
 var player_stats = {
@@ -24,7 +24,6 @@ func _ready() -> void:
 	device_id = get_device_id()
 	print_debug("Device ID: ", device_id)
 
-	get_user_success.connect(_on_get_user_success)
 	get_user_failed.connect(_on_get_user_failed)
 	user_name_set.connect(_on_name_set)
 
