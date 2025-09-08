@@ -5,16 +5,18 @@ signal credits_end
 @onready var trans_player: AnimationPlayer = $TransitionPlayer
 var last_position
 @onready var player_anim = $PlayerAnim
-
+@onready var flash = $Flash
 
 func _ready() -> void:
 	player_anim.hide()
+	flash.hide()
 	$Start/StaticBody2D/CollisionShape2D.disabled = true
 	
 func change_scene(scene: PackedScene, type: Utils.SceneType, container: Node = null) -> void:
 	match type:
 		Utils.SceneType.Gameplay:
 			player_anim.show()
+			flash.show()
 			Utils.anim_player(trans_player, "fade_in")
 			await trans_player.animation_finished
 			SceneHandler.last_background_scroll_offset = $Parallax/Background.scroll_offset
