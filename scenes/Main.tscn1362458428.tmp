@@ -1,9 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bjlwocmldl2p1"]
+[gd_scene load_steps=18 format=3 uid="uid://bjlwocmldl2p1"]
 
 [ext_resource type="Script" uid="uid://djvk4e4r7ppdn" path="res://scripts/main.gd" id="1_h6nst"]
 [ext_resource type="PackedScene" uid="uid://dyac4ihj46tig" path="res://scenes/Player.tscn" id="1_nbc6x"]
 [ext_resource type="Texture2D" uid="uid://c36ux6awwi56f" path="res://assets/background/sky.jpg" id="2_bjd11"]
-[ext_resource type="Script" uid="uid://c0gmhp6fmw0n4" path="res://cast_shadow/cast_shadow.gd" id="3_bjd11"]
 [ext_resource type="Texture2D" uid="uid://cf3y580tv5shs" path="res://assets/background/21.png" id="3_qmy6f"]
 [ext_resource type="Texture2D" uid="uid://bxug1ni6gb5ru" path="res://assets/background/23.png" id="4_mwfav"]
 [ext_resource type="Script" uid="uid://d4hebw0k2lxgw" path="res://scripts/terrain_manager.gd" id="4_vcsgt"]
@@ -13,20 +12,49 @@
 [ext_resource type="PackedScene" uid="uid://b3evh0nyta6a3" path="res://scenes/death_zones.tscn" id="7_jlsqs"]
 [ext_resource type="PackedScene" uid="uid://cnvc3c5c6c8mj" path="res://scenes/ui.tscn" id="7_nxtc6"]
 
-[sub_resource type="Gradient" id="Gradient_qmy6f"]
-offsets = PackedFloat32Array(0.603896, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+[sub_resource type="Gradient" id="Gradient_wp0k4"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0.1, 0.5)
+colors = PackedColorArray(0.21, 0.21, 0.21, 1, 0, 0, 0, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_mwfav"]
-gradient = SubResource("Gradient_qmy6f")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bjd11"]
+gradient = SubResource("Gradient_wp0k4")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(1, 0.5)
 metadata/_snap_enabled = true
-metadata/_snap_count = 12
+
+[sub_resource type="GDScript" id="GDScript_wp0k4"]
+script/source = "extends Sprite2D
+
+@export var player: Player
+
+var collided_bodies
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	global_position.x = player.global_position.x
+	
+	check_collision()
+	
+func check_collision():
+	var collided_bodies = $Area2D.get_overlapping_bodies()
+	if collided_bodies.size() > 0:
+		show() 
+		#print(\"name \", collided_bodies[0])
+		var node = collided_bodies[0].get_node(\"CollisionShape2D\")
+ 		global_position.y = node.global_position.y - (node.shape.size.y / 2)
+	else:
+		hide()
+		global_position.y = 630
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qmy6f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nxtc6"]
 size = Vector2(20, 328)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nbc6x"]
+size = Vector2(1139.5, 66)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_h6nst")
@@ -35,30 +63,25 @@ script = ExtResource("1_h6nst")
 z_index = 1
 position = Vector2(328, 497)
 
-[node name="CastShadow" type="Node2D" parent="Player"]
-show_behind_parent = true
-light_mask = 2
-position = Vector2(0, 79)
-script = ExtResource("3_bjd11")
-
-[node name="RayCast2D" type="RayCast2D" parent="Player/CastShadow"]
-show_behind_parent = true
-target_position = Vector2(0, 68)
-collision_mask = 2
-
-[node name="PointLight2D" type="PointLight2D" parent="Player/CastShadow"]
-modulate = Color(0.0117647, 0.027451, 0.176471, 0.862745)
-show_behind_parent = true
-light_mask = 0
-visibility_layer = 3
-position = Vector2(3, 5.5)
-scale = Vector2(1.78125, 0.359375)
-energy = 0.85
-blend_mode = 1
-texture = SubResource("GradientTexture2D_mwfav")
-
 [node name="TerrainManager" type="Node2D" parent="."]
 script = ExtResource("4_vcsgt")
+
+[node name="Shadow" type="Sprite2D" parent="." node_paths=PackedStringArray("player")]
+light_mask = 0
+visibility_layer = 2
+position = Vector2(329.359, 557.558)
+scale = Vector2(2.21059, 0.890918)
+skew = -1.2514
+texture = SubResource("GradientTexture2D_bjd11")
+script = SubResource("GDScript_wp0k4")
+player = NodePath("../Player")
+
+[node name="Area2D" type="Area2D" parent="Shadow"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shadow/Area2D"]
+shape = SubResource("CircleShape2D_qmy6f")
 
 [node name="TrashRemover" type="Area2D" parent="."]
 position = Vector2(40, 520)
@@ -69,6 +92,15 @@ script = ExtResource("6_c01mt")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TrashRemover"]
 position = Vector2(-32, -40)
 shape = SubResource("RectangleShape2D_nxtc6")
+
+[node name="Scaffolding" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scaffolding"]
+position = Vector2(573.25, 614)
+shape = SubResource("RectangleShape2D_nbc6x")
+disabled = true
 
 [node name="UI" parent="." instance=ExtResource("7_nxtc6")]
 z_index = 1

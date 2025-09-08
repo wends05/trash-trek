@@ -1,12 +1,7 @@
 extends CharacterBody2D
 class_name Player
 
-@export var base_jump_force: float = -290.0 # Initial impulse (negative = up)
-@export var peak_additional_force: float = -260.0 # Additional negative force reached after full sustain
-@export var charge_time: float = 0.2 # Wind-up time before sustained boost starts
-@export var sustain_time: float = 0.3 # Time over which we lerp toward peak (after charge)
-@export var short_hop_gravity_multiplier: float = 2.0 # Extra gravity when released early
-@export var fall_gravity_multiplier: float = 1.0 # Multiplier while descending
+# All jump parameters moved to Jump state for simpler management
 
 @onready var animation: AnimationPlayer = $AnimationPlayer
 @onready var state_machine: Node = get_node_or_null("StateMachine")

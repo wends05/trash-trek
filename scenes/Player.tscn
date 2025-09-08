@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://dyac4ihj46tig"]
 
 [ext_resource type="Script" uid="uid://dofxmaqpmkhp1" path="res://scripts/player.gd" id="1_62i1b"]
-[ext_resource type="Texture2D" uid="uid://cghdmalkrkx3s" path="res://assets/Player/avatar.png" id="3_khinc"]
+[ext_resource type="Texture2D" uid="uid://casgbjjnjc88u" path="res://assets/Player/avatar1.png" id="3_bruh7"]
 [ext_resource type="Script" uid="uid://djtoedaaltfjp" path="res://scripts/player/state_machine.gd" id="3_mdl7e"]
 [ext_resource type="Script" uid="uid://c8o5govvsasps" path="res://scripts/player/states/running.gd" id="4_cw2d6"]
 [ext_resource type="Script" uid="uid://4xbjs1rmmluc" path="res://scripts/player/states/jump.gd" id="5_khinc"]
@@ -36,7 +36,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.2, 0.4, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [13, 13, 13, 13]
+"values": [11, 11, 11, 11]
 }
 
 [sub_resource type="Animation" id="Animation_o4126"]
@@ -67,10 +67,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [13, 8, 9, 10, 11, 12, 13, 8, 9, 13]
+"values": [8, 9, 11]
 }
 
 [sub_resource type="Animation" id="Animation_bruh7"]
@@ -130,12 +130,23 @@ autoplay = "running"
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(6.49999, 4)
 scale = Vector2(0.126953, 0.127604)
-texture = ExtResource("3_khinc")
+texture = ExtResource("3_bruh7")
 hframes = 4
 vframes = 4
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(12, -17)
+scale = Vector2(0.132378, 0.140794)
+texture = ExtResource("3_bruh7")
+offset = Vector2(20, 1)
+hframes = 4
+vframes = 4
+frame = 12
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
+light_mask = 0
 position = Vector2(-9.53674e-07, 6.5)
 shape = SubResource("RectangleShape2D_y30ri")
 
@@ -156,6 +167,7 @@ position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_3li8b")
 
 [node name="MonsterCollision" type="Area2D" parent="."]
+visible = false
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MonsterCollision"]
@@ -175,17 +187,25 @@ shape = SubResource("CapsuleShape2D_khinc")
 script = ExtResource("3_mdl7e")
 initial_state = NodePath("Running")
 
-[node name="Running" type="Node" parent="StateMachine"]
+[node name="Running" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation", "player")]
 script = ExtResource("4_cw2d6")
+animation = NodePath("../../AnimationPlayer")
+player = NodePath("../..")
 
-[node name="Jump" type="Node" parent="StateMachine"]
+[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation", "player")]
 script = ExtResource("5_khinc")
+animation = NodePath("../../AnimationPlayer")
+player = NodePath("../..")
 
-[node name="Falling" type="Node" parent="StateMachine"]
+[node name="Falling" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation", "player")]
 script = ExtResource("6_bruh7")
+animation = NodePath("../../AnimationPlayer")
+player = NodePath("../..")
 
-[node name="Hurt" type="Node" parent="StateMachine"]
+[node name="Hurt" type="Node" parent="StateMachine" node_paths=PackedStringArray("animation", "player")]
 script = ExtResource("7_6eyey")
+animation = NodePath("../../AnimationPlayer")
+player = NodePath("../..")
 
 [connection signal="area_entered" from="TrashCollectionArea" to="." method="_on_trash_collection_area_area_entered"]
 [connection signal="area_entered" from="TrashBinCollectionArea" to="." method="_on_trash_bin_collection_area_area_entered"]
