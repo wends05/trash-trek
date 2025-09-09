@@ -88,19 +88,10 @@ func calculate_score() -> float:
 	return accumulated_energy + elapsed_time
 
 func calculate_coins() -> float:
-
-	# Example coin formula (distinct from score):
-	# - Survival time: 1 coin per 5s
-	# - Energy efficiency: 1 coin per 10 accumulated energy
-	# - Trash bonuses: R=2, B=1, T=3 each
-	# - Small combo bonus every 10 total items
-	
 	var time_coins = int(elapsed_time / 5.0)
 	var energy_coins = int(max(0, accumulated_energy) / 10.0)
-	var trash_total = collected_recyclable + collected_biodegradable + collected_toxic_waste
 	var trash_coins = collected_recyclable * 2 + collected_biodegradable * 1 + collected_toxic_waste * 3
-	var combo_bonus = int(trash_total / 10)
-	return max(0, time_coins + energy_coins + trash_coins + combo_bonus)
+	return max(0, time_coins + energy_coins + trash_coins)
 
 func on_game_over(reason: Utils.GameOverReason) -> void:
 	if is_game_over:
