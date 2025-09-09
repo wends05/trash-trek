@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://ciuvi7tl2l5wv"]
+[gd_scene load_steps=35 format=4 uid="uid://ciuvi7tl2l5wv"]
 
 [ext_resource type="Script" uid="uid://devlsdpi63sk1" path="res://scripts/game_menu.gd" id="1_qdaa4"]
 [ext_resource type="Texture2D" uid="uid://cs354q02836px" path="res://assets/menu/trashes/TrashMount5.png" id="2_mw6r2"]
@@ -427,9 +427,110 @@ resource_name = "retry_hover"
 length = 4.0
 loop_mode = 1
 
+[sub_resource type="Animation" id="Animation_p30b5"]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BG:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0.517184, 0.517184, 0.517184, 0.603922)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Header:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(7, -542.22), Vector2(7, -400)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Footer:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 269.045), Vector2(0, 37)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("RetryButton:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.330213),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ResumeButton:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.330213),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("RestartButton:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.330213),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("MainMenuButton:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("QuitButton:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.330213),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mw6r2"]
 _data = {
 &"RESET": SubResource("Animation_ysvk1"),
+&"fade_in": SubResource("Animation_p30b5"),
 &"retry_hover": SubResource("Animation_vrsc2")
 }
 
@@ -442,58 +543,60 @@ script = ExtResource("1_qdaa4")
 layout_mode = 0
 offset_right = 1153.0
 offset_bottom = 677.0
-color = Color(0, 0, 0, 0.556863)
+color = Color(0, 0, 0, 0)
 
 [node name="Header" type="Control" parent="."]
+modulate = Color(0.211765, 0.211765, 0.211765, 1)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 7.0
-offset_top = -403.0
+offset_top = -542.22
 offset_right = 1157.0
-offset_bottom = 254.0
+offset_bottom = 114.78
 
 [node name="TrashMount5" type="Sprite2D" parent="Header"]
 modulate = Color(0.470076, 0.470076, 0.470076, 1)
-position = Vector2(370, 519)
-scale = Vector2(0.485677, 0.257228)
+position = Vector2(370, 512.61)
+scale = Vector2(0.485677, 0.244486)
 texture = ExtResource("2_mw6r2")
 flip_h = true
 flip_v = true
 
 [node name="TrashMount4" type="Sprite2D" parent="Header"]
-modulate = Color(0.470588, 0.470588, 0.470588, 1)
-position = Vector2(789, 512)
-scale = Vector2(0.464193, 0.234297)
+modulate = Color(0.211765, 0.211765, 0.211765, 1)
+position = Vector2(789, 499.86)
+scale = Vector2(0.464193, 0.21009)
 texture = ExtResource("3_ldg7d")
 flip_v = true
 
 [node name="Footer" type="Control" parent="."]
 layout_mode = 2
 anchors_preset = 0
-offset_top = 37.0
+offset_top = 269.045
 offset_right = 1150.0
-offset_bottom = 694.0
+offset_bottom = 926.045
 
 [node name="TrashMount1" type="Sprite2D" parent="Footer"]
 modulate = Color(0.277528, 0.277528, 0.277528, 1)
-position = Vector2(724.5, 424)
-scale = Vector2(0.556641, 0.360917)
+position = Vector2(724.5, 432.477)
+scale = Vector2(0.556641, 0.344013)
 texture = ExtResource("4_0b27c")
 
 [node name="TrashMount5" type="Sprite2D" parent="Footer"]
-modulate = Color(0.470076, 0.470076, 0.470076, 1)
-position = Vector2(370, 519)
-scale = Vector2(0.485677, 0.257228)
+modulate = Color(0.212305, 0.212305, 0.212305, 1)
+position = Vector2(338, 531.477)
+scale = Vector2(0.44401, 0.232348)
 texture = ExtResource("2_mw6r2")
 flip_h = true
 
 [node name="TrashMount4" type="Sprite2D" parent="Footer"]
-modulate = Color(0.470588, 0.470588, 0.470588, 1)
-position = Vector2(796.5, 533.5)
-scale = Vector2(0.464193, 0.234297)
+modulate = Color(0.211765, 0.211765, 0.211765, 1)
+position = Vector2(827.5, 533.5)
+scale = Vector2(0.423828, 0.234297)
 texture = ExtResource("3_ldg7d")
 
 [node name="RetryButton" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = -8.0
 offset_top = -5.0
@@ -521,6 +624,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ResumeButton" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_right = 1154.0
 offset_bottom = 651.0
@@ -539,6 +643,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RestartButton" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 863.0
 offset_top = 417.0
@@ -570,6 +675,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MainMenuButton" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 877.0
 offset_top = 490.0
@@ -597,6 +703,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="QuitButton" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 835.0
 offset_top = 552.0
@@ -630,11 +737,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_ysvk1")
 }
 
-[node name="HoverPlayer" type="AnimationPlayer" parent="."]
+[node name="TransPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_mw6r2")
 }
-autoplay = "retry_hover"
 
 [connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]

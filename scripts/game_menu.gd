@@ -5,14 +5,15 @@ extends Control
 @onready var retry_button = $RetryButton
 @onready var hover_player = $HoverPlayer
 @onready var button_player = $ButtonPlayer
+@onready var trans_player = $TransPlayer
 
-func _ready() -> void:
-	Utils.anim_player(hover_player, "retry_hover")
 
 func _on_resume_button_pressed() -> void:
 	check_for_pause()
-	Game.update_ui_state.emit(Utils.UIStateType.PauseMenu)
+	trans_player.play_backwards("fade_in")
+	await trans_player.animation_finished
 	Game.update_game_state.emit(Utils.GameStateType.Play)
+	Game.update_ui_state.emit(Utils.UIStateType.PauseMenu)
 	
 func _on_restart_button_pressed() -> void:
 	Game.update_game_state.emit(Utils.GameStateType.Play)
@@ -44,7 +45,6 @@ func check_for_pause():
 	if Game.is_game_pause:
 		Game.is_game_pause = false
 
-
 func _on_restart_button_mouse_entered() -> void:
 	$RestartButton/RestartLabel.add_theme_color_override("font_color", Color.html("f07a00"))
 
@@ -52,7 +52,6 @@ func _on_restart_button_mouse_exited() -> void:
 	$RestartButton/RestartLabel.add_theme_color_override("font_color", Color.html("da6800"))
 
 func _on_main_menu_button_mouse_entered() -> void:
-	print("true")
 	$MainMenuButton/MainMenuLabel.add_theme_color_override("font_color", Color.html("f07a00"))
 
 func _on_main_menu_button_mouse_exited() -> void:

@@ -83,6 +83,7 @@ Label/font_sizes/font_size = 100
 
 [sub_resource type="FontVariation" id="FontVariation_rlppe"]
 base_font = ExtResource("17_f7tlh")
+variation_transform = Transform2D(1, -0.02, -0.08, 0.73, 0, 0)
 spacing_glyph = 10
 
 [sub_resource type="Theme" id="Theme_f7tlh"]
@@ -271,10 +272,10 @@ horizontal_alignment = 1
 
 [node name="GameStatusLabel" type="Label" parent="GameMenu"]
 layout_mode = 0
-offset_left = 82.0
-offset_top = -13.0
-offset_right = 1063.0
-offset_bottom = 132.0
+offset_left = 92.0
+offset_top = -8.0
+offset_right = 1073.0
+offset_bottom = 137.0
 theme = SubResource("Theme_jkdwc")
 theme_override_fonts/font = SubResource("FontVariation_rlppe")
 theme_override_font_sizes/font_size = 0
