@@ -32,10 +32,10 @@ func _on_main_menu_button_pressed() -> void:
 	Utils.anim_player(button_player, "main_menu_press")
 	await button_player.animation_finished
 	Game.update_game_state.emit(Utils.GameStateType.Play)
-	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 	Game.is_game_over = false
 	Game.reset_stats()
-	
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+
 func _on_quit_button_pressed() -> void:
 	Utils.anim_player(button_player, "quit_press")
 	await button_player.animation_finished

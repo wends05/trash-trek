@@ -6,9 +6,9 @@
 [ext_resource type="Script" uid="uid://bnub0cq2y0deh" path="res://credits/scrolling_credits.gd" id="4"]
 
 [sub_resource type="Theme" id="Theme_wp0k2"]
-RichTextLabel/colors/default_color = Color(0.87451, 0.231373, 0, 1)
+RichTextLabel/colors/default_color = Color(0.952886, 0.446637, 7.70092e-07, 1)
 RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
-RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 0.690196)
+RichTextLabel/colors/font_shadow_color = Color(0, 1, 0.286275, 0)
 RichTextLabel/constants/outline_size = 2
 RichTextLabel/constants/shadow_offset_x = 2
 RichTextLabel/constants/shadow_offset_y = 1

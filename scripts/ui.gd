@@ -6,6 +6,7 @@ class_name UI
 @onready var ui_visibility_controller: UIVisibilityController = $UIVisibilityController
 @onready var pause_animation = $PauseButton/PauseAnimate
 @onready var game_stats_label = $"GameMenu/Game Stats"
+@onready var trans_player: AnimationPlayer = $GameMenu/TransPlayer
 
 func _ready() -> void:
 	Game.updated_stats.connect(update_trash_counts)
@@ -50,12 +51,16 @@ func toggle_pause():
 			update_ui_state(Utils.UIStateType.PauseMenu)
 			update_game_state(Utils.GameStateType.Pause)
 		else:
-			update_ui_state(Utils.UIStateType.PauseMenu)
+			trans_player.play_backwards("fade_in")
+			await trans_player.animation_finished
 			update_game_state(Utils.GameStateType.Play)
-
+			update_ui_state(Utils.UIStateType.PauseMenu)
+			
 func _on_pause_button_pressed() -> void:
-	update_ui_state(Utils.UIStateType.PauseMenu)
 	update_game_state(Utils.GameStateType.Pause)
+	if Game.is_game_over:
+		return
+	update_ui_state(Utils.UIStateType.PauseMenu)
 
 func _on_pause_button_mouse_entered() -> void:
 	pause_animation.play("pause_hover")
@@ -70,6 +75,8 @@ func update_ui_state(state: Utils.UIStateType, reason: Utils.GameOverReason = Ut
 func update_game_state(state: Utils.GameStateType) -> void:
 	match state:
 		Utils.GameStateType.Pause:
+			Utils.anim_player(trans_player, "fade_in")
+			await trans_player.animation_finished
 			get_tree().paused = true
 		Utils.GameStateType.Play:
 			get_tree().paused = false

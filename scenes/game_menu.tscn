@@ -556,8 +556,8 @@ offset_bottom = 114.78
 
 [node name="TrashMount5" type="Sprite2D" parent="Header"]
 modulate = Color(0.470076, 0.470076, 0.470076, 1)
-position = Vector2(370, 512.61)
-scale = Vector2(0.485677, 0.244486)
+position = Vector2(366, 512.61)
+scale = Vector2(0.490885, 0.244486)
 texture = ExtResource("2_mw6r2")
 flip_h = true
 flip_v = true
