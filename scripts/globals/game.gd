@@ -13,6 +13,7 @@ signal updated_stats
 signal time_changed(time: float)
 signal update_ui_state(type: Utils.UIStateType, reason: Utils.GameOverReason)
 signal update_game_state(type: Utils.GameStateType)
+signal run_finished(score: float, coins: int, reason: Utils.GameOverReason)
 
 var collected_biodegradable = 0
 var collected_recyclable = 0
@@ -24,7 +25,6 @@ var is_game_over: bool = false
 var is_game_pause: bool = false
 
 var trash_bin_countdown = randi_range(2, 4)
-signal trash_bin_countdown_changed
 
 var selected_trash_type: Utils.TrashType
 signal changed_trash_type(type: Utils.TrashType)
@@ -57,13 +57,13 @@ func add_energy(amount: float) -> void:
 	var final_energy_increase = min(amount, MAX_ENERGY - energy)
 	energy += final_energy_increase
 	energy_changed.emit(energy)
-	accumulated_energy += final_energy_increase
+	accumulated_energy += amount
 
 func decrease_energy(amount: float) -> void:
 	var final_energy_decrease = max(0, energy - amount)
 	energy = final_energy_decrease
 	energy_changed.emit(energy)
-	accumulated_energy -= final_energy_decrease
+	accumulated_energy -= amount	
 
 func _on_energy_timer_timeout() -> void:
 	decrease_energy(base_decrease)
@@ -84,8 +84,33 @@ func update_trash_count(type: Utils.TrashType):
 	updated_stats.emit()
 	add_energy(1)
 
-func calculate_score():
+func calculate_score() -> float:
 	return accumulated_energy + elapsed_time
+
+func calculate_coins() -> float:
+
+	# Example coin formula (distinct from score):
+	# - Survival time: 1 coin per 5s
+	# - Energy efficiency: 1 coin per 10 accumulated energy
+	# - Trash bonuses: R=2, B=1, T=3 each
+	# - Small combo bonus every 10 total items
+	
+	var time_coins = int(elapsed_time / 5.0)
+	var energy_coins = int(max(0, accumulated_energy) / 10.0)
+	var trash_total = collected_recyclable + collected_biodegradable + collected_toxic_waste
+	var trash_coins = collected_recyclable * 2 + collected_biodegradable * 1 + collected_toxic_waste * 3
+	var combo_bonus = int(trash_total / 10)
+	return max(0, time_coins + energy_coins + trash_coins + combo_bonus)
+
+func on_game_over(reason: Utils.GameOverReason) -> void:
+	if is_game_over:
+		return
+	is_game_over = true
+	update_game_state.emit(Utils.GameStateType.Pause)
+	update_ui_state.emit(Utils.UIStateType.GameOver, reason)
+	var final_score = calculate_score()
+	var awarded_coins = calculate_coins()
+	run_finished.emit(final_score, awarded_coins, reason)
 
 func reset_stats():
 	collected_recyclable = 0
@@ -93,10 +118,13 @@ func reset_stats():
 	collected_toxic_waste = 0
 	energy = MAX_ENERGY
 	elapsed_time = 0.0
+	accumulated_energy = 0
+	trash_bin_countdown = randi_range(2, 4)
 	updated_stats.emit()
 	energy_changed.emit(int(energy))
 	time_changed.emit(elapsed_time)
 	energy_timer.start()
+	is_game_over = false
 
 func select_trash_type(type: Utils.TrashType):
 	selected_trash_type = type
@@ -124,8 +152,6 @@ func decrease_trash_count(type: Utils.TrashType, amount: int):
 
 func reset_trash_bin_countdown():
 	trash_bin_countdown = randi_range(2, 4)
-	trash_bin_countdown_changed.emit()
 
 func decrease_trash_bin_countdown():
 	trash_bin_countdown -= 1
-	trash_bin_countdown_changed.emit()

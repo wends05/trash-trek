@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4dllmycwldy6"
-path="res://.godot/imported/branches.png-03c8a9e7cd5820696ee427c4faae758d.ctex"
+uid="uid://vtxnw3gfa8by"
+path="res://.godot/imported/BrushStroke.png-0ba1502c7a436f946ba58cb1345a691c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/trash/Biodegradable/branches.png"
-dest_files=["res://.godot/imported/branches.png-03c8a9e7cd5820696ee427c4faae758d.ctex"]
+source_file="res://assets/menu/BrushStroke.png"
+dest_files=["res://.godot/imported/BrushStroke.png-0ba1502c7a436f946ba58cb1345a691c.ctex"]
 
 [params]
 

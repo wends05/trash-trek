@@ -1,8 +1,10 @@
 extends State
 class_name Hurt
 
-@onready var animation: AnimationPlayer = get_parent().get_parent().get_node("AnimationPlayer")
-@onready var player: Player = get_parent().get_parent()
+@export_category("Nodes")
+
+@export var animation: AnimationPlayer
+@export var player: Player
 
 @export var jump_lockout_time: float = 0.05
 @export var cancel_upward_velocity: bool = true

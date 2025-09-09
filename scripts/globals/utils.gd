@@ -38,6 +38,14 @@ enum ErrorType {
 	HTTP_ERROR
 }
 
+enum SceneType {
+	Gameplay,
+	Menu,
+	Credits,
+	Tutorial,
+	GameOver,
+}
+
 const TRASHES = [
 	preload("res://resources/trash_resource/biodegradable/branches.tres"),
 	preload("res://resources/trash_resource/biodegradable/crumpled.tres"),
@@ -125,3 +133,7 @@ func http_json(
 			return {"ok": false, "error": ErrorType.INVALID_JSON, "code": response_code}
 	else:
 		return {"ok": false, "error": ErrorType.HTTP_ERROR, "code": response_code}
+		
+func anim_player(player: AnimationPlayer, anim_name: String) -> void:
+	if player and player.has_animation(anim_name):
+		player.play(anim_name)
