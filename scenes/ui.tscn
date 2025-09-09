@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cnvc3c5c6c8mj"]
+[gd_scene load_steps=35 format=3 uid="uid://cnvc3c5c6c8mj"]
 
 [ext_resource type="Script" uid="uid://cad734vbhmmtg" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="PackedScene" uid="uid://ciuvi7tl2l5wv" path="res://scenes/game_menu.tscn" id="2_p7vwb"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://yhwdmfusy3l0" path="res://scripts/time.gd" id="11_qsv74"]
 [ext_resource type="Texture2D" uid="uid://wq2c1b0lf2a8" path="res://assets/buttons/green-X.png" id="12_f7tlh"]
 [ext_resource type="Texture2D" uid="uid://bg72nmvcnnmu" path="res://assets/buttons/red-C.png" id="13_8k7j3"]
+[ext_resource type="FontFile" uid="uid://b5mi6s5qo0r03" path="res://fonts/Uskyn-Regular.ttf" id="17_f7tlh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vdcm2"]
 
@@ -67,11 +68,33 @@ font = ExtResource("4_h1mc3")
 [sub_resource type="LabelSettings" id="LabelSettings_vsj0x"]
 font = ExtResource("4_h1mc3")
 
-[sub_resource type="Theme" id="Theme_7dvkv"]
+[sub_resource type="FontVariation" id="FontVariation_f7tlh"]
+base_font = ExtResource("17_f7tlh")
+spacing_glyph = 4
 
-[sub_resource type="LabelSettings" id="LabelSettings_cof4p"]
-font = ExtResource("4_h1mc3")
-font_size = 90
+[sub_resource type="Theme" id="Theme_jkdwc"]
+Label/colors/font_color = Color(0.913725, 0.470588, 0, 1)
+Label/colors/font_shadow_color = Color(0.509804, 0.129412, 0, 1)
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_offset_y = 3
+Label/constants/shadow_outline_size = 3
+Label/font_sizes/font_size = 100
+
+[sub_resource type="FontVariation" id="FontVariation_rlppe"]
+base_font = ExtResource("17_f7tlh")
+spacing_glyph = 10
+
+[sub_resource type="Theme" id="Theme_f7tlh"]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_offset_y = 3
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 33
+
+[sub_resource type="FontVariation" id="FontVariation_cof4p"]
+base_font = ExtResource("17_f7tlh")
+spacing_glyph = 8
 
 [node name="UI" type="Control"]
 process_mode = 3
@@ -121,11 +144,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_ktti3")
-game_status_label = NodePath("../CenterContainer/Text Labels/GameStatusLabel")
-game_stats_label = NodePath("../CenterContainer/Text Labels/Game Stats")
-game_reason_label = NodePath("../CenterContainer/Text Labels/GameReasonLabel")
+game_status_label = NodePath("../GameMenu/GameStatusLabel")
+game_stats_label = NodePath("../GameMenu/Game Stats")
+game_reason_label = NodePath("../GameMenu/GameReasonLabel")
 
-[node name="UIVisibilityController" type="Control" parent="." node_paths=PackedStringArray("pause_button", "game_status_label", "game_menu", "background_rect", "game_stats")]
+[node name="UIVisibilityController" type="Control" parent="." node_paths=PackedStringArray("pause_button", "game_status_label", "game_menu", "game_stats")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -134,10 +157,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_cgfq5")
 pause_button = NodePath("../PauseButton")
-game_status_label = NodePath("../CenterContainer/Text Labels/GameStatusLabel")
-game_menu = NodePath("../CenterContainer/Text Labels/GameMenu")
-background_rect = NodePath("../DarkBG")
-game_stats = NodePath("../CenterContainer/Text Labels/Game Stats")
+game_status_label = NodePath("../GameMenu/GameStatusLabel")
+game_menu = NodePath("../GameMenu")
+game_stats = NodePath("../GameMenu/Game Stats")
 
 [node name="Time" type="Label" parent="."]
 layout_mode = 1
@@ -235,47 +257,41 @@ offset_right = 97.0
 offset_bottom = 631.0
 label_settings = SubResource("LabelSettings_vsj0x")
 
-[node name="DarkBG" type="ColorRect" parent="."]
+[node name="GameMenu" parent="." instance=ExtResource("2_p7vwb")]
+
+[node name="Game Stats" type="Label" parent="GameMenu"]
 layout_mode = 0
-offset_left = -2.0
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0, 0, 0, 0.486275)
-
-[node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 1
-anchors_preset = -1
-offset_top = 171.0
-offset_right = 1152.0
-offset_bottom = 478.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Text Labels" type="VBoxContainer" parent="CenterContainer"]
-layout_direction = 1
-layout_mode = 2
-alignment = 1
-
-[node name="GameStatusLabel" type="Label" parent="CenterContainer/Text Labels"]
-layout_mode = 2
-theme = SubResource("Theme_7dvkv")
-theme_override_font_sizes/font_size = 64
-text = "Game Over"
-label_settings = SubResource("LabelSettings_cof4p")
-horizontal_alignment = 1
-
-[node name="GameReasonLabel" type="Label" parent="CenterContainer/Text Labels"]
-layout_mode = 2
+offset_left = 454.0
+offset_top = 164.0
+offset_right = 707.0
+offset_bottom = 280.0
+theme_override_fonts/font = SubResource("FontVariation_f7tlh")
 theme_override_font_sizes/font_size = 22
 horizontal_alignment = 1
 
-[node name="Game Stats" type="Label" parent="CenterContainer/Text Labels"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 22
+[node name="GameStatusLabel" type="Label" parent="GameMenu"]
+layout_mode = 0
+offset_left = 82.0
+offset_top = -13.0
+offset_right = 1063.0
+offset_bottom = 132.0
+theme = SubResource("Theme_jkdwc")
+theme_override_fonts/font = SubResource("FontVariation_rlppe")
+theme_override_font_sizes/font_size = 0
+text = "GAME OVER"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="GameMenu" parent="CenterContainer/Text Labels" instance=ExtResource("2_p7vwb")]
-layout_mode = 2
+[node name="GameReasonLabel" type="Label" parent="GameMenu"]
+layout_mode = 0
+offset_left = 303.0
+offset_top = 108.0
+offset_right = 840.0
+offset_bottom = 159.0
+theme = SubResource("Theme_f7tlh")
+theme_override_fonts/font = SubResource("FontVariation_cof4p")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="mouse_entered" from="PauseButton" to="." method="_on_pause_button_mouse_entered"]
 [connection signal="mouse_exited" from="PauseButton" to="." method="_on_pause_button_mouse_exited"]

@@ -5,7 +5,7 @@ class_name UI
 @onready var ui_text_controller: UITextController = $UITextController
 @onready var ui_visibility_controller: UIVisibilityController = $UIVisibilityController
 @onready var pause_animation = $PauseButton/PauseAnimate
-@onready var game_stats_label = $"Text Labels/Game Stats"
+@onready var game_stats_label = $"GameMenu/Game Stats"
 
 func _ready() -> void:
 	Game.updated_stats.connect(update_trash_counts)
