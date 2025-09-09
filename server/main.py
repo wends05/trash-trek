@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from player.routes import player_router
+from shop_item.routes import shop_item_router
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -19,3 +20,4 @@ def root():
     }
 
 app.include_router(player_router)
+app.include_router(shop_item_router)
