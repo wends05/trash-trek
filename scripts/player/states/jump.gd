@@ -1,19 +1,20 @@
 extends State
-
 class_name Jump
 
-# Tweakable jump parameters (export so you can tune in Inspector)
-@export var max_hold_time: float = 0.2 # seconds the jump button can influence ascent
-@export var base_jump_force: float = -290.0 # initial impulse (negative = up)
-@export var max_additional_force: float = -260.0 # additional force reached at full hold (added ON TOP of base resulting target ~ base + additional)
-@export var short_hop_gravity_multiplier: float = 2.0 # extra gravity when button released early
-@export var fall_gravity_multiplier: float = 1.0 # gravity once upward velocity ends
+# Jump tuning parameters
+@export var initial_jump_force: float = -400.0 # Initial jump burst (negative = up)
+@export var hold_max_force: float = -200.0 # Additional upward force when fully held
+@export var hold_time: float = 0.3 # How long holding jump adds force
+@export var fall_gravity_multiplier: float = 1.5 # Faster fall for better feel
+@export var short_hop_multiplier: float = 2.0 # Extra gravity when released early
 
-var hold_timer: float = 0.0
-var target_peak_force: float = 0.0
+@export_category("Nodes")
+@export var animation: AnimationPlayer
+@export var player: Player
 
-@onready var animation: AnimationPlayer= get_parent().get_parent().get_node("AnimationPlayer")
-@onready var player: Player = get_parent().get_parent()
+var _hold_timer: float = 0.0
+var _current_force: float = 0.0
+var _has_released: bool = false
 
 func enter():
 	# If a hurt-triggered lockout is active, immediately abort to running/falling (don't allow buffered jump)
@@ -24,37 +25,45 @@ func enter():
 		else:
 			transitioned.emit(self, "falling")
 		return
+
 	animation.play("jump")
-	player.velocity.y = base_jump_force
-	target_peak_force = base_jump_force + max_additional_force
-	hold_timer = 0.0
+	
+	# Initialize jump
+	_hold_timer = 0.0
+	_current_force = initial_jump_force
+	_has_released = false
+	player.velocity.y = initial_jump_force
 
 func physics_update(delta: float):
 	var gravity_y := player.get_gravity().y # positive downward
-
-	if player.velocity.y < 0: # still ascending
-		if Input.is_action_pressed("jump") and hold_timer < max_hold_time:
-			hold_timer += delta
-			var t: float = clamp(hold_timer / max_hold_time, 0.0, 1.0)
-			# Interpolate toward peak force (more negative)
-			var desired: float = lerpf(base_jump_force, target_peak_force, t)
-			if player.velocity.y > desired: # velocity.y increases downward, so '>' means we lost upward speed; reinforce
-				player.velocity.y = desired
+	
+	if player.velocity.y < 0: # Rising
+		if Input.is_action_pressed("jump") and not _has_released and _hold_timer < hold_time:
+			# Add more upward force while holding jump
+			_hold_timer += delta
+			var t := _hold_timer / hold_time # 0 to 1 progress
+			t = ease(t, 0.5) # Smooth acceleration curve
+			var target_force := initial_jump_force + (hold_max_force * t)
+			
+			# Only boost if we're slower than the target force
+			if player.velocity.y > target_force:
+				player.velocity.y = target_force
+				_current_force = target_force
 		else:
-			# Early release -> apply stronger gravity for short hop feel
-			player.velocity.y += gravity_y * short_hop_gravity_multiplier * delta
-	else:
-		# Descending: normal / slightly faster gravity
+			_has_released = true
+			# Early release = stronger gravity
+			player.velocity.y += gravity_y * short_hop_multiplier * delta
+	else: # Falling
 		player.velocity.y += gravity_y * fall_gravity_multiplier * delta
-
+	
 	player.move_and_slide()
-
+	
 	# Transition to running when landing
 	if player.is_on_floor():
 		transitioned.emit(self, "running")
 		return
-
-	# Transition to falling when descending (velocity.y > 0)
+	
+	# Transition to falling if we're heading downward
 	if player.velocity.y > 0:
 		transitioned.emit(self, "falling")
 		return

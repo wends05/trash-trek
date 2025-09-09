@@ -1,8 +1,10 @@
 extends State
 class_name Running
 
-@onready var animation: AnimationPlayer = get_parent().get_parent().get_node("AnimationPlayer")
-@onready var player: Player = get_parent().get_parent()
+@export_category("Nodes")
+
+@export var animation: AnimationPlayer
+@export var player: Player
 
 @export var recenter_smooth_time: float = 0.75
 @export var recenter_max_speed: float = 400.0

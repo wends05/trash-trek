@@ -35,7 +35,7 @@ texture_region_size = Vector2i(37, 37)
 tile_size = Vector2i(37, 37)
 sources/2 = SubResource("TileSetAtlasSource_hjqgp")
 
-[node name="Terrain4" type="Node2D" node_paths=PackedStringArray("trash_bin_spawn")]
+[node name="Terrain5" type="Node2D" node_paths=PackedStringArray("trash_bin_spawn")]
 script = ExtResource("1_cjhew")
 trash_bin_spawn = NodePath("TrashSpawns/Marker2D3")
 
