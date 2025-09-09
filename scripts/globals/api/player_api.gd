@@ -1,6 +1,6 @@
 extends Node
 
-@export var api_base_url: String = "http://localhost:8000" # change to your server URL
+@export var api_base_url: String = "http://127.0.0.1:8000" # change to your server URL
 
 var device_id = ""
 var player_stats = {
