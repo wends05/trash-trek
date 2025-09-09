@@ -1,0 +1,233 @@
+[gd_scene load_steps=13 format=3 uid="uid://cshov0pw3ybab"]
+
+[ext_resource type="Texture2D" uid="uid://bn803xu6uqhoh" path="res://assets/background/Screenshot 2025-09-10 011723.png" id="1_ci5ev"]
+[ext_resource type="Texture2D" uid="uid://dyy22jdslekwu" path="res://assets/trashbins/Bio.png" id="2_ebau5"]
+[ext_resource type="Texture2D" uid="uid://bgx6pwwb50ios" path="res://assets/TutorialGuide.png" id="2_pgr2e"]
+[ext_resource type="Texture2D" uid="uid://c8wkxhffuun85" path="res://assets/monsters/Rmonster/Rmonster13.png" id="3_288ch"]
+
+[sub_resource type="Animation" id="Animation_ci5ev"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guide:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(39.5256, 22.7012)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Guide:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(440, 498)]
+}
+
+[sub_resource type="Animation" id="Animation_pgr2e"]
+resource_name = "1 energy bar"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guide:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.4),
+"update": 0,
+"values": [Vector2(9.73306, 3.59123), Vector2(4.12511, 0.48336)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Guide:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.406126),
+"update": 0,
+"values": [Vector2(421, 489), Vector2(523, 66)]
+}
+
+[sub_resource type="Animation" id="Animation_ebau5"]
+resource_name = "2 Trash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guide:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(523, 66), Vector2(552, 544)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Guide:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4.12511, 0.48336), Vector2(0.763233, 0.458586)]
+}
+
+[sub_resource type="Animation" id="Animation_twv1b"]
+resource_name = "3 Monster"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guide:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(552, 544.054), Vector2(840, 546)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Guide:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.763, 0.459), Vector2(1.41732, 0.97225)]
+}
+
+[sub_resource type="Animation" id="Animation_y0w3d"]
+resource_name = "4 TrashCan"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guide:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(840, 546), Vector2(1016, 556)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Guide:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.417, 0.972), Vector2(0.889535, 0.770212)]
+}
+
+[sub_resource type="Animation" id="Animation_u5f0c"]
+resource_name = "5 Trash Buttons"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guide:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1016, 556), Vector2(113, 610)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Guide:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.889999, 0.790001), Vector2(1.96081, 0.695618)]
+}
+
+[sub_resource type="Animation" id="Animation_0g6v0"]
+resource_name = "6 Game Over"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Guide:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(113, 610), Vector2(673, 625)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Guide:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1.961, 0.696), Vector2(1.2592, 0.631502)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_288ch"]
+_data = {
+&"1 energy bar": SubResource("Animation_pgr2e"),
+&"2 Trash": SubResource("Animation_ebau5"),
+&"3 Monster": SubResource("Animation_twv1b"),
+&"4 TrashCan": SubResource("Animation_y0w3d"),
+&"5 Trash Buttons": SubResource("Animation_u5f0c"),
+&"6 Game Over": SubResource("Animation_0g6v0"),
+&"RESET": SubResource("Animation_ci5ev")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_288ch")
+}
+
+[node name="Main_Screen" type="Sprite2D" parent="."]
+position = Vector2(587, 323)
+scale = Vector2(0.621852, 0.621852)
+texture = ExtResource("1_ci5ev")
+
+[node name="Trashbin" type="Sprite2D" parent="."]
+position = Vector2(1031, 520)
+scale = Vector2(0.234152, 0.234152)
+texture = ExtResource("2_ebau5")
+
+[node name="Monster" type="Sprite2D" parent="."]
+position = Vector2(868, 502)
+scale = Vector2(0.155, 0.155)
+texture = ExtResource("3_288ch")
+
+[node name="Guide" type="Sprite2D" parent="."]
+position = Vector2(440, 498)
+scale = Vector2(39.5256, 22.7012)
+texture = ExtResource("2_pgr2e")

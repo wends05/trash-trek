@@ -22,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://b0wiwv8fwgkwc" path="res://assets/menu/clouds/cloud3.png" id="14_5faoh"]
 [ext_resource type="Texture2D" uid="uid://dahp43gna1p8n" path="res://assets/menu/BrushStrokes.png" id="18_tdapf"]
 [ext_resource type="FontFile" uid="uid://fp7rfneeiohe" path="res://fonts/SearchingForSignal.ttf" id="19_v41fp"]
-[ext_resource type="Texture2D" uid="uid://vtxnw3gfa8by" path="res://assets/menu/BrushStroke.png" id="21_viowm"]
 [ext_resource type="PackedScene" uid="uid://ck5hqi7xghs6e" path="res://scenes/ProfileButton.tscn" id="21_viowm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7la6k"]
@@ -1629,6 +1628,12 @@ metadata/_edit_lock_ = true
 [node name="Buttons" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
+[node name="Button" parent="Buttons" instance=ExtResource("21_viowm")]
+offset_left = 984.0
+offset_top = 40.0
+offset_right = 1138.0
+offset_bottom = 70.0
+
 [node name="StartButton" type="TextureButton" parent="Buttons"]
 texture_filter = 1
 anchors_preset = 8
@@ -1678,7 +1683,6 @@ rotation = -0.0124002
 texture_normal = SubResource("AtlasTexture_egsv4")
 ignore_texture_size = true
 stretch_mode = 0
-metadata/_edit_lock_ = true
 
 [node name="Tutorial" type="Sprite2D" parent="Buttons/TutorialButton"]
 modulate = Color(1, 1, 1, 0.564706)
@@ -1715,7 +1719,6 @@ metadata/_edit_lock_ = true
 modulate = Color(1, 1, 1, 0.568627)
 position = Vector2(171, 47)
 scale = Vector2(0.350794, 0.265835)
-texture = ExtResource("21_viowm")
 
 [node name="CreditsLabel" type="Label" parent="Buttons/CreditsButton"]
 texture_filter = 1
@@ -1789,13 +1792,6 @@ position = Vector2(-3, -1112)
 libraries = {
 &"": SubResource("AnimationLibrary_viowm")
 }
-
-[node name="Button" parent="." instance=ExtResource("21_viowm")]
-layout_mode = 0
-offset_left = 406.0
-offset_top = -284.0
-offset_right = 560.0
-offset_bottom = -254.0
 
 [connection signal="pressed" from="Buttons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="mouse_entered" from="Buttons/TutorialButton" to="." method="_on_tutorial_button_mouse_entered"]

@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://ck5hqi7xghs6e"]
+[gd_scene load_steps=3 format=3 uid="uid://ck5hqi7xghs6e"]
 
 [ext_resource type="Texture2D" uid="uid://c12asxokkw07e" path="res://assets/buttons/white-user-member-guest-icon-png-image-701751695037005zdurfaim0y.png" id="1_dqkbd"]
-[ext_resource type="Script" uid="uid://ct7e6h6pxuna6" path="res://scripts/profile_button.gd" id="1_r8acx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r8acx"]
 draw_center = false
@@ -11,7 +10,6 @@ offset_right = 159.0
 offset_bottom = 31.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_r8acx")
 text = "    Username"
-script = ExtResource("1_r8acx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(22.25, 14.25)
