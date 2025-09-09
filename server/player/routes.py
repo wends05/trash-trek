@@ -26,3 +26,7 @@ async def update_player(device_id: str, player: PlayerEdit, service: PlayerServi
 @player_router.delete("/{device_id}")
 async def delete_player(device_id: str, service: PlayerService = Depends(get_player_service)):
     return await service.delete_player(device_id)
+
+@player_router.get("/top-three")
+async def get_top_three(service: PlayerService = Depends(get_player_service)):
+    return await service.get_top_three()

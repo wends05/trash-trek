@@ -18,11 +18,20 @@ class PlayerService:
             })
         
         player_dict = player.model_dump()
+        print(player_dict)
 
         created_player = await self.collection.insert_one(player_dict)
         new_player = await self.collection.find_one({"_id": created_player.inserted_id})
         
-        return PlayerOut(**new_player) if new_player else None
+        if not new_player:
+            raise HTTPException(status_code=404, detail={
+                "message": "Player not found",
+                "device_id": player.device_id
+            })
+
+        new_player["_id"] = str(new_player["_id"])
+
+        return new_player
 
     async def get_player(self, device_id: str):
         player = await self.collection.find_one({"device_id": device_id})
@@ -33,7 +42,9 @@ class PlayerService:
                 "device_id": device_id
             })
         
-        return PlayerOut(**player)
+        player["_id"] = str(player["_id"])
+
+        return player
 
     async def update_player(self, device_id: str, new_player: PlayerEdit):
         player_dict = new_player.model_dump(exclude_none=True)
@@ -44,9 +55,13 @@ class PlayerService:
                 "device_id": device_id
             })
         
+        existing_player = await self.collection.find_one({"device_id": device_id})
+        merged_player = existing_player.copy()
+        merged_player.update(player_dict)
+
         updated_player = await self.collection.find_one_and_update(
             {"device_id": device_id},
-            {"$set": player_dict},
+            {"$set": merged_player, "$currentDate": {"lastModified": True}},
             return_document=ReturnDocument.AFTER
         )
         if not updated_player:
@@ -54,8 +69,10 @@ class PlayerService:
                 "message": "Player not found",
                 "device_id": device_id
             })
+        
+        updated_player["_id"] = str(updated_player["_id"])
 
-        return PlayerOut(**updated_player)
+        return updated_player
     
     async def delete_player(self, device_id: str):
         res = await self.collection.delete_one({"device_id": device_id})
@@ -67,3 +84,11 @@ class PlayerService:
             })
         
         return res.deleted_count > 0
+    
+    async def get_top_three(self):
+        players = await self.collection.find().sort("high_score", -1).limit(3).to_list(3)
+        
+        for player in players:
+            player["_id"] = str(player["_id"])
+
+        return players
