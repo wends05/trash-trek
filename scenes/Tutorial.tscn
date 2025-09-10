@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://cshov0pw3ybab"]
+[gd_scene load_steps=17 format=3 uid="uid://cshov0pw3ybab"]
 
 [ext_resource type="Script" uid="uid://do2ilb1qn4e16" path="res://scripts/tutorial.gd" id="1_288ch"]
 [ext_resource type="Texture2D" uid="uid://bn803xu6uqhoh" path="res://assets/background/Screenshot 2025-09-10 011723.png" id="1_ci5ev"]
 [ext_resource type="Texture2D" uid="uid://dyy22jdslekwu" path="res://assets/trashbins/Bio.png" id="2_ebau5"]
 [ext_resource type="Texture2D" uid="uid://bgx6pwwb50ios" path="res://assets/TutorialGuide.png" id="2_pgr2e"]
 [ext_resource type="Texture2D" uid="uid://c8wkxhffuun85" path="res://assets/monsters/Rmonster/Rmonster13.png" id="3_288ch"]
+[ext_resource type="Texture2D" uid="uid://csqdugpmfu16o" path="res://assets/Scroll.png" id="6_y0w3d"]
 [ext_resource type="FontFile" uid="uid://cbwhuecpnnapj" path="res://fonts/ByteBounce.ttf" id="7_u5f0c"]
 
 [sub_resource type="Animation" id="Animation_pgr2e"]
@@ -205,10 +206,10 @@ tracks/0/path = NodePath("Guide:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(421, 489)]
+"values": [Vector2(421, 489), Vector2(421, 489)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -217,10 +218,10 @@ tracks/1/path = NodePath("Guide:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(9.73306, 3.59123)]
+"values": [Vector2(9.73306, 3.59123), Vector2(9.73306, 3.59123)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_288ch"]
@@ -263,21 +264,35 @@ position = Vector2(440, 498)
 scale = Vector2(39.5256, 22.7012)
 texture = ExtResource("2_pgr2e")
 
+[node name="Scroll" type="Sprite2D" parent="."]
+position = Vector2(561, 241)
+rotation = 3.14159
+scale = Vector2(0.406463, 0.424365)
+texture = ExtResource("6_y0w3d")
+
 [node name="Label" type="Label" parent="."]
-offset_left = 335.0
-offset_top = 110.0
-offset_right = 588.0
-offset_bottom = 231.0
+layout_direction = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 367.0
+offset_top = 178.0
+offset_right = 552.0
+offset_bottom = 259.0
+grow_horizontal = 2
+grow_vertical = 2
 scale = Vector2(2.13133, 1.86112)
 size_flags_horizontal = 4
-theme_override_colors/font_color = Color(0.745098, 0.745098, 0.745098, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.985086, 0.987103, 0.988827, 1)
+theme_override_colors/font_shadow_color = Color(0.454524, 0.454524, 0.454524, 1)
 theme_override_constants/shadow_offset_x = -1
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 1
 theme_override_constants/shadow_outline_size = 4
 theme_override_fonts/font = ExtResource("7_u5f0c")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 60
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2

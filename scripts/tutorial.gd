@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var anim_player = $AnimationPlayer
-@onready var steps = ["start", "1 energy bar", "2 Trash", "3 Monster", "4 TrashCan", "5 Trash Buttons", "6 Game Over"]
+@onready var steps = ["Start", "1 energy bar", "2 Trash", "3 Monster", "4 TrashCan", "5 Trash Buttons", "6 Game Over"]
 @onready var instruction_label = $Label
 @onready var instructions = [
 	"Welcome to the tutorial. Press D to navigate.",
@@ -22,7 +22,7 @@ var typing_speed := 0.03  # seconds per character
 var typing_timer := Timer.new()
 
 func _ready():
-	instruction_label.add_theme_font_size_override("font_size", 16) # bigger text
+	instruction_label.add_theme_font_size_override("font_size", 16)
 	add_child(typing_timer)
 	typing_timer.one_shot = false
 	typing_timer.wait_time = typing_speed
