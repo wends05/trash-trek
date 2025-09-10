@@ -10,5 +10,6 @@ description = "Increase jump height"
 icon = ExtResource("1_52orh")
 base_price = 250
 price_per_level_multiplier = 1.9
+stat_increase_per_level = -20.0
 max_level = 5
 metadata/_custom_type_script = "uid://d3hrckkeigtt3"

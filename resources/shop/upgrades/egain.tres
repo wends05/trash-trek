@@ -10,5 +10,6 @@ description = "Increase energy gainf rom throwing trash"
 icon = ExtResource("1_8h2kb")
 base_price = 300
 price_per_level_multiplier = 2.5
+stat_increase_per_level = 0.2
 max_level = 5
 metadata/_custom_type_script = "uid://d3hrckkeigtt3"
