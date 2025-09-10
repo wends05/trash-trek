@@ -29,7 +29,6 @@ func prepare_upgrade(item: String):
 	var upgrade_node: UpgradeDisplay = ITEMS["upgrade"].instantiate()
 	
 	upgrade_node.upgrade_resource = upgrade
-	upgrade_node.player_api = shop_interface.player_api
 	upgrade_node.coin_upgrade_error.connect(shop_interface.display_coin_error)
 
 	upgrades_grid.add_child(upgrade_node)

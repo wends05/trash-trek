@@ -21,6 +21,7 @@ SceneHandler="*res://scripts/scene/scene_handler.gd"
 SceneTransition="*res://scenes/scene_transition.tscn"
 Game="*res://scripts/globals/game.gd"
 Utils="*res://scripts/globals/utils.gd"
+PlayerApi="*res://scripts/api/player_api.gd"
 
 [display]
 

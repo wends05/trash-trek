@@ -27,8 +27,8 @@ func _ready() -> void:
 
 	if not jump_boost_upgrade:
 		printerr("No jump boost found")
+		final_jump_boost = initial_jump_force
 		return
-	
 	final_jump_boost = initial_jump_force + jump_boost_upgrade.level * jump_boost_resource.stat_increase_per_level
 	
 

@@ -13,7 +13,6 @@ const CATEGORYSCREENS = [
 ]
 
 @export var item_container: ItemsContainer
-@export var player_api: PlayerApi
 @onready var screen: TextureRect = $ShopTexture
 @onready var error_label: Label = $ErrorLabel
 @onready var coins_label: Label = $CoinsLabel
