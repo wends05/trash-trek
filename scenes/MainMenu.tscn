@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=4 uid="uid://c8ae8g52xg1c0"]
+[gd_scene load_steps=94 format=4 uid="uid://c8ae8g52xg1c0"]
 
 [ext_resource type="Script" uid="uid://dgtjw4k4yhdoh" path="res://scripts/main_menu.gd" id="1_yqorp"]
 [ext_resource type="PackedScene" uid="uid://t2dui8ppm3a4" path="res://credits/scrolling_credits.tscn" id="2_1n6yq"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://dahp43gna1p8n" path="res://assets/menu/BrushStrokes.png" id="18_tdapf"]
 [ext_resource type="FontFile" uid="uid://fp7rfneeiohe" path="res://fonts/SearchingForSignal.ttf" id="19_v41fp"]
 [ext_resource type="PackedScene" uid="uid://dvd3nxv1b57c1" path="res://scenes/ProfileButton.tscn" id="21_viowm"]
+[ext_resource type="Texture2D" uid="uid://vtxnw3gfa8by" path="res://assets/menu/BrushStroke.png" id="24_2axsc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7la6k"]
 atlas = ExtResource("3_ucygd")
@@ -1716,9 +1717,10 @@ offset_bottom = 545.0
 metadata/_edit_lock_ = true
 
 [node name="Credits" type="Sprite2D" parent="Buttons/CreditsButton"]
-modulate = Color(1, 1, 1, 0.568627)
+modulate = Color(1, 1, 1, 0.572549)
 position = Vector2(171, 47)
 scale = Vector2(0.350794, 0.265835)
+texture = ExtResource("24_2axsc")
 
 [node name="CreditsLabel" type="Label" parent="Buttons/CreditsButton"]
 texture_filter = 1

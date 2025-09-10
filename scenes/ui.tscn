@@ -152,7 +152,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0.333333, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.164706, 0.0941176, 0, 0), Color(0.163116, 0.0955392, 1.20327e-08, 0.85098)]
+"values": [Color(0.164706, 0.0941176, 0, 0), Color(0.556251, 0.165121, 0, 0.866667)]
 }
 
 [sub_resource type="Animation" id="Animation_f7tlh"]
@@ -167,7 +167,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(454, 237.33)]
+"values": [Vector2(454, -250)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8k7j3"]
@@ -356,6 +356,11 @@ flip_v = true
 layout_mode = 2
 offset_right = 1.0
 offset_bottom = 33.0
+layout_mode = 0
+offset_left = 454.0
+offset_top = -250.0
+offset_right = 707.0
+offset_bottom = -134.0
 theme = SubResource("Theme_8k7j3")
 theme_override_fonts/font = SubResource("FontVariation_f7tlh")
 theme_override_font_sizes/font_size = 22
