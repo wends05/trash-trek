@@ -53,18 +53,22 @@ func update_debug_label() -> void:
 		]
 
 func throw_trash() -> void:
-	if animating:
+	if \
+		animating or \
+		collected or \
+		Game.get_trash_count(type) < amount_required:
 		return
-	if Game.get_trash_count(type) < amount_required:
-		return
-	if collected:
-		return
+	
 	collected = true
-	Game.decrease_trash_count(type, amount_required)
-	Game.add_energy(amount_required)
+	
+	Game.throw_trash(type, amount_required)
+	
 	animating = true
+	
 	animated_sprite.play("open")
 	await animated_sprite.animation_finished
+	
 	animated_sprite.play("idle")
 	animating = false
+	
 	change_player_collision(Game.selected_trash_type)
