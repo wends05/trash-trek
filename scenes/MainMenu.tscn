@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=4 uid="uid://c8ae8g52xg1c0"]
+[gd_scene load_steps=96 format=4 uid="uid://c8ae8g52xg1c0"]
 
 [ext_resource type="Script" uid="uid://dgtjw4k4yhdoh" path="res://scripts/main_menu.gd" id="1_yqorp"]
 [ext_resource type="PackedScene" uid="uid://t2dui8ppm3a4" path="res://credits/scrolling_credits.tscn" id="2_1n6yq"]
@@ -24,6 +24,8 @@
 [ext_resource type="FontFile" uid="uid://fp7rfneeiohe" path="res://fonts/SearchingForSignal.ttf" id="19_v41fp"]
 [ext_resource type="PackedScene" uid="uid://dvd3nxv1b57c1" path="res://scenes/ProfileButton.tscn" id="21_viowm"]
 [ext_resource type="Texture2D" uid="uid://vtxnw3gfa8by" path="res://assets/menu/BrushStroke.png" id="24_2axsc"]
+[ext_resource type="Texture2D" uid="uid://bwqc5kddypod" path="res://assets/menu/shop.png" id="25_hm0al"]
+[ext_resource type="Texture2D" uid="uid://4jwnoyh6i6sy" path="res://assets/menu/trophy.png" id="26_i7r3k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7la6k"]
 atlas = ExtResource("3_ucygd")
@@ -1775,6 +1777,22 @@ theme = SubResource("Theme_tdapf")
 theme_override_fonts/font = SubResource("FontVariation_v41fp")
 text = "Quit Game"
 
+[node name="ShopButton" type="TextureButton" parent="Buttons"]
+offset_left = 1000.0
+offset_top = 104.0
+offset_right = 1100.0
+offset_bottom = 204.0
+texture_normal = ExtResource("25_hm0al")
+texture_pressed = ExtResource("25_hm0al")
+
+[node name="TrophyButton" type="TextureButton" parent="Buttons"]
+offset_left = 997.0
+offset_top = 192.0
+offset_right = 1097.0
+offset_bottom = 292.0
+texture_normal = ExtResource("26_i7r3k")
+texture_pressed = ExtResource("26_i7r3k")
+
 [node name="ButtonsPlayer" type="AnimationPlayer" parent="Buttons"]
 libraries = {
 &"": SubResource("AnimationLibrary_2axsc")
@@ -1805,3 +1823,5 @@ libraries = {
 [connection signal="mouse_entered" from="Buttons/ExitButton" to="." method="_on_exit_button_mouse_entered"]
 [connection signal="mouse_exited" from="Buttons/ExitButton" to="." method="_on_exit_button_mouse_exited"]
 [connection signal="pressed" from="Buttons/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Buttons/ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="Buttons/TrophyButton" to="." method="_on_trophy_button_pressed"]

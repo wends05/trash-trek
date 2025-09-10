@@ -98,3 +98,11 @@ func _on_credits_button_mouse_entered() -> void:
 
 func _on_credits_button_mouse_exited() -> void:
 	$Buttons/CreditsButton/CreditsLabel.add_theme_color_override("font_color", Color.html("da6800"))
+
+
+func _on_shop_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/shop/shop_interface.tscn")
+
+
+func _on_trophy_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/leaderboards.tscn")

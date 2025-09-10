@@ -94,7 +94,12 @@ class PlayerService:
         
         players = []
         async for player in self.collection.find().sort("high_score", -1).limit(5):
-            player["_id"] = str(player["_id"])
-            players.append(player)
+            player_copy = {
+                "_id": str(player["_id"]),
+                "name": player["name"],
+                "high_score": player["high_score"],
+            }
+            players.append(player_copy)
+            
 
         return players
