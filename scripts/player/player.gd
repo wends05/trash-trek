@@ -9,31 +9,26 @@ class_name Player
 var is_hurt: bool = false
 var block_jump_after_hurt: bool = false # Prevent accidental jump buffered during hurt
 
-func _ready() -> void:
-	add_to_group("Player")
+var player_stats_resource: PlayerStatsResource = preload("res://resources/player_stats.tres")
 
-func _physics_process(_delta: float) -> void:
-	# Movement & jump handled by state machine states
-	pass
-
-## Legacy inline movement / jump / animation removed. Handled by Running / Jump / Falling / Hurt states.
-
-func increment_trash(t: Utils.TrashType):
-	Game.trash_collected.emit(t)
-
+## Collect Trash
 func _on_trash_collection_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is Trash:
 		var trash: Trash = area.get_parent()
-		increment_trash(trash.type)
+		Game.trash_collected.emit(trash.type)
 		trash.remove()
-		
+
+
+## Throw Trash Logic
 func _on_trash_bin_collection_area_area_entered(area: Area2D) -> void:
 	if area.get_parent() is TrashBin:
 		var trash_bin: TrashBin = area.get_parent()
 		trash_bin.throw_trash()
 
+
+## Hurt Game Logic
 func _on_monster_collision_area_entered(_area: Area2D) -> void:
-	Game.decrease_energy(10)
+	Game.player_hurt(10)
 	if is_hurt:
 		return
 	is_hurt = true
