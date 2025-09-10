@@ -56,13 +56,18 @@ class PlayerService:
             })
         
         existing_player = await self.collection.find_one({"device_id": device_id})
-        merged_player = existing_player.copy()
-        merged_player.update(player_dict)
+        if not existing_player:
+            raise HTTPException(status_code=404, detail={
+                "message": "Player not found",
+                "device_id": device_id
+            })
+        
+        update_fields = player_dict
 
         updated_player = await self.collection.find_one_and_update(
             {"device_id": device_id},
-            {"$set": merged_player, "$currentDate": {"lastModified": True}},
-            return_document=ReturnDocument.AFTER
+            {"$set": update_fields, "$currentDate": {"lastModified": True}},
+            return_document=ReturnDocument.AFTER,
         )
         if not updated_player:
             raise HTTPException(status_code=404, detail={
@@ -85,10 +90,10 @@ class PlayerService:
         
         return res.deleted_count > 0
     
-    async def get_top_three(self):
+    async def get_top_five(self):
         
         players = []
-        async for player in self.collection.find().sort("high_score", -1).limit(3):
+        async for player in self.collection.find().sort("high_score", -1).limit(5):
             player["_id"] = str(player["_id"])
             players.append(player)
 

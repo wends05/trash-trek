@@ -1,11 +1,12 @@
 extends Node
 
-const MAX_ENERGY = 100.0
-var energy = MAX_ENERGY
+var base_max_energy = 100.0
+var max_energy = base_max_energy
+var energy = max_energy
+
 var elapsed_time: float = 0.0
-var base_wait_time: float = 0.5
-var base_decrease: float = 0.5
-var difficulty_step: float = 10.0
+var base_wait_time: float = 18
+var difficulty_step: float = 12
 
 signal trash_collected(type: Utils.TrashType)
 signal energy_changed(value: int)
@@ -13,11 +14,12 @@ signal updated_stats
 signal time_changed(time: float)
 signal update_ui_state(type: Utils.UIStateType, reason: Utils.GameOverReason)
 signal update_game_state(type: Utils.GameStateType)
-signal run_finished(score: float, coins: int, reason: Utils.GameOverReason)
 
 var collected_biodegradable = 0
 var collected_recyclable = 0
 var collected_toxic_waste = 0
+
+var accumulated_trash = 0
 
 var accumulated_energy = 0
 
@@ -30,31 +32,44 @@ var selected_trash_type: Utils.TrashType
 signal changed_trash_type(type: Utils.TrashType)
 
 var energy_timer: Timer
+var player_api: PlayerApi
+var player_stats_resource: PlayerStatsResource = preload("res://resources/player_stats.tres")
 
+## In built functions
 func _ready() -> void:
 	trash_collected.connect(update_trash_count)
 
+	print("Final Max energy: %s" % max_energy)
 	energy_timer = Timer.new()
 	energy_timer.wait_time = 1.0
 	energy_timer.one_shot = false
 	energy_timer.autostart = true
 	add_child(energy_timer)
+
+	player_api = PlayerApi.new()
+
 	energy_timer.timeout.connect(_on_energy_timer_timeout)
+	add_child(player_api)
+
+	max_energy = calculate_value("ecapacity", max_energy)
+	update_ui_state.connect(_on_update_ui_state)
 
 	set_process(true)
+
+func _on_energy_timer_timeout() -> void:
+	var difficulty_level = int(elapsed_time / difficulty_step)
+	energy_timer.wait_time = max(6, base_wait_time - difficulty_level)
+	var energy_decrease = min(1 + difficulty_level, 9)
+	decrease_energy(energy_decrease)
 
 func _process(delta: float) -> void:
 	elapsed_time += delta
 	time_changed.emit(elapsed_time)
 
-	var difficulty_level = int(elapsed_time / difficulty_step)
 
-
-	energy_timer.wait_time = 0.5
-	base_decrease = 0.1
-
-func add_energy(amount: float) -> void:
-	var final_energy_increase = min(amount, MAX_ENERGY - energy)
+## Energy related
+func _increase_energy(amount: float) -> void:
+	var final_energy_increase = min(amount, max_energy - energy)
 	energy += final_energy_increase
 	energy_changed.emit(energy)
 	accumulated_energy += amount
@@ -63,64 +78,34 @@ func decrease_energy(amount: float) -> void:
 	var final_energy_decrease = max(0, energy - amount)
 	energy = final_energy_decrease
 	energy_changed.emit(energy)
-	accumulated_energy -= amount	
+	accumulated_energy -= amount
 
-func _on_energy_timer_timeout() -> void:
-	decrease_energy(base_decrease)
 
+## Trash related
 func update_trash_count(type: Utils.TrashType):
+	accumulated_trash += 1
+	var base_energy_increment = calculate_value("egain", 0)
 	if type == Utils.TrashType.Recyclable:
 		collected_recyclable += 1
-		energy_timer.start()
-
+		_increase_energy(base_energy_increment + 2)
 	elif type == Utils.TrashType.Biodegradable:
 		collected_biodegradable += 1
-		energy_timer.start()
-
+		_increase_energy(base_energy_increment + 1)
 	elif type == Utils.TrashType.ToxicWaste:
 		collected_toxic_waste += 1
-		energy_timer.start()
+		_increase_energy(base_energy_increment + 3)
 
 	updated_stats.emit()
-	add_energy(1)
-
-func calculate_score() -> float:
-	return accumulated_energy + elapsed_time
-
-func calculate_coins() -> float:
-	var time_coins = int(elapsed_time / 5.0)
-	var energy_coins = int(max(0, accumulated_energy) / 10.0)
-	var trash_coins = collected_recyclable * 2 + collected_biodegradable * 1 + collected_toxic_waste * 3
-	return max(0, time_coins + energy_coins + trash_coins)
-
-func on_game_over(reason: Utils.GameOverReason) -> void:
-	if is_game_over:
-		return
-	is_game_over = true
-	update_game_state.emit(Utils.GameStateType.Pause)
-	update_ui_state.emit(Utils.UIStateType.GameOver, reason)
-	var final_score = calculate_score()
-	var awarded_coins = calculate_coins()
-	run_finished.emit(final_score, awarded_coins, reason)
-
-func reset_stats():
-	collected_recyclable = 0
-	collected_biodegradable = 0
-	collected_toxic_waste = 0
-	energy = MAX_ENERGY
-	elapsed_time = 0.0
-	accumulated_energy = 0
-	trash_bin_countdown = randi_range(2, 4)
-	updated_stats.emit()
-	energy_changed.emit(int(energy))
-	time_changed.emit(elapsed_time)
-	energy_timer.start()
-	is_game_over = false
 
 func select_trash_type(type: Utils.TrashType):
 	selected_trash_type = type
 	changed_trash_type.emit(type)
 
+
+## Trashbin related
+func throw_trash(type: Utils.TrashType, trash_amount: int):
+	_decrease_trash_count(type, trash_amount)
+	_increase_energy(trash_amount * 2)
 
 func get_trash_count(type: Utils.TrashType):
 	match type:
@@ -131,7 +116,7 @@ func get_trash_count(type: Utils.TrashType):
 		Utils.TrashType.ToxicWaste:
 			return collected_toxic_waste
 
-func decrease_trash_count(type: Utils.TrashType, amount: int):
+func _decrease_trash_count(type: Utils.TrashType, amount: int):
 	match type:
 		Utils.TrashType.Recyclable:
 			collected_recyclable -= amount
@@ -146,3 +131,68 @@ func reset_trash_bin_countdown():
 
 func decrease_trash_bin_countdown():
 	trash_bin_countdown -= 1
+
+
+## Monster related
+func player_hurt(amount: int):
+	var base_energy_decrease = calculate_value("immunity", 0)
+	decrease_energy(amount - base_energy_decrease)
+
+
+## Score related
+func calculate_score() -> int:
+	return accumulated_trash + floor(elapsed_time)
+
+func calculate_coins() -> float:
+	var time_coins = int(elapsed_time / 5.0)
+	var energy_coins = int(max(0, accumulated_energy) / 10.0)
+	var trash_coins = collected_recyclable * 2 + collected_biodegradable * 1 + collected_toxic_waste * 3
+	return max(0, time_coins + energy_coins + trash_coins)
+
+func _on_update_ui_state(type: Utils.UIStateType, reason: Utils.GameOverReason) -> void:
+	if type == Utils.UIStateType.GameOver:
+		print_debug("NAG GAME OVER")
+		on_game_over(reason)
+
+func on_game_over(reason: Utils.GameOverReason) -> void:
+	var final_score = calculate_score()
+	var awarded_coins = calculate_coins()
+	update_player_stats(final_score, awarded_coins, reason)
+
+func reset_stats():
+	collected_recyclable = 0
+	collected_biodegradable = 0
+	collected_toxic_waste = 0
+	accumulated_trash = 0
+	max_energy = calculate_value("ecapacity", base_max_energy)
+	energy = max_energy
+	elapsed_time = 0.0
+	accumulated_energy = 0
+	trash_bin_countdown = randi_range(2, 4)
+	updated_stats.emit()
+	energy_changed.emit(int(energy))
+	time_changed.emit(elapsed_time)
+	energy_timer.start()
+	is_game_over = false
+
+func update_player_stats(final_score: float, coins_collected: int, _reason: Utils.GameOverReason) -> void:
+	print("Attempting to update player")
+	player_stats_resource.update_coins(player_stats_resource.coins + coins_collected)
+	player_stats_resource.update_high_score(final_score)
+	player_stats_resource.save_to_database(player_api)
+	
+## Upgrade related
+func calculate_value(res_file_name: String, value: float):
+	var upgrade_resource: UpgradeResource = load("res://resources/shop/upgrades/%s.tres" % res_file_name)
+
+	var resource_name = upgrade_resource.name
+	var upgrade = player_stats_resource.find_upgrade(resource_name)
+	
+	if not upgrade:
+		return value
+	
+	if not upgrade_resource:
+		print_debug("Upgrade resource not found: %s" % upgrade)
+		return value
+	
+	return value + upgrade_resource.stat_increase_per_level * upgrade.level

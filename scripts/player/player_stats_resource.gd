@@ -7,13 +7,17 @@ class_name PlayerStatsResource
 @export var coins: int
 @export var high_score: float
 @export var upgrades: Dictionary = {}
-@export var skins: Dictionary = {}
+@export var skins: Array = []
 @export var lastModified: String
 
 const SAVE_PATH = "user://device_id.save"
 
 signal coins_updated(value: int)
 
+func _ready() -> void:
+	pass
+
+## info
 func to_dict() -> Dictionary:
 	return {
 		"device_id": device_id,
@@ -24,7 +28,6 @@ func to_dict() -> Dictionary:
 		"skins": skins,
 		"lastModified": lastModified
 	}
-
 
 func get_device_id():
 	print("getting device id")
@@ -40,7 +43,7 @@ func get_device_id():
 		save_file.close()
 		return new_id
 
-
+## saving
 func _update_last_modified() -> void:
 	lastModified = Time.get_datetime_string_from_datetime_dict(Time.get_datetime_dict_from_system(), false)
 	_save()
@@ -48,6 +51,17 @@ func _update_last_modified() -> void:
 func _save() -> void:
 	coins_updated.emit(coins)
 	ResourceSaver.save(self)
+
+func compare_to_resource(player_stats: Dictionary) -> void:
+	var db_last_modified = Time.get_unix_time_from_datetime_string(player_stats.get("lastModified"))
+	var local_last_modified = Time.get_unix_time_from_datetime_string(lastModified)
+
+	print_debug("DB last modified: ", db_last_modified)
+	print_debug("Local last modified: ", local_last_modified)
+	
+	print_debug(db_last_modified > local_last_modified)
+	if db_last_modified > local_last_modified:
+		save_stats(player_stats)
 
 func save_stats(player_stats: Dictionary) -> void:
 	device_id = player_stats.get("device_id", device_id)
@@ -58,7 +72,6 @@ func save_stats(player_stats: Dictionary) -> void:
 	skins = player_stats.get("skins", skins)
 	lastModified = player_stats.get("lastModified", lastModified)
 	_update_last_modified()
-
 
 func save_name(new_name: String) -> void:
 	name = new_name
@@ -76,10 +89,11 @@ func update_high_score(new_high_score: float) -> void:
 	high_score = max(high_score, new_high_score)
 	_update_last_modified()
 
+## upgrades
 func get_upgrades() -> Dictionary:
 	return upgrades
 
-func upgrade_stat(upgrade: UpgradeResource) -> String:
+func upgrade_stat(upgrade: UpgradeResource, player_api: PlayerApi) -> String:
 	var player_upgrade = upgrades.get(upgrade.name)
 	
 	if not player_upgrade:
@@ -87,7 +101,7 @@ func upgrade_stat(upgrade: UpgradeResource) -> String:
 			return "Not enough coins"
 		decrement_coins(upgrade.base_price)
 		upgrades[upgrade.name] = {
-			"level": 2
+			"level": 2,
 		}
 		return ""
 	
@@ -103,4 +117,20 @@ func upgrade_stat(upgrade: UpgradeResource) -> String:
 	decrement_coins(cost)
 	upgrades[upgrade.name]["level"] += 1
 	_update_last_modified()
+	save_to_database(player_api)
 	return ""
+
+func save_to_database(player_api: PlayerApi) -> void:
+	var final_dict = self.to_dict().duplicate()
+	final_dict.erase("lastModified")
+	final_dict.erase("device_id")
+	player_api.update_user(final_dict)
+
+func _on_update_user_success(result: Dictionary) -> void:
+	print_debug("Update user success: %s" % result)
+
+func find_upgrade(upgrade_name: String) -> Dictionary:
+	for upgrade in upgrades:
+		if upgrade == upgrade_name:
+			return upgrades[upgrade]
+	return {}

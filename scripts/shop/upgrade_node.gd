@@ -4,14 +4,14 @@ class_name UpgradeDisplay
 
 var upgrade_resource: UpgradeResource
 
-var shop_api: ShopApi
-
 @onready var upgrade_icon: TextureRect = $UpgradeIcon
 @onready var name_label: Label = $Name
 @onready var description_label: Label = $Description
 @onready var stats_label: Label = $Stats
 @onready var upgrade_button: TextureButton = $UpgradeButton
 @onready var upgrade_button_label: Label = $UpgradeButtonLabel
+
+var player_api: PlayerApi
 
 signal coin_upgrade_error(message: String)
 
@@ -25,9 +25,11 @@ func _ready() -> void:
 		printerr("No resource added")
 		return
 	
+	if not player_api:
+		printerr("No Player API found")
+		return
 	
-	
-
+	player_api.update_user_success.connect(_on_update_user_success)
 	display_upgrade()
 
 func display_upgrade():
@@ -55,7 +57,8 @@ func display_upgrade_button():
 		return
 	
 	upgrade_button.disabled = false
-	upgrade_button_label.text = "%s" % str(upgrade_resource.base_price * upgrade_resource.price_per_level_multiplier * player_upgrade.level)
+	var final = upgrade_resource.base_price * upgrade_resource.price_per_level_multiplier * player_upgrade.level
+	upgrade_button_label.text = "%d" % final
 
 func display_stats():
 	var player_upgrade = get_player_upgrade()
@@ -69,9 +72,12 @@ func display_stats():
 
 
 func _on_upgrade_button_pressed() -> void:
-	var err := upgrade_resource.player_stats_resource.upgrade_stat(upgrade_resource)
+	var err := upgrade_resource.player_stats_resource.upgrade_stat(upgrade_resource, player_api)
 
 	if err:
 		coin_upgrade_error.emit("%s: %s" % [upgrade_resource.name, err])
 	else:
 		display_upgrade()
+		
+func _on_update_user_success(data: Dictionary):
+	print_debug("SUCESS EDIT PLAYER")

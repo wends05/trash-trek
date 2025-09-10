@@ -6,7 +6,6 @@ extends Control
 @onready var message_label = $Container/Message
 
 @export var player_api: PlayerApi
-@export var player_stats: PlayerStatsResource
 
 func _ready() -> void:
 	player_api.get_user_failed.connect(_on_get_user_failed)
@@ -38,6 +37,7 @@ func _on_create_user_failed(err: Dictionary) -> void:
 	message_label.visible = true
 
 func _on_enter_pressed() -> void:
+	var player_stats = ResourceLoader.load("res://resources/player_stats.tres")
 	message_label.text = ""
 	player_api.create_user({
 		"device_id": player_stats.get_device_id(),

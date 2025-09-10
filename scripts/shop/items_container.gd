@@ -11,7 +11,6 @@ var ITEMS = {
 @onready var skins_grid: GridContainer = $SkinsGrid
 
 @export var shop_interface: ShopInterface
-@export var shop_api: ShopApi
 
 func display_upgrades():
 	var upgrades = Utils.get_files_from_local_dir("res://resources/shop/upgrades")
@@ -30,8 +29,7 @@ func prepare_upgrade(item: String):
 	var upgrade_node: UpgradeDisplay = ITEMS["upgrade"].instantiate()
 	
 	upgrade_node.upgrade_resource = upgrade
-	upgrade_node.shop_api = shop_api
-
+	upgrade_node.player_api = shop_interface.player_api
 	upgrade_node.coin_upgrade_error.connect(shop_interface.display_coin_error)
 
 	upgrades_grid.add_child(upgrade_node)
@@ -44,7 +42,6 @@ func prepare_skin(item: String):
 	var skin_node: SkinDisplay = ITEMS["skin"].instantiate()
 	
 	skin_node.skin_resource = skin
-	skin_node.shop_api = shop_api
 
 	skins_grid.add_child(skin_node)
 

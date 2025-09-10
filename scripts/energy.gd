@@ -5,7 +5,7 @@ class_name EnergyBar
 var _tween: Tween
 
 func _ready() -> void:
-	max_value = Game.MAX_ENERGY
+	max_value = Game.max_energy
 	Game.energy_changed.connect(change_energy_value)
 	change_energy_value(Game.energy)
 

@@ -7,7 +7,8 @@ class Player(BaseModel):
     name: str = Field(min_length=1)
     coins: int
     high_score: int
-    upgrades: list
+    upgrades: dict
+    skins: list
     lastModified: datetime
 
     model_config = ConfigDict(extra="forbid")
@@ -16,13 +17,15 @@ class Player(BaseModel):
 class PlayerIn(Player): 
     coins: Optional[int] = Field(default=0, ge=0)
     high_score: Optional[int] = Field(default=0, ge=0)
-    upgrades: Optional[list] = Field(default=[])
+    upgrades: Optional[dict] = Field(default={})
     lastModified: Optional[datetime] = Field(default_factory=datetime.now)
 
 class PlayerEdit(BaseModel):
-    name: Optional[str] = None
+    name: Optional[str] = Field(default=None, min_length=1)
     coins: Optional[int] = Field(default=None, ge=0)
     high_score: Optional[int] = Field(default=None, ge=0)
+    upgrades: Optional[dict] = Field(default=None)
+    skins: Optional[list] = Field(default=None)
 
     model_config = ConfigDict(extra="forbid")
 
@@ -32,5 +35,5 @@ class PlayerOut(BaseModel):
     name: str
     coins: int
     high_score: int
-    upgrades: list
+    upgrades: dict
     lastModified: datetime

@@ -2,7 +2,7 @@ extends ApiService
 
 class_name PlayerApi
 
-@export var player_stats: PlayerStatsResource
+@export var player_stats: PlayerStatsResource = preload("res://resources/player_stats.tres")
 
 func get_user():
 	return await _make_request("/player/" + player_stats.get_device_id(), HTTPClient.METHOD_GET, default_headers, null, _on_get_user)
@@ -25,12 +25,12 @@ func _on_create_user(result: int, response_code: int, headers: PackedStringArray
 	var res = handle_data_complete(result, response_code, headers, body, endpoint)
 	_handle_and_emit("create_user", res)
 
-func update_user():
+func update_user(new_player_stats: Dictionary):
 	return await _make_request(
 		"/player/" + player_stats.get_device_id(),
-		HTTPClient.METHOD_PUT,
+		HTTPClient.METHOD_PATCH,
 		default_headers,
-		player_stats,
+		new_player_stats,
 		_on_update_user
 	)
 
@@ -43,9 +43,11 @@ func _on_update_user(result: int, response_code: int, headers: PackedStringArray
 
 
 # Shared handler to keep structure consistent across API classes
-func _handle_and_emit(op: String, res: Variant) -> void:
+func _handle_and_emit(op: String, res: Variant, update_local: bool = true) -> void:
+	print(op)
 	if res.ok:
-		_apply_to_resource(op, res.data)
+		if update_local:
+			_apply_to_resource(op, res.data)
 		match op:
 			"get_user":
 				get_user_success.emit(res.data)
@@ -72,9 +74,10 @@ func _handle_and_emit(op: String, res: Variant) -> void:
 func _apply_to_resource(op: String, data: Dictionary) -> void:
 	if player_stats == null:
 		return
+	print_debug("Applying to resource: " + op)
 	match op:
 		"get_user", "create_user", "update_user":
 			# Both endpoints return a full player payload
-			player_stats.save_stats(data)
+			player_stats.compare_to_resource(data)
 		_:
 			pass

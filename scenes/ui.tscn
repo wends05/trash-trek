@@ -340,6 +340,9 @@ label_settings = SubResource("LabelSettings_vsj0x")
 
 [node name="GameMenu" parent="." instance=ExtResource("2_p7vwb")]
 process_mode = 3
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 171.0
 
 [node name="BrushStroke" type="Sprite2D" parent="GameMenu"]
 modulate = Color(0.164706, 0.0941176, 0, 0)
@@ -350,22 +353,20 @@ flip_h = true
 flip_v = true
 
 [node name="Game Stats" type="Label" parent="GameMenu"]
-layout_mode = 0
+layout_mode = 2
 offset_left = 454.0
-offset_top = -140.0
-offset_right = 707.0
-offset_bottom = -24.0
+offset_top = 237.33
+offset_right = 455.0
+offset_bottom = 270.33
 theme = SubResource("Theme_8k7j3")
 theme_override_fonts/font = SubResource("FontVariation_f7tlh")
 theme_override_font_sizes/font_size = 22
 horizontal_alignment = 1
 
 [node name="GameStatusLabel" type="Label" parent="GameMenu"]
-layout_mode = 0
-offset_left = 92.0
-offset_top = -143.52
-offset_right = 1073.0
-offset_bottom = 1.48
+layout_mode = 2
+offset_right = 1.0
+offset_bottom = 145.0
 theme = SubResource("Theme_jkdwc")
 theme_override_fonts/font = SubResource("FontVariation_rlppe")
 theme_override_font_sizes/font_size = 0
@@ -373,11 +374,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GameReasonLabel" type="Label" parent="GameMenu"]
-layout_mode = 0
-offset_left = 296.0
-offset_top = -143.0
-offset_right = 833.0
-offset_bottom = -92.0
+layout_mode = 2
+offset_right = 1.0
+offset_bottom = 49.0
 theme = SubResource("Theme_f7tlh")
 theme_override_fonts/font = SubResource("FontVariation_cof4p")
 horizontal_alignment = 1
