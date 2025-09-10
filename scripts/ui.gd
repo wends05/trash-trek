@@ -64,12 +64,12 @@ func toggle_pause():
 		if Game.is_game_pause:
 			enable_buttons(my_buttons)
 			update_ui_state(Utils.UIStateType.PauseMenu)
-			game_menu_animation(true, )
+			game_menu_animation(true)
 			update_game_state(Utils.GameStateType.Pause)
 		else:
 			disable_buttons(my_buttons)
 			game_menu_animation(false)
-			await trans_player.animation_finished
+			await text_player.animation_finished
 			update_game_state(Utils.GameStateType.Play)
 			update_ui_state(Utils.UIStateType.PauseMenu)
 			
@@ -95,8 +95,22 @@ func update_ui_state(state: Utils.UIStateType, reason: Utils.GameOverReason = Ut
 func update_game_state(state: Utils.GameStateType) -> void:
 	match state:
 		Utils.GameStateType.Pause:
-			get_tree().paused = true
+			if Game.is_game_over:
+				Engine.time_scale = 0.3
+				var timer = get_tree().create_timer(0.3)
+				timer.timeout.connect(func():
+					Engine.time_scale = 1
+					$GameMenu/BrushStroke.visible = true
+					game_menu_animation(true, "retry")
+					await trans_player.animation_finished
+					enable_buttons([game_menu.quit_button, game_menu.menu_button, game_menu.retry_button])	
+					get_tree().paused = true
+				)
+					
+			else:
+				get_tree().paused = true
 		Utils.GameStateType.Play:
+			Engine.time_scale = 1.0
 			get_tree().paused = false
 
 func disable_buttons(buttons: Array):
@@ -122,4 +136,4 @@ func game_menu_animation(forward: bool, mode = null) -> void:
 	else:
 		trans_player.play_backwards("fade_in")
 		text_player.play_backwards("GameStatus")
-	await trans_player.animation_finished
+	await text_player.animation_finished

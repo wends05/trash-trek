@@ -16,7 +16,7 @@ func _on_resume_button_pressed() -> void:
 	check_for_pause()
 	ui.disable_buttons(ui.my_buttons)
 	ui.game_menu_animation(false)
-	await trans_player.animation_finished
+	await text_player.animation_finished
 	Game.update_game_state.emit(Utils.GameStateType.Play)
 	Game.update_ui_state.emit(Utils.UIStateType.PauseMenu)
 	
@@ -25,7 +25,7 @@ func _on_restart_button_pressed() -> void:
 	Utils.anim_player(button_player, "restart_press")
 	await button_player.animation_finished
 	ui.game_menu_animation(false)
-	await trans_player.animation_finished
+	await text_player.animation_finished
 	Game.update_game_state.emit(Utils.GameStateType.Play)
 	get_tree().change_scene_to_file("res://scenes/Main.tscn")
 	Game.is_game_over = false
@@ -33,9 +33,11 @@ func _on_restart_button_pressed() -> void:
 
 func _on_retry_button_pressed() -> void:
 	check_for_pause()
-	print("test")
+	ui.game_menu_animation(false)
+	await text_player.animation_finished
 	Game.update_game_state.emit(Utils.GameStateType.Play)
 	get_tree().change_scene_to_file("res://scenes/Main.tscn")
+	Game.is_game_over = false
 	Game.reset_stats()
 	
 func _on_main_menu_button_pressed() -> void:

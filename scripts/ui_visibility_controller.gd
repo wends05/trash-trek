@@ -10,6 +10,7 @@ class_name UIVisibilityController
 @onready var ui: UI = $".."
 
 func _ready() -> void:
+	brush_stroke.visible = false
 	toggle_nodes([game_menu, game_status_label, game_stats])
 
 func update_ui_visibility(state: Utils.UIStateType) -> void:
@@ -21,21 +22,20 @@ func update_ui_visibility(state: Utils.UIStateType) -> void:
 				game_menu, 
 				game_menu.retry_button,
 			])
-			brush_stroke.visible = false
 		Utils.UIStateType.GameOver:
-			toggle_nodes([
-				pause_button, 
-				game_status_label, 
-				game_menu, 
-				game_menu.resume_button, 
-				game_menu.restart_button,
-				game_stats
-			])
-			brush_stroke.visible = true
-			ui.game_menu_animation(true, "retry")
-			ui.enable_buttons([game_menu.quit_button, game_menu.menu_button, game_menu.retry_button])
-			Game.is_game_over = true
-		
+			var timer = get_tree().create_timer(0.3)
+			timer.timeout.connect(func():
+				toggle_nodes([
+					pause_button, 
+					game_status_label, 
+					game_menu, 
+					game_menu.resume_button, 
+					game_menu.restart_button,
+					game_stats
+				])
+			)
+			#brush_stroke.visible = true
+			#ui.game_menu_animation(true, "retry")
 
 func toggle_nodes(nodes: Array[Control]) -> void:
 	for node in nodes:
