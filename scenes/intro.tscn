@@ -297,7 +297,7 @@ offset_top = 263.0
 offset_right = 913.0
 offset_bottom = 356.0
 theme = SubResource("Theme_i2l1n")
-text = "Vhea's Entourage"
+text = "GG.exe"
 horizontal_alignment = 1
 
 [node name="IntroPlayer" type="AnimationPlayer" parent="."]

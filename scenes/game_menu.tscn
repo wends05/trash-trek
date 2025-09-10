@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://ciuvi7tl2l5wv"]
+[gd_scene load_steps=38 format=4 uid="uid://ciuvi7tl2l5wv"]
 
 [ext_resource type="Script" uid="uid://devlsdpi63sk1" path="res://scripts/game_menu.gd" id="1_qdaa4"]
 [ext_resource type="Texture2D" uid="uid://cs354q02836px" path="res://assets/menu/trashes/TrashMount5.png" id="2_mw6r2"]
@@ -436,9 +436,27 @@ tracks/0/keys = {
 "values": [Vector2(363, 323), Vector2(349.09, 313.685), Vector2(363, 323), Vector2(367.74, 313.685)]
 }
 
+[sub_resource type="Animation" id="Animation_v7bbo"]
+resource_name = "retry_hover"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../RetryButton/RetryLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.96667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(338, 412), Vector2(328.845, 403.17), Vector2(338, 412), Vector2(358.83, 403.17)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ddixh"]
 _data = {
-&"resume_hover": SubResource("Animation_l2u6m")
+&"resume_hover": SubResource("Animation_l2u6m"),
+&"retry_hover": SubResource("Animation_v7bbo")
 }
 
 [sub_resource type="Animation" id="Animation_ysvk1"]
@@ -466,7 +484,7 @@ tracks/1/path = NodePath("Footer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 269.045), Vector2(0, 37)]
@@ -527,6 +545,18 @@ tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("RetryButton/RetryLabel:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.335885),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]

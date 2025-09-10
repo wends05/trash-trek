@@ -64,7 +64,7 @@ func toggle_pause():
 		if Game.is_game_pause:
 			enable_buttons(my_buttons)
 			update_ui_state(Utils.UIStateType.PauseMenu)
-			game_menu_animation(true)
+			game_menu_animation(true, )
 			update_game_state(Utils.GameStateType.Pause)
 		else:
 			disable_buttons(my_buttons)
@@ -111,11 +111,14 @@ func _on_group_pressed(type: Utils.TrashType):
 	print_debug("Pressed, ", type)
 	Game.select_trash_type(type)
 	
-func game_menu_animation(forward: bool) -> void:
+func game_menu_animation(forward: bool, mode = null) -> void:
 	if forward:
 		Utils.anim_player(trans_player, "fade_in")
 		Utils.anim_player(text_player, "GameStatus")
-		Utils.anim_player(hover_player, "resume_hover")
+		if mode == "retry":
+			Utils.anim_player(hover_player, "retry_hover")
+		else:
+			Utils.anim_player(hover_player, "resume_hover")
 	else:
 		trans_player.play_backwards("fade_in")
 		text_player.play_backwards("GameStatus")
