@@ -6,10 +6,13 @@ class_name PlayerStatsResource
 @export var name: String
 @export var coins: int
 @export var high_score: float
-@export var upgrades: Array = []
+@export var upgrades: Dictionary = {}
+@export var skins: Dictionary = {}
 @export var lastModified: String
 
 const SAVE_PATH = "user://device_id.save"
+
+signal coins_updated(value: int)
 
 func to_dict() -> Dictionary:
 	return {
@@ -18,6 +21,7 @@ func to_dict() -> Dictionary:
 		"coins": coins,
 		"high_score": high_score,
 		"upgrades": upgrades,
+		"skins": skins,
 		"lastModified": lastModified
 	}
 
@@ -42,6 +46,7 @@ func _update_last_modified() -> void:
 	_save()
 
 func _save() -> void:
+	coins_updated.emit(coins)
 	ResourceSaver.save(self)
 
 func save_stats(player_stats: Dictionary) -> void:
@@ -50,6 +55,7 @@ func save_stats(player_stats: Dictionary) -> void:
 	coins = player_stats.get("coins", coins)
 	high_score = player_stats.get("high_score", high_score)
 	upgrades = player_stats.get("upgrades", upgrades)
+	skins = player_stats.get("skins", skins)
 	lastModified = player_stats.get("lastModified", lastModified)
 	_update_last_modified()
 
@@ -62,10 +68,39 @@ func update_coins(new_coins: int) -> void:
 	coins = new_coins
 	_update_last_modified()
 
+func decrement_coins(decrement: int) -> void:
+	update_coins(coins - decrement)
+	_update_last_modified()
+
 func update_high_score(new_high_score: float) -> void:
 	high_score = max(high_score, new_high_score)
 	_update_last_modified()
 
-func update_upgrades(new_upgrades: Array) -> void:
-	upgrades = new_upgrades
+func get_upgrades() -> Dictionary:
+	return upgrades
+
+func upgrade_stat(upgrade: UpgradeResource) -> String:
+	var player_upgrade = upgrades.get(upgrade.name)
+	
+	if not player_upgrade:
+		if coins < upgrade.base_price:
+			return "Not enough coins"
+		decrement_coins(upgrade.base_price)
+		upgrades[upgrade.name] = {
+			"level": 2
+		}
+		return ""
+	
+	var cost = upgrade.base_price * upgrade.price_per_level_multiplier * player_upgrade.level
+	
+	if coins < cost:
+		return "Not enough coins"
+
+	if player_upgrade.level >= upgrade.max_level:
+		printerr("Upgrade %s is already at max level" % upgrade.name)
+		return "Max level upgrade"
+	
+	decrement_coins(cost)
+	upgrades[upgrade.name]["level"] += 1
 	_update_last_modified()
+	return ""

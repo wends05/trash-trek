@@ -84,3 +84,23 @@ func get_trash_bin_icon(trash_type: Utils.TrashType) -> Texture:
 func anim_player(player: AnimationPlayer, anim_name: String) -> void:
 	if player and player.has_animation(anim_name):
 		player.play(anim_name)
+
+func get_files_from_local_dir(path: String):
+	var files = []
+	var dir = DirAccess.open(path)
+
+	if not dir:
+		printerr("No directory found for path: ", path)
+		return
+
+	dir.list_dir_begin()
+	var file_name = dir.get_next()
+	while file_name != "":
+		if dir.current_is_dir():
+			print("Found directory: " + file_name)
+		else:
+			print("Found file: " + file_name)
+			files.append(file_name)
+		file_name = dir.get_next()
+	
+	return files

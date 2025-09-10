@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cvqadl4lpmkf3" path="res://scripts/input_name.gd" id="1_5so1s"]
 [ext_resource type="Script" uid="uid://yqkp82tuaqp4" path="res://scripts/api/player_api.gd" id="2_0ou8s"]
-[ext_resource type="Resource" uid="uid://47kmk0pkgk4a" path="res://resources/player_stats.tres" id="3_54gij"]
+[ext_resource type="Resource" uid="uid://cxnucyome7ddx" path="res://resources/player_stats.tres" id="3_54gij"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5so1s"]
 

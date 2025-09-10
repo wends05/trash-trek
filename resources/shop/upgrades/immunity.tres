@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=3 format=3 uid="uid://dy1q214meeup5"]
+
+[ext_resource type="Script" uid="uid://d3hrckkeigtt3" path="res://scripts/shop/upgrade_resource.gd" id="1_8mg5w"]
+[ext_resource type="Texture2D" uid="uid://kbm42k08nox4" path="res://assets/shop/upgrades/immunity.png" id="1_q6uau"]
+
+[resource]
+script = ExtResource("1_8mg5w")
+name = "Immunity"
+description = "energy decrease resistance from enemies"
+icon = ExtResource("1_q6uau")
+base_price = 300
+price_per_level_multiplier = 2.5
+max_level = 5
+metadata/_custom_type_script = "uid://d3hrckkeigtt3"

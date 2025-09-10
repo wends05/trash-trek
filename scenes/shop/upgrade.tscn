@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=3 uid="uid://brqgtmjy5ntbe"]
+
+[ext_resource type="Script" uid="uid://bowuqfjcoice7" path="res://scripts/shop/upgrade_node.gd" id="1_0n4xr"]
+[ext_resource type="Texture2D" uid="uid://im1wmk1sqrif" path="res://assets/shop/upgrades/ability.png" id="2_0n4xr"]
+[ext_resource type="FontFile" uid="uid://cbwhuecpnnapj" path="res://fonts/ByteBounce.ttf" id="3_3wnwl"]
+[ext_resource type="Texture2D" uid="uid://cb8p244csnpqi" path="res://assets/shop/upgrades/price.png" id="4_ppi2v"]
+[ext_resource type="Texture2D" uid="uid://73k4jmfy3wfw" path="res://assets/shop/upgrades/pricehover.png" id="5_4xv4e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_475v2"]
+line_spacing = 0.0
+font = ExtResource("3_3wnwl")
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_ppi2v"]
+font = ExtResource("3_3wnwl")
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_yvixy"]
+font = ExtResource("3_3wnwl")
+
+[sub_resource type="LabelSettings" id="LabelSettings_4xv4e"]
+font = ExtResource("3_3wnwl")
+font_size = 20
+
+[node name="Upgrade" type="Control"]
+layout_direction = 1
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_0n4xr")
+
+[node name="Container" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 253.0
+offset_bottom = 136.0
+texture = ExtResource("2_0n4xr")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="UpgradeIcon" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 24.0
+offset_right = 96.0
+offset_bottom = 80.0
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Description" type="Label" parent="."]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 40.0
+offset_right = 232.0
+offset_bottom = 80.0
+text = "exercitation et pariatur deserunt in sunt ullamco voluptate reprehenderit eiusmod quis quis"
+label_settings = SubResource("LabelSettings_475v2")
+autowrap_mode = 3
+
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 24.0
+offset_right = 160.0
+offset_bottom = 47.0
+text = "Sample Name"
+label_settings = SubResource("LabelSettings_ppi2v")
+
+[node name="Stats" type="Label" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 88.0
+offset_right = 72.0
+offset_bottom = 111.0
+label_settings = SubResource("LabelSettings_yvixy")
+
+[node name="UpgradeButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 88.0
+offset_right = 232.0
+offset_bottom = 108.0
+texture_normal = ExtResource("4_ppi2v")
+texture_pressed = ExtResource("5_4xv4e")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="UpgradeButtonLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 88.0
+offset_right = 232.0
+offset_bottom = 104.0
+label_settings = SubResource("LabelSettings_4xv4e")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="UpgradeButton" to="." method="_on_upgrade_button_pressed"]

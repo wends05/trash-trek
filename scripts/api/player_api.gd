@@ -43,7 +43,7 @@ func _on_update_user(result: int, response_code: int, headers: PackedStringArray
 
 
 # Shared handler to keep structure consistent across API classes
-func _handle_and_emit(op: String, res: Dictionary) -> void:
+func _handle_and_emit(op: String, res: Variant) -> void:
 	if res.ok:
 		_apply_to_resource(op, res.data)
 		match op:

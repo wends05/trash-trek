@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=4 format=3 uid="uid://0madwxppjg1"]
+
+[ext_resource type="Script" uid="uid://d3hrckkeigtt3" path="res://scripts/shop/upgrade_resource.gd" id="1_8mg5w"]
+[ext_resource type="Texture2D" uid="uid://blf0jdoqmtf3m" path="res://assets/shop/upgrades/ecapacity.png" id="1_iar5i"]
+[ext_resource type="Resource" uid="uid://c1gfwnr12yfbx" path="res://resources/player_stats.tres" id="2_worvj"]
+
+[resource]
+script = ExtResource("1_8mg5w")
+player_stats_resource = ExtResource("2_worvj")
+name = "Energy Capacity"
+description = "Increase energy capacity"
+icon = ExtResource("1_iar5i")
+base_price = 200
+price_per_level_multiplier = 2.2
+max_level = 5
+metadata/_custom_type_script = "uid://d3hrckkeigtt3"

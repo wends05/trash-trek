@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="UpgradeResource" load_steps=3 format=3 uid="uid://gpntqc51awx4"]
+
+[ext_resource type="Script" uid="uid://d3hrckkeigtt3" path="res://scripts/shop/upgrade_resource.gd" id="1_8mg5w"]
+[ext_resource type="Texture2D" uid="uid://su22vtl3i0nk" path="res://assets/shop/upgrades/jumpboost.png" id="1_52orh"]
+
+[resource]
+script = ExtResource("1_8mg5w")
+name = "Jump Boost"
+description = "Increase jump height"
+icon = ExtResource("1_52orh")
+base_price = 250
+price_per_level_multiplier = 1.9
+max_level = 5
+metadata/_custom_type_script = "uid://d3hrckkeigtt3"

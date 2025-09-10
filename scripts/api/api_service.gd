@@ -7,6 +7,9 @@ class_name ApiService
 
 signal request_complete(endpoint: String, data: Dictionary)
 
+func _handle_and_emit(op: String, res: Dictionary):
+	printerr("Not implemented")
+
 func _make_request(
 	endpoint: String,
 	method: HTTPClient.Method,
@@ -47,9 +50,9 @@ func handle_data_complete(
 
 	result.ok = response_code >= 200 and response_code < 300
 	if result.ok:
-		print_debug("🌐 Success Response from %s: %s" % [endpoint, JSON.stringify(result.data, "\t")])
+		print_debug("🌐 %s Success Response from %s: %s" % [response_code, endpoint, JSON.stringify(result.data, "\t")])
 	else:
-		print_debug("🌐 Error Response from %s: %s" % [endpoint, JSON.stringify(result.data, "\t")])
+		print_debug("🌐 %s Error Response from %s: %s" % [response_code, endpoint, JSON.stringify(result.data, "\t")])
 
 	request_complete.emit(endpoint, result)
 	return result
