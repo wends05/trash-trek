@@ -33,3 +33,5 @@ func update_ui_visibility(state: Utils.UIStateType) -> void:
 func toggle_nodes(nodes: Array[Control]) -> void:
 	for node in nodes:
 		node.visible = !node.visible
+		if node is Button:
+			node.mouse_filter = Control.MOUSE_FILTER_PASS if node.visible else Control.MOUSE_FILTER_IGNORE

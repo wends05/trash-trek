@@ -9,12 +9,13 @@ extends Control
 @onready var hover_player = $HoverPlayer
 @onready var button_player = $ButtonPlayer
 @onready var trans_player = $TransPlayer
-@onready var text_plaayer = $"../TextPlayer"
+@onready var text_player = $"../TextPlayer"
+@onready var ui : UI = $".."
 
 func _on_resume_button_pressed() -> void:
 	check_for_pause()
-	trans_player.play_backwards("fade_in")
-	text_plaayer.play_backwards("GameStatus")
+	ui.disable_buttons(ui.my_buttons)
+	ui.game_menu_animation(false)
 	await trans_player.animation_finished
 	Game.update_game_state.emit(Utils.GameStateType.Play)
 	Game.update_ui_state.emit(Utils.UIStateType.PauseMenu)

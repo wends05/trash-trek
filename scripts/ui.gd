@@ -21,8 +21,7 @@ func _ready() -> void:
 		game_menu.quit_button,
 		game_menu.menu_button,
 	]
-	
-	
+	disable_buttons(my_buttons)
 	
 	Game.updated_stats.connect(update_trash_counts)
 	Game.update_ui_state.connect(update_ui_state)
@@ -63,20 +62,24 @@ func toggle_pause():
 	if Input.is_action_just_pressed("esc") and not Game.is_game_over:
 		Game.is_game_pause = !Game.is_game_pause
 		if Game.is_game_pause:
+			enable_buttons(my_buttons)
 			update_ui_state(Utils.UIStateType.PauseMenu)
+			game_menu_animation(true)
 			update_game_state(Utils.GameStateType.Pause)
 		else:
-			text_player.play_backwards("GameStatus")
-			trans_player.play_backwards("fade_in")
+			disable_buttons(my_buttons)
+			game_menu_animation(false)
 			update_game_state(Utils.GameStateType.Play)
-			await trans_player.animation_finished
 			update_ui_state(Utils.UIStateType.PauseMenu)
 			
 func _on_pause_button_pressed() -> void:
 	if Game.is_game_over:
 		return
-	update_game_state(Utils.GameStateType.Pause)
+	Game.is_game_pause = true
+	enable_buttons(my_buttons)
 	update_ui_state(Utils.UIStateType.PauseMenu)
+	game_menu_animation(true)
+	update_game_state(Utils.GameStateType.Pause)
 
 func _on_pause_button_mouse_entered() -> void:
 	pause_animation.play("pause_hover")
@@ -91,14 +94,8 @@ func update_ui_state(state: Utils.UIStateType, reason: Utils.GameOverReason = Ut
 func update_game_state(state: Utils.GameStateType) -> void:
 	match state:
 		Utils.GameStateType.Pause:
-			Utils.anim_player(trans_player, "fade_in")
-			text_player.play("GameStatus")
-			Utils.anim_player(hover_player, "resume_hover")
-			enable_buttons(my_buttons)
-			await trans_player.animation_finished
 			get_tree().paused = true
 		Utils.GameStateType.Play:
-			disable_buttons(my_buttons)
 			get_tree().paused = false
 
 func disable_buttons(buttons: Array):
@@ -109,7 +106,16 @@ func enable_buttons(buttons: Array):
 	for button in buttons:
 		button.mouse_filter = Control.MOUSE_FILTER_PASS
 
-
 func _on_group_pressed(type: Utils.TrashType):
 	print_debug("Pressed, ", type)
 	Game.select_trash_type(type)
+	
+func game_menu_animation(forward: bool) -> void:
+	if forward:
+		Utils.anim_player(trans_player, "fade_in")
+		Utils.anim_player(text_player, "GameStatus")
+		Utils.anim_player(hover_player, "resume_hover")
+	else:
+		trans_player.play_backwards("fade_in")
+		text_player.play_backwards("GameStatus")
+	await trans_player.animation_finished
