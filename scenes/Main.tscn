@@ -251,8 +251,8 @@ texture = ExtResource("5_3p2gp")
 centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Foreground"]
-position = Vector2(0, 471)
-scale = Vector2(1.00435, 1.045)
+position = Vector2(0, 463)
+scale = Vector2(1.00435, 1.085)
 texture = ExtResource("6_cvmbd")
 centered = false
 
