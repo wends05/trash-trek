@@ -331,7 +331,7 @@ process_mode = 3
 
 [node name="BrushStroke" type="Sprite2D" parent="GameMenu"]
 modulate = Color(0.163116, 0.0955392, 1.20327e-08, 0.85098)
-position = Vector2(487, 235)
+position = Vector2(503, 235)
 scale = Vector2(0.504762, 0.585039)
 texture = ExtResource("16_f7tlh")
 flip_h = true

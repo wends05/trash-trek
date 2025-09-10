@@ -9,7 +9,12 @@ class_name UI
 @onready var trans_player: AnimationPlayer = $GameMenu/TransPlayer
 @onready var text_player: AnimationPlayer = $TextPlayer
 @onready var hover_player: AnimationPlayer = $GameMenu/HoverPlayer
+@onready var bg_player: AnimationPlayer = $GameMenu/BackgroundPlayer
 @export var game_menu: Control 
+
+@onready var bg = $"../Background/Background"
+@onready var mg = $"../Background/Midground"
+@onready var fg = $"../Background/Foreground"
 
 var my_buttons: Array
 
@@ -129,11 +134,17 @@ func game_menu_animation(forward: bool, mode = null) -> void:
 	if forward:
 		Utils.anim_player(trans_player, "fade_in")
 		Utils.anim_player(text_player, "GameStatus")
+		if !Game.is_game_over:
+			bg_player.play("background_fade")
 		if mode == "retry":
 			Utils.anim_player(hover_player, "retry_hover")
 		else:
 			Utils.anim_player(hover_player, "resume_hover")
 	else:
+		bg_player.play_backwards("background_fade")
 		trans_player.play_backwards("fade_in")
 		text_player.play_backwards("GameStatus")
+	
 	await text_player.animation_finished
+	
+	

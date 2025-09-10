@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://ciuvi7tl2l5wv"]
+[gd_scene load_steps=41 format=4 uid="uid://ciuvi7tl2l5wv"]
 
 [ext_resource type="Script" uid="uid://devlsdpi63sk1" path="res://scripts/game_menu.gd" id="1_qdaa4"]
 [ext_resource type="Texture2D" uid="uid://cs354q02836px" path="res://assets/menu/trashes/TrashMount5.png" id="2_mw6r2"]
@@ -574,10 +574,55 @@ _data = {
 &"retry_hover": SubResource("Animation_vrsc2")
 }
 
+[sub_resource type="Animation" id="Animation_w8xnd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.980392, 0.980392, 0.980392, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ddixh"]
+resource_name = "background_fade"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.980392, 0.980392, 0.980392, 0), Color(0.980392, 0.980392, 0.980392, 0.227451)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tb3b8"]
+_data = {
+&"RESET": SubResource("Animation_w8xnd"),
+&"background_fade": SubResource("Animation_ddixh")
+}
+
 [node name="GameMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_qdaa4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -21.0
+offset_top = -21.0
+offset_right = 1170.0
+offset_bottom = 652.0
+color = Color(0.980392, 0.980392, 0.980392, 0)
 
 [node name="Header" type="Control" parent="."]
 modulate = Color(0.211765, 0.211765, 0.211765, 1)
@@ -784,6 +829,11 @@ libraries = {
 [node name="TransPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_mw6r2")
+}
+
+[node name="BackgroundPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tb3b8")
 }
 
 [connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
