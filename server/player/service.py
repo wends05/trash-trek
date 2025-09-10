@@ -1,7 +1,7 @@
 from fastapi.exceptions import HTTPException
 from pymongo import ReturnDocument
 from pymongo.asynchronous.collection import AsyncCollection
-from player.schemas import PlayerEdit, PlayerIn, PlayerOut
+from player.schemas import PlayerEdit, PlayerIn
 
 class PlayerService:
     def __init__(self, collection: AsyncCollection):
@@ -86,9 +86,10 @@ class PlayerService:
         return res.deleted_count > 0
     
     async def get_top_three(self):
-        players = await self.collection.find().sort("high_score", -1).limit(3).to_list(3)
         
-        for player in players:
+        players = []
+        async for player in self.collection.find().sort("high_score", -1).limit(3):
             player["_id"] = str(player["_id"])
+            players.append(player)
 
         return players

@@ -14,3 +14,4 @@ db = client["trashtrek"]
 
 # Collections
 players_collection = db.players
+shop_items_collection = db.shop_items

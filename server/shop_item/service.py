@@ -1,15 +1,45 @@
+from fastapi.exceptions import HTTPException
+from pymongo.asynchronous.collection import AsyncCollection
 
 class ShopItemService:
-    def __init__(self, collection: AsyncCollection):
-        self.collection = collection
-        self.player_service = PlayerService(players_collection)
+    def __init__(self, shop_item_collection: AsyncCollection, players_collection: AsyncCollection):
+        self.shop_item_collection = shop_item_collection
+        self.player_collection = players_collection
     
-    def get_all_shop_items(self):
-        return self.collection.find()
+    async def get_shop_items(self):
+        items = []
+        
+        async for item in self.shop_item_collection.find().limit(10):
+            item["_id"] = str(item["_id"])
+            items.append(item)
+
+        if not items:
+            raise HTTPException(status_code=404, detail={
+                "message": "No shop items found"
+            })
+
+
+        return items
+
+    async def get_all_upgrades(self):
+        upgrades = []
+        
+        async for upgrade in self.shop_item_collection.find({
+            "type": "upgrade"
+        }).limit(10):
+            upgrade["_id"] = str(upgrade["_id"])
+            upgrades.append(upgrade)
+
+        if not upgrades:
+            raise HTTPException(status_code=404, detail={
+                "message": "No upgrades found"
+            })
+
+        return upgrades
     
-    def buy_shop_item(self, device_id: str, shop_item_id: str):
-        player = self.player_service.get_player(device_id)
-        shop_item = self.collection.find_one({"_id": shop_item_id})
+    async def buy_upgrade(self, device_id: str, upgrade_id: str):
+        player = await self.player_collection.find_one({"device_id": device_id})
+        upgrade = await self.shop_item_collection.find_one({"_id": upgrade_id})
 
         if not player:
             raise HTTPException(status_code=404, detail={
@@ -17,30 +47,50 @@ class ShopItemService:
                 "device_id": device_id
             })
         
-        if not shop_item:
+        if not upgrade:
             raise HTTPException(status_code=404, detail={
-                "message": "Shop item not found",
-                "shop_item_id": shop_item_id
+                "message": "Upgrade not found",
+                "upgrade_id": upgrade_id
             })
             
-        player_dict = player.model_dump()
+        player_dict = player
 
-        if player_dict["coins"] < shop_item["base_price"]:
+        if player_dict["coins"] < upgrade["base_price"]:
             raise HTTPException(status_code=400, detail={
                 "message": "Not enough coins",
                 "device_id": device_id
             })
         
-        player_dict["coins"] -= shop_item["base_price"]
+        player_dict["coins"] -= upgrade["base_price"]
 
         if player_dict["upgrades"] is None:
             player_dict["upgrades"] = []
 
-        if shop_item["name"] not in player_dict["upgrades"]:
-            player_dict["upgrades"][shop_item["name"]] = {
+        if upgrade["name"] not in player_dict["upgrades"]:
+            player_dict["upgrades"][upgrade["name"]] = {
                 "level": 1,
 
             }
 
-        player_dict["upgrades"][shop_item["name"]] += 0
+        player_dict["upgrades"][upgrade["name"]] += 0
+
+        updated_player = await self.player_service.update_player(device_id, player_dict)
+
+        return updated_player
     
+    async def get_all_skins(self):
+        skins = []
+        
+        async for skin in self.shop_item_collection.find({
+            "type": "skin"
+        }).limit(10):
+            skin["_id"] = str(skin["_id"])
+            skins.append(skin)
+        
+        if not skins:
+            raise HTTPException(status_code=404, detail={
+                "message": "No skins found"
+            })
+        
+        return skins
+        
