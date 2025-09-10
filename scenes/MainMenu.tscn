@@ -223,12 +223,6 @@ animations = [{
 }, {
 "duration": 1.5,
 "texture": SubResource("AtlasTexture_m1t58")
-}, {
-"duration": 1.5,
-"texture": SubResource("AtlasTexture_7la6k")
-}, {
-"duration": 1.5,
-"texture": SubResource("AtlasTexture_7la6k")
 }],
 "loop": true,
 "name": &"default",
@@ -1224,6 +1218,7 @@ rotation = 1.79335
 scale = Vector2(0.411519, 0.437869)
 sprite_frames = SubResource("SpriteFrames_826wr")
 autoplay = "default"
+frame_progress = 0.0527487
 
 [node name="GameTitle" type="AnimatedSprite2D" parent="ParallaxBackground/Misc"]
 texture_filter = 1
