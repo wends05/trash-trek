@@ -3,9 +3,9 @@ extends Node2D
 class_name TerrainManager
 
 @export var speed: float = 200
-@export var terrain_width: int = 1160
+@export var terrain_width: int = 1180
 @onready var terrain_manager: Node = $"."
-@export var gap_size: int = 120
+@export var gap_size: int = 130
 @export var acceleration: float = 5.0 
 @export var max_speed: float = 600 
 
@@ -37,7 +37,7 @@ func _physics_process(delta: float) -> void:
 
 func initialize_terrain() -> void:
 	load_terrain(0, 0)
-	load_terrain(terrain_width, 0)
+	load_terrain(terrain_width + gap_size, 0)
 
 func scroll_terrain(delta: float) -> void:
 	for area in terrain_manager.get_children():
@@ -50,7 +50,7 @@ func scroll_terrain(delta: float) -> void:
 func load_terrain(x, y):
 	if not start_terrain_loaded:
 		var scene = terrain_scenes[TerrainType.Start].instantiate()
-		scene.position = Vector2(x + gap_size, y)
+		scene.position = Vector2(x, y)
 		terrain_manager.add_child(scene)
 		start_terrain_loaded = true
 		last_terrains.clear()  # Clear terrain history at start
@@ -80,5 +80,5 @@ func load_terrain(x, y):
 		
 		# Instantiate the selected terrain
 		var scene = terrain_scenes[terrain_type].instantiate()
-		scene.position = Vector2(x, y)
+		scene.position = Vector2(x + gap_size, y)
 		terrain_manager.add_child(scene)
