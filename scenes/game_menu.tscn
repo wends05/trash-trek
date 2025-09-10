@@ -589,7 +589,7 @@ offset_bottom = 652.0
 color = Color(0.980392, 0.980392, 0.980392, 0)
 
 [node name="Header" type="Control" parent="."]
-modulate = Color(0.2484, 0.2484, 0.2484, 1)
+modulate = Color(0.0430392, 0.0430392, 0.0430391, 1)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 7.0
@@ -611,7 +611,7 @@ texture = ExtResource("3_ldg7d")
 flip_v = true
 
 [node name="Footer" type="Control" parent="."]
-modulate = Color(0.29219, 0.29219, 0.29219, 1)
+modulate = Color(0.0807833, 0.0807834, 0.0807833, 1)
 layout_mode = 2
 anchors_preset = 0
 offset_top = 269.045
