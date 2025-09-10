@@ -15,7 +15,7 @@ var my_buttons: Array
 
 func _ready() -> void:
 	my_buttons = [
-		game_menu.retry_button, 
+		game_menu.restart_button, 
 		game_menu.resume_button, 
 		game_menu.resume_button,
 		game_menu.quit_button,
@@ -69,6 +69,7 @@ func toggle_pause():
 		else:
 			disable_buttons(my_buttons)
 			game_menu_animation(false)
+			await trans_player.animation_finished
 			update_game_state(Utils.GameStateType.Play)
 			update_ui_state(Utils.UIStateType.PauseMenu)
 			

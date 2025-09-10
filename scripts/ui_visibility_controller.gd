@@ -6,6 +6,7 @@ class_name UIVisibilityController
 @export var game_menu: Control
 @export var game_stats: Label
 @onready var trans_player = $"../GameMenu/TransPlayer"
+@onready var ui: UI = $".."
 
 func _ready() -> void:
 	toggle_nodes([game_menu, game_status_label, game_stats])
@@ -28,7 +29,10 @@ func update_ui_visibility(state: Utils.UIStateType) -> void:
 				game_menu.restart_button,
 				game_stats
 			])
+			ui.game_menu_animation(true)
+			ui.enable_buttons([game_menu.quit_button, game_menu.menu_button, game_menu.retry_button])
 			Game.is_game_over = true
+		
 
 func toggle_nodes(nodes: Array[Control]) -> void:
 	for node in nodes:
