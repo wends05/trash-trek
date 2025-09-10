@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cnvc3c5c6c8mj"]
+[gd_scene load_steps=38 format=3 uid="uid://cnvc3c5c6c8mj"]
 
 [ext_resource type="Script" uid="uid://cad734vbhmmtg" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="PackedScene" uid="uid://ciuvi7tl2l5wv" path="res://scenes/game_menu.tscn" id="2_p7vwb"]
@@ -97,7 +97,32 @@ Label/font_sizes/font_size = 33
 base_font = ExtResource("17_f7tlh")
 spacing_glyph = 8
 
-[node name="UI" type="Control"]
+[sub_resource type="Animation" id="Animation_cof4p"]
+resource_name = "GameStatus"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameMenu/GameStatusLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.2, 0.265909),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(92, -143.52), Vector2(92, 63), Vector2(92, 42.795), Vector2(92, 63)]
+}
+
+[sub_resource type="Animation" id="Animation_f7tlh"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8k7j3"]
+_data = {
+&"GameStatus": SubResource("Animation_cof4p"),
+&"RESET": SubResource("Animation_f7tlh")
+}
+
+[node name="UI" type="Control" node_paths=PackedStringArray("game_menu")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -108,6 +133,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 6
 script = ExtResource("1_nt7q6")
+game_menu = NodePath("GameMenu")
 
 [node name="EnergyBar" parent="." instance=ExtResource("2_x4jx1")]
 layout_mode = 1
@@ -263,9 +289,9 @@ label_settings = SubResource("LabelSettings_vsj0x")
 [node name="Game Stats" type="Label" parent="GameMenu"]
 layout_mode = 0
 offset_left = 454.0
-offset_top = 164.0
+offset_top = 237.0
 offset_right = 707.0
-offset_bottom = 280.0
+offset_bottom = 353.0
 theme_override_fonts/font = SubResource("FontVariation_f7tlh")
 theme_override_font_sizes/font_size = 22
 horizontal_alignment = 1
@@ -273,26 +299,31 @@ horizontal_alignment = 1
 [node name="GameStatusLabel" type="Label" parent="GameMenu"]
 layout_mode = 0
 offset_left = 92.0
-offset_top = -8.0
+offset_top = -143.52
 offset_right = 1073.0
-offset_bottom = 137.0
+offset_bottom = 1.48
 theme = SubResource("Theme_jkdwc")
 theme_override_fonts/font = SubResource("FontVariation_rlppe")
 theme_override_font_sizes/font_size = 0
-text = "GAME OVER"
+text = "PAUSED MENU"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="GameReasonLabel" type="Label" parent="GameMenu"]
 layout_mode = 0
 offset_left = 303.0
-offset_top = 108.0
+offset_top = 176.0
 offset_right = 840.0
-offset_bottom = 159.0
+offset_bottom = 227.0
 theme = SubResource("Theme_f7tlh")
 theme_override_fonts/font = SubResource("FontVariation_cof4p")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8k7j3")
+}
 
 [connection signal="mouse_entered" from="PauseButton" to="." method="_on_pause_button_mouse_entered"]
 [connection signal="mouse_exited" from="PauseButton" to="." method="_on_pause_button_mouse_exited"]

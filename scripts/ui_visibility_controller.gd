@@ -5,6 +5,7 @@ class_name UIVisibilityController
 @export var game_status_label: Control
 @export var game_menu: Control
 @export var game_stats: Label
+@onready var trans_player = $"../GameMenu/TransPlayer"
 
 func _ready() -> void:
 	toggle_nodes([game_menu, game_status_label, game_stats])

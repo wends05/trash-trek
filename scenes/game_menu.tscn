@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://ciuvi7tl2l5wv"]
+[gd_scene load_steps=37 format=4 uid="uid://ciuvi7tl2l5wv"]
 
 [ext_resource type="Script" uid="uid://devlsdpi63sk1" path="res://scripts/game_menu.gd" id="1_qdaa4"]
 [ext_resource type="Texture2D" uid="uid://cs354q02836px" path="res://assets/menu/trashes/TrashMount5.png" id="2_mw6r2"]
@@ -14,7 +14,7 @@ Label/colors/font_shadow_color = Color(0.0784314, 0.0784314, 0.0784314, 0.933333
 Label/constants/outline_size = 3
 Label/constants/shadow_offset_x = 3
 Label/constants/shadow_outline_size = 8
-Label/font_sizes/font_size = 30
+Label/font_sizes/font_size = 26
 
 [sub_resource type="FontVariation" id="FontVariation_ysvk1"]
 base_font = ExtResource("2_vrsc2")
@@ -252,6 +252,81 @@ base_font = ExtResource("2_vrsc2")
 variation_transform = Transform2D(1.375, 0.075, 0, 0.865, 0, 0)
 spacing_glyph = 7
 
+[sub_resource type="Animation" id="Animation_qoecg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RestartButton/RestartLabel:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.967361, 1.00678)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RestartButton/RestartLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(26.1343, -10.6521)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenuButton/MainMenuLabel:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenuButton/MainMenuLabel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-5, -12)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("QuitButton/ExitLabel:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.026, 0.941)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("QuitButton/ExitLabel:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(36.9916, 1.28021)]
+}
+
 [sub_resource type="Animation" id="Animation_0b27c"]
 resource_name = "main_menu_press"
 length = 0.4
@@ -336,81 +411,6 @@ tracks/1/keys = {
 "values": [Vector2(26.1343, -10.6521), Vector2(33.869, -9.847), Vector2(26.1343, -10.6521)]
 }
 
-[sub_resource type="Animation" id="Animation_qoecg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RestartButton/RestartLabel:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.967361, 1.00678)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("RestartButton/RestartLabel:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(26.1343, -10.6521)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MainMenuButton/MainMenuLabel:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MainMenuButton/MainMenuLabel:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-5, -12)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("QuitButton/ExitLabel:scale")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1.026, 0.941)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("QuitButton/ExitLabel:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(36.9916, 1.28021)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ysvk1"]
 _data = {
 &"RESET": SubResource("Animation_qoecg"),
@@ -419,13 +419,30 @@ _data = {
 &"restart_press": SubResource("Animation_u3xmg")
 }
 
-[sub_resource type="Animation" id="Animation_ysvk1"]
-length = 0.001
-
-[sub_resource type="Animation" id="Animation_vrsc2"]
-resource_name = "retry_hover"
+[sub_resource type="Animation" id="Animation_l2u6m"]
+resource_name = "resume_hover"
 length = 4.0
 loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ResumeButton/ResumeLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.03333, 1.96667, 3.06667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(363, 323), Vector2(349.09, 313.685), Vector2(363, 323), Vector2(367.74, 313.685)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ddixh"]
+_data = {
+&"resume_hover": SubResource("Animation_l2u6m")
+}
+
+[sub_resource type="Animation" id="Animation_ysvk1"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_p30b5"]
 resource_name = "fade_in"
@@ -433,43 +450,43 @@ length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("BG:color")
+tracks/0/path = NodePath("Header:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.266667, 0.4),
+"times": PackedFloat32Array(0, 0.333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0.517184, 0.517184, 0.517184, 0.603922)]
+"values": [Vector2(7, -542.22), Vector2(7, -400)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Header:position")
+tracks/1/path = NodePath("Footer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(7, -542.22), Vector2(7, -400)]
+"values": [Vector2(0, 269.045), Vector2(0, 37)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Footer:position")
+tracks/2/path = NodePath("RetryButton:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.333333),
+"times": PackedFloat32Array(0, 0.330213),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 269.045), Vector2(0, 37)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("RetryButton:modulate")
+tracks/3/path = NodePath("RestartButton:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -481,11 +498,11 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("ResumeButton:modulate")
+tracks/4/path = NodePath("MainMenuButton:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.330213),
+"times": PackedFloat32Array(0, 0.333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -493,7 +510,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("RestartButton:modulate")
+tracks/5/path = NodePath("QuitButton:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -505,7 +522,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("MainMenuButton:modulate")
+tracks/6/path = NodePath("ResumeButton/ResumeLabel:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -514,18 +531,11 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("QuitButton:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.330213),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
+
+[sub_resource type="Animation" id="Animation_vrsc2"]
+resource_name = "retry_hover"
+length = 4.0
+loop_mode = 1
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mw6r2"]
 _data = {
@@ -538,12 +548,6 @@ _data = {
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_qdaa4")
-
-[node name="BG" type="ColorRect" parent="."]
-layout_mode = 0
-offset_right = 1153.0
-offset_bottom = 677.0
-color = Color(0, 0, 0, 0)
 
 [node name="Header" type="Control" parent="."]
 modulate = Color(0.211765, 0.211765, 0.211765, 1)
@@ -611,9 +615,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -245.0
-offset_top = -331.0
+offset_top = -243.0
 offset_right = 236.0
-offset_bottom = -266.0
+offset_bottom = -178.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_vrsc2")
@@ -624,20 +628,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ResumeButton" type="TextureButton" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_right = 1154.0
-offset_bottom = 651.0
+offset_left = -11.0
+offset_top = -6.0
+offset_right = 1166.0
+offset_bottom = 664.0
 
-[node name="StartLabel" type="Label" parent="ResumeButton"]
+[node name="ResumeLabel" type="Label" parent="ResumeButton"]
+modulate = Color(1, 1, 1, 0)
 texture_filter = 1
-offset_left = 343.0
-offset_top = 319.0
-offset_right = 786.0
-offset_bottom = 384.0
+layout_mode = 0
+offset_left = 363.0
+offset_top = 323.0
+offset_right = 806.0
+offset_bottom = 398.0
 theme = SubResource("Theme_yr8n5")
 theme_override_fonts/font = SubResource("FontVariation_u3xmg")
-text = "Press Any Key or Click Anywhere to Resume
+text = "Press [ESC] or Click Anywhere to Resume
 "
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -735,6 +742,12 @@ text = "Quit Game"
 [node name="ButtonPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_ysvk1")
+}
+
+[node name="HoverPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../ButtonPlayer")
+libraries = {
+&"": SubResource("AnimationLibrary_ddixh")
 }
 
 [node name="TransPlayer" type="AnimationPlayer" parent="."]

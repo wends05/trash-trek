@@ -53,10 +53,10 @@ func is_intro_scene():
 	if SceneHandler.last_scene_path == "res://scenes/intro.tscn":
 		Utils.anim_player(props_player, "cam_in")
 		await props_player.animation_finished
-		Utils.anim_player(props_player, "text_pop")
+		game_title.play("text_pop")
 		Utils.anim_player(props_player, "hover_button")
 		await game_title.animation_finished
-		Utils.anim_player(game_title, "default")
+		game_title.play("default")
 	else:
 		Utils.anim_player(props_player, "hover_button")
 		cam.position = Vector2(-3, 0)

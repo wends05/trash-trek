@@ -8,9 +8,9 @@ class_name UITextController
 func update_ui_text(state: Utils.UIStateType, reason: Utils.GameOverReason) -> void:
 	match state:
 		Utils.UIStateType.PauseMenu:
-			game_status_label.text = "Paused Menu"
+			game_status_label.text = "PAUSED MENU"
 		Utils.UIStateType.GameOver:
-			game_status_label.text = "Game Over"
+			game_status_label.text = "GAME OVER"
 			match reason:
 				Utils.GameOverReason.OutOfBounds:
 					game_reason_label.text = "Player left behind"

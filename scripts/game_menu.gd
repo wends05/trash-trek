@@ -3,14 +3,18 @@ extends Control
 @onready var resume_button = $ResumeButton
 @onready var restart_button = $RestartButton
 @onready var retry_button = $RetryButton
+@onready var menu_button = $MainMenuButton
+@onready var quit_button = $QuitButton
+
 @onready var hover_player = $HoverPlayer
 @onready var button_player = $ButtonPlayer
 @onready var trans_player = $TransPlayer
-
+@onready var text_plaayer = $"../TextPlayer"
 
 func _on_resume_button_pressed() -> void:
 	check_for_pause()
 	trans_player.play_backwards("fade_in")
+	text_plaayer.play_backwards("GameStatus")
 	await trans_player.animation_finished
 	Game.update_game_state.emit(Utils.GameStateType.Play)
 	Game.update_ui_state.emit(Utils.UIStateType.PauseMenu)

@@ -7,8 +7,23 @@ class_name UI
 @onready var pause_animation = $PauseButton/PauseAnimate
 @onready var game_stats_label = $"GameMenu/Game Stats"
 @onready var trans_player: AnimationPlayer = $GameMenu/TransPlayer
+@onready var text_player: AnimationPlayer = $TextPlayer
+@onready var hover_player: AnimationPlayer = $GameMenu/HoverPlayer
+@export var game_menu: Control 
+
+var my_buttons: Array
 
 func _ready() -> void:
+	my_buttons = [
+		game_menu.retry_button, 
+		game_menu.resume_button, 
+		game_menu.resume_button,
+		game_menu.quit_button,
+		game_menu.menu_button,
+	]
+	
+	
+	
 	Game.updated_stats.connect(update_trash_counts)
 	Game.update_ui_state.connect(update_ui_state)
 	Game.update_game_state.connect(update_game_state)
@@ -51,15 +66,16 @@ func toggle_pause():
 			update_ui_state(Utils.UIStateType.PauseMenu)
 			update_game_state(Utils.GameStateType.Pause)
 		else:
+			text_player.play_backwards("GameStatus")
 			trans_player.play_backwards("fade_in")
-			await trans_player.animation_finished
 			update_game_state(Utils.GameStateType.Play)
+			await trans_player.animation_finished
 			update_ui_state(Utils.UIStateType.PauseMenu)
 			
 func _on_pause_button_pressed() -> void:
-	update_game_state(Utils.GameStateType.Pause)
 	if Game.is_game_over:
 		return
+	update_game_state(Utils.GameStateType.Pause)
 	update_ui_state(Utils.UIStateType.PauseMenu)
 
 func _on_pause_button_mouse_entered() -> void:
@@ -76,10 +92,23 @@ func update_game_state(state: Utils.GameStateType) -> void:
 	match state:
 		Utils.GameStateType.Pause:
 			Utils.anim_player(trans_player, "fade_in")
+			text_player.play("GameStatus")
+			Utils.anim_player(hover_player, "resume_hover")
+			enable_buttons(my_buttons)
 			await trans_player.animation_finished
 			get_tree().paused = true
 		Utils.GameStateType.Play:
+			disable_buttons(my_buttons)
 			get_tree().paused = false
+
+func disable_buttons(buttons: Array):
+	for button in buttons:
+		button.mouse_filter = Control.MOUSE_FILTER_IGNORE
+		
+func enable_buttons(buttons: Array):
+	for button in buttons:
+		button.mouse_filter = Control.MOUSE_FILTER_PASS
+
 
 func _on_group_pressed(type: Utils.TrashType):
 	print_debug("Pressed, ", type)
