@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://ciuvi7tl2l5wv"]
+[gd_scene load_steps=37 format=4 uid="uid://ciuvi7tl2l5wv"]
 
 [ext_resource type="Script" uid="uid://devlsdpi63sk1" path="res://scripts/game_menu.gd" id="1_qdaa4"]
 [ext_resource type="Texture2D" uid="uid://cs354q02836px" path="res://assets/menu/trashes/TrashMount5.png" id="2_mw6r2"]
@@ -568,13 +568,6 @@ _data = {
 &"fade_in": SubResource("Animation_p30b5")
 }
 
-[sub_resource type="Environment" id="Environment_0b27c"]
-background_mode = 3
-glow_intensity = 3.46
-glow_strength = 0.65
-glow_bloom = 0.08
-glow_blend_mode = 1
-
 [node name="GameMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 0
@@ -793,9 +786,6 @@ process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_mw6r2")
 }
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_0b27c")
 
 [connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
