@@ -66,3 +66,7 @@ func prev_step():
 	if current_step > 0:
 		current_step -= 1
 		play_step()
+
+func _on_main_menu_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+	
