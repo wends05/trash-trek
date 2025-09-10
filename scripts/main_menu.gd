@@ -40,6 +40,7 @@ func _on_exit_button_pressed() -> void:
 func _on_tutorial_button_pressed() -> void:
 	Utils.anim_player(buttons_player, "tutorial_press")
 	await buttons_player.animation_finished
+	get_tree().change_scene_to_file("res://scenes/Tutorial.tscn")
 
 func _on_credits_button_pressed() -> void:
 	Utils.anim_player(buttons_player, "credits_press")
