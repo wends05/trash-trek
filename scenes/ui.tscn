@@ -354,10 +354,8 @@ flip_v = true
 
 [node name="Game Stats" type="Label" parent="GameMenu"]
 layout_mode = 2
-offset_left = 454.0
-offset_top = 237.33
-offset_right = 455.0
-offset_bottom = 270.33
+offset_right = 1.0
+offset_bottom = 33.0
 theme = SubResource("Theme_8k7j3")
 theme_override_fonts/font = SubResource("FontVariation_f7tlh")
 theme_override_font_sizes/font_size = 22
