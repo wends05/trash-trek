@@ -5,14 +5,12 @@ extends Control
 @onready var enter_button = $Container/Enter
 @onready var message_label = $Container/Message
 
-@export var player_api: PlayerApi
-
 func _ready() -> void:
-	player_api.get_user_failed.connect(_on_get_user_failed)
-	player_api.get_user_success.connect(_on_get_user_success)
-	player_api.create_user_failed.connect(_on_create_user_failed)
-	player_api.create_user_success.connect(_on_create_user_success)
-	player_api.get_user()
+	PlayerApi.get_user_failed.connect(_on_get_user_failed)
+	PlayerApi.get_user_success.connect(_on_get_user_success)
+	PlayerApi.create_user_failed.connect(_on_create_user_failed)
+	PlayerApi.create_user_success.connect(_on_create_user_success)
+	PlayerApi.get_user()
 
 func _on_get_user_success(_res: Dictionary) -> void:
 	go_to_main()
@@ -39,7 +37,7 @@ func _on_create_user_failed(err: Dictionary) -> void:
 func _on_enter_pressed() -> void:
 	var player_stats = ResourceLoader.load("res://resources/player_stats.tres")
 	message_label.text = ""
-	player_api.create_user({
+	PlayerApi.create_user({
 		"device_id": player_stats.get_device_id(),
 		"name": name_input.text,
 	})

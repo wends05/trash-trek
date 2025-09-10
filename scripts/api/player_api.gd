@@ -1,8 +1,6 @@
 extends ApiService
 
-class_name PlayerApi
-
-@export var player_stats: PlayerStatsResource = preload("res://resources/player_stats.tres")
+var player_stats: PlayerStatsResource = preload("res://resources/player_stats.tres")
 
 func get_user():
 	return await _make_request("/player/" + player_stats.get_device_id(), HTTPClient.METHOD_GET, default_headers, null, _on_get_user)
@@ -16,7 +14,7 @@ func _on_get_user(result: int, response_code: int, headers: PackedStringArray, b
 
 
 func create_user(new_player_stats: Dictionary):
-	return await _make_request("/player/", HTTPClient.METHOD_POST, default_headers, new_player_stats, _on_create_user)
+	return await _make_request("/player", HTTPClient.METHOD_POST, default_headers, new_player_stats, _on_create_user)
 
 signal create_user_success(result: Dictionary)
 signal create_user_failed(err: Dictionary)
@@ -76,7 +74,7 @@ func _apply_to_resource(op: String, data: Dictionary) -> void:
 		return
 	print_debug("Applying to resource: " + op)
 	match op:
-		"get_user", "create_user", "update_user":
+		"get_user", "create_user":
 			# Both endpoints return a full player payload
 			player_stats.compare_to_resource(data)
 		_:

@@ -93,7 +93,7 @@ func update_high_score(new_high_score: float) -> void:
 func get_upgrades() -> Dictionary:
 	return upgrades
 
-func upgrade_stat(upgrade: UpgradeResource, player_api: PlayerApi) -> String:
+func upgrade_stat(upgrade: UpgradeResource) -> String:
 	var player_upgrade = upgrades.get(upgrade.name)
 	
 	if not player_upgrade:
@@ -117,14 +117,16 @@ func upgrade_stat(upgrade: UpgradeResource, player_api: PlayerApi) -> String:
 	decrement_coins(cost)
 	upgrades[upgrade.name]["level"] += 1
 	_update_last_modified()
-	save_to_database(player_api)
+	save_to_database()
 	return ""
 
-func save_to_database(player_api: PlayerApi) -> void:
+func save_to_database() -> void:
 	var final_dict = self.to_dict().duplicate()
 	final_dict.erase("lastModified")
 	final_dict.erase("device_id")
-	player_api.update_user(final_dict)
+	if not PlayerApi.update_user_success.is_connected(_on_update_user_success):
+		PlayerApi.update_user_success.connect(_on_update_user_success)
+	PlayerApi.update_user(final_dict)
 
 func _on_update_user_success(result: Dictionary) -> void:
 	print_debug("Update user success: %s" % result)

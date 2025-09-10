@@ -32,7 +32,6 @@ var selected_trash_type: Utils.TrashType
 signal changed_trash_type(type: Utils.TrashType)
 
 var energy_timer: Timer
-var player_api: PlayerApi
 var player_stats_resource: PlayerStatsResource = preload("res://resources/player_stats.tres")
 
 ## In built functions
@@ -46,10 +45,7 @@ func _ready() -> void:
 	energy_timer.autostart = true
 	add_child(energy_timer)
 
-	player_api = PlayerApi.new()
-
 	energy_timer.timeout.connect(_on_energy_timer_timeout)
-	add_child(player_api)
 
 	max_energy = calculate_value("ecapacity", max_energy)
 	update_ui_state.connect(_on_update_ui_state)
@@ -179,7 +175,7 @@ func update_player_stats(final_score: float, coins_collected: int, _reason: Util
 	print("Attempting to update player")
 	player_stats_resource.update_coins(player_stats_resource.coins + coins_collected)
 	player_stats_resource.update_high_score(final_score)
-	player_stats_resource.save_to_database(player_api)
+	player_stats_resource.save_to_database()
 	
 ## Upgrade related
 func calculate_value(res_file_name: String, value: float):
