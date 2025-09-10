@@ -37,6 +37,7 @@ enum SceneType {
 	Credits,
 	Tutorial,
 	GameOver,
+	ProfileMenu
 }
 
 const TRASHES = [

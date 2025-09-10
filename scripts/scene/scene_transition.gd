@@ -24,9 +24,11 @@ func change_scene(scene: PackedScene, type: Utils.SceneType, container: Node = n
 			SceneHandler.last_foreground_scroll_offset = $Parallax/Foreground.scroll_offset
 			switch_to_scene(scene)
 			Utils.anim_player(trans_player, "fade_out")
-		Utils.SceneType.Menu, Utils.SceneType.GameOver, Utils.SceneType.Credits:
+		Utils.SceneType.GameOver, Utils.SceneType.Credits:
 			switch_to_scene(scene, container)
-
+		Utils.SceneType.Menu:
+			switch_to_scene(scene)
+			
 func switch_to_scene(scene: PackedScene, container: Node = null):
 	var new_scene = scene.instantiate()
 	
@@ -38,4 +40,5 @@ func switch_to_scene(scene: PackedScene, container: Node = null):
 		tree.root.add_child(new_scene)
 		tree.current_scene = new_scene
 		if current_scene:
+			print("removed", current_scene)
 			current_scene.queue_free()

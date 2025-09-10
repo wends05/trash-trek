@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvwb8wipre66u"
-path="res://.godot/imported/Biodegradable.png-c42d95cbf5052103f88eb3714f667090.ctex"
+uid="uid://bn803xu6uqhoh"
+path="res://.godot/imported/Screenshot 2025-09-10 011723.png-455f1afda6a3d8d9a14e2f1da4fc840a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/trashbins/Biodegradable.png"
-dest_files=["res://.godot/imported/Biodegradable.png-c42d95cbf5052103f88eb3714f667090.ctex"]
+source_file="res://assets/background/Screenshot 2025-09-10 011723.png"
+dest_files=["res://.godot/imported/Screenshot 2025-09-10 011723.png-455f1afda6a3d8d9a14e2f1da4fc840a.ctex"]
 
 [params]
 
