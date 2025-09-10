@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://b0wiwv8fwgkwc" path="res://assets/menu/clouds/cloud3.png" id="14_5faoh"]
 [ext_resource type="Texture2D" uid="uid://dahp43gna1p8n" path="res://assets/menu/BrushStrokes.png" id="18_tdapf"]
 [ext_resource type="FontFile" uid="uid://fp7rfneeiohe" path="res://fonts/SearchingForSignal.ttf" id="19_v41fp"]
-[ext_resource type="PackedScene" uid="uid://ck5hqi7xghs6e" path="res://scenes/ProfileButton.tscn" id="21_viowm"]
+[ext_resource type="PackedScene" uid="uid://dvd3nxv1b57c1" path="res://scenes/ProfileButton.tscn" id="21_viowm"]
 [ext_resource type="Texture2D" uid="uid://vtxnw3gfa8by" path="res://assets/menu/BrushStroke.png" id="24_2axsc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7la6k"]
@@ -1629,12 +1629,6 @@ metadata/_edit_lock_ = true
 [node name="Buttons" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="Button" parent="Buttons" instance=ExtResource("21_viowm")]
-offset_left = 984.0
-offset_top = 40.0
-offset_right = 1138.0
-offset_bottom = 70.0
-
 [node name="StartButton" type="TextureButton" parent="Buttons"]
 texture_filter = 1
 anchors_preset = 8
@@ -1666,6 +1660,12 @@ text = "Press Any Key or Click Anywhere to Play
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Button" parent="Buttons" instance=ExtResource("21_viowm")]
+offset_left = 984.0
+offset_top = 40.0
+offset_right = 1138.0
+offset_bottom = 70.0
 
 [node name="TutorialButton" type="TextureButton" parent="Buttons"]
 texture_filter = 1

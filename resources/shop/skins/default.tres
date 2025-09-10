@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SkinResource" load_steps=2 format=3 uid="uid://bfxquhtkujfsi"]
+
+[ext_resource type="Script" uid="uid://cwumjoef44cd" path="res://scripts/shop/skin_resource.gd" id="1_8b8md"]
+
+[resource]
+script = ExtResource("1_8b8md")
+name = ""
+base_price = 0

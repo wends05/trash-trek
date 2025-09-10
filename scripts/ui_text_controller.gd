@@ -27,6 +27,6 @@ func update_ui_text(state: Utils.UIStateType, reason: Utils.GameOverReason) -> v
 			if energy > 0:
 				text += "Energy: %d\n" % energy
 			
-			text += "Coins Gained: %d\nScore: %.2f\n" % [coins_collected, score]
+			text += "Coins Gained: %d\nScore: %.f\n" % [coins_collected, score]
 			print_debug(text)
 			game_stats_label.text = text

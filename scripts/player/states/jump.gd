@@ -3,6 +3,9 @@ class_name Jump
 
 # Jump tuning parameters
 @export var initial_jump_force: float = -400.0 # Initial jump burst (negative = up)
+var jump_boost: float = 0
+var final_jump_boost: float = 0
+
 @export var hold_max_force: float = -200.0 # Additional upward force when fully held
 @export var hold_time: float = 0.3 # How long holding jump adds force
 @export var fall_gravity_multiplier: float = 1.5 # Faster fall for better feel
@@ -15,6 +18,19 @@ class_name Jump
 var _hold_timer: float = 0.0
 var _current_force: float = 0.0
 var _has_released: bool = false
+
+@export var jump_boost_resource: UpgradeResource = preload("res://resources/shop/upgrades/jumpboost.tres")
+
+
+func _ready() -> void:
+	var jump_boost_upgrade = player.player_stats_resource.find_upgrade("Jump Boost")
+
+	if not jump_boost_upgrade:
+		printerr("No jump boost found")
+		return
+	
+	final_jump_boost = initial_jump_force + jump_boost_upgrade.level * jump_boost_resource.stat_increase_per_level
+	
 
 func enter():
 	# If a hurt-triggered lockout is active, immediately abort to running/falling (don't allow buffered jump)
@@ -30,9 +46,9 @@ func enter():
 	
 	# Initialize jump
 	_hold_timer = 0.0
-	_current_force = initial_jump_force
+	_current_force = final_jump_boost
 	_has_released = false
-	player.velocity.y = initial_jump_force
+	player.velocity.y = final_jump_boost
 
 func physics_update(delta: float):
 	var gravity_y := player.get_gravity().y # positive downward
@@ -43,7 +59,7 @@ func physics_update(delta: float):
 			_hold_timer += delta
 			var t := _hold_timer / hold_time # 0 to 1 progress
 			t = ease(t, 0.5) # Smooth acceleration curve
-			var target_force := initial_jump_force + (hold_max_force * t)
+			var target_force := (initial_jump_force - jump_boost) + (hold_max_force * t)
 			
 			# Only boost if we're slower than the target force
 			if player.velocity.y > target_force:
