@@ -9,7 +9,7 @@ class_name UI
 @onready var trans_player: AnimationPlayer = $GameMenu/TransPlayer
 @onready var text_player: AnimationPlayer = $TextPlayer
 @onready var hover_player: AnimationPlayer = $GameMenu/HoverPlayer
-@onready var bg_player: AnimationPlayer = $GameMenu/BackgroundPlayer
+@onready var bg_player: AnimationPlayer = $"../BackgroundPlayer"
 @export var game_menu: Control 
 
 @onready var bg = $"../Background/Background"
@@ -115,7 +115,6 @@ func update_game_state(state: Utils.GameStateType) -> void:
 			else:
 				get_tree().paused = true
 		Utils.GameStateType.Play:
-			Engine.time_scale = 1.0
 			get_tree().paused = false
 
 func disable_buttons(buttons: Array):
@@ -135,13 +134,13 @@ func game_menu_animation(forward: bool, mode = null) -> void:
 		Utils.anim_player(trans_player, "fade_in")
 		Utils.anim_player(text_player, "GameStatus")
 		if !Game.is_game_over:
-			bg_player.play("background_fade")
+			Utils.anim_player(bg_player, "bg_fade_in")
 		if mode == "retry":
 			Utils.anim_player(hover_player, "retry_hover")
 		else:
 			Utils.anim_player(hover_player, "resume_hover")
 	else:
-		bg_player.play_backwards("background_fade")
+		bg_player.play_backwards("bg_fade_in")
 		trans_player.play_backwards("fade_in")
 		text_player.play_backwards("GameStatus")
 	

@@ -34,8 +34,12 @@ func update_ui_visibility(state: Utils.UIStateType) -> void:
 					game_stats
 				])
 			)
-			#brush_stroke.visible = true
-			#ui.game_menu_animation(true, "retry")
+			$"../EnergyBar".visible = false
+			$"../Button Labels".visible = false
+			$"../Buttons".visible = false
+			$"../PauseButton".visible = false
+			$"../TrashCount".visible = false
+			ui.bg_player.play("bg_fade_in")
 
 func toggle_nodes(nodes: Array[Control]) -> void:
 	for node in nodes:

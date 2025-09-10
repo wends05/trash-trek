@@ -140,7 +140,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.466667, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(454, -140), Vector2(454, 230)]
+"values": [Vector2(454, -140), Vector2(454, 237.33)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -157,6 +157,18 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_f7tlh"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameMenu/Game Stats:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(454, 237.33)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8k7j3"]
 _data = {
@@ -330,9 +342,9 @@ label_settings = SubResource("LabelSettings_vsj0x")
 process_mode = 3
 
 [node name="BrushStroke" type="Sprite2D" parent="GameMenu"]
-modulate = Color(0.163116, 0.0955392, 1.20327e-08, 0.85098)
-position = Vector2(503, 235)
-scale = Vector2(0.504762, 0.585039)
+modulate = Color(0.164706, 0.0941176, 0, 0)
+position = Vector2(503, 248.75)
+scale = Vector2(0.504762, 0.565632)
 texture = ExtResource("16_f7tlh")
 flip_h = true
 flip_v = true
@@ -340,9 +352,9 @@ flip_v = true
 [node name="Game Stats" type="Label" parent="GameMenu"]
 layout_mode = 0
 offset_left = 454.0
-offset_top = 230.0
+offset_top = -140.0
 offset_right = 707.0
-offset_bottom = 346.0
+offset_bottom = -24.0
 theme = SubResource("Theme_8k7j3")
 theme_override_fonts/font = SubResource("FontVariation_f7tlh")
 theme_override_font_sizes/font_size = 22
@@ -351,9 +363,9 @@ horizontal_alignment = 1
 [node name="GameStatusLabel" type="Label" parent="GameMenu"]
 layout_mode = 0
 offset_left = 92.0
-offset_top = 63.0
+offset_top = -143.52
 offset_right = 1073.0
-offset_bottom = 208.0
+offset_bottom = 1.48
 theme = SubResource("Theme_jkdwc")
 theme_override_fonts/font = SubResource("FontVariation_rlppe")
 theme_override_font_sizes/font_size = 0
@@ -363,15 +375,16 @@ vertical_alignment = 1
 [node name="GameReasonLabel" type="Label" parent="GameMenu"]
 layout_mode = 0
 offset_left = 296.0
-offset_top = 179.0
+offset_top = -143.0
 offset_right = 833.0
-offset_bottom = 230.0
+offset_bottom = -92.0
 theme = SubResource("Theme_f7tlh")
 theme_override_fonts/font = SubResource("FontVariation_cof4p")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="TextPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
 libraries = {
 &"": SubResource("AnimationLibrary_8k7j3")
 }
