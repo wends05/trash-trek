@@ -23,6 +23,20 @@ Game="*res://scripts/globals/game.gd"
 Utils="*res://scripts/globals/utils.gd"
 PlayerApi="*res://scripts/api/player_api.gd"
 
+[debug]
+
+gdscript/warnings/unassigned_variable=2
+gdscript/warnings/unassigned_variable_op_assign=2
+gdscript/warnings/unused_local_constant=0
+gdscript/warnings/unused_signal=0
+gdscript/warnings/shadowed_variable=2
+gdscript/warnings/shadowed_variable_base_class=2
+gdscript/warnings/standalone_ternary=2
+gdscript/warnings/incompatible_ternary=2
+gdscript/warnings/property_used_as_function=2
+gdscript/warnings/constant_used_as_function=2
+gdscript/warnings/function_used_as_property=2
+
 [display]
 
 window/size/mode=3

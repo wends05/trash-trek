@@ -26,4 +26,5 @@ func zero_energy(energy: int):
 	if energy == 0:
 		Game.is_game_over = true
 		Game.update_game_state.emit(Utils.GameStateType.Pause)
-		Game.update_ui_state.emit( Utils.UIStateType.GameOver, Utils.GameOverReason.OutOfEnergy)
+		Game.update_ui_state.emit(Utils.UIStateType.GameOver)
+		Game.game_over.emit(Utils.GameOverReason.OutOfEnergy)

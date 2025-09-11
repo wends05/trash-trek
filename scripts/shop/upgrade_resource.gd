@@ -3,7 +3,7 @@ extends Resource
 class_name UpgradeResource
 
 
-var player_stats_resource: PlayerStatsResource = preload("res://resources/player_stats.tres")
+var player_stats_resource: PlayerStatsResource = PlayerStatsResource.get_instance()
 
 @export var name: String
 @export var description: String

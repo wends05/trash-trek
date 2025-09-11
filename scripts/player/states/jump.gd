@@ -26,7 +26,7 @@ func _ready() -> void:
 	var jump_boost_upgrade = player.player_stats_resource.find_upgrade("Jump Boost")
 
 	if not jump_boost_upgrade:
-		printerr("No jump boost found")
+		print("No jump boost found")
 		final_jump_boost = initial_jump_force
 		return
 	final_jump_boost = initial_jump_force + jump_boost_upgrade.level * jump_boost_resource.stat_increase_per_level
@@ -59,7 +59,7 @@ func physics_update(delta: float):
 			_hold_timer += delta
 			var t := _hold_timer / hold_time # 0 to 1 progress
 			t = ease(t, 0.5) # Smooth acceleration curve
-			var target_force := (initial_jump_force - jump_boost) + (hold_max_force * t)
+			var target_force := final_jump_boost + (hold_max_force * t)
 			
 			# Only boost if we're slower than the target force
 			if player.velocity.y > target_force:

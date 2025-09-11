@@ -20,7 +20,7 @@ const CATEGORYSCREENS = [
 @onready var coin_error_container: Control = $%ErrorContainer
 
 
-var player_stats_resource: PlayerStatsResource = preload("res://resources/player_stats.tres")
+var player_stats_resource: PlayerStatsResource = PlayerStatsResource.get_instance()
 var current_screen: Category
 var shop_items: Array
 

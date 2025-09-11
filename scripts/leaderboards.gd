@@ -8,7 +8,6 @@ func _ready() -> void:
 	PlayerApi.get_top_five()
 
 func _on_get_top_five_success(result: Array) -> void:
-	var sorted
 	for player_idx in range(result.size()):
 		var rank = preload("res://scenes/rank.tscn")
 		var rank_node : LeaderboardRank = rank.instantiate()
