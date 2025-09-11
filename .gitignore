@@ -1,3 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+/resources/player_stats.tres
+
+# OS specific ignores
+.vscode/
+.DS_Store

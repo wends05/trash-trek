@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://cnvc3c5c6c8mj"]
+[gd_scene load_steps=40 format=3 uid="uid://cnvc3c5c6c8mj"]
 
 [ext_resource type="Script" uid="uid://cad734vbhmmtg" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="PackedScene" uid="uid://ciuvi7tl2l5wv" path="res://scenes/game_menu.tscn" id="2_p7vwb"]
 [ext_resource type="PackedScene" uid="uid://decqbrmnhe0kb" path="res://scenes/Energy.tscn" id="2_x4jx1"]
 [ext_resource type="ButtonGroup" uid="uid://chvwa86vrsf2w" path="res://resources/ToggleGroup.tres" id="3_8dubc"]
 [ext_resource type="Texture2D" uid="uid://ct8hkm8bync56" path="res://assets/ui/EscSpriteSheet.png" id="3_vdcm2"]
+[ext_resource type="FontFile" uid="uid://cbwhuecpnnapj" path="res://fonts/ByteBounce.ttf" id="4_h1mc3"]
 [ext_resource type="Texture2D" uid="uid://0gcgna3ra4o8" path="res://assets/buttons/button1.png" id="4_vsj0x"]
 [ext_resource type="Texture2D" uid="uid://dxqu4vculyhv8" path="res://assets/buttons/button2.png" id="5_qsv74"]
 [ext_resource type="Texture2D" uid="uid://bj3rk0rmmgxjw" path="res://assets/buttons/button3.png" id="6_h1mc3"]
@@ -14,6 +15,8 @@
 [ext_resource type="Script" uid="uid://yhwdmfusy3l0" path="res://scripts/time.gd" id="11_qsv74"]
 [ext_resource type="Texture2D" uid="uid://wq2c1b0lf2a8" path="res://assets/buttons/green-X.png" id="12_f7tlh"]
 [ext_resource type="Texture2D" uid="uid://bg72nmvcnnmu" path="res://assets/buttons/red-C.png" id="13_8k7j3"]
+[ext_resource type="Texture2D" uid="uid://vtxnw3gfa8by" path="res://assets/menu/BrushStroke.png" id="16_f7tlh"]
+[ext_resource type="FontFile" uid="uid://b5mi6s5qo0r03" path="res://fonts/Uskyn-Regular.ttf" id="17_f7tlh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vdcm2"]
 
@@ -58,11 +61,122 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_f7tlh"]
+font = ExtResource("4_h1mc3")
+
+[sub_resource type="Theme" id="Theme_cof4p"]
+
 [sub_resource type="LabelSettings" id="LabelSettings_vsj0x"]
+font = ExtResource("4_h1mc3")
 
-[sub_resource type="Theme" id="Theme_7dvkv"]
+[sub_resource type="Theme" id="Theme_8k7j3"]
+Label/colors/font_color = Color(0.968627, 0.721569, 0.294118, 1)
+Label/colors/font_shadow_color = Color(0.905882, 0.85098, 0, 0.396078)
 
-[node name="UI" type="Control"]
+[sub_resource type="FontVariation" id="FontVariation_f7tlh"]
+base_font = ExtResource("17_f7tlh")
+spacing_glyph = 4
+
+[sub_resource type="Theme" id="Theme_jkdwc"]
+Label/colors/font_color = Color(0.913725, 0.470588, 0, 1)
+Label/colors/font_shadow_color = Color(0.509804, 0.129412, 0, 1)
+Label/constants/outline_size = 0
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_offset_y = 3
+Label/constants/shadow_outline_size = 3
+Label/font_sizes/font_size = 100
+
+[sub_resource type="FontVariation" id="FontVariation_rlppe"]
+base_font = ExtResource("17_f7tlh")
+variation_transform = Transform2D(1, -0.02, -0.08, 0.73, 0, 0)
+spacing_glyph = 10
+
+[sub_resource type="Theme" id="Theme_f7tlh"]
+Label/colors/font_color = Color(0.952831, 0.888494, 0.886562, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/constants/shadow_offset_x = 3
+Label/constants/shadow_offset_y = 3
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 33
+
+[sub_resource type="FontVariation" id="FontVariation_cof4p"]
+base_font = ExtResource("17_f7tlh")
+spacing_glyph = 8
+
+[sub_resource type="Animation" id="Animation_cof4p"]
+resource_name = "GameStatus"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameMenu/GameStatusLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.366666, 0.433333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(92, -143.52), Vector2(92, 63), Vector2(92, 42.795), Vector2(92, 63)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameMenu/GameReasonLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.366667, 0.466667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(296, -143), Vector2(296, 179)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameMenu/Game Stats:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.466667, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(454, -140), Vector2(454, 237.33)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameMenu/BrushStroke:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.333333, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.164706, 0.0941176, 0, 0), Color(0.556251, 0.165121, 0, 0.866667)]
+}
+
+[sub_resource type="Animation" id="Animation_f7tlh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GameMenu/Game Stats:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(454, -250)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8k7j3"]
+_data = {
+&"GameStatus": SubResource("Animation_cof4p"),
+&"RESET": SubResource("Animation_f7tlh")
+}
+
+[node name="UI" type="Control" node_paths=PackedStringArray("game_menu")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -70,21 +184,19 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
 script = ExtResource("1_nt7q6")
-
-[node name="BackgroundRect" type="ColorRect" parent="."]
-layout_mode = 0
-offset_left = -2.0
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0, 0, 0, 0.486275)
+game_menu = NodePath("GameMenu")
 
 [node name="EnergyBar" parent="." instance=ExtResource("2_x4jx1")]
-layout_mode = 0
-offset_left = 311.0
-offset_top = 18.0
-offset_right = 812.0
-offset_bottom = 65.0
+layout_mode = 1
+anchors_preset = -1
+offset_left = 328.0
+offset_top = 16.0
+offset_right = 829.0
+offset_bottom = 63.0
+grow_horizontal = 2
 max_value = 200.0
 value = 100.0
 
@@ -105,144 +217,180 @@ sprite_frames = SubResource("SpriteFrames_qsv74")
 animation = &"pause_hover"
 speed_scale = 1.5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_left = 443.0
-offset_top = 568.0
-offset_right = 676.0
-offset_bottom = 643.0
-
-[node name="RecyclableButton" type="Button" parent="HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 2
-toggle_mode = true
-button_group = ExtResource("3_8dubc")
-icon = ExtResource("4_vsj0x")
-expand_icon = true
-
-[node name="BiodegradableButton" type="Button" parent="HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 2
-toggle_mode = true
-button_group = ExtResource("3_8dubc")
-icon = ExtResource("5_qsv74")
-expand_icon = true
-
-[node name="ToxicWasteButton" type="Button" parent="HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(75, 75)
-layout_mode = 2
-toggle_mode = true
-button_group = ExtResource("3_8dubc")
-icon = ExtResource("6_h1mc3")
-expand_icon = true
-
-[node name="TrashCount" type="Label" parent="."]
-layout_mode = 0
-offset_left = 492.0
-offset_top = 567.0
-offset_right = 680.0
-offset_bottom = 590.0
-label_settings = SubResource("LabelSettings_vsj0x")
-
-[node name="GameMenu" parent="." instance=ExtResource("2_p7vwb")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 462.0
-offset_top = 234.0
-offset_right = 653.0
-offset_bottom = 405.0
-grow_horizontal = 1
-grow_vertical = 1
-
-[node name="GameStatusLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 344.0
-offset_top = 97.0
-offset_right = 770.0
-offset_bottom = 185.0
-theme = SubResource("Theme_7dvkv")
-theme_override_font_sizes/font_size = 64
-text = "Game Over"
-horizontal_alignment = 1
-
-[node name="GameReasonLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 353.0
-offset_top = 177.0
-offset_right = 774.0
-offset_bottom = 208.0
-theme_override_font_sizes/font_size = 22
-horizontal_alignment = 1
-
-[node name="UITextController" type="Control" parent="." node_paths=PackedStringArray("game_status_label", "game_reason_label")]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="UITextController" type="Control" parent="." node_paths=PackedStringArray("game_status_label", "game_stats_label", "game_reason_label")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("8_ktti3")
-game_status_label = NodePath("../GameStatusLabel")
-game_reason_label = NodePath("../GameReasonLabel")
+game_status_label = NodePath("../GameMenu/GameStatusLabel")
+game_stats_label = NodePath("../GameMenu/Game Stats")
+game_reason_label = NodePath("../GameMenu/GameReasonLabel")
 
-[node name="UIVisibilityController" type="Control" parent="." node_paths=PackedStringArray("pause_button", "game_status_label", "game_menu", "background_rect")]
-anchors_preset = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 56.0
-offset_bottom = 56.0
+[node name="UIVisibilityController" type="Control" parent="." node_paths=PackedStringArray("pause_button", "game_status_label", "game_menu", "game_stats")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("9_cgfq5")
 pause_button = NodePath("../PauseButton")
-game_status_label = NodePath("../GameStatusLabel")
+game_status_label = NodePath("../GameMenu/GameStatusLabel")
 game_menu = NodePath("../GameMenu")
-background_rect = NodePath("../BackgroundRect")
+game_stats = NodePath("../GameMenu/Game Stats")
 
 [node name="Time" type="Label" parent="."]
-layout_mode = 0
-offset_left = 469.0
-offset_top = 55.0
-offset_right = 648.0
-offset_bottom = 122.0
+layout_mode = 1
+anchors_preset = -1
+offset_left = 486.5
+offset_top = 56.0
+offset_right = 665.5
+offset_bottom = 123.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_f7tlh")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("11_qsv74")
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+[node name="Buttons" type="HBoxContainer" parent="."]
 layout_mode = 2
-offset_left = 455.0
-offset_top = 527.0
-offset_right = 662.0
-offset_bottom = 576.0
+offset_left = 32.0
+offset_top = 552.0
+offset_right = 265.0
+offset_bottom = 627.0
+
+[node name="RecyclableButton" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+theme = SubResource("Theme_cof4p")
+toggle_mode = true
+button_mask = 0
+button_group = ExtResource("3_8dubc")
+icon = ExtResource("4_vsj0x")
+expand_icon = true
+
+[node name="BiodegradableButton" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+toggle_mode = true
+button_mask = 0
+button_group = ExtResource("3_8dubc")
+icon = ExtResource("5_qsv74")
+expand_icon = true
+
+[node name="ToxicWasteButton" type="Button" parent="Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 2
+toggle_mode = true
+action_mode = 0
+button_mask = 0
+button_group = ExtResource("3_8dubc")
+icon = ExtResource("6_h1mc3")
+expand_icon = true
+
+[node name="Button Labels" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 504.0
+offset_right = 264.0
+offset_bottom = 552.0
 pivot_offset = Vector2(1, 0)
 alignment = 1
 
-[node name="ZSprite" type="TextureRect" parent="HBoxContainer2"]
+[node name="ZSprite" type="TextureRect" parent="Button Labels"]
+custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_stretch_ratio = 0.0
 texture = ExtResource("11_cof4p")
 expand_mode = 2
 
-[node name="gap" type="Control" parent="HBoxContainer2"]
+[node name="Gap" type="Control" parent="Button Labels"]
+custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
-[node name="XSprite" type="TextureRect" parent="HBoxContainer2"]
+[node name="XSprite" type="TextureRect" parent="Button Labels"]
 layout_mode = 2
 texture = ExtResource("12_f7tlh")
 expand_mode = 2
 stretch_mode = 4
 
-[node name="gap2" type="Control" parent="HBoxContainer2"]
+[node name="Gap2" type="Control" parent="Button Labels"]
+custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 
-[node name="CSprite" type="TextureRect" parent="HBoxContainer2"]
+[node name="CSprite" type="TextureRect" parent="Button Labels"]
 layout_mode = 2
 texture = ExtResource("13_8k7j3")
 expand_mode = 2
 stretch_mode = 4
+
+[node name="TrashCount" type="Label" parent="."]
+layout_mode = 2
+offset_left = 96.0
+offset_top = 608.0
+offset_right = 97.0
+offset_bottom = 631.0
+label_settings = SubResource("LabelSettings_vsj0x")
+
+[node name="GameMenu" parent="." instance=ExtResource("2_p7vwb")]
+process_mode = 3
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 171.0
+
+[node name="BrushStroke" type="Sprite2D" parent="GameMenu"]
+modulate = Color(0.556251, 0.165121, 0, 0.866667)
+position = Vector2(503, 248.75)
+scale = Vector2(0.504762, 0.565632)
+texture = ExtResource("16_f7tlh")
+flip_h = true
+flip_v = true
+
+[node name="Game Stats" type="Label" parent="GameMenu"]
+layout_mode = 0
+offset_left = 454.0
+offset_top = 237.33
+offset_right = 707.0
+offset_bottom = 353.33
+theme = SubResource("Theme_8k7j3")
+theme_override_fonts/font = SubResource("FontVariation_f7tlh")
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+
+[node name="GameStatusLabel" type="Label" parent="GameMenu"]
+layout_mode = 0
+offset_left = 92.0
+offset_top = 63.0
+offset_right = 1073.0
+offset_bottom = 208.0
+theme = SubResource("Theme_jkdwc")
+theme_override_fonts/font = SubResource("FontVariation_rlppe")
+theme_override_font_sizes/font_size = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameReasonLabel" type="Label" parent="GameMenu"]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 179.0
+offset_right = 833.0
+offset_bottom = 230.0
+theme = SubResource("Theme_f7tlh")
+theme_override_fonts/font = SubResource("FontVariation_cof4p")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextPlayer" type="AnimationPlayer" parent="."]
+process_mode = 3
+libraries = {
+&"": SubResource("AnimationLibrary_8k7j3")
+}
 
 [connection signal="mouse_entered" from="PauseButton" to="." method="_on_pause_button_mouse_entered"]
 [connection signal="mouse_exited" from="PauseButton" to="." method="_on_pause_button_mouse_exited"]

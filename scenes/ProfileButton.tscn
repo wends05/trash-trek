@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvd3nxv1b57c1"]
+
+[ext_resource type="Texture2D" uid="uid://c12asxokkw07e" path="res://assets/buttons/white-user-member-guest-icon-png-image-701751695037005zdurfaim0y.png" id="1_dqkbd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r8acx"]
+draw_center = false
+
+[node name="Button" type="Button"]
+offset_right = 159.0
+offset_bottom = 31.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_r8acx")
+text = "    Username"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(22.25, 14.25)
+scale = Vector2(0.039375, 0.039375)
+texture = ExtResource("1_dqkbd")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

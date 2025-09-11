@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://baqx8dav35nfh"]
+
+[ext_resource type="Theme" uid="uid://7q5er8y042gs" path="res://Button.tres" id="1_0joi8"]
+[ext_resource type="Script" path="res://scripts/profile_menu.gd" id="1_6c4lv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0joi8"]
+bg_color = Color(1, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_105qi"]
+bg_color = Color(0.278431, 0, 0, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6c4lv"]
+bg_color = Color(0.698039, 0, 0, 0.580392)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[node name="ProfileInterface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6c4lv")
+
+[node name="Username" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 510.0
+offset_top = 264.0
+offset_right = 674.0
+offset_bottom = 334.0
+placeholder_text = "Username"
+autowrap_mode = 2
+
+[node name="Coins" type="Label" parent="."]
+layout_mode = 0
+offset_left = 514.0
+offset_top = 354.0
+offset_right = 643.0
+offset_bottom = 377.0
+text = "Coins: "
+
+[node name="Reset" type="Button" parent="."]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 393.0
+offset_right = 590.0
+offset_bottom = 433.0
+theme = ExtResource("1_0joi8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_0joi8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_105qi")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6c4lv")
+text = "Reset"
+
+[connection signal="pressed" from="Reset" to="." method="_on_reset_pressed"]

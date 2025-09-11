@@ -1,0 +1,186 @@
+[gd_scene load_steps=8 format=3 uid="uid://cw5e5t0fr7miv"]
+
+[ext_resource type="Script" uid="uid://dsx6e5yw41p11" path="res://scripts/shop/shop_interface.gd" id="1_vu2u4"]
+[ext_resource type="Texture2D" uid="uid://cfvhpmye8b7f3" path="res://assets/shop/shopavatar.png" id="2_2j2tq"]
+[ext_resource type="Texture2D" uid="uid://cs7c2nf5dljtn" path="res://assets/menu/badge.png" id="4_ajlyt"]
+[ext_resource type="Script" uid="uid://ebwc45pr0on8" path="res://scripts/shop/items_container.gd" id="5_ajlyt"]
+[ext_resource type="FontFile" uid="uid://cbwhuecpnnapj" path="res://fonts/ByteBounce.ttf" id="6_ppxa1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bxxsr"]
+font = ExtResource("6_ppxa1")
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_ppxa1"]
+
+[node name="Shop" type="Control" node_paths=PackedStringArray("item_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vu2u4")
+item_container = NodePath("ItemsContainter")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.131379, 0.131379, 0.131379, 1)
+
+[node name="ShopTexture" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -322.0
+offset_top = -324.0
+offset_right = 322.0
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_2j2tq")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="ReturnButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 32.0
+offset_right = 160.0
+offset_bottom = 64.0
+text = "Return"
+
+[node name="UpgradeButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 288.0
+offset_top = 184.0
+offset_right = 352.0
+offset_bottom = 240.0
+
+[node name="SkinButton" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 360.0
+offset_top = 184.0
+offset_right = 432.0
+offset_bottom = 240.0
+
+[node name="ErrorLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -284.0
+offset_top = -11.5
+offset_right = 284.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+
+[node name="ItemsContainter" type="Control" parent="." node_paths=PackedStringArray("shop_interface")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 320.0
+offset_top = 256.0
+offset_right = -320.0
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_ajlyt")
+shop_interface = NodePath("..")
+
+[node name="UpgradesGrid" type="GridContainer" parent="ItemsContainter"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="SkinsGrid" type="GridContainer" parent="ItemsContainter"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 888.0
+offset_top = 24.0
+offset_right = 976.0
+offset_bottom = 74.1906
+texture = ExtResource("4_ajlyt")
+expand_mode = 5
+stretch_mode = 4
+
+[node name="CoinsLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 968.0
+offset_top = 16.0
+offset_right = 1088.0
+offset_bottom = 80.0
+text = "1200"
+label_settings = SubResource("LabelSettings_bxxsr")
+vertical_alignment = 1
+
+[node name="ErrorContainer" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -216.0
+offset_top = 112.0
+offset_right = -66.0
+offset_bottom = 187.0
+grow_horizontal = 0
+
+[node name="CoinErrorBackground" type="ColorRect" parent="ErrorContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 10)
+layout_mode = 2
+offset_right = 150.0
+offset_bottom = 75.0
+grow_horizontal = 0
+size_flags_horizontal = 3
+color = Color(0.831373, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ErrorContainer"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 144.0
+offset_bottom = 64.0
+
+[node name="CoinErrorLabel" type="Label" parent="ErrorContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_vertical = 1
+text = "Not Enough Coins"
+label_settings = SubResource("LabelSettings_ppxa1")
+horizontal_alignment = 2
+vertical_alignment = 1
+autowrap_mode = 2
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
+[connection signal="pressed" from="UpgradeButton" to="." method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="SkinButton" to="." method="_on_skin_button_pressed"]

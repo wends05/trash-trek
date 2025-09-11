@@ -11,6 +11,7 @@ size = Vector2(1276.25, 10)
 [node name="DeathZones" type="Node2D"]
 
 [node name="DeathZoneLeft" type="Area2D" parent="."]
+collision_layer = 0
 script = ExtResource("1_hp7u1")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DeathZoneLeft"]

@@ -1,19 +1,36 @@
 extends State
-
 class_name Jump
 
-# Tweakable jump parameters (export so you can tune in Inspector)
-@export var max_hold_time: float = 0.2 # seconds the jump button can influence ascent
-@export var base_jump_force: float = -290.0 # initial impulse (negative = up)
-@export var max_additional_force: float = -260.0 # additional force reached at full hold (added ON TOP of base resulting target ~ base + additional)
-@export var short_hop_gravity_multiplier: float = 2.0 # extra gravity when button released early
-@export var fall_gravity_multiplier: float = 1.0 # gravity once upward velocity ends
+# Jump tuning parameters
+@export var initial_jump_force: float = -400.0 # Initial jump burst (negative = up)
+var jump_boost: float = 0
+var final_jump_boost: float = 0
 
-var hold_timer: float = 0.0
-var target_peak_force: float = 0.0
+@export var hold_max_force: float = -200.0 # Additional upward force when fully held
+@export var max_jump_timer: float = 0.3 # How long holding jump adds force
+@export var fall_gravity_multiplier: float = 1.5 # Faster fall for better feel
 
-@onready var animation: AnimationPlayer= get_parent().get_parent().get_node("AnimationPlayer")
-@onready var player: Player = get_parent().get_parent()
+@export_category("Nodes")
+@export var animation: AnimationPlayer
+@export var player: Player
+
+var jump_timer: float = 0.0
+var _current_force: float = 0.0
+
+var is_jumping: bool = false
+
+@export var jump_boost_resource: UpgradeResource = preload("res://resources/shop/upgrades/jumpboost.tres")
+
+
+func _ready() -> void:
+	var jump_boost_upgrade = player.player_stats_resource.find_upgrade("Jump Boost")
+
+	if not jump_boost_upgrade:
+		print("No jump boost found")
+		final_jump_boost = initial_jump_force
+		return
+	final_jump_boost = initial_jump_force + jump_boost_upgrade.level * jump_boost_resource.stat_increase_per_level
+	
 
 func enter():
 	# If a hurt-triggered lockout is active, immediately abort to running/falling (don't allow buffered jump)
@@ -24,40 +41,44 @@ func enter():
 		else:
 			transitioned.emit(self, "falling")
 		return
+
 	animation.play("jump")
-	player.velocity.y = base_jump_force
-	target_peak_force = base_jump_force + max_additional_force
-	hold_timer = 0.0
+	
+	# Initialize jump
+	jump_timer = 0.0
+	_current_force = final_jump_boost
+	is_jumping = true
+	player.velocity.y = final_jump_boost
 
 func physics_update(delta: float):
 	var gravity_y := player.get_gravity().y # positive downward
-
-	if player.velocity.y < 0: # still ascending
-		if Input.is_action_pressed("jump") and hold_timer < max_hold_time:
-			hold_timer += delta
-			var t: float = clamp(hold_timer / max_hold_time, 0.0, 1.0)
-			# Interpolate toward peak force (more negative)
-			var desired: float = lerpf(base_jump_force, target_peak_force, t)
-			if player.velocity.y > desired: # velocity.y increases downward, so '>' means we lost upward speed; reinforce
-				player.velocity.y = desired
+	
+	if player.velocity.y < 0: # Rising
+		if Input.is_action_pressed("jump") and is_jumping and jump_timer < max_jump_timer:
+			# Add more upward force while holding jump
+			jump_timer += delta
+			var target_force := final_jump_boost + (hold_max_force * jump_timer)
+			
+			# Only boost if we're slower than the target force
+			if player.velocity.y > target_force:
+				player.velocity.y = target_force
+				_current_force = target_force
 		else:
-			# Early release -> apply stronger gravity for short hop feel
-			player.velocity.y += gravity_y * short_hop_gravity_multiplier * delta
-	else:
-		# Descending: normal / slightly faster gravity
+			player.velocity.y += gravity_y * delta
+	else: # Falling
 		player.velocity.y += gravity_y * fall_gravity_multiplier * delta
-
+	
 	player.move_and_slide()
-
+	
 	# Transition to running when landing
 	if player.is_on_floor():
 		transitioned.emit(self, "running")
 		return
-
-	# Transition to falling when descending (velocity.y > 0)
+	
+	# Transition to falling if we're heading downward
 	if player.velocity.y > 0:
 		transitioned.emit(self, "falling")
 		return
 
 func exit():
-	pass
+	is_jumping = false

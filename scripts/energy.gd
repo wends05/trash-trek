@@ -5,7 +5,7 @@ class_name EnergyBar
 var _tween: Tween
 
 func _ready() -> void:
-	max_value = Game.MAX_ENERGY
+	max_value = Game.max_energy
 	Game.energy_changed.connect(change_energy_value)
 	change_energy_value(Game.energy)
 
@@ -24,5 +24,7 @@ func change_energy_value(energy: int):
 
 func zero_energy(energy: int):
 	if energy == 0:
+		Game.is_game_over = true
 		Game.update_game_state.emit(Utils.GameStateType.Pause)
-		Game.update_ui_state.emit( Utils.UIStateType.GameOver, Utils.GameOverReason.OutOfEnergy)
+		Game.update_ui_state.emit(Utils.UIStateType.GameOver)
+		Game.game_over.emit(Utils.GameOverReason.OutOfEnergy)
