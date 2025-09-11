@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://p54lvcnh4wai"]
+
+[ext_resource type="Texture2D" uid="uid://c0shi03jl5eko" path="res://assets/menu/leaderboards/rank.png" id="1_5twxl"]
+[ext_resource type="Script" uid="uid://b8wmuvpb74bd2" path="res://scripts/leaderboards/rank.gd" id="1_hpa8y"]
+[ext_resource type="Texture2D" uid="uid://2oc6i8njnj5p" path="res://assets/menu/leaderboards/rank1.png" id="2_hpa8y"]
+[ext_resource type="FontFile" uid="uid://cbwhuecpnnapj" path="res://fonts/ByteBounce.ttf" id="3_100cj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_4yevt"]
+font = ExtResource("3_100cj")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_buce6"]
+font = ExtResource("3_100cj")
+font_size = 30
+font_color = Color(0, 0, 0, 1)
+
+[node name="Rank" type="Control"]
+custom_minimum_size = Vector2(384, 0)
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 3
+script = ExtResource("1_hpa8y")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+offset_right = 384.0
+offset_bottom = 384.0
+texture = ExtResource("1_5twxl")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 72.0
+
+[node name="RankTexture" type="TextureRect" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_hpa8y")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Gap" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(6, 0)
+layout_mode = 2
+
+[node name="Name" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(174, 0)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_4yevt")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Gap2" type="Control" parent="HBoxContainer"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="Score" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "20000"
+label_settings = SubResource("LabelSettings_buce6")
+horizontal_alignment = 1
