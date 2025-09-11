@@ -11,8 +11,14 @@ class_name PlayerStatsResource
 @export var lastModified: String
 
 const SAVE_PATH = "user://device_id.save"
+const PLAYER_STATS_SAVE_PATH = "user://player_stats.tres"
 
 signal coins_updated(value: int)
+
+static func get_instance():
+	if not ResourceLoader.exists(PLAYER_STATS_SAVE_PATH):
+		ResourceSaver.save(PlayerStatsResource.new(), PLAYER_STATS_SAVE_PATH)
+	return ResourceLoader.load(PLAYER_STATS_SAVE_PATH)
 
 func _ready() -> void:
 	pass

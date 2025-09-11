@@ -9,7 +9,7 @@ class_name Player
 var is_hurt: bool = false
 var block_jump_after_hurt: bool = false # Prevent accidental jump buffered during hurt
 
-var player_stats_resource: PlayerStatsResource = preload("res://resources/player_stats.tres")
+var player_stats_resource: PlayerStatsResource = PlayerStatsResource.get_instance()
 
 ## Collect Trash
 func _on_trash_collection_area_area_entered(area: Area2D) -> void:

@@ -32,7 +32,7 @@ var selected_trash_type: Utils.TrashType
 signal changed_trash_type(type: Utils.TrashType)
 
 var energy_timer: Timer
-var player_stats_resource: PlayerStatsResource = preload("res://resources/player_stats.tres")
+var player_stats_resource: PlayerStatsResource = PlayerStatsResource.get_instance()
 
 ## In built functions
 func _ready() -> void:

@@ -1,6 +1,6 @@
 extends ApiService
 
-var player_stats: PlayerStatsResource = preload("res://resources/player_stats.tres")
+var player_stats: PlayerStatsResource = PlayerStatsResource.get_instance()
 
 func get_user():
 	return await _make_request("/player/" + player_stats.get_device_id(), HTTPClient.METHOD_GET, default_headers, null, _on_get_user)
