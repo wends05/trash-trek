@@ -20,7 +20,7 @@ func _ready() -> void:
 func _on_get_user_success(_res: Dictionary) -> void:
 	go_to_main()
 
-func _on_get_user_failed(err: Dictionary) -> void:
+func _on_get_user_failed(_err: Dictionary) -> void:
 	loading_label.visible = false
 	name_input.visible = true
 	enter_button.visible = true
@@ -48,7 +48,7 @@ func _on_enter_pressed() -> void:
 		"name": name_input.text,
 	})
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if show_timer:
 		loading_label.text = "Loading Game %.f" % timer.time_left
 	

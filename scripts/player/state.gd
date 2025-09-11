@@ -7,7 +7,7 @@ func enter():
 	pass
 	
 func exit():
-	emit_signal("transitioned")
+	pass
 	
 func update(_delta: float):
 	pass

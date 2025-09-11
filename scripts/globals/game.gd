@@ -12,7 +12,9 @@ signal trash_collected(type: Utils.TrashType)
 signal energy_changed(value: int)
 signal updated_stats
 signal time_changed(time: float)
-signal update_ui_state(type: Utils.UIStateType, reason: Utils.GameOverReason)
+
+signal update_ui_state(type: Utils.UIStateType)
+signal game_over(reason: Utils.GameOverReason)
 signal update_game_state(type: Utils.GameStateType)
 
 var collected_biodegradable = 0
@@ -49,6 +51,8 @@ func _ready() -> void:
 
 	max_energy = calculate_value("ecapacity", max_energy)
 	update_ui_state.connect(_on_update_ui_state)
+	game_over.connect(on_game_over)
+	
 
 	set_process(true)
 
@@ -145,10 +149,10 @@ func calculate_coins() -> float:
 	var trash_coins = collected_recyclable * 2 + collected_biodegradable * 1 + collected_toxic_waste * 3
 	return max(0, time_coins + energy_coins + trash_coins)
 
-func _on_update_ui_state(type: Utils.UIStateType, reason: Utils.GameOverReason) -> void:
+func _on_update_ui_state(type: Utils.UIStateType) -> void:
 	if type == Utils.UIStateType.GameOver:
 		print_debug("NAG GAME OVER")
-		on_game_over(reason)
+
 
 func on_game_over(reason: Utils.GameOverReason) -> void:
 	var final_score = calculate_score()
