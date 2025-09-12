@@ -4,7 +4,7 @@ class_name TerrainManager
 
 @export var speed: float = 200
 @export var terrain_width: int = 1180
-@export var terrain_remove_distance: int = 1180
+@export var terrain_remove_distance: int = 1500
 @export var gap_size: int = 0
 @export var acceleration: float = 3.0
 @export var max_speed: float = 400
@@ -48,7 +48,7 @@ func scroll_terrain(delta: float) -> void:
 
 func load_terrain(x, y):
 	if not start_terrain_loaded:
-		instantiate_terrain(x, y)
+		instantiate_terrain(TerrainType.Start, x, y)
 		start_terrain_loaded = true
 		last_terrains.clear() # Clear terrain history at start
 
@@ -84,9 +84,9 @@ func load_terrain(x, y):
 		if last_terrains.size() > MAX_HISTORY:
 			last_terrains.pop_back()
 		
-		instantiate_terrain(x, y)
+		instantiate_terrain(terrain_type, x, y)
 
-func instantiate_terrain(x: int, y: int) -> void:
-	var terrain_scene: Terrain = terrain_scenes[TerrainType.Terrain1].instantiate()
+func instantiate_terrain(terrain: TerrainType, x: int, y: int) -> void:
+	var terrain_scene: Terrain = terrain_scenes[terrain].instantiate()
 	terrain_scene.position = Vector2(x + gap_size, y)
 	add_child(terrain_scene)
