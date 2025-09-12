@@ -64,7 +64,7 @@ func _on_energy_timer_timeout() -> void:
 
 func _process(delta: float) -> void:
 	elapsed_time += delta
-	time_changed.emit(elapsed_time)
+		
 
 
 ## Energy related

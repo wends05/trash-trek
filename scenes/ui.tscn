@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cnvc3c5c6c8mj"]
+[gd_scene load_steps=41 format=3 uid="uid://cnvc3c5c6c8mj"]
 
 [ext_resource type="Script" uid="uid://cad734vbhmmtg" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="PackedScene" uid="uid://ciuvi7tl2l5wv" path="res://scenes/game_menu.tscn" id="2_p7vwb"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://bg72nmvcnnmu" path="res://assets/buttons/red-C.png" id="13_8k7j3"]
 [ext_resource type="Texture2D" uid="uid://vtxnw3gfa8by" path="res://assets/menu/BrushStroke.png" id="16_f7tlh"]
 [ext_resource type="FontFile" uid="uid://b5mi6s5qo0r03" path="res://fonts/Uskyn-Regular.ttf" id="17_f7tlh"]
+[ext_resource type="Texture2D" uid="uid://cs7c2nf5dljtn" path="res://assets/menu/badge.png" id="18_8k7j3"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vdcm2"]
 
@@ -230,13 +231,13 @@ game_status_label = NodePath("../GameMenu/GameStatusLabel")
 game_menu = NodePath("../GameMenu")
 game_stats = NodePath("../GameMenu/Game Stats")
 
-[node name="Time" type="Label" parent="."]
+[node name="Distance" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-offset_left = 486.5
-offset_top = 56.0
-offset_right = 665.5
-offset_bottom = 123.0
+offset_left = 961.0
+offset_top = 16.0
+offset_right = 1140.0
+offset_bottom = 83.0
 grow_horizontal = 2
 label_settings = SubResource("LabelSettings_f7tlh")
 horizontal_alignment = 1
@@ -351,12 +352,17 @@ theme_override_fonts/font = SubResource("FontVariation_f7tlh")
 theme_override_font_sizes/font_size = 22
 horizontal_alignment = 1
 
+[node name="Badge" type="Sprite2D" parent="GameMenu/Game Stats"]
+position = Vector2(-58.875, 11.125)
+scale = Vector2(0.0964449, 0.0948276)
+texture = ExtResource("18_8k7j3")
+
 [node name="GameStatusLabel" type="Label" parent="GameMenu"]
 layout_mode = 0
 offset_left = 92.0
-offset_top = -143.52
+offset_top = 54.967
 offset_right = 1073.0
-offset_bottom = 1.48
+offset_bottom = 199.967
 theme = SubResource("Theme_jkdwc")
 theme_override_fonts/font = SubResource("FontVariation_rlppe")
 theme_override_font_sizes/font_size = 0
