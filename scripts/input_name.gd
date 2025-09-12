@@ -13,9 +13,11 @@ func _ready() -> void:
 	PlayerApi.get_user_success.connect(_on_get_user_success)
 	PlayerApi.create_user_failed.connect(_on_create_user_failed)
 	PlayerApi.create_user_success.connect(_on_create_user_success)
-	PlayerApi.get_user()
+	
 	timer.start()
 	timer.timeout.connect(show_countdown)
+	
+	PlayerApi.get_user()
 
 func _on_get_user_success(_res: Dictionary) -> void:
 	go_to_main()

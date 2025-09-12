@@ -4,13 +4,13 @@ class_name TerrainManager
 
 @export var speed: float = 200
 @export var terrain_width: int = 1180
-@onready var terrain_manager: Node = $"."
+@export var terrain_remove_distance: int = 1180
 @export var gap_size: int = 0
-@export var acceleration: float = 3.0 
-@export var max_speed: float = 400 
+@export var acceleration: float = 3.0
+@export var max_speed: float = 400
 
-var last_terrains := []  # stores recent terrain types (most recent appended)
-const MAX_HISTORY := 2  # Number of terrains to remember and avoid
+var last_terrains := [] # stores recent terrain types (most recent appended)
+const MAX_HISTORY := 2 # Number of terrains to remember and avoid
 
 enum TerrainType {Start, Terrain1, Terrain2, Terrain3, Terrain4, Terrain5, Terrain6}
 
@@ -28,10 +28,10 @@ var current_terrain_index := 0
 var start_terrain_loaded := false
 
 func _ready() -> void:
-	randomize() #for randi to generate random result each run
+	randomize() # for randi to generate random result each run
 	initialize_terrain() # generate the first two terrains
 
-func _physics_process(delta: float) -> void:     
+func _physics_process(delta: float) -> void:
 	speed = min(speed + acceleration * delta, max_speed)
 	scroll_terrain(delta)
 
@@ -40,31 +40,36 @@ func initialize_terrain() -> void:
 	load_terrain(terrain_width + gap_size, 0)
 
 func scroll_terrain(delta: float) -> void:
-	for area in terrain_manager.get_children():
+	for area in get_children():
 		area.position.x -= speed * delta
-		if area.position.x < -terrain_width:
+		if area.position.x < -terrain_remove_distance:
 			load_terrain(area.position.x + terrain_width * 2 + gap_size, 0)
 			area.queue_free()
 
-
 func load_terrain(x, y):
 	if not start_terrain_loaded:
-		var scene = terrain_scenes[TerrainType.Start].instantiate()
-		scene.position = Vector2(x, y)
-		terrain_manager.add_child(scene)
+		instantiate_terrain(x, y)
 		start_terrain_loaded = true
-		last_terrains.clear()  # Clear terrain history at start
+		last_terrains.clear() # Clear terrain history at start
+
 	else:
-		var terrain_types = [TerrainType.Terrain1, TerrainType.Terrain2, TerrainType.Terrain3, TerrainType.Terrain4, TerrainType.Terrain5, TerrainType.Terrain6 ]
-		
+		var terrain_types = [
+				TerrainType.Terrain1,
+				TerrainType.Terrain2,
+				TerrainType.Terrain3,
+				TerrainType.Terrain4,
+				TerrainType.Terrain5,
+				TerrainType.Terrain6
+			]
+			
 		# Remove the last two used terrains from available options
 		for used_terrain in last_terrains:
 			terrain_types.erase(used_terrain)
 		
 		# If we've run out of terrain types (shouldn't happen with 6+ terrains)
 		if terrain_types.is_empty():
-			terrain_types = [TerrainType.Terrain1, TerrainType.Terrain2, TerrainType.Terrain3, 
-						   TerrainType.Terrain4, TerrainType.Terrain5, TerrainType.Terrain6]
+			terrain_types = [TerrainType.Terrain1, TerrainType.Terrain2, TerrainType.Terrain3,
+								TerrainType.Terrain4, TerrainType.Terrain5, TerrainType.Terrain6]
 			# Still avoid the most recent terrain if possible
 			if not last_terrains.is_empty():
 				terrain_types.erase(last_terrains[0])
@@ -74,11 +79,14 @@ func load_terrain(x, y):
 		
 		# Update the history of used terrains
 		last_terrains.push_front(terrain_type)
+
 		# Keep only the last MAX_HISTORY terrains
 		if last_terrains.size() > MAX_HISTORY:
 			last_terrains.pop_back()
 		
-		# Instantiate the selected terrain
-		var scene = terrain_scenes[terrain_type].instantiate()
-		scene.position = Vector2(x + gap_size, y)
-		terrain_manager.add_child(scene)
+		instantiate_terrain(x, y)
+
+func instantiate_terrain(x: int, y: int) -> void:
+	var terrain_scene: Terrain = terrain_scenes[TerrainType.Terrain1].instantiate()
+	terrain_scene.position = Vector2(x + gap_size, y)
+	add_child(terrain_scene)
