@@ -37,6 +37,11 @@ signal changed_trash_type(type: Utils.TrashType)
 var energy_timer: Timer
 var player_stats_resource: PlayerStatsResource = PlayerStatsResource.get_instance()
 
+func _process(delta: float) -> void:
+	if not is_game_pause:
+		elapsed_time += delta
+		time_changed.emit(elapsed_time)
+		
 ## In built functions
 func _ready() -> void:
 	trash_collected.connect(update_trash_count)
@@ -57,6 +62,7 @@ func _ready() -> void:
 
 	set_process(true)
 
+
 func _on_energy_timer_timeout() -> void:
 	var difficulty_level = int(elapsed_time / difficulty_step)
 	energy_timer.wait_time = max(6, base_wait_time - difficulty_level)
@@ -66,7 +72,6 @@ func _on_energy_timer_timeout() -> void:
 func _process(delta: float) -> void:
 	elapsed_time += delta
 		
-
 
 ## Energy related
 func _increase_energy(amount: float) -> void:
@@ -79,7 +84,6 @@ func decrease_energy(amount: float) -> void:
 	var final_energy_decrease = max(0, energy - amount)
 	energy = final_energy_decrease
 	energy_changed.emit(energy)
-	accumulated_energy -= amount
 
 
 ## Trash related
@@ -142,7 +146,7 @@ func player_hurt(amount: int):
 
 ## Score related
 func calculate_score() -> int:
-	return accumulated_trash + floor(elapsed_time)
+	return accumulated_trash + accumulated_energy + floor(elapsed_time)
 
 func calculate_coins() -> float:
 	var time_coins = int(elapsed_time / 5.0)

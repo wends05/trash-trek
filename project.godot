@@ -23,6 +23,8 @@ Game="*res://scripts/globals/game.gd"
 Utils="*res://scripts/globals/utils.gd"
 PlayerApi="*res://scripts/api/player_api.gd"
 AudioManager="*res://audios/audio_manager.tscn"
+Env="*res://scripts/globals/env.gd"
+
 
 [debug]
 
@@ -40,7 +42,6 @@ gdscript/warnings/function_used_as_property=2
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [input]

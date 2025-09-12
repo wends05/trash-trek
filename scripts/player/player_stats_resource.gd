@@ -15,7 +15,7 @@ const PLAYER_STATS_SAVE_PATH = "user://player_stats.tres"
 
 signal coins_updated(value: int)
 
-static func get_instance():
+static func get_instance() -> PlayerStatsResource:
 	if not ResourceLoader.exists(PLAYER_STATS_SAVE_PATH):
 		ResourceSaver.save(PlayerStatsResource.new(), PLAYER_STATS_SAVE_PATH)
 	return ResourceLoader.load(PLAYER_STATS_SAVE_PATH)
@@ -54,9 +54,7 @@ func _update_last_modified() -> void:
 	lastModified = Time.get_datetime_string_from_datetime_dict(Time.get_datetime_dict_from_system(), false)
 	_save()
 
-func _save() -> void:
-	coins_updated.emit(coins)
-	ResourceSaver.save(self)
+func _save() -> void: ResourceSaver.save(self)
 
 func compare_to_resource(player_stats: Dictionary) -> void:
 	var db_last_modified = Time.get_unix_time_from_datetime_string(player_stats.get("lastModified"))
@@ -82,13 +80,16 @@ func save_stats(player_stats: Dictionary) -> void:
 func save_name(new_name: String) -> void:
 	name = new_name
 	_update_last_modified()
+	save_to_database()	
 
 func update_coins(new_coins: int) -> void:
 	coins = new_coins
+	coins_updated.emit(coins)
 	_update_last_modified()
 
 func decrement_coins(decrement: int) -> void:
 	update_coins(coins - decrement)
+	coins_updated.emit(coins)
 	_update_last_modified()
 
 func update_high_score(new_high_score: float) -> void:
@@ -128,17 +129,42 @@ func upgrade_stat(upgrade: UpgradeResource) -> String:
 
 func save_to_database() -> void:
 	var final_dict = self.to_dict().duplicate()
+
 	final_dict.erase("lastModified")
 	final_dict.erase("device_id")
+	
 	if not PlayerApi.update_user_success.is_connected(_on_update_user_success):
 		PlayerApi.update_user_success.connect(_on_update_user_success)
 	PlayerApi.update_user(final_dict)
 
 func _on_update_user_success(result: Dictionary) -> void:
 	print_debug("Update user success: %s" % result)
+	var new_last_modified = result.get("lastModified")
+	if new_last_modified > lastModified:
+		lastModified = new_last_modified
+		_save()
+	
 
 func find_upgrade(upgrade_name: String) -> Dictionary:
 	for upgrade in upgrades:
 		if upgrade == upgrade_name:
 			return upgrades[upgrade]
 	return {}
+
+func delete_account():
+	name = ""
+	device_id = ""
+	coins = 0
+	high_score = 0
+	upgrades = {}
+	skins = []
+	lastModified = ""
+	_update_last_modified()
+
+	if not PlayerApi.delete_user_success.is_connected(_on_delete_user_success):
+		PlayerApi.delete_user_success.connect(_on_delete_user_success)
+	PlayerApi.delete_user()
+
+func _on_delete_user_success(result: Dictionary) -> void:
+	print_debug("Delete user success: %s" % result)
+	

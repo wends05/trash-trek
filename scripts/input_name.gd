@@ -13,9 +13,11 @@ func _ready() -> void:
 	PlayerApi.get_user_success.connect(_on_get_user_success)
 	PlayerApi.create_user_failed.connect(_on_create_user_failed)
 	PlayerApi.create_user_success.connect(_on_create_user_success)
-	PlayerApi.get_user()
+	
 	timer.start()
 	timer.timeout.connect(show_countdown)
+	
+	PlayerApi.get_user()
 
 func _on_get_user_success(_res: Dictionary) -> void:
 	go_to_main()
@@ -41,7 +43,7 @@ func _on_create_user_failed(err: Dictionary) -> void:
 	message_label.visible = true
 
 func _on_enter_pressed() -> void:
-	var player_stats = ResourceLoader.load("res://resources/player_stats.tres")
+	var player_stats = PlayerStatsResource.get_instance()
 	message_label.text = ""
 	PlayerApi.create_user({
 		"device_id": player_stats.get_device_id(),

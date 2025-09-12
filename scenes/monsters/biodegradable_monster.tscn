@@ -101,12 +101,12 @@ script = ExtResource("1_2mxn6")
 anim = NodePath("BiodegradableMonster")
 
 [node name="BiodegradableMonster" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1.89543e-05, -0.49999)
+position = Vector2(1, -37)
 scale = Vector2(0.327778, 0.397222)
 sprite_frames = SubResource("SpriteFrames_1hh8e")
 animation = &"spawn"
 autoplay = "spawn"
-frame_progress = 0.421316
+frame_progress = 0.40725
 
 [node name="Area2D" type="Area2D" parent="BiodegradableMonster"]
 position = Vector2(5.03497, 5.03497)

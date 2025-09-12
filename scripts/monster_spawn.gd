@@ -2,7 +2,7 @@ extends Marker2D
 
 class_name MonsterSpawner
 
-@export var monster_scenes: Array[PackedScene] = [
+var monster_scenes: Array[PackedScene] = [
 	preload("res://scenes/monsters/biodegradable_monster.tscn"),
 	preload("res://scenes/monsters/recyclable_monster.tscn"),
 	preload("res://scenes/monsters/toxic_waste_monster.tscn")

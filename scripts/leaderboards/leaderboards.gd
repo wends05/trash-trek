@@ -2,7 +2,7 @@ extends Control
 
 
 @onready var display = $Display
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	PlayerApi.get_top_five_success.connect(_on_get_top_five_success)
 	PlayerApi.get_top_five()
@@ -21,3 +21,7 @@ func _on_get_top_five_success(result: Array) -> void:
 		var texture = load("res://assets/menu/leaderboards/rank%s.png" % (player_idx + 1))
 		
 		rank_node.rank_texture.texture = texture
+
+
+func _on_return_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
