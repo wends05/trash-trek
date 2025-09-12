@@ -16,7 +16,6 @@ const CATEGORYSCREENS = [
 @onready var screen: TextureRect = $ShopTexture
 @onready var error_label: Label = $ErrorLabel
 @onready var coins_label: Label = $CoinsLabel
-@onready var coin_error_label: Label = $%CoinErrorLabel
 @onready var error_dialog: AcceptDialog = $%ErrorDialog
 
 

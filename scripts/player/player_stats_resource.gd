@@ -66,6 +66,8 @@ func compare_to_resource(player_stats: Dictionary) -> void:
 	print_debug(db_last_modified > local_last_modified)
 	if db_last_modified > local_last_modified:
 		save_stats(player_stats)
+	else:
+		save_to_database()
 
 func save_stats(player_stats: Dictionary) -> void:
 	device_id = player_stats.get("device_id", device_id)

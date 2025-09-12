@@ -161,6 +161,7 @@ func on_game_over(reason: Utils.GameOverReason) -> void:
 	update_player_stats(final_score, awarded_coins, reason)
 
 func reset_stats():
+	select_trash_type(Utils.TrashType.Recyclable)
 	collected_recyclable = 0
 	collected_biodegradable = 0
 	collected_toxic_waste = 0
