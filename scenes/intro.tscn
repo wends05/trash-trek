@@ -330,4 +330,4 @@ position = Vector2(541, 341)
 scale = Vector2(0.445503, 0.421974)
 texture = ExtResource("4_i2l1n")
 
-[connection signal="animation_finished" from="IntroPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="IntroPlayer" to="." method="_on_intro_player_animation_finished"]

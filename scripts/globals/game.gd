@@ -5,6 +5,7 @@ var max_energy = base_max_energy
 var energy = max_energy
 
 var elapsed_time: float = 0.0
+var distance_traveled: float = 0.0
 var base_wait_time: float = 18
 var difficulty_step: float = 12
 
@@ -21,7 +22,7 @@ var collected_biodegradable = 0
 var collected_recyclable = 0
 var collected_toxic_waste = 0
 
-var accumulated_trash = 0
+var accumulated_trash: int = 0
 
 var accumulated_energy = 0
 
@@ -68,6 +69,9 @@ func _on_energy_timer_timeout() -> void:
 	var energy_decrease = min(1 + difficulty_level, 9)
 	decrease_energy(energy_decrease)
 
+func _process(delta: float) -> void:
+	elapsed_time += delta
+		
 
 ## Energy related
 func _increase_energy(amount: float) -> void:

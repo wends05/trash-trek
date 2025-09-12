@@ -43,6 +43,7 @@ func _on_tutorial_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/Tutorial.tscn")
 
 func _on_credits_button_pressed() -> void:
+	#AudioManager.play_sfx(preload("res://audios/press_button.mp3"), -2)
 	Utils.anim_player(buttons_player, "credits_press")
 	await buttons_player.animation_finished
 	disable_buttons([credits_button, exit_button, start_button, tutorial_button])
@@ -66,11 +67,13 @@ func start_game():
 	player.hide()
 	disable_buttons([credits_button, exit_button, start_button, tutorial_button])
 	Game.reset_stats()
+	#AudioManager.play_sfx(preload("res://audios/press_button.mp3"), -2)
 	SceneHandler.last_scene_path = get_tree().current_scene.scene_file_path
 	Utils.anim_player(props_player, "fade_out")
 	SceneTransition.change_scene(game_scene, Utils.SceneType.Gameplay)
 
 func quit_game():
+	#AudioManager.play_sfx(preload("res://audios/press_button.mp3"), -2)
 	get_tree().quit()
 
 func disable_buttons(buttons: Array):
@@ -82,18 +85,21 @@ func enable_buttons(buttons: Array):
 		button.mouse_filter = Control.MOUSE_FILTER_PASS
 
 func _on_tutorial_button_mouse_entered() -> void:
+	AudioManager.play_sfx(preload("res://audios/hover_button.mp3"), -2)
 	$Buttons/TutorialButton/TutorialLabel.add_theme_color_override("font_color", Color.html("f07a00"))
 		
 func _on_tutorial_button_mouse_exited() -> void:
 	$Buttons/TutorialButton/TutorialLabel.add_theme_color_override("font_color", Color.html("da6800"))
 
 func _on_exit_button_mouse_entered() -> void:
+	AudioManager.play_sfx(preload("res://audios/hover_button.mp3"), -2)
 	$Buttons/ExitButton/ExitLabel.add_theme_color_override("font_color", Color.html("f07a00"))
 
 func _on_exit_button_mouse_exited() -> void:
 	$Buttons/ExitButton/ExitLabel.add_theme_color_override("font_color", Color.html("da6800"))
 
 func _on_credits_button_mouse_entered() -> void:
+	AudioManager.play_sfx(preload("res://audios/hover_button.mp3"), -2)
 	$Buttons/CreditsButton/CreditsLabel.add_theme_color_override("font_color", Color.html("f07a00"))
 
 func _on_credits_button_mouse_exited() -> void:

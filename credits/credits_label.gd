@@ -8,11 +8,11 @@ const BOLD_HEADING_STRING_REPLACEMENT = "$1[color=%s][b][font_size=%d]$2[/font_s
 @export var auto_update : bool = true
 @export_group("Font Sizes")
 @export var h1_font_size: int
-@export var h2_font_size: int
-@export var h3_font_size: int
-@export var h4_font_size: int
-@export var h5_font_size: int
-@export var h6_font_size: int
+#@export var h2_font_size: int
+#@export var h3_font_size: int
+#@export var h4_font_size: int
+#@export var h5_font_size: int
+#@export var h6_font_size: int
 @export var bold_headings : bool
 @export_group("Image Sizes")
 @export var max_image_width: int
@@ -24,7 +24,6 @@ const BOLD_HEADING_STRING_REPLACEMENT = "$1[color=%s][b][font_size=%d]$2[/font_s
 @export var disable_opening_links: bool = false
 
 @export var h1_color: Color = Color.html("86d818")
-@export var h2_color: Color = Color.html("86d818")
 
 func load_file(file_path) -> String:
 	var file_string = FileAccess.get_file_as_string(file_path)
@@ -63,10 +62,9 @@ func regex_replace_titles(credits:String) -> String:
 	var iter = 0
 	var heading_font_sizes : Array[int] = [
 		h1_font_size,
-		h2_font_size,]
+	]
 	var heading_colors:  Array[Color] = [
 		h1_color,
-		h2_color,
 	]
 	
 	for i in range(heading_font_sizes.size()):

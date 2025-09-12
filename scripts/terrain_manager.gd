@@ -4,10 +4,19 @@ class_name TerrainManager
 
 @export var speed: float = 200
 @export var terrain_width: int = 1180
+
+@onready var terrain_manager: Node = $"."
+@export var gap_size: int = 130
+@export var acceleration: float = 5.0 
+@export var max_speed: float = 600 
+@export var base_speed: float = 200.0
+@export var meters_per_minute: float = 1000.0
+
 @export var terrain_remove_distance: int = 1500
 @export var gap_size: int = 0
 @export var acceleration: float = 3.0
 @export var max_speed: float = 400
+
 
 var last_terrains := [] # stores recent terrain types (most recent appended)
 const MAX_HISTORY := 2 # Number of terrains to remember and avoid
@@ -33,7 +42,9 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	speed = min(speed + acceleration * delta, max_speed)
-	scroll_terrain(delta)
+	scroll_terrain(delta) 
+	var meters_per_second = (speed / base_speed) * (meters_per_minute / 60.0)
+	Game.time_changed.emit((speed * Game.elapsed_time/ meters_per_second))
 
 func initialize_terrain() -> void:
 	load_terrain(0, 0)
