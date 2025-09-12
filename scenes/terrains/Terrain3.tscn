@@ -117,7 +117,7 @@ position = Vector2(941, 419)
 position = Vector2(196, 436)
 
 [node name="MonsterSpawner" type="Marker2D" parent="."]
-position = Vector2(675, 479)
+position = Vector2(664, 564)
 script = ExtResource("4_l3giw")
 
 [node name="TileMap2" type="TileMapLayer" parent="."]

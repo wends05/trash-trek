@@ -39,7 +39,6 @@ gdscript/warnings/function_used_as_property=2
 
 [display]
 
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [input]

@@ -108,12 +108,12 @@ script = ExtResource("1_tbwfn")
 anim = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.499999, 0.672884)
+position = Vector2(2, -36)
 scale = Vector2(0.352778, 0.436907)
 sprite_frames = SubResource("SpriteFrames_ca4pr")
 animation = &" spawn"
 autoplay = " spawn"
-frame_progress = 0.616183
+frame_progress = 0.394035
 
 [node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
 position = Vector2(-4.14106, 0.549746)

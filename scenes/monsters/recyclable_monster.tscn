@@ -85,7 +85,7 @@ script = ExtResource("1_dkrhh")
 anim = NodePath("RecyclableMonster")
 
 [node name="RecyclableMonster" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1.14441e-05, -1.14441e-05)
+position = Vector2(12, -66)
 scale = Vector2(0.125455, 0.125455)
 sprite_frames = SubResource("SpriteFrames_l5q2v")
 animation = &"spawn"

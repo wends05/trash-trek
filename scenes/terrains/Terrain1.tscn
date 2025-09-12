@@ -110,5 +110,5 @@ position = Vector2(1072, 416)
 position = Vector2(840, 416)
 
 [node name="MonsterSpawn" type="Marker2D" parent="."]
-position = Vector2(230, 512)
+position = Vector2(230, 566)
 script = ExtResource("4_qm0yi")
