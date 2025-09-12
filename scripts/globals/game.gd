@@ -78,7 +78,6 @@ func decrease_energy(amount: float) -> void:
 	var final_energy_decrease = max(0, energy - amount)
 	energy = final_energy_decrease
 	energy_changed.emit(energy)
-	accumulated_energy -= amount
 
 
 ## Trash related
@@ -141,7 +140,7 @@ func player_hurt(amount: int):
 
 ## Score related
 func calculate_score() -> int:
-	return accumulated_trash + floor(elapsed_time)
+	return accumulated_trash + accumulated_energy + floor(elapsed_time)
 
 func calculate_coins() -> float:
 	var time_coins = int(elapsed_time / 5.0)
