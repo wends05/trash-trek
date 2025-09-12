@@ -5,6 +5,7 @@ var max_energy = base_max_energy
 var energy = max_energy
 
 var elapsed_time: float = 0.0
+var distance_traveled: float = 0.0
 var base_wait_time: float = 18
 var difficulty_step: float = 12
 
@@ -21,7 +22,7 @@ var collected_biodegradable = 0
 var collected_recyclable = 0
 var collected_toxic_waste = 0
 
-var accumulated_trash = 0
+var accumulated_trash: int = 0
 
 var accumulated_energy = 0
 
