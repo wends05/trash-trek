@@ -4,11 +4,20 @@ class_name UITextController
 @export var game_status_label: Control
 @export var game_stats_label: Label
 @export var game_reason_label: Control
+
+var displayed_distance := 0
+var displayed_trash := 0
 var displayed_coins := 0
 var displayed_score := 0
+
+
 var animating = false
+var animating_distance := false
+var animating_trash := false
 var animating_coins := false
 var animating_score := false
+var distance_collected
+var trash_collected
 var score_collected
 var coins_collected
 
@@ -29,10 +38,8 @@ func update_ui_text(state: Utils.UIStateType, reason: Utils.GameOverReason) -> v
 			#var energy = Game.energy
 			coins_collected = Game.calculate_coins()
 			score_collected = Game.calculate_score()
-			
-			var score := Game.calculate_score()
-			var distance := Game.distance_traveled
-			var trash := Game.accumulated_trash
+			distance_collected = int(Game.distance_traveled)
+			trash_collected = int(Game.accumulated_trash)
 			
 			displayed_coins = 0
 			displayed_score = 0
@@ -40,7 +47,9 @@ func update_ui_text(state: Utils.UIStateType, reason: Utils.GameOverReason) -> v
 			var timer = get_tree().create_timer(0.3)
 			timer.timeout.connect(func():
 				animating = true
-				animating_coins = true
+				animating_distance = true 
+				animating_trash = false
+				animating_coins = false
 				animating_score = false
 			)
 		
@@ -67,16 +76,31 @@ func _process(delta: float) -> void:
 	if animating:
 		var updated := false
 
-		# Step 1: Animate coins first
-		if animating_coins:
+		if animating_distance:	
+			if displayed_distance < distance_collected:
+				displayed_distance += 1
+				updated = true
+			else:
+				animating_distance = false
+				await_delay_then_start("trash")
+		
+		elif animating_trash:
+			if displayed_trash < trash_collected:
+				displayed_trash += 1
+				updated = true
+			else:
+				animating_trash = false
+				await_delay_then_start("coins")
+		
+		elif animating_coins:
 			if displayed_coins < coins_collected:
 				displayed_coins += 1
 				updated = true
 			else:
 				animating_coins = false
-				await_delay_then_start_score()
+				await_delay_then_start("score")
 
-		# Step 2: Animate score after coins
+		
 		elif animating_score:
 			if displayed_score < score_collected:
 				displayed_score += 1
@@ -91,11 +115,25 @@ func _process(delta: float) -> void:
 
 func update_game_stats() -> void:
 	var text = ""
-	if animating_coins:
-		game_stats_label.text = "Badges Gained: %d" % displayed_coins
+	if animating_distance:
+		if distance_collected >= 1000:
+			var km = float(distance_collected) / 1000.0
+			game_stats_label.text = "Distance Traveled: \n%.2f km" % km
+		else:
+			game_stats_label.text = "Distance Traveled: \n%d m" % distance_collected
+	elif animating_trash:
+		game_stats_label.text = "Trash Collected: \n%d" % trash_collected
+	elif animating_coins:
+		game_stats_label.text = "Badges Gained: \n%d" % displayed_coins
 	elif animating_score:
-		game_stats_label.text = "Overall Score: %d" % displayed_score
+		game_stats_label.text = "Overall Score: \n%d" % displayed_score
 
-func await_delay_then_start_score() -> void:
-	await get_tree().create_timer(0.5).timeout 
-	animating_score = true
+func await_delay_then_start(next: String) -> void:
+	await get_tree().create_timer(0.7).timeout
+	match next:
+		"trash":
+			animating_trash = true
+		"coins":
+			animating_coins = true
+		"score":
+			animating_score = true
