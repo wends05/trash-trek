@@ -62,10 +62,6 @@ func _on_energy_timer_timeout() -> void:
 	var energy_decrease = min(1 + difficulty_level, 9)
 	decrease_energy(energy_decrease)
 
-func _process(delta: float) -> void:
-	elapsed_time += delta
-	time_changed.emit(elapsed_time)
-
 
 ## Energy related
 func _increase_energy(amount: float) -> void:
