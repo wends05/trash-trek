@@ -108,3 +108,8 @@ func _on_shop_button_pressed() -> void:
 func _on_trophy_button_pressed() -> void:
 	SceneHandler.last_scene_path = get_tree().current_scene.scene_file_path
 	get_tree().change_scene_to_file("res://scenes/leaderboards.tscn")
+
+
+func _on_profile_button_pressed() -> void:
+	SceneHandler.last_scene_path = get_tree().current_scene.scene_file_path
+	get_tree().change_scene_to_file("res://scenes/profile/profile.tscn")

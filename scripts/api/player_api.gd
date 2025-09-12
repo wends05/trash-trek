@@ -13,6 +13,7 @@ func _on_get_user(result: int, response_code: int, headers: PackedStringArray, b
 	_handle_and_emit("get_user", res)
 
 
+## Creates a user
 func create_user(new_player_stats: Dictionary):
 	return await _make_request("/player", HTTPClient.METHOD_POST, default_headers, new_player_stats, _on_create_user)
 
@@ -23,6 +24,8 @@ func _on_create_user(result: int, response_code: int, headers: PackedStringArray
 	var res = handle_data_complete(result, response_code, headers, body, endpoint)
 	_handle_and_emit("create_user", res)
 
+
+## Updates Player Stats
 func update_user(new_player_stats: Dictionary):
 	return await _make_request(
 		"/player/" + player_stats.get_device_id(),
@@ -40,9 +43,7 @@ func _on_update_user(result: int, response_code: int, headers: PackedStringArray
 	_handle_and_emit("update_user", res)
 
 
-signal get_top_five_success(result: Array)
-signal get_top_five_failed(err: Dictionary)
-
+## Get top 5 for leaderboards
 func get_top_five():
 	return await _make_request(
 		"/top-five",
@@ -52,10 +53,30 @@ func get_top_five():
 		_on_get_top_five
 	)
 
+signal get_top_five_success(result: Array)
+signal get_top_five_failed(err: Dictionary)
+
 func _on_get_top_five(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray, endpoint: String):
 	var res = handle_data_complete(result, response_code, headers, body, endpoint)
 	_handle_and_emit("get_top_five", res)
-	
+
+
+## Deletes the user
+func delete_user():
+	return await _make_request(
+		"/player/" + player_stats.get_device_id(),
+		HTTPClient.METHOD_DELETE,
+		default_headers,
+		null,
+		_on_delete_user
+	)
+
+signal delete_user_success(result: Dictionary)
+signal delete_user_failed(err: Dictionary)
+
+func _on_delete_user(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray, endpoint: String):
+	var res = handle_data_complete(result, response_code, headers, body, endpoint)
+	_handle_and_emit("delete_user", res)
 
 # Shared handler to keep structure consistent across API classes
 func _handle_and_emit(op: String, res: Variant, update_local: bool = true) -> void:
@@ -72,6 +93,8 @@ func _handle_and_emit(op: String, res: Variant, update_local: bool = true) -> vo
 				update_user_success.emit(res.data)
 			"get_top_five":
 				get_top_five_success.emit(res.data)
+			"delete_user":
+				delete_user_success.emit(res.data)
 			_:
 				# For future operations, default to base signal if added
 				pass
@@ -85,6 +108,8 @@ func _handle_and_emit(op: String, res: Variant, update_local: bool = true) -> vo
 				update_user_failed.emit(res.data)
 			"get_top_five":
 				get_top_five_failed.emit(res.data)
+			"delete_user":
+				delete_user_failed.emit(res.data)
 			_:
 				pass
 
