@@ -40,6 +40,7 @@ func _process(delta: float) -> void:
 	if not is_game_pause:
 		elapsed_time += delta
 		time_changed.emit(elapsed_time)
+		
 ## In built functions
 func _ready() -> void:
 	trash_collected.connect(update_trash_count)
@@ -60,9 +61,6 @@ func _ready() -> void:
 
 	set_process(true)
 
-func _process(delta: float) -> void:
-	elapsed_time += delta
-	time_changed.emit(elapsed_time)
 
 func _on_energy_timer_timeout() -> void:
 	var difficulty_level = int(elapsed_time / difficulty_step)
