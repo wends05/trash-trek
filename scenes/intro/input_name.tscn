@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://8ew00ia876bg"]
+[gd_scene load_steps=4 format=3 uid="uid://8ew00ia876bg"]
 
+[ext_resource type="Theme" uid="uid://ce38n1txntje6" path="res://resources/font_theme.tres" id="1_0ou8s"]
 [ext_resource type="Script" uid="uid://cvqadl4lpmkf3" path="res://scripts/input_name.gd" id="1_5so1s"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_5so1s"]
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_0ou8s")
 script = ExtResource("1_5so1s")
 
 [node name="ColorRect" type="ColorRect" parent="."]

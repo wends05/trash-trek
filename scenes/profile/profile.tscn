@@ -1,12 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://bcvat5pf5c4yx"]
 
+[ext_resource type="Theme" uid="uid://ce38n1txntje6" path="res://resources/font_theme.tres" id="1_i2it1"]
 [ext_resource type="Script" uid="uid://ck0xh51jwufiq" path="res://scripts/profile/profile.gd" id="1_xehbf"]
 [ext_resource type="Texture2D" uid="uid://bo2r7qt23qikr" path="res://assets/profile/Id.png" id="2_i2it1"]
 [ext_resource type="Texture2D" uid="uid://didpw7uwpljtw" path="res://assets/shop/skins/default.png" id="3_bhy3x"]
 [ext_resource type="FontFile" uid="uid://cbwhuecpnnapj" path="res://fonts/ByteBounce.ttf" id="4_ndnbx"]
-
-[sub_resource type="Theme" id="Theme_xehbf"]
-default_font = ExtResource("4_ndnbx")
 
 [sub_resource type="LabelSettings" id="LabelSettings_kynku"]
 font = ExtResource("4_ndnbx")
@@ -46,7 +44,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_xehbf")
+theme = ExtResource("1_i2it1")
 script = ExtResource("1_xehbf")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -173,6 +171,7 @@ unique_name_in_owner = true
 title = "Account Deleted"
 initial_position = 1
 size = Vector2i(378, 100)
+theme = ExtResource("1_i2it1")
 dialog_text = "Your account has been deleted. Restart Game?"
 dialog_autowrap = true
 
@@ -182,6 +181,7 @@ title = "Confirm Delete"
 initial_position = 1
 size = Vector2i(485, 106)
 always_on_top = true
+theme = ExtResource("1_i2it1")
 dialog_text = "Are you sure that you want to delete your account?
 Your progress, coins, high scores, and upgrades will be reset."
 dialog_autowrap = true
@@ -193,6 +193,7 @@ title = "Retry Delete"
 initial_position = 1
 size = Vector2i(485, 106)
 always_on_top = true
+theme = ExtResource("1_i2it1")
 ok_button_text = "Retry Delete"
 dialog_text = "Error Dialog"
 dialog_autowrap = true
@@ -202,6 +203,7 @@ unique_name_in_owner = true
 title = "Error"
 initial_position = 1
 size = Vector2i(313, 106)
+theme = ExtResource("1_i2it1")
 dialog_autowrap = true
 
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

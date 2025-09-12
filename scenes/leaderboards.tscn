@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bgrvgfs20vcpo"]
+[gd_scene load_steps=4 format=3 uid="uid://bgrvgfs20vcpo"]
 
 [ext_resource type="Script" uid="uid://xhgu15nd6ddr" path="res://scripts/leaderboards.gd" id="1_fi4kd"]
+[ext_resource type="Theme" uid="uid://ce38n1txntje6" path="res://resources/font_theme.tres" id="1_qqefk"]
 [ext_resource type="Texture2D" uid="uid://cgvmva3mgd0m6" path="res://assets/menu/leaderboards/leaderboard.png" id="2_qqefk"]
 
 [node name="Leaderboards" type="Control"]
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_qqefk")
 script = ExtResource("1_fi4kd")
 
 [node name="ColorRect" type="ColorRect" parent="."]
