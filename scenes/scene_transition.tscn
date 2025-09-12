@@ -217,7 +217,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.7, 1.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(594.679, 503.72), Vector2(900, 503.72), Vector2(335.475, 500.43)]
+"values": [Vector2(594.679, 503.72), Vector2(900, 503.72), Vector2(331.65, 496.095)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -226,10 +226,10 @@ tracks/1/path = NodePath("PlayerAnim:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.33333, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 1.49779),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.13, 0.137), Vector2(0.13, 0.137), Vector2(0.121, 0.127)]
+"values": [Vector2(0.13, 0.137), Vector2(0.13, 0.122)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -562,8 +562,7 @@ scale = Vector2(0.13, 0.137)
 sprite_frames = SubResource("SpriteFrames_rujfs")
 animation = &"run "
 autoplay = "run "
-frame = 2
-frame_progress = 0.130665
+frame_progress = 0.330259
 
 [node name="Parallax" type="Node" parent="."]
 
@@ -607,8 +606,8 @@ texture = ExtResource("6_l5v6o")
 centered = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax/Foreground"]
-position = Vector2(0, 471)
-scale = Vector2(1.00435, 1.045)
+position = Vector2(0, 463)
+scale = Vector2(1.00435, 1.085)
 texture = ExtResource("7_73nkw")
 centered = false
 
