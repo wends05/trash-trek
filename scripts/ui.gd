@@ -9,7 +9,7 @@ class_name UI
 @onready var text_player: AnimationPlayer = $TextPlayer
 @onready var hover_player: AnimationPlayer = $GameMenu/HoverPlayer
 @onready var bg_player: AnimationPlayer = $"../BackgroundPlayer"
-@export var game_menu: Control 
+@export var game_menu: Control
 
 @onready var bg = $"../Background/Background"
 @onready var mg = $"../Background/Midground"
@@ -19,8 +19,8 @@ var my_buttons: Array
 
 func _ready() -> void:
 	my_buttons = [
-		game_menu.restart_button, 
-		game_menu.resume_button, 
+		game_menu.restart_button,
+		game_menu.resume_button,
 		game_menu.resume_button,
 		game_menu.quit_button,
 		game_menu.menu_button,
@@ -37,19 +37,29 @@ func _ready() -> void:
 	$%ToxicWasteButton.connect("pressed", _on_group_pressed.bind(Utils.TrashType.ToxicWaste))
 	
 	update_trash_counts()
-	
+	toggle_button_pressed(Game.selected_trash_type)
+
 func _process(_delta: float) -> void:
 	toggle_pause()
 			
 func _input(event: InputEvent) -> void:
 	if event.is_pressed():
 		if event.is_action_pressed("recyclable"):
+			toggle_button_pressed(Utils.TrashType.Recyclable)
+		elif event.is_action_pressed("biodegradable"):
+			toggle_button_pressed(Utils.TrashType.Biodegradable)
+		elif event.is_action_pressed("toxic_waste"):
+			toggle_button_pressed(Utils.TrashType.ToxicWaste)
+
+func toggle_button_pressed(type: Utils.TrashType):
+	match type:
+		Utils.TrashType.Recyclable:
 			$%RecyclableButton.button_pressed = true
 			_on_group_pressed(Utils.TrashType.Recyclable)
-		elif event.is_action_pressed("biodegradable"):
+		Utils.TrashType.Biodegradable:
 			$%BiodegradableButton.button_pressed = true
 			_on_group_pressed(Utils.TrashType.Biodegradable)
-		elif event.is_action_pressed("toxic_waste"):
+		Utils.TrashType.ToxicWaste:
 			$%ToxicWasteButton.button_pressed = true
 			_on_group_pressed(Utils.TrashType.ToxicWaste)
 
@@ -107,7 +117,7 @@ func update_game_state(state: Utils.GameStateType) -> void:
 					$GameMenu/BrushStroke.visible = true
 					game_menu_animation(true, "retry")
 					await trans_player.animation_finished
-					enable_buttons([game_menu.quit_button, game_menu.menu_button, game_menu.retry_button])	
+					enable_buttons([game_menu.quit_button, game_menu.menu_button, game_menu.retry_button])
 					get_tree().paused = true
 				)
 					
@@ -144,5 +154,3 @@ func game_menu_animation(forward: bool, mode = null) -> void:
 		text_player.play_backwards("GameStatus")
 	
 	await text_player.animation_finished
-	
-	
