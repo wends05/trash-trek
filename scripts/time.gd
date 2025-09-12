@@ -9,4 +9,4 @@ func update_distance(meters: float) -> void:
 		text = str(km) + " km"
 	else:
 		text = str(int(round(meters))) + " m" 
-	Game.distance_traveled = meters
+	Game.distance_traveled = int(round(meters))
