@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bjlwocmldl2p1"]
+[gd_scene load_steps=20 format=3 uid="uid://bjlwocmldl2p1"]
 
 [ext_resource type="Script" uid="uid://djvk4e4r7ppdn" path="res://scripts/main.gd" id="1_h6nst"]
 [ext_resource type="PackedScene" uid="uid://dyac4ihj46tig" path="res://scenes/Player.tscn" id="1_nbc6x"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bo5gvumie1le6" path="res://assets/background/underground.png" id="6_cvmbd"]
 [ext_resource type="PackedScene" uid="uid://b3evh0nyta6a3" path="res://scenes/death_zones.tscn" id="7_jlsqs"]
 [ext_resource type="PackedScene" uid="uid://cnvc3c5c6c8mj" path="res://scenes/ui.tscn" id="7_nxtc6"]
+[ext_resource type="Texture2D" uid="uid://qas3koyaoy7h" path="res://assets/background/ktown2.png" id="13_qmy6f"]
 
 [sub_resource type="Gradient" id="Gradient_qmy6f"]
 offsets = PackedFloat32Array(0.603896, 1)
@@ -255,6 +256,14 @@ position = Vector2(0, 463)
 scale = Vector2(1.00435, 1.085)
 texture = ExtResource("6_cvmbd")
 centered = false
+
+[node name="Sprite2D3" type="Sprite2D" parent="Background/Foreground"]
+visible = false
+position = Vector2(535.605, 37.09)
+scale = Vector2(0.86679, 1.01982)
+texture = ExtResource("13_qmy6f")
+
+[node name="Parallax2D" type="Parallax2D" parent="Background"]
 
 [node name="BackgroundPlayer" type="AnimationPlayer" parent="."]
 process_mode = 3
