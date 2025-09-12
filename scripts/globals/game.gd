@@ -36,6 +36,10 @@ signal changed_trash_type(type: Utils.TrashType)
 var energy_timer: Timer
 var player_stats_resource: PlayerStatsResource = PlayerStatsResource.get_instance()
 
+func _process(delta: float) -> void:
+	if not is_game_pause:
+		elapsed_time += delta
+		time_changed.emit(elapsed_time)
 ## In built functions
 func _ready() -> void:
 	trash_collected.connect(update_trash_count)

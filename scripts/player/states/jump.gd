@@ -2,22 +2,33 @@ extends State
 class_name Jump
 
 # Jump tuning parameters
-@export var initial_jump_force: float = -400.0 # Initial jump burst (negative = up)
-var jump_boost: float = 0
+@export var initial_jump_force: float = -460.0 # Initial upward impulse (negative = up)
 var final_jump_boost: float = 0
 
-@export var hold_max_force: float = -200.0 # Additional upward force when fully held
-@export var max_jump_timer: float = 0.3 # How long holding jump adds force
-@export var fall_gravity_multiplier: float = 1.5 # Faster fall for better feel
+# Variable height  settings
+@export var rise_sustain_time: float = 0.38 # How long holding jump keeps velocity capped (gives taller jump)
+
+
+# Float 
+@export var enable_float: bool = true
+@export var float_hold_time: float = 1.2
+@export var unlimited_float: bool = true #float activation
+@export var float_gravity_multiplier: float = 0.08 # Gravity multiplier while floating (smaller = slower fall)
+@export var float_activation_delay: float = 0.4 # Time after starting to fall before float engages (prevents instant float at apex)
+
+# General fall tuning
+@export var fall_gravity_multiplier: float = 1.5 # Gravity when not floating (faster fall feel)
 
 @export_category("Nodes")
 @export var animation: AnimationPlayer
 @export var player: Player
 
-var jump_timer: float = 0.0
-var _current_force: float = 0.0
-
+var rise_timer: float = 0.0
+var float_timer: float = 0.0
+var fall_time: float = 0.0
 var is_jumping: bool = false
+var is_floating: bool = false
+var _current_force: float = 0.0
 
 @export var jump_boost_resource: UpgradeResource = preload("res://resources/shop/upgrades/jumpboost.tres")
 
@@ -33,7 +44,7 @@ func _ready() -> void:
 	
 
 func enter():
-	# If a hurt-triggered lockout is active, immediately abort to running/falling (don't allow buffered jump)
+	# If a hurt-triggered lockout is active, immediately abort to running/falling state
 	if player.block_jump_after_hurt:
 		# Decide appropriate fallback state
 		if player.is_on_floor():
@@ -45,28 +56,38 @@ func enter():
 	animation.play("jump")
 	
 	# Initialize jump
-	jump_timer = 0.0
+	rise_timer = 0.0
+	float_timer = 0.0
+	fall_time = 0.0
 	_current_force = final_jump_boost
 	is_jumping = true
+	is_floating = false
 	player.velocity.y = final_jump_boost
 
 func physics_update(delta: float):
 	var gravity_y := player.get_gravity().y # positive downward
-	
-	if player.velocity.y < 0: # Rising
-		if Input.is_action_pressed("jump") and is_jumping and jump_timer < max_jump_timer:
-			# Add more upward force while holding jump
-			jump_timer += delta
-			var target_force := final_jump_boost + (hold_max_force * jump_timer)
+
+	if player.velocity.y < 0: # Rising phase
+		fall_time = 0.0
+		# While holding jump during rise, cap velocity to allow a higher jump (variable height)
+		if Input.is_action_pressed("jump") and is_jumping and rise_timer < rise_sustain_time:
+			rise_timer += delta
 			
-			# Only boost if we're slower than the target force
-			if player.velocity.y > target_force:
-				player.velocity.y = target_force
-				_current_force = target_force
 		else:
 			player.velocity.y += gravity_y * delta
-	else: # Falling
-		player.velocity.y += gravity_y * fall_gravity_multiplier * delta
+		is_floating = false
+	elif player.velocity.y >= 0: # Falling or apex transition
+		fall_time += delta
+		var g_mult := fall_gravity_multiplier
+	
+		var float_time_ok := unlimited_float or float_timer < float_hold_time
+		if enable_float and Input.is_action_pressed("jump") and float_time_ok and fall_time > float_activation_delay:
+			is_floating = true
+			float_timer += delta
+			g_mult = float_gravity_multiplier
+		else:
+			is_floating = false
+		player.velocity.y += gravity_y * g_mult * delta
 	
 	player.move_and_slide()
 	
@@ -82,3 +103,5 @@ func physics_update(delta: float):
 
 func exit():
 	is_jumping = false
+	is_floating = false
+	_current_force = 0.0

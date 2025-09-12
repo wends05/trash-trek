@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://dnp6ljvs2pcb"]
+[gd_scene load_steps=13 format=4 uid="uid://dnp6ljvs2pcb"]
 
 [ext_resource type="Script" uid="uid://cskjjcjavic6o" path="res://scripts/terrain.gd" id="1_01fo8"]
 [ext_resource type="Texture2D" uid="uid://dayocjoqiump8" path="res://assets/background/tile2.png" id="2_01fo8"]
 [ext_resource type="Texture2D" uid="uid://b62fax2s726de" path="res://assets/background/tile3.png" id="3_i4max"]
 [ext_resource type="Texture2D" uid="uid://cyu2yaa6na7hj" path="res://assets/background/tile.png" id="4_q0p34"]
+[ext_resource type="Script" uid="uid://q01hxgi1lqgv" path="res://scripts/monster_spawn.gd" id="5_i4max"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v238v"]
 texture = ExtResource("2_01fo8")
@@ -124,3 +125,7 @@ position = Vector2(808, 373)
 
 [node name="Marker2D6" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(1050, 512)
+
+[node name="MonsterSpawn" type="Marker2D" parent="."]
+position = Vector2(1156, 567)
+script = ExtResource("5_i4max")

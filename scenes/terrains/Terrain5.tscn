@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=4 uid="uid://8eadqcv4iiat"]
+[gd_scene load_steps=13 format=4 uid="uid://8eadqcv4iiat"]
 
 [ext_resource type="Script" uid="uid://cskjjcjavic6o" path="res://scripts/terrain.gd" id="1_kn0qc"]
 [ext_resource type="Texture2D" uid="uid://dayocjoqiump8" path="res://assets/background/tile2.png" id="2_kn0qc"]
+[ext_resource type="Script" uid="uid://q01hxgi1lqgv" path="res://scripts/monster_spawn.gd" id="2_uk3k6"]
 [ext_resource type="Texture2D" uid="uid://cyu2yaa6na7hj" path="res://assets/background/tile.png" id="3_8d62s"]
 [ext_resource type="Texture2D" uid="uid://b62fax2s726de" path="res://assets/background/tile3.png" id="3_uk3k6"]
 
@@ -75,6 +76,10 @@ sources/1 = SubResource("TileSetAtlasSource_qy7kg")
 [node name="Terrain5" type="Node2D" node_paths=PackedStringArray("trash_bin_spawn")]
 script = ExtResource("1_kn0qc")
 trash_bin_spawn = NodePath("TrashSpawns/Marker2D4")
+
+[node name="MonsterSpawn" type="Marker2D" parent="."]
+position = Vector2(1079, 565)
+script = ExtResource("2_uk3k6")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
