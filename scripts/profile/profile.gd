@@ -22,19 +22,15 @@ func _ready() -> void:
 
 	PlayerApi.delete_user_failed.connect(show_delete_error)
 	PlayerApi.delete_user_success.connect(open_restart_dialog)
-	rename()
+	reset_name_display()
 	reset_name_edit_placeholder_text()
 
-func rename():
-	name_label.text = player_stats_resource.name
 
 func _on_return_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
 
-
 func _on_delete_pressed() -> void:
 	delete_dialog.visible = true
-
 
 func _on_confirmation_dialog_confirmed() -> void:
 	player_stats_resource.delete_account()
@@ -80,10 +76,10 @@ func toggle_edit_name():
 func _on_update_user_success(result: Dictionary) -> void:
 	print_debug("Update user success: %s" % result)
 	dialog.dialog_text = "Name changed to: %s" % result.name
-	editing = false
+	reset_name_display()
 	reset_name_edit_placeholder_text()
-	edit_button.text = "Edit"
-	restart_dialog.visible = true
+	toggle_edit_name()
+	dialog.visible = true
 
 func _on_update_user_failed(err: Dictionary) -> void:
 	var message = ApiService.parse_error_message(err)
@@ -99,6 +95,9 @@ func _on_update_user_failed(err: Dictionary) -> void:
 func _on_cancel_edit_button_pressed() -> void:
 	toggle_edit_name()
 	reset_name_edit_placeholder_text()
+
+func reset_name_display():
+	name_label.text = player_stats_resource.name
 
 func reset_name_edit_placeholder_text():
 	$%NameEdit.placeholder_text = player_stats_resource.name
