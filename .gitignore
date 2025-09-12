@@ -6,3 +6,6 @@
 # OS specific ignores
 .vscode/
 .DS_Store
+
+.env
+.env.example
