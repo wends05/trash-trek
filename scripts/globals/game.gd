@@ -56,6 +56,10 @@ func _ready() -> void:
 
 	set_process(true)
 
+func _process(delta: float) -> void:
+	elapsed_time += delta
+	time_changed.emit(elapsed_time)
+
 func _on_energy_timer_timeout() -> void:
 	var difficulty_level = int(elapsed_time / difficulty_step)
 	energy_timer.wait_time = max(6, base_wait_time - difficulty_level)
