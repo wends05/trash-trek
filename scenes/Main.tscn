@@ -13,12 +13,12 @@
 [ext_resource type="PackedScene" uid="uid://cnvc3c5c6c8mj" path="res://scenes/ui.tscn" id="7_nxtc6"]
 [ext_resource type="Texture2D" uid="uid://qas3koyaoy7h" path="res://assets/background/ktown2.png" id="13_qmy6f"]
 
-[sub_resource type="Gradient" id="Gradient_qmy6f"]
+[sub_resource type="Gradient" id="Gradient_bjd11"]
 offsets = PackedFloat32Array(0.603896, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mwfav"]
-gradient = SubResource("Gradient_qmy6f")
+gradient = SubResource("Gradient_bjd11")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1, 0.5)

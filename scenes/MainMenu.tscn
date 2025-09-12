@@ -927,7 +927,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_hm0al"]
 resource_name = "credit_scene"
-length = 0.5
+length = 0.55
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -998,7 +998,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.360784)]
+"values": [Color(1, 1, 1, 1), Color(0.442911, 0.442911, 0.442911, 1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -1010,7 +1010,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.360784)]
+"values": [Color(1, 1, 1, 1), Color(0.443137, 0.443137, 0.443137, 1)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -1022,7 +1022,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.360784)]
+"values": [Color(1, 1, 1, 1), Color(0.443137, 0.443137, 0.443137, 1)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -1034,7 +1034,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.499076),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.360784)]
+"values": [Color(1, 1, 1, 1), Color(0.443137, 0.443137, 0.443137, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
@@ -1046,7 +1046,55 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.43134, 0.43134, 0.43134, 1)]
+"values": [Color(1, 1, 1, 1), Color(0.443137, 0.443137, 0.443137, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Buttons/ShopButton:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Buttons/TrophyButton:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("ParallaxBackground/Foreground:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.443137, 0.443137, 0.443137, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("ParallaxBackground/Middleground:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.443137, 0.443137, 0.443137, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_viowm"]
@@ -1480,7 +1528,7 @@ texture = ExtResource("5_l4mxc")
 flip_h = true
 
 [node name="Building3" type="Sprite2D" parent="ParallaxBackground/StaticBackground"]
-modulate = Color(0.122252, 0.122252, 0.122252, 1)
+modulate = Color(0.517184, 0.517184, 0.517184, 1)
 z_index = -2
 texture_filter = 1
 position = Vector2(862, 437)
@@ -1490,7 +1538,7 @@ skew = 0.270526
 texture = ExtResource("9_tdapf")
 
 [node name="Building4" type="Sprite2D" parent="ParallaxBackground/StaticBackground"]
-modulate = Color(0.125911, 0.125911, 0.125911, 1)
+modulate = Color(0.517647, 0.517647, 0.517647, 1)
 z_index = -2
 texture_filter = 1
 position = Vector2(1095.99, 303.653)
@@ -1501,7 +1549,7 @@ texture = ExtResource("9_8vx4p")
 flip_h = true
 
 [node name="Ktown1" type="Sprite2D" parent="ParallaxBackground/StaticBackground"]
-modulate = Color(0.259294, 0.259294, 0.259294, 1)
+modulate = Color(0.517647, 0.517647, 0.517647, 1)
 z_index = -2
 texture_filter = 1
 position = Vector2(1092, 319)
@@ -1511,7 +1559,7 @@ skew = 0.514872
 texture = ExtResource("14_1n6yq")
 
 [node name="Building2" type="Sprite2D" parent="ParallaxBackground/StaticBackground"]
-modulate = Color(0.118581, 0.118581, 0.118581, 1)
+modulate = Color(0.517647, 0.517647, 0.517647, 1)
 z_index = -2
 texture_filter = 1
 position = Vector2(529.433, 423.612)
@@ -1522,7 +1570,7 @@ texture = ExtResource("9_8vx4p")
 flip_h = true
 
 [node name="Ktown2" type="Sprite2D" parent="ParallaxBackground/StaticBackground"]
-modulate = Color(0.190762, 0.190762, 0.190762, 1)
+modulate = Color(0.517647, 0.517647, 0.517647, 1)
 z_index = -2
 texture_filter = 1
 position = Vector2(801, 476)
@@ -1533,7 +1581,7 @@ texture = ExtResource("13_1n6yq")
 flip_h = true
 
 [node name="Building" type="Sprite2D" parent="ParallaxBackground/StaticBackground"]
-modulate = Color(0.162066, 0.162066, 0.162066, 1)
+modulate = Color(0.517647, 0.517647, 0.517647, 1)
 z_index = -2
 texture_filter = 1
 position = Vector2(141.46, 321.165)
@@ -1627,7 +1675,7 @@ flip_h = true
 metadata/_edit_lock_ = true
 
 [node name="TrashMiddle_1" type="Sprite2D" parent="ParallaxBackground/Middleground"]
-modulate = Color(0.48179, 0.481789, 0.481789, 1)
+modulate = Color(0.48, 0.48, 0.48, 1)
 z_index = -1
 texture_filter = 1
 position = Vector2(545.908, 571.819)

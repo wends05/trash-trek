@@ -1,238 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://t2dui8ppm3a4"]
+[gd_scene load_steps=7 format=3 uid="uid://t2dui8ppm3a4"]
 
-[ext_resource type="FontFile" uid="uid://b5mi6s5qo0r03" path="res://fonts/Uskyn-Regular.ttf" id="2_5sufa"]
+[ext_resource type="FontFile" uid="uid://fp7rfneeiohe" path="res://fonts/SearchingForSignal.ttf" id="2_5sufa"]
 [ext_resource type="Script" uid="uid://gmrv6pgchkwc" path="res://credits/auto_scroll_container.gd" id="2_ak7hi"]
 [ext_resource type="Script" uid="uid://cc2wtqasev7le" path="res://credits/credits_label.gd" id="3_kngql"]
 [ext_resource type="Script" uid="uid://bnub0cq2y0deh" path="res://credits/scrolling_credits.gd" id="4"]
 
+[sub_resource type="FontVariation" id="FontVariation_wp0k2"]
+base_font = ExtResource("2_5sufa")
+spacing_glyph = 5
+spacing_space = 2
+spacing_top = 9
+
 [sub_resource type="Theme" id="Theme_wp0k2"]
-RichTextLabel/colors/default_color = Color(0.965151, 0.452742, 3.85046e-07, 1)
-RichTextLabel/colors/font_outline_color = Color(0.74, 0.0222, 0.0222, 1)
-RichTextLabel/colors/font_shadow_color = Color(1, 0.616667, 0.08, 0)
+default_font = SubResource("FontVariation_wp0k2")
+RichTextLabel/colors/default_color = Color(0.962748, 0.455119, 0, 1)
+RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
 RichTextLabel/constants/outline_size = 2
 RichTextLabel/constants/shadow_offset_x = 2
 RichTextLabel/constants/shadow_offset_y = 1
 RichTextLabel/constants/shadow_outline_size = 3
-RichTextLabel/font_sizes/normal_font_size = 37
-
-[sub_resource type="FontVariation" id="FontVariation_wp0k2"]
-base_font = ExtResource("2_5sufa")
-spacing_glyph = 3
-
-[sub_resource type="Animation" id="Animation_wp0k2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:environment:glow_intensity")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:environment:glow_strength")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:environment:glow_bloom")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:environment:glow_hdr_threshold")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.4]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:environment:glow_blend_mode")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:environment:glow_hdr_scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.65]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".:environment:glow_hdr_luminance_cap")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath(".:environment:glow_map_strength")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.8]
-}
-
-[sub_resource type="Animation" id="Animation_5sufa"]
-resource_name = "fade_in"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:environment:glow_intensity")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.01, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.99]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:environment:glow_strength")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.65]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:environment:glow_bloom")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.15]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:environment:glow_blend_mode")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [1, 1]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:environment:glow_hdr_threshold")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.4]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:environment:glow_hdr_scale")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.65]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".:environment:glow_hdr_luminance_cap")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 12.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath(".:environment:glow_map_strength")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.366667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.8, 0.8]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_052lj"]
-_data = {
-&"RESET": SubResource("Animation_wp0k2"),
-&"fade_in": SubResource("Animation_5sufa")
-}
-
-[sub_resource type="Environment" id="Environment_5sufa"]
-background_mode = 3
-glow_enabled = true
-glow_intensity = 0.0
-glow_strength = 0.0
-glow_blend_mode = 1
-glow_hdr_threshold = 1.4
-glow_hdr_scale = 0.65
-glow_hdr_luminance_cap = 0.0
+RichTextLabel/font_sizes/bold_font_size = 60
+RichTextLabel/font_sizes/normal_font_size = 40
 
 [node name="ScrollingCredits" type="Control"]
 layout_mode = 3
@@ -266,63 +54,42 @@ layout_mode = 2
 
 [node name="CreditsLabel" type="RichTextLabel" parent="ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
+texture_filter = 1
 custom_minimum_size = Vector2(1280, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = SubResource("Theme_wp0k2")
-theme_override_fonts/normal_font = SubResource("FontVariation_wp0k2")
 bbcode_enabled = true
 text = "[center]
-[img=600x300]res://credits/GameTitle.png[/img]  
+[img=700x300]res://credits/GameTitle.png[/img]  
+
+
+
+
+[color=#86d818][b]Project Lead Developer[/b][/color]
+Wendell  Terence Dador
 
 
 
 
 
-[color=86d818][font_size=70]Lead Developer[/font_size][/color]
-
-Wendell Terence Dador
-
-
-
-
-
-
-
-[color=86d818][font_size=70]Developers [/font_size][/color]
-
+[color=#86d818][b]Software Development Team[/b][/color]
 Vhea Asesor
 John Patrick Gerona
-Paul Andrei Ardiente 
-Dainz Andrei Trasadas
-[/center]"
+ Paul Andrei Ardiente 
+Dainz Andrei Trasadas"
 fit_content = true
 scroll_active = false
 script = ExtResource("3_kngql")
-attribution_file_path = "res://credits/ATTRIBUTION.md"
+auto_update = false
 h1_font_size = 70
-h2_font_size = 48
-h3_font_size = 70
-h4_font_size = 24
-h5_font_size = 20
-h6_font_size = 16
 max_image_width = 600
 max_image_height = 300
 h1_color = Color(0.52549, 0.847059, 0.0941176, 1)
-h2_color = Color(0.52549, 0.847059, 0.0941176, 1)
 
 [node name="FooterSpace" type="Control" parent="ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 720)
 layout_mode = 2
-
-[node name="WorldPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../WorldEnvironment")
-libraries = {
-&"": SubResource("AnimationLibrary_052lj")
-}
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_5sufa")
 
 [connection signal="end_reached" from="ScrollContainer" to="." method="_on_scroll_container_end_reached"]

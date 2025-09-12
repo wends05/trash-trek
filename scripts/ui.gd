@@ -5,7 +5,6 @@ class_name UI
 @onready var ui_text_controller: UITextController = $UITextController
 @onready var ui_visibility_controller: UIVisibilityController = $UIVisibilityController
 @onready var pause_animation = $PauseButton/PauseAnimate
-@onready var game_stats_label = $"GameMenu/Game Stats"
 @onready var trans_player: AnimationPlayer = $GameMenu/TransPlayer
 @onready var text_player: AnimationPlayer = $TextPlayer
 @onready var hover_player: AnimationPlayer = $GameMenu/HoverPlayer
