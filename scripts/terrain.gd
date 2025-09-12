@@ -2,11 +2,17 @@ extends Node2D
 
 class_name Terrain
 
-@onready var trash_spawns: Node2D = $TrashSpawns
+@onready var trash_spawns: Node2D
 var max_markers: int = 0
 @export var trash_bin_spawn: Marker2D
 
 func _ready() -> void:
+
+	if name == "Start":
+		return
+	
+	trash_spawns = $TrashSpawns
+
 	max_markers = trash_spawns.get_child_count()
 
 	if Game.trash_bin_countdown == 0:

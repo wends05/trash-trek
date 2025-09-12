@@ -5,7 +5,6 @@ class_name TerrainManager
 @export var speed: float = 200
 @export var terrain_width: int = 1180
 
-@onready var terrain_manager: Node = $"."
 @export var gap_size: int = 130
 @export var acceleration: float = 5.0 
 @export var max_speed: float = 600 
@@ -13,10 +12,6 @@ class_name TerrainManager
 @export var meters_per_minute: float = 1000.0
 
 @export var terrain_remove_distance: int = 1500
-@export var gap_size: int = 0
-@export var acceleration: float = 3.0
-@export var max_speed: float = 400
-
 
 var last_terrains := [] # stores recent terrain types (most recent appended)
 const MAX_HISTORY := 2 # Number of terrains to remember and avoid
@@ -76,6 +71,7 @@ func load_terrain(x, y):
 		# Remove the last two used terrains from available options
 		for used_terrain in last_terrains:
 			terrain_types.erase(used_terrain)
+
 		
 		# If we've run out of terrain types (shouldn't happen with 6+ terrains)
 		if terrain_types.is_empty():
@@ -97,7 +93,7 @@ func load_terrain(x, y):
 		
 		instantiate_terrain(terrain_type, x, y)
 
-func instantiate_terrain(terrain: TerrainType, x: int, y: int) -> void:
-	var terrain_scene: Terrain = terrain_scenes[terrain].instantiate()
+func instantiate_terrain(terrain_type: TerrainType, x: int, y: int) -> void:
+	var terrain_scene: Terrain = terrain_scenes[terrain_type].instantiate()
 	terrain_scene.position = Vector2(x + gap_size, y)
 	add_child(terrain_scene)
