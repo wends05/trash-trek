@@ -5,13 +5,13 @@ class_name TerrainManager
 @export var speed: float = 200
 @export var terrain_width: int = 1180
 
-@export var gap_size: int = 130
-@export var acceleration: float = 5.0 
-@export var max_speed: float = 600 
+@export var gap_size: int = 0
+@export var acceleration: float = 3
+@export var max_speed: float = 400 
 @export var base_speed: float = 200.0
 @export var meters_per_minute: float = 1000.0
 
-@export var terrain_remove_distance: int = 1500
+@export var terrain_remove_distance: int = 1152
 
 var last_terrains := [] # stores recent terrain types (most recent appended)
 const MAX_HISTORY := 2 # Number of terrains to remember and avoid
@@ -49,7 +49,7 @@ func scroll_terrain(delta: float) -> void:
 	for area in get_children():
 		area.position.x -= speed * delta
 		if area.position.x < -terrain_remove_distance:
-			load_terrain(area.position.x + terrain_width * 2 + gap_size, 0)
+			load_terrain(area.position.x + terrain_width * 2, 0)
 			area.queue_free()
 
 func load_terrain(x, y):
