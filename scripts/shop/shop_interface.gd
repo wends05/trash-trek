@@ -17,7 +17,7 @@ const CATEGORYSCREENS = [
 @onready var error_label: Label = $ErrorLabel
 @onready var coins_label: Label = $CoinsLabel
 @onready var coin_error_label: Label = $%CoinErrorLabel
-@onready var coin_error_container: Control = $%ErrorContainer
+@onready var error_dialog: AcceptDialog = $%ErrorDialog
 
 
 var player_stats_resource: PlayerStatsResource = PlayerStatsResource.get_instance()
@@ -61,5 +61,5 @@ func _set_error_label(text: String):
 	error_label.text = text
 
 func display_coin_error(message: String):
-	coin_error_container.visible = true if message else false
-	coin_error_label.text = message
+	error_dialog.dialog_text = message
+	error_dialog.visible = true

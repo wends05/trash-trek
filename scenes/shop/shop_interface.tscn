@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cw5e5t0fr7miv"]
+[gd_scene load_steps=10 format=3 uid="uid://cw5e5t0fr7miv"]
 
 [ext_resource type="Script" uid="uid://dsx6e5yw41p11" path="res://scripts/shop/shop_interface.gd" id="1_vu2u4"]
 [ext_resource type="Texture2D" uid="uid://cfvhpmye8b7f3" path="res://assets/shop/shopavatar.png" id="2_2j2tq"]
@@ -6,11 +6,19 @@
 [ext_resource type="Script" uid="uid://ebwc45pr0on8" path="res://scripts/shop/items_container.gd" id="5_ajlyt"]
 [ext_resource type="FontFile" uid="uid://cbwhuecpnnapj" path="res://fonts/ByteBounce.ttf" id="6_ppxa1"]
 
+[sub_resource type="Theme" id="Theme_ajlyt"]
+default_font = ExtResource("6_ppxa1")
+
+[sub_resource type="LabelSettings" id="LabelSettings_ajlyt"]
+font = ExtResource("6_ppxa1")
+font_size = 25
+
 [sub_resource type="LabelSettings" id="LabelSettings_bxxsr"]
 font = ExtResource("6_ppxa1")
 font_size = 28
 
-[sub_resource type="LabelSettings" id="LabelSettings_ppxa1"]
+[sub_resource type="Theme" id="Theme_ppxa1"]
+default_font = ExtResource("6_ppxa1")
 
 [node name="Shop" type="Control" node_paths=PackedStringArray("item_container")]
 layout_mode = 3
@@ -19,6 +27,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_ajlyt")
 script = ExtResource("1_vu2u4")
 item_container = NodePath("ItemsContainter")
 
@@ -54,6 +63,8 @@ offset_left = 32.0
 offset_top = 32.0
 offset_right = 160.0
 offset_bottom = 64.0
+theme_override_fonts/font = ExtResource("6_ppxa1")
+theme_override_font_sizes/font_size = 20
 text = "Return"
 
 [node name="UpgradeButton" type="Button" parent="."]
@@ -118,7 +129,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 2
+
+[node name="Label" type="Label" parent="ItemsContainter/SkinsGrid"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+text = "There are currently no skins available as of this moment. Please try again next time."
+label_settings = SubResource("LabelSettings_ajlyt")
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
@@ -140,46 +160,14 @@ text = "1200"
 label_settings = SubResource("LabelSettings_bxxsr")
 vertical_alignment = 1
 
-[node name="ErrorContainer" type="Control" parent="."]
+[node name="ErrorDialog" type="AcceptDialog" parent="."]
 unique_name_in_owner = true
-visible = false
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -216.0
-offset_top = 112.0
-offset_right = -66.0
-offset_bottom = 187.0
-grow_horizontal = 0
-
-[node name="CoinErrorBackground" type="ColorRect" parent="ErrorContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 10)
-layout_mode = 2
-offset_right = 150.0
-offset_bottom = 75.0
-grow_horizontal = 0
-size_flags_horizontal = 3
-color = Color(0.831373, 0, 0, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="ErrorContainer"]
-layout_mode = 2
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 144.0
-offset_bottom = 64.0
-
-[node name="CoinErrorLabel" type="Label" parent="ErrorContainer/MarginContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(20, 0)
-layout_mode = 2
-size_flags_vertical = 1
-text = "Not Enough Coins"
-label_settings = SubResource("LabelSettings_ppxa1")
-horizontal_alignment = 2
-vertical_alignment = 1
-autowrap_mode = 2
+title = "Error buying upgrade"
+initial_position = 1
+size = Vector2i(400, 100)
+content_scale_mode = 1
+theme = SubResource("Theme_ppxa1")
+dialog_autowrap = true
 
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
 [connection signal="pressed" from="UpgradeButton" to="." method="_on_upgrade_button_pressed"]

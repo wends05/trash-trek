@@ -2,7 +2,7 @@ extends Control
 
 
 @onready var display = $Display
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	PlayerApi.get_top_five_success.connect(_on_get_top_five_success)
 	PlayerApi.get_top_five()
