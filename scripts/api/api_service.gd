@@ -2,10 +2,13 @@ extends Node
 
 class_name ApiService
 
-@export var base_url: String = "http://127.0.0.1:8000"
+var base_url: String
 @export var default_headers = PackedStringArray(["Content-Type: application/json"])
 
 signal request_complete(endpoint: String, data: Dictionary)
+
+func _ready() -> void:
+	base_url = Env.get_data()["SERVER_URL"]
 
 func _handle_and_emit(op: String, res: Dictionary):
 	printerr("Not implemented")
