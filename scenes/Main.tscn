@@ -215,100 +215,37 @@ scale = Vector2(1.5625, 1.35266)
 texture = ExtResource("2_bjd11")
 centered = false
 
-[node name="Backgrounds" type="Node" parent="."]
+[node name="Background" type="Node" parent="."]
 
-[node name="Background2" type="Node" parent="Backgrounds"]
-
-[node name="Background" type="Parallax2D" parent="Backgrounds/Background2"]
-z_index = -1
-repeat_size = Vector2(1150, 0)
-autoscroll = Vector2(-100, 0)
-repeat_times = 6
-
-[node name="Sprite2D2" type="Sprite2D" parent="Backgrounds/Background2/Background"]
-position = Vector2(580, 325)
-scale = Vector2(0.743871, 0.8675)
-texture = ExtResource("12_cvmbd")
-
-[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Background2/Background"]
-position = Vector2(271, 175)
-scale = Vector2(0.39, 0.3895)
-texture = ExtResource("13_cvmbd")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Backgrounds/Background2/Background"]
-position = Vector2(896, 120)
-scale = Vector2(0.458, 0.405)
-texture = ExtResource("14_cvmbd")
-
-[node name="Midground" type="Parallax2D" parent="Backgrounds/Background2"]
-z_index = -1
-repeat_size = Vector2(1150, 0)
-autoscroll = Vector2(-100, 0)
-repeat_times = 6
-
-[node name="Sprite2D2" type="Sprite2D" parent="Backgrounds/Background2/Midground"]
-position = Vector2(574.5, 326)
-scale = Vector2(0.742581, 0.82)
-texture = ExtResource("13_ft6cd")
-
-[node name="Foreground" type="Parallax2D" parent="Backgrounds/Background2"]
-z_index = -1
-scroll_offset = Vector2(-133, 159)
-repeat_size = Vector2(1152, 0)
-autoscroll = Vector2(-120, 0)
-repeat_times = 6
-
-[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Background2/Foreground"]
-position = Vector2(708, 329)
-scale = Vector2(0.745161, 0.81375)
-texture = ExtResource("14_mwfav")
-
-[node name="Background" type="Node" parent="Backgrounds"]
-
-[node name="Background" type="Parallax2D" parent="Backgrounds/Background"]
+[node name="Background" type="Parallax2D" parent="Background"]
 z_index = -1
 repeat_size = Vector2(1150, 0)
 autoscroll = Vector2(-50, 0)
 repeat_times = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Background/Background"]
-visible = false
+[node name="Sprite2D" type="Sprite2D" parent="Background/Background"]
 position = Vector2(576, 306.5)
 scale = Vector2(1.98958, 1.55864)
 texture = ExtResource("3_qmy6f")
 
-[node name="Background2" type="Parallax2D" parent="Backgrounds/Background"]
-z_index = -1
-repeat_size = Vector2(1150, 0)
-autoscroll = Vector2(-50, 0)
-repeat_times = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Background/Background2"]
-visible = false
-position = Vector2(576, 306.5)
-scale = Vector2(1.98958, 1.55864)
-texture = ExtResource("3_qmy6f")
-
-[node name="Midground" type="Parallax2D" parent="Backgrounds/Background"]
+[node name="Midground" type="Parallax2D" parent="Background"]
 z_index = -1
 repeat_size = Vector2(1150, 0)
 autoscroll = Vector2(-100, 0)
 repeat_times = 2
 
-[node name="Sprite2D" type="Sprite2D" parent="Backgrounds/Background/Midground"]
-visible = false
+[node name="Sprite2D" type="Sprite2D" parent="Background/Midground"]
 scale = Vector2(2.00347, 1.73765)
 texture = ExtResource("4_mwfav")
 centered = false
 
-[node name="Foreground" type="Parallax2D" parent="Backgrounds/Background"]
+[node name="Foreground" type="Parallax2D" parent="Background"]
 z_index = -1
 repeat_size = Vector2(1150, 0)
 autoscroll = Vector2(-150, 0)
 repeat_times = 2
 
-[node name="Sprite2D2" type="Sprite2D" parent="Backgrounds/Background/Foreground"]
-visible = false
+[node name="Sprite2D2" type="Sprite2D" parent="Background/Foreground"]
 scale = Vector2(2.01215, 1.74383)
 texture = ExtResource("5_3p2gp")
 centered = false
