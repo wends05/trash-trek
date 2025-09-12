@@ -186,7 +186,8 @@ light_mask = 0
 visibility_layer = 3
 position = Vector2(3, 5.5)
 scale = Vector2(1.78125, 0.359375)
-energy = 0.85
+color = Color(1, 1, 1, 0.596078)
+energy = 0.55
 blend_mode = 1
 texture = SubResource("GradientTexture2D_mwfav")
 
@@ -253,7 +254,6 @@ texture = ExtResource("5_3p2gp")
 centered = false
 
 [node name="Sprite2D3" type="Sprite2D" parent="Background/Foreground"]
-visible = false
 position = Vector2(535.605, 37.09)
 scale = Vector2(0.86679, 1.01982)
 texture = ExtResource("13_qmy6f")
