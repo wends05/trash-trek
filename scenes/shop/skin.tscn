@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn2jlpoq00ta8"]
+[gd_scene load_steps=4 format=3 uid="uid://bn2jlpoq00ta8"]
 
 [ext_resource type="Script" uid="uid://chauhridgeuxn" path="res://scripts/shop/skin_node.gd" id="1_vj43w"]
+[ext_resource type="Texture2D" uid="uid://cb8p244csnpqi" path="res://assets/shop/upgrades/price.png" id="2_d2y0k"]
+[ext_resource type="Texture2D" uid="uid://73k4jmfy3wfw" path="res://assets/shop/upgrades/pricehover.png" id="3_ep8g0"]
 
-[node name="Skin" type="Control"]
+[node name="Skin" type="Control" node_paths=PackedStringArray("name_label", "upgrade_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,3 +12,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vj43w")
+name_label = NodePath("VBoxContainer/Name Label")
+upgrade_button = NodePath("VBoxContainer/UpgradeButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SkinDisplay" type="TextureRect" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Name Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Sample Name"
+
+[node name="UpgradeButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("2_d2y0k")
+texture_pressed = ExtResource("3_ep8g0")
+ignore_texture_size = true
+stretch_mode = 0

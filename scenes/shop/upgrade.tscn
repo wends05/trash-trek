@@ -22,13 +22,15 @@ font = ExtResource("3_3wnwl")
 font = ExtResource("3_3wnwl")
 font_size = 20
 
-[node name="Upgrade" type="Control"]
+[node name="Upgrade" type="Control" node_paths=PackedStringArray("name_label", "upgrade_button")]
 layout_direction = 1
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_0n4xr")
+name_label = NodePath("Name")
+upgrade_button = NodePath("UpgradeButton")
 
 [node name="Container" type="TextureRect" parent="."]
 layout_mode = 0
@@ -61,8 +63,8 @@ autowrap_mode = 3
 layout_mode = 0
 offset_left = 120.0
 offset_top = 24.0
-offset_right = 160.0
-offset_bottom = 47.0
+offset_right = 205.0
+offset_bottom = 37.0
 text = "Sample Name"
 label_settings = SubResource("LabelSettings_ppi2v")
 
@@ -94,5 +96,3 @@ offset_bottom = 104.0
 label_settings = SubResource("LabelSettings_4xv4e")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[connection signal="pressed" from="UpgradeButton" to="." method="_on_upgrade_button_pressed"]

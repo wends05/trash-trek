@@ -35,7 +35,7 @@ func prepare_upgrade(item: String):
 	
 
 func prepare_skin(item: String):
-	var skin = load("res://resources/shop/skins/%s" % item)
+	var skin : SkinResource = load("res://resources/shop/skins/%s" % item)
 	if skin == null:
 		return
 	var skin_node: SkinDisplay = ITEMS["skin"].instantiate()

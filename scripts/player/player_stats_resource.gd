@@ -52,6 +52,7 @@ func get_device_id():
 ## saving
 func _update_last_modified() -> void:
 	lastModified = Time.get_datetime_string_from_datetime_dict(Time.get_datetime_dict_from_system(), false)
+	print_debug(self.to_dict())
 	_save()
 
 func _save() -> void: ResourceSaver.save(self)
@@ -60,10 +61,9 @@ func compare_to_resource(player_stats: Dictionary) -> void:
 	var db_last_modified = Time.get_unix_time_from_datetime_string(player_stats.get("lastModified"))
 	var local_last_modified = Time.get_unix_time_from_datetime_string(lastModified)
 
-	print_debug("DB last modified: ", db_last_modified)
-	print_debug("Local last modified: ", local_last_modified)
-	
-	print_debug(db_last_modified > local_last_modified)
+	print_debug("%s\n%s" % [db_last_modified, local_last_modified])
+
+	print_debug("db_last_modified > local_last_modified: %s" % (db_last_modified > local_last_modified))
 	if db_last_modified > local_last_modified:
 		save_stats(player_stats)
 	else:
@@ -82,7 +82,7 @@ func save_stats(player_stats: Dictionary) -> void:
 func save_name(new_name: String) -> void:
 	name = new_name
 	_update_last_modified()
-	save_to_database()	
+	save_to_database()
 
 func update_coins(new_coins: int) -> void:
 	coins = new_coins
@@ -131,6 +131,7 @@ func upgrade_stat(upgrade: UpgradeResource) -> String:
 
 func save_to_database() -> void:
 	var final_dict = self.to_dict().duplicate()
+	print_debug("Saving to database: %s" % final_dict)
 
 	final_dict.erase("lastModified")
 	final_dict.erase("device_id")
@@ -169,4 +170,3 @@ func delete_account():
 
 func _on_delete_user_success(result: Dictionary) -> void:
 	print_debug("Delete user success: %s" % result)
-	
