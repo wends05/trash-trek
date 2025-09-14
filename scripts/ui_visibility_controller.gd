@@ -5,13 +5,14 @@ class_name UIVisibilityController
 @export var game_status_label: Control
 @export var game_menu: Control
 @export var game_stats: RichTextLabel
+@export var game_reason: Control
 @onready var brush_stroke: Sprite2D = $"../GameMenu/BrushStroke"
 @onready var trans_player = $"../GameMenu/TransPlayer"
 @onready var ui: UI = $".."
 
 func _ready() -> void:
 	brush_stroke.visible = false
-	toggle_nodes([game_menu, game_status_label, game_stats])
+	toggle_nodes([game_menu, game_status_label, game_stats, game_reason])
 
 func update_ui_visibility(state: Utils.UIStateType) -> void:
 	match state:
@@ -21,6 +22,7 @@ func update_ui_visibility(state: Utils.UIStateType) -> void:
 				game_status_label, 
 				game_menu, 
 				game_menu.retry_button,
+				game_reason,
 			])
 		Utils.UIStateType.GameOver:
 			var timer = get_tree().create_timer(0.3)
@@ -31,7 +33,8 @@ func update_ui_visibility(state: Utils.UIStateType) -> void:
 					game_menu, 
 					game_menu.resume_button, 
 					game_menu.restart_button,
-					game_stats
+					game_stats,
+					game_reason
 				])
 			)
 			$"../EnergyBar".visible = false

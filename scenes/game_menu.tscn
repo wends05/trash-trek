@@ -447,10 +447,10 @@ tracks/0/path = NodePath("../RetryButton/RetryLabel:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 1.96667, 3),
+"times": PackedFloat32Array(0, 1, 1.96667, 3.06667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(338, 432), Vector2(328.845, 423.17), Vector2(338, 432), Vector2(358.83, 423.17)]
+"values": [Vector2(338, 482), Vector2(328.845, 473.17), Vector2(338, 482), Vector2(358.83, 473.17)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ddixh"]
@@ -658,9 +658,9 @@ modulate = Color(0.0430392, 0.0430392, 0.0430391, 1)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 7.0
-offset_top = -542.22
+offset_top = -400.0
 offset_right = 1157.0
-offset_bottom = 114.78
+offset_bottom = 257.0
 
 [node name="TrashMount5" type="Sprite2D" parent="Header"]
 position = Vector2(366, 512.61)
@@ -679,9 +679,9 @@ flip_v = true
 modulate = Color(0.0807833, 0.0807834, 0.0807833, 1)
 layout_mode = 2
 anchors_preset = 0
-offset_top = 269.045
+offset_top = 37.0
 offset_right = 1150.0
-offset_bottom = 926.045
+offset_bottom = 694.0
 
 [node name="TrashMount1" type="Sprite2D" parent="Footer"]
 position = Vector2(724.5, 432.477)
@@ -715,10 +715,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -245.172
-offset_top = -223.166
-offset_right = 235.828
-offset_bottom = -158.166
+offset_left = -243.233
+offset_top = -173.749
+offset_right = 237.767
+offset_bottom = -108.749
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_vrsc2")
