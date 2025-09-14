@@ -123,17 +123,17 @@ func update_game_stats() -> void:
 	text += "Overall Score: \n[color=white][font_size=30]%d[/font_size][/color]\n" % displayed_score
 
 	if trash_collected <= 0:
-		text += "[img=30x40]res://assets/buttons/button1.png[/img] [font_size=20]0[/font_size]  \n"
+		text += "[img=40x50]res://assets/buttons/button1.png[/img] [font_size=20]0[/font_size]  \n"
 	else:
-		text += "[img=30x40]res://assets/buttons/button1.png[/img] [font_size=20]%d[/font_size]  \n" % displayed_trash
+		text += "[img=40x50]res://assets/buttons/button1.png[/img] [font_size=20]%d[/font_size]  \n" % displayed_trash
 
 	if displayed_distance >= 1000:
 		var km = float(displayed_distance) / 1000.0
-		text += "  [img=30x40]res://assets/menu/player_run.png[/img] [font_size=20]%.2f[/font_size] km\n" % km
+		text += "  [img=40x50]res://assets/menu/player_run.png[/img] [font_size=20]%.2f[/font_size] km\n" % km
 	else:
-		text += "  [img=30x30]res://assets/menu/player_run.png[/img] [font_size=20]%d m[/font_size]\n" % displayed_distance
+		text += "  [img=40x50]res://assets/menu/player_run.png[/img] [font_size=20]%d m[/font_size]\n" % displayed_distance
 
-	text += "[img=40x20]res://assets/menu/badge.png[/img] [font_size=20]%d[/font_size]  \n" % displayed_coins
+	text += "[img=50x30]res://assets/menu/badge.png[/img] [font_size=20]%d[/font_size]  \n" % displayed_coins
 	#if animating_score:
 		#text += "Overall Score: %d\n" % displayed_score
 	#if animating_trash or animating_distance or animating_coins or animating_score:
