@@ -6,14 +6,16 @@
 [ext_resource type="Texture2D" uid="uid://cb8p244csnpqi" path="res://assets/shop/upgrades/price.png" id="4_ppi2v"]
 [ext_resource type="Texture2D" uid="uid://73k4jmfy3wfw" path="res://assets/shop/upgrades/pricehover.png" id="5_4xv4e"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_ppi2v"]
+font = ExtResource("3_3wnwl")
+font_size = 18
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_475v2"]
 line_spacing = 0.0
 font = ExtResource("3_3wnwl")
 font_size = 12
-
-[sub_resource type="LabelSettings" id="LabelSettings_ppi2v"]
-font = ExtResource("3_3wnwl")
-font_size = 18
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yvixy"]
 font = ExtResource("3_3wnwl")
@@ -22,7 +24,7 @@ font = ExtResource("3_3wnwl")
 font = ExtResource("3_3wnwl")
 font_size = 20
 
-[node name="Upgrade" type="Control" node_paths=PackedStringArray("name_label", "upgrade_button")]
+[node name="Upgrade" type="Control" node_paths=PackedStringArray("name_label", "upgrade_button", "upgrade_button_label")]
 layout_direction = 1
 layout_mode = 3
 anchors_preset = 0
@@ -31,6 +33,7 @@ size_flags_vertical = 3
 script = ExtResource("1_0n4xr")
 name_label = NodePath("Name")
 upgrade_button = NodePath("UpgradeButton")
+upgrade_button_label = NodePath("UpgradeButtonLabel")
 
 [node name="Container" type="TextureRect" parent="."]
 layout_mode = 0
@@ -49,6 +52,15 @@ offset_bottom = 80.0
 expand_mode = 2
 stretch_mode = 5
 
+[node name="Name" type="Label" parent="."]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 24.0
+offset_right = 205.0
+offset_bottom = 37.0
+text = "Sample Name"
+label_settings = SubResource("LabelSettings_ppi2v")
+
 [node name="Description" type="Label" parent="."]
 layout_mode = 0
 offset_left = 120.0
@@ -58,15 +70,6 @@ offset_bottom = 80.0
 text = "exercitation et pariatur deserunt in sunt ullamco voluptate reprehenderit eiusmod quis quis"
 label_settings = SubResource("LabelSettings_475v2")
 autowrap_mode = 3
-
-[node name="Name" type="Label" parent="."]
-layout_mode = 0
-offset_left = 120.0
-offset_top = 24.0
-offset_right = 205.0
-offset_bottom = 37.0
-text = "Sample Name"
-label_settings = SubResource("LabelSettings_ppi2v")
 
 [node name="Stats" type="Label" parent="."]
 layout_mode = 0

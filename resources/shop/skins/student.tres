@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="SkinResource" load_steps=2 format=3 uid="uid://bghihevoiyspg"]
+[gd_resource type="Resource" script_class="SkinResource" load_steps=3 format=3 uid="uid://bghihevoiyspg"]
 
 [ext_resource type="Script" uid="uid://cwumjoef44cd" path="res://scripts/shop/skin_resource.gd" id="1_1e1sc"]
+[ext_resource type="Texture2D" uid="uid://dp7cub05id1rc" path="res://assets/Player/student.png" id="2_qio3y"]
 
 [resource]
 script = ExtResource("1_1e1sc")
-name = ""
-base_price = 0
+name = "Student"
+base_price = 1200
+texture_tilemap = ExtResource("2_qio3y")

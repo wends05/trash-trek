@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cw5e5t0fr7miv"]
+[gd_scene load_steps=9 format=3 uid="uid://cw5e5t0fr7miv"]
 
 [ext_resource type="Script" uid="uid://dsx6e5yw41p11" path="res://scripts/shop/shop_interface.gd" id="1_vu2u4"]
 [ext_resource type="Texture2D" uid="uid://cfvhpmye8b7f3" path="res://assets/shop/shopavatar.png" id="2_2j2tq"]
@@ -8,10 +8,6 @@
 
 [sub_resource type="Theme" id="Theme_ajlyt"]
 default_font = ExtResource("6_ppxa1")
-
-[sub_resource type="LabelSettings" id="LabelSettings_ajlyt"]
-font = ExtResource("6_ppxa1")
-font_size = 25
 
 [sub_resource type="LabelSettings" id="LabelSettings_bxxsr"]
 font = ExtResource("6_ppxa1")
@@ -107,7 +103,7 @@ anchor_bottom = 1.0
 offset_left = 320.0
 offset_top = 256.0
 offset_right = -320.0
-offset_bottom = -112.0
+offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_ajlyt")
@@ -122,23 +118,22 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 2
 
-[node name="SkinsGrid" type="GridContainer" parent="ItemsContainter"]
+[node name="SkinsContainer" type="ScrollContainer" parent="ItemsContainter"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+follow_focus = true
+draw_focus_border = true
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 0
 
-[node name="Label" type="Label" parent="ItemsContainter/SkinsGrid"]
-custom_minimum_size = Vector2(300, 0)
+[node name="HBoxContainer" type="HBoxContainer" parent="ItemsContainter/SkinsContainer"]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 6
-text = "There are currently no skins available as of this moment. Please try again next time."
-label_settings = SubResource("LabelSettings_ajlyt")
-horizontal_alignment = 1
-autowrap_mode = 3
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0

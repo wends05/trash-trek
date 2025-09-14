@@ -50,6 +50,7 @@ func _on_enter_pressed() -> void:
 	PlayerApi.create_user({
 		"device_id": player_stats_resource.get_device_id(),
 		"name": name_input.text,
+		"skins": player_stats_resource.get_skins(),
 	})
 
 func _process(_delta: float) -> void:

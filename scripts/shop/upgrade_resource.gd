@@ -2,7 +2,6 @@ extends Resource
 
 class_name UpgradeResource
 
-
 var player_stats_resource: PlayerStatsResource = PlayerStatsResource.get_instance()
 
 @export var name: String
