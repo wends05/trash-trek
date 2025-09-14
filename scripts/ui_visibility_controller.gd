@@ -4,7 +4,7 @@ class_name UIVisibilityController
 @export var pause_button: Control
 @export var game_status_label: Control
 @export var game_menu: Control
-@export var game_stats: Label
+@export var game_stats: RichTextLabel
 @onready var brush_stroke: Sprite2D = $"../GameMenu/BrushStroke"
 @onready var trans_player = $"../GameMenu/TransPlayer"
 @onready var ui: UI = $".."

@@ -461,6 +461,90 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_ysvk1"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Header:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, -542.22)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Footer:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 269.045)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RetryButton:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ResumeButton/ResumeLabel:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("RestartButton:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MainMenuButton:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("QuitButton:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_p30b5"]
 resource_name = "fade_in"
@@ -574,9 +658,9 @@ modulate = Color(0.0430392, 0.0430392, 0.0430391, 1)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 7.0
-offset_top = -400.0
+offset_top = -542.22
 offset_right = 1157.0
-offset_bottom = 257.0
+offset_bottom = 114.78
 
 [node name="TrashMount5" type="Sprite2D" parent="Header"]
 position = Vector2(366, 512.61)
@@ -595,9 +679,9 @@ flip_v = true
 modulate = Color(0.0807833, 0.0807834, 0.0807833, 1)
 layout_mode = 2
 anchors_preset = 0
-offset_top = 37.0
+offset_top = 269.045
 offset_right = 1150.0
-offset_bottom = 694.0
+offset_bottom = 926.045
 
 [node name="TrashMount1" type="Sprite2D" parent="Footer"]
 position = Vector2(724.5, 432.477)
@@ -616,6 +700,7 @@ scale = Vector2(0.423828, 0.234297)
 texture = ExtResource("3_ldg7d")
 
 [node name="RetryButton" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = -8.0
 offset_top = -5.0
@@ -650,6 +735,7 @@ offset_right = 1166.0
 offset_bottom = 664.0
 
 [node name="ResumeLabel" type="Label" parent="ResumeButton"]
+modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 layout_mode = 0
 offset_left = 363.0
@@ -664,6 +750,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RestartButton" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 863.0
 offset_top = 417.0
@@ -695,6 +782,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MainMenuButton" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 877.0
 offset_top = 490.0
@@ -722,6 +810,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="QuitButton" type="TextureButton" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 835.0
 offset_top = 552.0

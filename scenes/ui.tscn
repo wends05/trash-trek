@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cnvc3c5c6c8mj"]
+[gd_scene load_steps=42 format=3 uid="uid://cnvc3c5c6c8mj"]
 
 [ext_resource type="Script" uid="uid://cad734vbhmmtg" path="res://scripts/ui.gd" id="1_nt7q6"]
 [ext_resource type="PackedScene" uid="uid://ciuvi7tl2l5wv" path="res://scenes/game_menu.tscn" id="2_p7vwb"]
@@ -18,7 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://bg72nmvcnnmu" path="res://assets/buttons/red-C.png" id="13_8k7j3"]
 [ext_resource type="Texture2D" uid="uid://vtxnw3gfa8by" path="res://assets/menu/BrushStroke.png" id="16_f7tlh"]
 [ext_resource type="FontFile" uid="uid://b5mi6s5qo0r03" path="res://fonts/Uskyn-Regular.ttf" id="17_f7tlh"]
-[ext_resource type="Texture2D" uid="uid://cs7c2nf5dljtn" path="res://assets/menu/badge.png" id="18_8k7j3"]
+[ext_resource type="Theme" uid="uid://8hh430p5vv8h" path="res://scenes/ui.tres" id="18_rlppe"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkdwc"]
 
@@ -81,13 +81,11 @@ shadow_offset = Vector2(3.575, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_vsj0x"]
 font = ExtResource("4_h1mc3")
 
-[sub_resource type="Theme" id="Theme_8k7j3"]
-Label/colors/font_color = Color(0.968627, 0.721569, 0.294118, 1)
-Label/colors/font_shadow_color = Color(0.905882, 0.85098, 0, 0.396078)
-
 [sub_resource type="FontVariation" id="FontVariation_f7tlh"]
 base_font = ExtResource("17_f7tlh")
 spacing_glyph = 4
+spacing_top = -5
+spacing_bottom = -2
 
 [sub_resource type="Theme" id="Theme_jkdwc"]
 Label/colors/font_color = Color(0.913725, 0.470588, 0, 1)
@@ -145,26 +143,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("GameMenu/Game Stats:position")
+tracks/2/path = NodePath("GameMenu/BrushStroke:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.466667, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(454, -140), Vector2(445.415, 226.845)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("GameMenu/BrushStroke:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0.333333, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.164706, 0.0941176, 0, 0), Color(0.556251, 0.165121, 0, 0.866667)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameMenu/GameStats:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.458011, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(368.725, -142.21), Vector2(365.36, 204.13)]
 }
 
 [sub_resource type="Animation" id="Animation_f7tlh"]
@@ -172,49 +170,44 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("GameMenu/Game Stats:position")
+tracks/0/path = NodePath("GameMenu/GameStats:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(454, -115.181)]
+"values": [Vector2(368.725, -142.21)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("GameMenu/Game Stats/Badge:modulate")
+tracks/1/path = NodePath("GameMenu/GameStatusLabel:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Vector2(92, -143.52)]
 }
-
-[sub_resource type="Animation" id="Animation_jkdwc"]
-resource_name = "reveal_badge"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GameMenu/Game Stats/Badge:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GameMenu/GameReasonLabel:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8k7j3"]
 _data = {
 &"GameStatus": SubResource("Animation_cof4p"),
-&"RESET": SubResource("Animation_f7tlh"),
-&"reveal_badge": SubResource("Animation_jkdwc")
+&"RESET": SubResource("Animation_f7tlh")
 }
 
 [node name="UI" type="Control" node_paths=PackedStringArray("game_menu")]
@@ -270,7 +263,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("8_ktti3")
 game_status_label = NodePath("../GameMenu/GameStatusLabel")
-game_stats_label = NodePath("../GameMenu/Game Stats")
+game_stats_label = NodePath("../GameMenu/GameStats")
 game_reason_label = NodePath("../GameMenu/GameReasonLabel")
 
 [node name="UIVisibilityController" type="Control" parent="." node_paths=PackedStringArray("pause_button", "game_status_label", "game_menu", "game_stats")]
@@ -284,7 +277,7 @@ script = ExtResource("9_cgfq5")
 pause_button = NodePath("../PauseButton")
 game_status_label = NodePath("../GameMenu/GameStatusLabel")
 game_menu = NodePath("../GameMenu")
-game_stats = NodePath("../GameMenu/Game Stats")
+game_stats = NodePath("../GameMenu/GameStats")
 
 [node name="Distance" type="Label" parent="."]
 layout_mode = 1
@@ -393,30 +386,25 @@ offset_bottom = 171.0
 
 [node name="BrushStroke" type="Sprite2D" parent="GameMenu"]
 modulate = Color(0.164706, 0.0941176, 0, 0)
-position = Vector2(503, 248.75)
-scale = Vector2(0.504762, 0.565632)
+position = Vector2(476.5, 209)
+scale = Vector2(0.610053, 0.962597)
 texture = ExtResource("16_f7tlh")
 flip_h = true
 flip_v = true
 
-[node name="Game Stats" type="Label" parent="GameMenu"]
+[node name="GameStats" type="RichTextLabel" parent="GameMenu"]
 layout_mode = 0
-offset_left = 454.0
-offset_top = -115.181
-offset_right = 707.0
-offset_bottom = 0.819
-theme = SubResource("Theme_8k7j3")
-theme_override_fonts/font = SubResource("FontVariation_f7tlh")
-theme_override_font_sizes/font_size = 22
-text = "Distance  Traveled:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Badge" type="Sprite2D" parent="GameMenu/Game Stats"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(90.585, 75.155)
-scale = Vector2(0.0769668, 0.0735013)
-texture = ExtResource("18_8k7j3")
+offset_left = 368.725
+offset_top = -142.21
+offset_right = 772.725
+offset_bottom = 36.79
+theme = ExtResource("18_rlppe")
+theme_override_fonts/normal_font = SubResource("FontVariation_f7tlh")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[center]
+[/center]
+"
 
 [node name="GameStatusLabel" type="Label" parent="GameMenu"]
 layout_mode = 0
