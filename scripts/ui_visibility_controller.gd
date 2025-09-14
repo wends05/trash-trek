@@ -45,6 +45,7 @@ func update_ui_visibility(state: Utils.UIStateType) -> void:
 			$"../PauseButton".visible = false
 			$"../Distance".visible = false
 			toggle_nodes(ui.game_over_buttons)
+			AudioManager.play_sfx(preload("res://audios/died.mp3"), -3)
 			ui.bg_player.play("bg_fade_in")
 
 func toggle_nodes(nodes: Array[Control]) -> void:

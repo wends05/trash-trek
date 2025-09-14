@@ -13,6 +13,7 @@ extends Control
 @onready var ui : UI = $".."
 
 func _on_resume_button_pressed() -> void:
+	AudioManager.play_sfx(ui.SFX_UNPAUSED, -3)
 	check_for_pause()
 	ui.disable_buttons(ui.paused_buttons)
 	ui.game_menu_animation(false)

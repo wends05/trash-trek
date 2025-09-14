@@ -15,6 +15,9 @@ class_name UI
 @onready var mg = $"../Background/Midground"
 @onready var fg = $"../Background/Foreground"
 
+var SFX_PAUSED = preload("res://audios/paused.mp3")
+var SFX_UNPAUSED = preload("res://audios/unpaused.mp3")
+
 var paused_buttons: Array
 var game_over_buttons: Array[Control]
 
@@ -80,13 +83,16 @@ func update_trash_counts():
 
 func toggle_pause():
 	if Input.is_action_just_pressed("esc") and not Game.is_game_over:
+		
 		Game.is_game_pause = !Game.is_game_pause
 		if Game.is_game_pause:
+			AudioManager.play_sfx(SFX_PAUSED, -3)
 			enable_buttons(paused_buttons)
 			update_ui_state(Utils.UIStateType.PauseMenu)
 			game_menu_animation(true)
 			update_game_state(Utils.GameStateType.Pause)
 		else:
+			AudioManager.play_sfx(SFX_UNPAUSED, -3)
 			disable_buttons(paused_buttons)
 			game_menu_animation(false)
 			await text_player.animation_finished
@@ -96,6 +102,7 @@ func toggle_pause():
 func _on_pause_button_pressed() -> void:
 	if Game.is_game_over:
 		return
+	AudioManager.play_sfx(SFX_PAUSED, -3)
 	Game.is_game_pause = true
 	enable_buttons(paused_buttons)
 	update_ui_state(Utils.UIStateType.PauseMenu)
@@ -122,6 +129,7 @@ func update_game_state(state: Utils.GameStateType) -> void:
 					Engine.time_scale = 1
 					$GameMenu/BrushStroke.visible = true
 					game_menu_animation(true, "retry")
+					AudioManager.play_sfx(preload("res://audios/text.mp3"), -3)
 					await trans_player.animation_finished
 					get_tree().paused = true
 				)

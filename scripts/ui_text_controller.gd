@@ -4,6 +4,8 @@ class_name UITextController
 @export var game_status_label: Control
 @export var game_stats_label: RichTextLabel
 @export var game_reason_label: Control
+const SFX_FILL = preload("res://audios/score_fill.wav")
+const SFX_SUCCESS = preload("res://audios/success.mp3")
 
 var displayed_distance := 0
 var displayed_trash := 0
@@ -82,6 +84,7 @@ func _process(delta: float) -> void:
 				animating_trash = false
 				await_delay_then_start("distance")
 			elif displayed_trash < trash_collected:
+				AudioManager.play_sfx(SFX_FILL, -3)
 				displayed_trash += 1
 				updated = true
 			else:
@@ -90,6 +93,7 @@ func _process(delta: float) -> void:
 		
 		elif animating_distance:	
 			if displayed_distance < distance_collected:
+				AudioManager.play_sfx(SFX_FILL, -3)
 				displayed_distance += 1
 				updated = true
 			else:
@@ -98,6 +102,7 @@ func _process(delta: float) -> void:
 		
 		elif animating_coins:
 			if displayed_coins < coins_collected:
+				AudioManager.play_sfx(SFX_FILL, -3)
 				displayed_coins += 1
 				updated = true
 			else:
@@ -107,9 +112,11 @@ func _process(delta: float) -> void:
 		
 		elif animating_score:
 			if displayed_score < score_collected:
+				AudioManager.play_sfx(SFX_FILL, -3)
 				displayed_score += 1
 				updated = true
 			else:
+				AudioManager.play_sfx(SFX_SUCCESS, -5)
 				animating_score = false
 				animating = false
 

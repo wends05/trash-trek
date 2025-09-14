@@ -67,6 +67,7 @@ func start_game():
 	player.hide()
 	disable_buttons([credits_button, exit_button, start_button, tutorial_button])
 	Game.reset_stats()
+	AudioManager.play_music(preload("res://audios/game.mp3"), -3)
 	SceneHandler.last_scene_path = get_tree().current_scene.scene_file_path
 	Utils.anim_player(props_player, "fade_out")
 	SceneTransition.change_scene(game_scene, Utils.SceneType.Gameplay)
