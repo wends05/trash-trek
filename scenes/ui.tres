@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://8hh430p5vv8h"]
+
+[resource]
+Label/colors/font_color = Color(0.968627, 0.721569, 0.294118, 1)
+Label/colors/font_shadow_color = Color(0.905882, 0.85098, 0, 0.396078)
+RichTextLabel/colors/default_color = Color(0.968627, 0.721569, 0.294118, 1)
+RichTextLabel/colors/font_shadow_color = Color(0.905882, 0.85098, 0, 0.396078)

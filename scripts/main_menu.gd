@@ -19,7 +19,7 @@ var tutorial_audio = preload("res://audios/Tutorial/the-return-of-the-8-bit-era-
 
 
 func _ready():
-	AudioManager.play_music(preload("res://audios/main_menu3.mp3"))
+	AudioManager.play_music(preload("res://audios/main_menu3.mp3"), -3)
 	SceneTransition.credits_end.connect(exit_credits)
 	is_intro_scene()
 	cam.make_current()
@@ -45,7 +45,6 @@ func _on_tutorial_button_pressed() -> void:
 	AudioManager.play_music(tutorial_audio)
 
 func _on_credits_button_pressed() -> void:
-
 	Utils.anim_player(buttons_player, "credits_press")
 	await buttons_player.animation_finished
 	disable_buttons([credits_button, exit_button, start_button, tutorial_button])
@@ -69,6 +68,7 @@ func start_game():
 	player.hide()
 	disable_buttons([credits_button, exit_button, start_button, tutorial_button])
 	Game.reset_stats()
+	AudioManager.play_music(preload("res://audios/game.mp3"), -3)
 	SceneHandler.last_scene_path = get_tree().current_scene.scene_file_path
 	Utils.anim_player(props_player, "fade_out")
 	SceneTransition.change_scene(game_scene, Utils.SceneType.Gameplay)
