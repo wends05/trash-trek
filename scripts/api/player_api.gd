@@ -71,7 +71,7 @@ func delete_user():
 		_on_delete_user
 	)
 
-signal delete_user_success(result: Dictionary)
+signal delete_user_success(is_success: bool)
 signal delete_user_failed(err: Dictionary)
 
 func _on_delete_user(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray, endpoint: String):

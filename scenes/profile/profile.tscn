@@ -57,6 +57,7 @@ grow_vertical = 2
 color = Color(0.131379, 0.131379, 0.131379, 1)
 
 [node name="ReturnButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 32.0
 offset_top = 32.0
 offset_right = 160.0
@@ -212,6 +213,6 @@ dialog_autowrap = true
 [connection signal="pressed" from="CancelEditButton" to="." method="_on_cancel_edit_button_pressed"]
 [connection signal="confirmed" from="Dialogs/RestartDialog" to="." method="_on_restart_dialog_confirmed"]
 [connection signal="custom_action" from="Dialogs/RestartDialog" to="." method="_on_restart_dialog_custom_action"]
-[connection signal="confirmed" from="Dialogs/DeleteDialog" to="." method="_on_confirmation_dialog_confirmed"]
-[connection signal="confirmed" from="Dialogs/DeleteRetryDialog" to="." method="_on_confirmation_dialog_confirmed"]
+[connection signal="confirmed" from="Dialogs/DeleteDialog" to="." method="_on_delete_dialog_confirmed"]
+[connection signal="confirmed" from="Dialogs/DeleteRetryDialog" to="." method="_on_delete_retry_dialog_confirmed"]
 [connection signal="custom_action" from="Dialogs/DeleteRetryDialog" to="." method="_on_retry_dialog_custom_action"]

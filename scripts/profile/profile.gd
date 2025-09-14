@@ -32,7 +32,7 @@ func _on_return_button_pressed() -> void:
 func _on_delete_pressed() -> void:
 	delete_dialog.visible = true
 
-func _on_confirmation_dialog_confirmed() -> void:
+func _on_delete_dialog_confirmed() -> void:
 	player_stats_resource.delete_account()
 
 func show_delete_error(err: Dictionary):
@@ -40,11 +40,14 @@ func show_delete_error(err: Dictionary):
 	retry_dialog.dialog_text = "%s. Restart game?" % message
 	retry_dialog.visible = true
 
+func _on_delete_retry_dialog_confirmed() -> void:
+	get_tree().change_scene_to_file("res://scenes/intro/input_name.tscn")
+
 func _on_retry_dialog_custom_action(action: StringName) -> void:
 	if action == "restart_game":
 		_restart_game()
 	
-func open_restart_dialog():
+func open_restart_dialog(_is_success: bool):
 	restart_dialog.visible = true
 
 func _on_restart_dialog_custom_action(action: StringName) -> void:
@@ -60,7 +63,7 @@ func _restart_game():
 
 func _on_edit_button_pressed() -> void:
 	if editing:
-		player_stats_resource.save_name(name_edit.text)
+		player_stats_resource.update_name(name_edit.text)
 		edit_button.text = "Loading"
 		return
 	
