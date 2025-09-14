@@ -22,7 +22,7 @@ func play_music(stream: AudioStream, volume: float = 0.0, pitch: float = 1.0, lo
 		return
 		
 	if stream is AudioStreamMP3:
-		stream.loop = loop	
+		stream.loop = loop
 		
 	music_player.stream = stream
 	music_player.volume_db = volume

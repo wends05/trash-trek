@@ -1,5 +1,5 @@
 extends Control
-
+var tutorial_audio = preload("res://audios/Tutorial/the-return-of-the-8-bit-era-301292.mp3")
 @onready var game_title = $ParallaxBackground/Misc/GameTitle
 @onready var buttons_player = $Buttons/ButtonsPlayer
 @onready var props_player = $PropsPlayer
@@ -42,6 +42,7 @@ func _on_tutorial_button_pressed() -> void:
 	Utils.anim_player(buttons_player, "tutorial_press")
 	await buttons_player.animation_finished
 	get_tree().change_scene_to_file("res://scenes/Tutorial.tscn")
+	AudioManager.play_music(tutorial_audio)
 
 func _on_credits_button_pressed() -> void:
 
