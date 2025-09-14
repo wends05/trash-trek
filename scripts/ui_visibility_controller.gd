@@ -4,14 +4,15 @@ class_name UIVisibilityController
 @export var pause_button: Control
 @export var game_status_label: Control
 @export var game_menu: Control
-@export var game_stats: Label
+@export var game_stats: RichTextLabel
+@export var game_reason: Control
 @onready var brush_stroke: Sprite2D = $"../GameMenu/BrushStroke"
 @onready var trans_player = $"../GameMenu/TransPlayer"
 @onready var ui: UI = $".."
 
 func _ready() -> void:
 	brush_stroke.visible = false
-	toggle_nodes([game_menu, game_status_label, game_stats])
+	toggle_nodes([game_menu, game_status_label, game_stats, game_reason])
 
 func update_ui_visibility(state: Utils.UIStateType) -> void:
 	match state:
@@ -21,6 +22,7 @@ func update_ui_visibility(state: Utils.UIStateType) -> void:
 				game_status_label, 
 				game_menu, 
 				game_menu.retry_button,
+				game_reason,
 			])
 		Utils.UIStateType.GameOver:
 			var timer = get_tree().create_timer(0.3)
@@ -31,7 +33,8 @@ func update_ui_visibility(state: Utils.UIStateType) -> void:
 					game_menu, 
 					game_menu.resume_button, 
 					game_menu.restart_button,
-					game_stats
+					game_stats,
+					game_reason
 				])
 			)
 			$"../EnergyBar".visible = false
@@ -39,6 +42,10 @@ func update_ui_visibility(state: Utils.UIStateType) -> void:
 			$"../Buttons".visible = false
 			$"../PauseButton".visible = false
 			$"../TrashCount".visible = false
+			$"../PauseButton".visible = false
+			$"../Distance".visible = false
+			toggle_nodes(ui.game_over_buttons)
+			AudioManager.play_sfx(preload("res://audios/died.mp3"), -3)
 			ui.bg_player.play("bg_fade_in")
 
 func toggle_nodes(nodes: Array[Control]) -> void:

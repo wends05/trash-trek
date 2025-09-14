@@ -84,8 +84,8 @@ font = ExtResource("4_h1mc3")
 [sub_resource type="FontVariation" id="FontVariation_f7tlh"]
 base_font = ExtResource("17_f7tlh")
 spacing_glyph = 4
-spacing_top = -6
-spacing_bottom = 3
+spacing_top = -5
+spacing_bottom = -2
 
 [sub_resource type="Theme" id="Theme_jkdwc"]
 Label/colors/font_color = Color(0.913725, 0.470588, 0, 1)
@@ -126,7 +126,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.0333333, 0.2, 0.333333, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(92, -143.52), Vector2(92, 63), Vector2(92, 42.795), Vector2(92, 82.54)]
+"values": [Vector2(92, -143.52), Vector2(92, 63), Vector2(92, 42.795), Vector2(92, 73.635)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -135,10 +135,10 @@ tracks/1/path = NodePath("GameMenu/GameReasonLabel:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.333333, 0.405202, 0.486242, 0.6),
+"times": PackedFloat32Array(0.333333, 0.43, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(218.89, -144.37), Vector2(211.77, 122.19), Vector2(211.77, 105.34), Vector2(211.77, 150.995)]
+"values": [Vector2(230.535, -143), Vector2(228.92, 144.86), Vector2(228.92, 131.555), Vector2(211.77, 153.86)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -162,7 +162,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0.458011, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(368.725, -142.21), Vector2(365.36, 225.335)]
+"values": [Vector2(368.725, -142.21), Vector2(365.36, 235.2)]
 }
 
 [sub_resource type="Animation" id="Animation_f7tlh"]
@@ -202,18 +202,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("GameMenu/BrushStroke:modulate")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.001),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.164706, 0.0941176, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8k7j3"]
@@ -399,9 +387,9 @@ offset_right = 96.0
 offset_bottom = 173.0
 
 [node name="BrushStroke" type="Sprite2D" parent="GameMenu"]
-modulate = Color(0.164706, 0.0941176, 0, 0)
-position = Vector2(476.5, 216.5)
-scale = Vector2(0.610053, 1.0988)
+modulate = Color(0.556251, 0.165121, 0, 0.866667)
+position = Vector2(476.5, 213)
+scale = Vector2(0.610053, 1.25476)
 texture = ExtResource("16_f7tlh")
 flip_h = true
 flip_v = true
@@ -411,13 +399,12 @@ layout_mode = 0
 offset_left = 368.725
 offset_top = -142.21
 offset_right = 772.725
-offset_bottom = 78.79
+offset_bottom = 55.79
 theme = ExtResource("18_rlppe")
 theme_override_fonts/normal_font = SubResource("FontVariation_f7tlh")
 theme_override_font_sizes/normal_font_size = 22
 bbcode_enabled = true
 text = "[center]
-
 [/center]
 "
 
@@ -436,10 +423,10 @@ vertical_alignment = 1
 
 [node name="GameReasonLabel" type="Label" parent="GameMenu"]
 layout_mode = 0
-offset_left = 218.89
-offset_top = -144.37
-offset_right = 921.89
-offset_bottom = -43.37
+offset_left = 211.77
+offset_top = 153.86
+offset_right = 914.77
+offset_bottom = 254.86
 theme = SubResource("Theme_f7tlh")
 theme_override_fonts/font = SubResource("FontVariation_cof4p")
 horizontal_alignment = 1
