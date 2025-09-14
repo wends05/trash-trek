@@ -10,10 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://dxqu4vculyhv8" path="res://assets/buttons/button2.png" id="5_qsv74"]
 [ext_resource type="Texture2D" uid="uid://bj3rk0rmmgxjw" path="res://assets/buttons/button3.png" id="6_h1mc3"]
 [ext_resource type="FontFile" uid="uid://fp7rfneeiohe" path="res://fonts/SearchingForSignal.ttf" id="6_jkdwc"]
+[ext_resource type="Script" uid="uid://c30kqbrivjbmk" path="res://scripts/distance.gd" id="8_jkdwc"]
 [ext_resource type="Script" uid="uid://fn8obobr73c5" path="res://scripts/ui_text_controller.gd" id="8_ktti3"]
 [ext_resource type="Script" uid="uid://d36dng05atbg8" path="res://scripts/ui_visibility_controller.gd" id="9_cgfq5"]
 [ext_resource type="Texture2D" uid="uid://bjpn81jww2cou" path="res://assets/buttons/blue-Z.png" id="11_cof4p"]
-[ext_resource type="Script" uid="uid://yhwdmfusy3l0" path="res://scripts/time.gd" id="11_qsv74"]
 [ext_resource type="Texture2D" uid="uid://wq2c1b0lf2a8" path="res://assets/buttons/green-X.png" id="12_f7tlh"]
 [ext_resource type="Texture2D" uid="uid://bg72nmvcnnmu" path="res://assets/buttons/red-C.png" id="13_8k7j3"]
 [ext_resource type="Texture2D" uid="uid://vtxnw3gfa8by" path="res://assets/menu/BrushStroke.png" id="16_f7tlh"]
@@ -300,7 +300,7 @@ text = "111"
 label_settings = SubResource("LabelSettings_f7tlh")
 horizontal_alignment = 1
 vertical_alignment = 1
-script = ExtResource("11_qsv74")
+script = ExtResource("8_jkdwc")
 
 [node name="Buttons" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -401,10 +401,12 @@ flip_v = true
 
 [node name="Game Stats" type="Label" parent="GameMenu"]
 layout_mode = 0
+
 offset_left = 445.415
 offset_top = 226.845
 offset_right = 698.415
 offset_bottom = 342.845
+
 theme = SubResource("Theme_8k7j3")
 theme_override_fonts/font = SubResource("FontVariation_f7tlh")
 theme_override_font_sizes/font_size = 22

@@ -101,7 +101,7 @@ position = Vector2(528, 456)
 position = Vector2(216, 456)
 
 [node name="Marker2D4" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(932, 450)
+position = Vector2(928, 512)
 
 [node name="Marker2D5" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(643, 456)
