@@ -52,7 +52,7 @@ func update_ui_text(state: Utils.UIStateType, reason: Utils.GameOverReason) -> v
 				animating_coins = false
 				animating_score = false
 			)
-		
+			
 			#var text = ""
 			#if distance >= 1000:
 				#distance = round(distance / 1000.0 * 100) / 100.0
@@ -124,6 +124,7 @@ func update_game_stats() -> void:
 	elif animating_trash:
 		game_stats_label.text = "Trash Collected: \n%d" % trash_collected
 	elif animating_coins:
+		$"../TextPlayer".play("reveal_badge")
 		game_stats_label.text = "Badges Gained: \n%d" % displayed_coins
 	elif animating_score:
 		game_stats_label.text = "Overall Score: \n%d" % displayed_score
@@ -134,6 +135,8 @@ func await_delay_then_start(next: String) -> void:
 		"trash":
 			animating_trash = true
 		"coins":
+			$"../TextPlayer".play("reveal_badge") 
 			animating_coins = true
 		"score":
+			$"../TextPlayer".play_backwards("reveal_badge") 
 			animating_score = true
