@@ -658,9 +658,9 @@ modulate = Color(0.0430392, 0.0430392, 0.0430391, 1)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 7.0
-offset_top = -400.0
+offset_top = -542.22
 offset_right = 1157.0
-offset_bottom = 257.0
+offset_bottom = 114.78
 
 [node name="TrashMount5" type="Sprite2D" parent="Header"]
 position = Vector2(366, 512.61)
@@ -679,9 +679,9 @@ flip_v = true
 modulate = Color(0.0807833, 0.0807834, 0.0807833, 1)
 layout_mode = 2
 anchors_preset = 0
-offset_top = 37.0
+offset_top = 269.045
 offset_right = 1150.0
-offset_bottom = 694.0
+offset_bottom = 926.045
 
 [node name="TrashMount1" type="Sprite2D" parent="Footer"]
 position = Vector2(724.5, 432.477)
