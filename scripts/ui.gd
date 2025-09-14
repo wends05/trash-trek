@@ -17,6 +17,7 @@ class_name UI
 
 var SFX_PAUSED = preload("res://audios/paused.mp3")
 var SFX_UNPAUSED = preload("res://audios/unpaused.mp3")
+var SFX_TEXT = preload("res://audios/text.ogg")
 
 var paused_buttons: Array
 var game_over_buttons: Array[Control]
@@ -129,7 +130,7 @@ func update_game_state(state: Utils.GameStateType) -> void:
 					Engine.time_scale = 1
 					$GameMenu/BrushStroke.visible = true
 					game_menu_animation(true, "retry")
-					AudioManager.play_sfx(preload("res://audios/text.mp3"), -3)
+					AudioManager.play_sfx(SFX_TEXT, -3)
 					await trans_player.animation_finished
 					get_tree().paused = true
 				)
