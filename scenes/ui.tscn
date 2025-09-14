@@ -203,6 +203,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GameMenu/BrushStroke:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.164706, 0.0941176, 0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8k7j3"]
 _data = {
@@ -387,7 +399,7 @@ offset_right = 96.0
 offset_bottom = 173.0
 
 [node name="BrushStroke" type="Sprite2D" parent="GameMenu"]
-modulate = Color(0.556251, 0.165121, 0, 0.866667)
+modulate = Color(0.164706, 0.0941176, 0, 0)
 position = Vector2(476.5, 216.5)
 scale = Vector2(0.610053, 1.0988)
 texture = ExtResource("16_f7tlh")
@@ -424,10 +436,10 @@ vertical_alignment = 1
 
 [node name="GameReasonLabel" type="Label" parent="GameMenu"]
 layout_mode = 0
-offset_left = 211.77
-offset_top = 150.995
-offset_right = 914.77
-offset_bottom = 251.995
+offset_left = 218.89
+offset_top = -144.37
+offset_right = 921.89
+offset_bottom = -43.37
 theme = SubResource("Theme_f7tlh")
 theme_override_fonts/font = SubResource("FontVariation_cof4p")
 horizontal_alignment = 1
