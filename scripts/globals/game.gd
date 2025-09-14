@@ -14,7 +14,7 @@ signal energy_changed(value: int)
 signal updated_stats
 signal time_changed(time: float)
 
-signal update_ui_state(type: Utils.UIStateType)
+signal update_ui_state(type: Utils.UIStateType, reason: Utils.GameOverReason)
 signal game_over(reason: Utils.GameOverReason)
 signal update_game_state(type: Utils.GameStateType)
 
@@ -40,7 +40,6 @@ var player_stats_resource: PlayerStatsResource = PlayerStatsResource.get_instanc
 func _process(delta: float) -> void:
 	if not is_game_pause:
 		elapsed_time += delta
-		time_changed.emit(elapsed_time)
 		
 ## In built functions
 func _ready() -> void:

@@ -8,5 +8,6 @@ anchors_preset = 0
 script = ExtResource("1_iumnb")
 
 [node name="SFXPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
