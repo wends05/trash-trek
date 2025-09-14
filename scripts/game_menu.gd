@@ -14,7 +14,7 @@ extends Control
 
 func _on_resume_button_pressed() -> void:
 	check_for_pause()
-	ui.disable_buttons(ui.my_buttons)
+	ui.disable_buttons(ui.paused_buttons)
 	ui.game_menu_animation(false)
 	await text_player.animation_finished
 	Game.update_game_state.emit(Utils.GameStateType.Play)

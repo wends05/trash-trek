@@ -40,7 +40,6 @@ var player_stats_resource: PlayerStatsResource = PlayerStatsResource.get_instanc
 func _process(delta: float) -> void:
 	if not is_game_pause:
 		elapsed_time += delta
-		time_changed.emit(elapsed_time)
 		
 ## In built functions
 func _ready() -> void:

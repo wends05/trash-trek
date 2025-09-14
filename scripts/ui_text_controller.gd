@@ -1,6 +1,6 @@
 extends Control
 class_name UITextController
-
+@onready var ui: UI = $".."
 @export var game_status_label: Control
 @export var game_stats_label: Label
 @export var game_reason_label: Control
@@ -124,19 +124,20 @@ func update_game_stats() -> void:
 	elif animating_trash:
 		game_stats_label.text = "Trash Collected: \n%d" % trash_collected
 	elif animating_coins:
-		$"../TextPlayer".play("reveal_badge")
 		game_stats_label.text = "Badges Gained: \n%d" % displayed_coins
 	elif animating_score:
 		game_stats_label.text = "Overall Score: \n%d" % displayed_score
 
 func await_delay_then_start(next: String) -> void:
-	await get_tree().create_timer(0.7).timeout
+	await get_tree().create_timer(0.5).timeout
 	match next:
 		"trash":
 			animating_trash = true
 		"coins":
-			$"../TextPlayer".play("reveal_badge") 
+			Utils.anim_player($"../TextPlayer", "reveal_badge") 
 			animating_coins = true
 		"score":
-			$"../TextPlayer".play_backwards("reveal_badge") 
+			$"../TextPlayer".play_backwards("reveal_badge")
+			$"../UIVisibilityController".toggle_nodes(ui.game_over_buttons)
+			ui.enable_buttons(ui.game_over_buttons) 
 			animating_score = true

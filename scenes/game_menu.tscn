@@ -549,18 +549,6 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("RetryButton/RetryLabel:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.335885),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mw6r2"]
 _data = {
@@ -586,9 +574,9 @@ modulate = Color(0.0430392, 0.0430392, 0.0430391, 1)
 layout_mode = 3
 anchors_preset = 0
 offset_left = 7.0
-offset_top = -542.22
+offset_top = -400.0
 offset_right = 1157.0
-offset_bottom = 114.78
+offset_bottom = 257.0
 
 [node name="TrashMount5" type="Sprite2D" parent="Header"]
 position = Vector2(366, 512.61)
@@ -607,9 +595,9 @@ flip_v = true
 modulate = Color(0.0807833, 0.0807834, 0.0807833, 1)
 layout_mode = 2
 anchors_preset = 0
-offset_top = 269.045
+offset_top = 37.0
 offset_right = 1150.0
-offset_bottom = 926.045
+offset_bottom = 694.0
 
 [node name="TrashMount1" type="Sprite2D" parent="Footer"]
 position = Vector2(724.5, 432.477)
@@ -628,7 +616,6 @@ scale = Vector2(0.423828, 0.234297)
 texture = ExtResource("3_ldg7d")
 
 [node name="RetryButton" type="TextureButton" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = -8.0
 offset_top = -5.0
@@ -636,7 +623,6 @@ offset_right = 1158.0
 offset_bottom = 650.0
 
 [node name="RetryLabel" type="Label" parent="RetryButton"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -664,7 +650,6 @@ offset_right = 1166.0
 offset_bottom = 664.0
 
 [node name="ResumeLabel" type="Label" parent="ResumeButton"]
-modulate = Color(1, 1, 1, 0)
 texture_filter = 1
 layout_mode = 0
 offset_left = 363.0
@@ -679,7 +664,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RestartButton" type="TextureButton" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 863.0
 offset_top = 417.0
@@ -711,7 +695,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MainMenuButton" type="TextureButton" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 877.0
 offset_top = 490.0
@@ -739,7 +722,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="QuitButton" type="TextureButton" parent="."]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 835.0
 offset_top = 552.0

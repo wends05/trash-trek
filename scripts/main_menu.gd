@@ -19,7 +19,7 @@ extends Control
 
 
 func _ready():
-	AudioManager.play_music(preload("res://audios/main_menu3.mp3"))
+	AudioManager.play_music(preload("res://audios/main_menu3.mp3"), -3)
 	SceneTransition.credits_end.connect(exit_credits)
 	is_intro_scene()
 	cam.make_current()
@@ -44,7 +44,6 @@ func _on_tutorial_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/Tutorial.tscn")
 
 func _on_credits_button_pressed() -> void:
-
 	Utils.anim_player(buttons_player, "credits_press")
 	await buttons_player.animation_finished
 	disable_buttons([credits_button, exit_button, start_button, tutorial_button])

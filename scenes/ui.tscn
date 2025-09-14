@@ -392,7 +392,7 @@ offset_right = 96.0
 offset_bottom = 171.0
 
 [node name="BrushStroke" type="Sprite2D" parent="GameMenu"]
-modulate = Color(0.556251, 0.165121, 0, 0.866667)
+modulate = Color(0.164706, 0.0941176, 0, 0)
 position = Vector2(503, 248.75)
 scale = Vector2(0.504762, 0.565632)
 texture = ExtResource("16_f7tlh")
@@ -401,12 +401,10 @@ flip_v = true
 
 [node name="Game Stats" type="Label" parent="GameMenu"]
 layout_mode = 0
-
-offset_left = 445.415
-offset_top = 226.845
-offset_right = 698.415
-offset_bottom = 342.845
-
+offset_left = 454.0
+offset_top = -115.181
+offset_right = 707.0
+offset_bottom = 0.819
 theme = SubResource("Theme_8k7j3")
 theme_override_fonts/font = SubResource("FontVariation_f7tlh")
 theme_override_font_sizes/font_size = 22
@@ -423,9 +421,9 @@ texture = ExtResource("18_8k7j3")
 [node name="GameStatusLabel" type="Label" parent="GameMenu"]
 layout_mode = 0
 offset_left = 92.0
-offset_top = 63.0
+offset_top = -143.52
 offset_right = 1073.0
-offset_bottom = 208.0
+offset_bottom = 1.48
 theme = SubResource("Theme_jkdwc")
 theme_override_fonts/font = SubResource("FontVariation_rlppe")
 theme_override_font_sizes/font_size = 0
@@ -435,9 +433,9 @@ vertical_alignment = 1
 [node name="GameReasonLabel" type="Label" parent="GameMenu"]
 layout_mode = 0
 offset_left = 296.0
-offset_top = 179.0
+offset_top = -143.0
 offset_right = 833.0
-offset_bottom = 280.0
+offset_bottom = -42.0
 theme = SubResource("Theme_f7tlh")
 theme_override_fonts/font = SubResource("FontVariation_cof4p")
 horizontal_alignment = 1

@@ -15,17 +15,23 @@ class_name UI
 @onready var mg = $"../Background/Midground"
 @onready var fg = $"../Background/Foreground"
 
-var my_buttons: Array
+var paused_buttons: Array
+var game_over_buttons: Array[Control]
 
 func _ready() -> void:
-	my_buttons = [
+	paused_buttons = [
 		game_menu.restart_button,
-		game_menu.resume_button,
 		game_menu.resume_button,
 		game_menu.quit_button,
 		game_menu.menu_button,
 	]
-	disable_buttons(my_buttons)
+	game_over_buttons = [
+		game_menu.quit_button,
+		game_menu.menu_button,
+		game_menu.retry_button,
+	]
+	
+	disable_buttons([game_menu.retry_button] + paused_buttons)
 	
 	Game.updated_stats.connect(update_trash_counts)
 	Game.update_ui_state.connect(update_ui_state)
@@ -76,12 +82,12 @@ func toggle_pause():
 	if Input.is_action_just_pressed("esc") and not Game.is_game_over:
 		Game.is_game_pause = !Game.is_game_pause
 		if Game.is_game_pause:
-			enable_buttons(my_buttons)
+			enable_buttons(paused_buttons)
 			update_ui_state(Utils.UIStateType.PauseMenu)
 			game_menu_animation(true)
 			update_game_state(Utils.GameStateType.Pause)
 		else:
-			disable_buttons(my_buttons)
+			disable_buttons(paused_buttons)
 			game_menu_animation(false)
 			await text_player.animation_finished
 			update_game_state(Utils.GameStateType.Play)
@@ -91,7 +97,7 @@ func _on_pause_button_pressed() -> void:
 	if Game.is_game_over:
 		return
 	Game.is_game_pause = true
-	enable_buttons(my_buttons)
+	enable_buttons(paused_buttons)
 	update_ui_state(Utils.UIStateType.PauseMenu)
 	game_menu_animation(true)
 	update_game_state(Utils.GameStateType.Pause)
@@ -117,7 +123,6 @@ func update_game_state(state: Utils.GameStateType) -> void:
 					$GameMenu/BrushStroke.visible = true
 					game_menu_animation(true, "retry")
 					await trans_player.animation_finished
-					enable_buttons([game_menu.quit_button, game_menu.menu_button, game_menu.retry_button])
 					get_tree().paused = true
 				)
 					
@@ -149,8 +154,8 @@ func game_menu_animation(forward: bool, mode = null) -> void:
 		else:
 			Utils.anim_player(hover_player, "resume_hover")
 	else:
-		bg_player.play_backwards("bg_fade_in")
 		trans_player.play_backwards("fade_in")
+		bg_player.play_backwards("bg_fade_in")
 		text_player.play_backwards("GameStatus")
 	
 	await text_player.animation_finished

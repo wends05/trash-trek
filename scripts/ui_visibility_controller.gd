@@ -39,6 +39,9 @@ func update_ui_visibility(state: Utils.UIStateType) -> void:
 			$"../Buttons".visible = false
 			$"../PauseButton".visible = false
 			$"../TrashCount".visible = false
+			$"../PauseButton".visible = false
+			$"../Distance".visible = false
+			toggle_nodes(ui.game_over_buttons)
 			ui.bg_player.play("bg_fade_in")
 
 func toggle_nodes(nodes: Array[Control]) -> void:
