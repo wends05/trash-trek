@@ -7,7 +7,8 @@ class_name PlayerStatsResource
 @export var coins: int
 @export var high_score: float
 @export var upgrades: Dictionary = {}
-@export var skins: Array = []
+@export var skins: Array = ["Default"]
+@export var current_skin: String = "Default"
 @export var lastModified: String
 
 const SAVE_PATH = "user://device_id.save"
@@ -23,7 +24,7 @@ static func get_instance() -> PlayerStatsResource:
 func _ready() -> void:
 	pass
 
-## info
+#region Information
 func to_dict() -> Dictionary:
 	return {
 		"device_id": device_id,
@@ -32,11 +33,11 @@ func to_dict() -> Dictionary:
 		"high_score": high_score,
 		"upgrades": upgrades,
 		"skins": skins,
+		"current_skin": current_skin,
 		"lastModified": lastModified
 	}
 
 func get_device_id():
-	print("getting device id")
 	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
 	if file:
 		var saved_id = file.get_line()
@@ -49,22 +50,23 @@ func get_device_id():
 		save_file.close()
 		return new_id
 
-## saving
+#endregion
+
+#region Saving
 func _update_last_modified() -> void:
-	lastModified = Time.get_datetime_string_from_datetime_dict(Time.get_datetime_dict_from_system(), false)
+	lastModified = Time.get_datetime_string_from_datetime_dict(Time.get_datetime_dict_from_system(true), false)
 	_save()
 
-func _save() -> void: ResourceSaver.save(self)
+func _save():
+	ResourceSaver.save(self, PLAYER_STATS_SAVE_PATH)
 
 func compare_to_resource(player_stats: Dictionary) -> void:
 	var db_last_modified = Time.get_unix_time_from_datetime_string(player_stats.get("lastModified"))
 	var local_last_modified = Time.get_unix_time_from_datetime_string(lastModified)
 
-	print_debug("DB last modified: ", db_last_modified)
-	print_debug("Local last modified: ", local_last_modified)
-	
-	print_debug(db_last_modified > local_last_modified)
-	if db_last_modified > local_last_modified:
+	print_debug("%s\n%s" % [db_last_modified, local_last_modified])
+	print_debug("DB last modified >= local last modified: %s" % (db_last_modified >= local_last_modified))
+	if db_last_modified >= local_last_modified:
 		save_stats(player_stats)
 	else:
 		save_to_database()
@@ -77,20 +79,23 @@ func save_stats(player_stats: Dictionary) -> void:
 	upgrades = player_stats.get("upgrades", upgrades)
 	skins = player_stats.get("skins", skins)
 	lastModified = player_stats.get("lastModified", lastModified)
-	_update_last_modified()
+	_save()
 
 func save_name(new_name: String) -> void:
 	name = new_name
 	_update_last_modified()
-	save_to_database()	
 
-func update_coins(new_coins: int) -> void:
-	coins = new_coins
+func update_name(new_name: String):
+	save_name(new_name)
+	save_to_database()
+
+func increment_coins(increment: int) -> void:
+	coins += increment
 	coins_updated.emit(coins)
 	_update_last_modified()
 
 func decrement_coins(decrement: int) -> void:
-	update_coins(coins - decrement)
+	coins -= decrement
 	coins_updated.emit(coins)
 	_update_last_modified()
 
@@ -98,7 +103,9 @@ func update_high_score(new_high_score: float) -> void:
 	high_score = max(high_score, new_high_score)
 	_update_last_modified()
 
-## upgrades
+#endregion
+
+#region Upgrades
 func get_upgrades() -> Dictionary:
 	return upgrades
 
@@ -112,6 +119,7 @@ func upgrade_stat(upgrade: UpgradeResource) -> String:
 		upgrades[upgrade.name] = {
 			"level": 2,
 		}
+		save_to_database()
 		return ""
 	
 	var cost = upgrade.base_price * upgrade.price_per_level_multiplier * player_upgrade.level
@@ -125,12 +133,47 @@ func upgrade_stat(upgrade: UpgradeResource) -> String:
 	
 	decrement_coins(cost)
 	upgrades[upgrade.name]["level"] += 1
-	_update_last_modified()
 	save_to_database()
 	return ""
 
+func find_upgrade(upgrade_name: String) -> Dictionary:
+	for upgrade in upgrades:
+		if upgrade == upgrade_name:
+			return upgrades[upgrade]
+	return {}
+#endregion
+
+#region skins
+func get_skins() -> Array:
+	return skins
+
+func buy_skin(skin_resource: SkinResource) -> String:
+	if coins < skin_resource.base_price:
+		return "Not enough coins"
+	
+	skins.append(skin_resource.name)
+	decrement_coins(skin_resource.base_price)
+	save_to_database()
+	return ""
+
+func find_skin(skin_name: String) -> int:
+	return skins.find(skin_name)
+
+signal equipped_skin_changed()
+func equip_skin(skin_name: String) -> String:
+	current_skin = skin_name
+	equipped_skin_changed.emit()
+	save_to_database()
+	return ""
+
+func get_equipped_skin() -> String:
+	return current_skin
+#endregion
+
+#region Saving
 func save_to_database() -> void:
 	var final_dict = self.to_dict().duplicate()
+	print_debug("Saving to database: %s" % final_dict)
 
 	final_dict.erase("lastModified")
 	final_dict.erase("device_id")
@@ -145,28 +188,16 @@ func _on_update_user_success(result: Dictionary) -> void:
 	if new_last_modified > lastModified:
 		lastModified = new_last_modified
 		_save()
-	
 
-func find_upgrade(upgrade_name: String) -> Dictionary:
-	for upgrade in upgrades:
-		if upgrade == upgrade_name:
-			return upgrades[upgrade]
-	return {}
+#endregion
 
+#region Delete Account
 func delete_account():
-	name = ""
-	device_id = ""
-	coins = 0
-	high_score = 0
-	upgrades = {}
-	skins = []
-	lastModified = ""
-	_update_last_modified()
-
 	if not PlayerApi.delete_user_success.is_connected(_on_delete_user_success):
 		PlayerApi.delete_user_success.connect(_on_delete_user_success)
 	PlayerApi.delete_user()
 
-func _on_delete_user_success(result: Dictionary) -> void:
-	print_debug("Delete user success: %s" % result)
-	
+func _on_delete_user_success(_is_success: bool) -> void:
+	print_debug("Delete user success: %s" % _is_success)
+	ResourceSaver.save(PlayerStatsResource.new(), PLAYER_STATS_SAVE_PATH)
+#endregion

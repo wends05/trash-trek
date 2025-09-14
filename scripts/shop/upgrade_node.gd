@@ -1,78 +1,64 @@
-extends Control
+extends ShopItem
 
 class_name UpgradeDisplay
 
 var upgrade_resource: UpgradeResource
 
 @onready var upgrade_icon: TextureRect = $UpgradeIcon
-@onready var name_label: Label = $Name
 @onready var description_label: Label = $Description
 @onready var stats_label: Label = $Stats
-@onready var upgrade_button: TextureButton = $UpgradeButton
-@onready var upgrade_button_label: Label = $UpgradeButtonLabel
 
 
-signal coin_upgrade_error(message: String)
-
-
-func _ready() -> void:
-	if not upgrade_resource.player_stats_resource:
-		printerr("No Player Stats Resource found")
-		return
-		
+func _ready_item():
 	if not upgrade_resource:
 		printerr("No resource added")
 		return
+	
+	if not upgrade_resource.player_stats_resource:
+		printerr("No Player Stats Resource found")
+		return
 
-	PlayerApi.update_user_success.connect(_on_update_user_success)
-	display_upgrade()
 
-func display_upgrade():
+func _display_item():
 	upgrade_icon.texture = upgrade_resource.icon
 	name_label.text = upgrade_resource.name
 	description_label.text = upgrade_resource.description
 	
-	display_upgrade_button()
-	display_stats()
+	super._display_item()
 
 func get_player_upgrade():
-	return upgrade_resource.player_stats_resource.get_upgrades().get(upgrade_resource.name)
+	return upgrade_resource.player_stats_resource.find_upgrade(upgrade_resource.name)
 
-func display_upgrade_button():
+func _display_buy_button():
 	var player_upgrade = get_player_upgrade()
 
-	if not player_upgrade:
-		upgrade_button_label.text = "%d" % upgrade_resource.base_price
-		upgrade_button.disabled = false
-		return
-	
-	if player_upgrade.level >= upgrade_resource.max_level:
-		upgrade_button.disabled = true
-		upgrade_button_label.text = "MAX"
-		return
-	
-	upgrade_button.disabled = false
-	var final = upgrade_resource.base_price * upgrade_resource.price_per_level_multiplier * player_upgrade.level
-	upgrade_button_label.text = "%d" % final
+	var multiplier = 1
+	var upgrade_per_level = 1
 
-func display_stats():
+	if player_upgrade:
+		multiplier = player_upgrade.level
+		upgrade_per_level = upgrade_resource.price_per_level_multiplier
+	
+		if player_upgrade.level >= upgrade_resource.max_level:
+			upgrade_button.disabled = true
+			upgrade_button_label.text = "MAX"
+			return
+	
+	cost = upgrade_resource.base_price * upgrade_per_level * multiplier
+	
+	super._display_buy_button()
+
+func _display_item_stats():
 	var player_upgrade = get_player_upgrade()
 
 	if not player_upgrade:
 		# assume level 1 upgrade
-		stats_label.text = "1/%s" % upgrade_resource.max_level
+		stats_label.text = "1/%d" % upgrade_resource.max_level
 		return
 	
-	stats_label.text = "%s/%s" % [player_upgrade.level, upgrade_resource.max_level]
-
+	stats_label.text = "%d/%s" % [player_upgrade.level, upgrade_resource.max_level]
 
 func _on_upgrade_button_pressed() -> void:
 	var err := upgrade_resource.player_stats_resource.upgrade_stat(upgrade_resource)
 
-	if err:
-		coin_upgrade_error.emit("%s: %s" % [upgrade_resource.name, err])
-	else:
-		display_upgrade()
-		
-func _on_update_user_success(data: Dictionary):
-	print_debug("SUCESS EDIT PLAYER")
+	_check_api_error(err)

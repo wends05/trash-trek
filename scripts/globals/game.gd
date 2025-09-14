@@ -178,7 +178,7 @@ func reset_stats():
 
 func update_player_stats(final_score: float, coins_collected: int, _reason: Utils.GameOverReason) -> void:
 	print("Attempting to update player")
-	player_stats_resource.update_coins(player_stats_resource.coins + coins_collected)
+	player_stats_resource.increment_coins(coins_collected)
 	player_stats_resource.update_high_score(final_score)
 	player_stats_resource.save_to_database()
 	

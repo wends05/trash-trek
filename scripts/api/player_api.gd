@@ -2,6 +2,8 @@ extends ApiService
 
 var player_stats: PlayerStatsResource = PlayerStatsResource.get_instance()
 
+#region Get User
+
 func get_user():
 	return await _make_request("/player/" + player_stats.get_device_id(), HTTPClient.METHOD_GET, default_headers, null, _on_get_user)
 
@@ -12,8 +14,11 @@ func _on_get_user(result: int, response_code: int, headers: PackedStringArray, b
 	var res = handle_data_complete(result, response_code, headers, body, endpoint)
 	_handle_and_emit("get_user", res)
 
+#endregion
 
-## Creates a user
+
+#region Create User
+
 func create_user(new_player_stats: Dictionary):
 	return await _make_request("/player", HTTPClient.METHOD_POST, default_headers, new_player_stats, _on_create_user)
 
@@ -24,8 +29,11 @@ func _on_create_user(result: int, response_code: int, headers: PackedStringArray
 	var res = handle_data_complete(result, response_code, headers, body, endpoint)
 	_handle_and_emit("create_user", res)
 
+#endregion
 
-## Updates Player Stats
+
+#region Update User
+
 func update_user(new_player_stats: Dictionary):
 	return await _make_request(
 		"/player/" + player_stats.get_device_id(),
@@ -42,8 +50,11 @@ func _on_update_user(result: int, response_code: int, headers: PackedStringArray
 	var res = handle_data_complete(result, response_code, headers, body, endpoint)
 	_handle_and_emit("update_user", res)
 
+#endregion
 
-## Get top 5 for leaderboards
+
+#region Get Top Five
+
 func get_top_five():
 	return await _make_request(
 		"/top-five",
@@ -60,8 +71,11 @@ func _on_get_top_five(result: int, response_code: int, headers: PackedStringArra
 	var res = handle_data_complete(result, response_code, headers, body, endpoint)
 	_handle_and_emit("get_top_five", res)
 
+#endregion
 
-## Deletes the user
+
+#region Delete User
+
 func delete_user():
 	return await _make_request(
 		"/player/" + player_stats.get_device_id(),
@@ -71,12 +85,15 @@ func delete_user():
 		_on_delete_user
 	)
 
-signal delete_user_success(result: Dictionary)
+signal delete_user_success(is_success: bool)
 signal delete_user_failed(err: Dictionary)
 
 func _on_delete_user(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray, endpoint: String):
 	var res = handle_data_complete(result, response_code, headers, body, endpoint)
 	_handle_and_emit("delete_user", res)
+
+#endregion
+
 
 # Shared handler to keep structure consistent across API classes
 func _handle_and_emit(op: String, res: Variant, update_local: bool = true) -> void:

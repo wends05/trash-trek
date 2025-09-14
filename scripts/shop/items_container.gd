@@ -8,7 +8,8 @@ var ITEMS = {
 }
 
 @onready var upgrades_grid: GridContainer = $UpgradesGrid
-@onready var skins_grid: GridContainer = $SkinsGrid
+@onready var skins_container: ScrollContainer = $SkinsContainer
+@onready var skins_hb: HBoxContainer = $SkinsContainer/HBoxContainer
 
 @export var shop_interface: ShopInterface
 
@@ -35,20 +36,20 @@ func prepare_upgrade(item: String):
 	
 
 func prepare_skin(item: String):
-	var skin = load("res://resources/shop/skins/%s" % item)
+	var skin: SkinResource = load("res://resources/shop/skins/%s" % item)
 	if skin == null:
 		return
 	var skin_node: SkinDisplay = ITEMS["skin"].instantiate()
 	
 	skin_node.skin_resource = skin
 
-	skins_grid.add_child(skin_node)
+	skins_hb.add_child(skin_node)
 
 func update_item_visibility():
 	match shop_interface.current_screen:
 		shop_interface.Category.Upgrades:
 			upgrades_grid.visible = true
-			skins_grid.visible = false
+			skins_container.visible = false
 		shop_interface.Category.Skins:
-			skins_grid.visible = true
+			skins_container.visible = true
 			upgrades_grid.visible = false

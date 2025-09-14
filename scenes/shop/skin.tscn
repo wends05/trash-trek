@@ -1,12 +1,126 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn2jlpoq00ta8"]
+[gd_scene load_steps=10 format=3 uid="uid://bn2jlpoq00ta8"]
 
 [ext_resource type="Script" uid="uid://chauhridgeuxn" path="res://scripts/shop/skin_node.gd" id="1_vj43w"]
+[ext_resource type="Texture2D" uid="uid://cb8p244csnpqi" path="res://assets/shop/upgrades/price.png" id="2_d2y0k"]
+[ext_resource type="Texture2D" uid="uid://b1bmwpb3j1n22" path="res://assets/Player/player.png" id="2_o02k5"]
+[ext_resource type="Texture2D" uid="uid://73k4jmfy3wfw" path="res://assets/shop/upgrades/pricehover.png" id="3_ep8g0"]
+[ext_resource type="FontFile" uid="uid://cbwhuecpnnapj" path="res://fonts/ByteBounce.ttf" id="5_o02k5"]
 
-[node name="Skin" type="Control"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_o02k5"]
+atlas = ExtResource("2_o02k5")
+region = Rect2(0, 0, 1536, 1536)
+
+[sub_resource type="LabelSettings" id="LabelSettings_51btj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_unxcl"]
+font = ExtResource("5_o02k5")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_o02k5"]
+font = ExtResource("5_o02k5")
+
+[node name="Skin" type="Control" node_paths=PackedStringArray("name_label", "upgrade_button", "upgrade_button_label")]
+z_index = 2
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 64.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_vj43w")
+name_label = NodePath("VBoxContainer/NameLabel")
+upgrade_button = NodePath("VBoxContainer/UpgradeButton/UpgradeButton")
+upgrade_button_label = NodePath("VBoxContainer/UpgradeButton/UpgradeButtonLabel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 64.0
+offset_bottom = 311.0
+grow_horizontal = 2
+
+[node name="SkinDisplay" type="TextureRect" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture = SubResource("AtlasTexture_o02k5")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="NameLabel" type="Label" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+label_settings = SubResource("LabelSettings_51btj")
+horizontal_alignment = 1
+
+[node name="UpgradeButton" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="UpgradeButton" type="TextureButton" parent="VBoxContainer/UpgradeButton"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_vj43w")
+size_flags_vertical = 4
+texture_normal = ExtResource("2_d2y0k")
+texture_pressed = ExtResource("3_ep8g0")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="UpgradeButtonLabel" type="Label" parent="VBoxContainer/UpgradeButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100"
+label_settings = SubResource("LabelSettings_unxcl")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EquipButton" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="EquipButton" type="TextureButton" parent="VBoxContainer/EquipButton"]
+unique_name_in_owner = true
+modulate = Color(0, 2.459, 0, 1)
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+texture_normal = ExtResource("2_d2y0k")
+texture_pressed = ExtResource("3_ep8g0")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="EquipButtonLabel" type="Label" parent="VBoxContainer/EquipButton"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Not Equipped"
+label_settings = SubResource("LabelSettings_o02k5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/EquipButton/EquipButton" to="." method="_on_equip_button_pressed"]
