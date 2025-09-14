@@ -8,7 +8,7 @@ extends Control
 
 var show_timer = false
 
-var player_stats = PlayerStatsResource.get_instance()
+var player_stats_resource = PlayerStatsResource.get_instance()
 
 func _ready() -> void:
 	PlayerApi.get_user_failed.connect(_on_get_user_failed)
@@ -31,8 +31,8 @@ func _on_get_user_failed(_err: Dictionary) -> void:
 	message_label.visible = true
 	timer.stop()
 
-func _on_create_user_success(_res: Dictionary) -> void:
-	player_stats.set_name(name_input.text)
+func _on_create_user_success(res: Dictionary) -> void:
+	player_stats_resource.save_stats(res)
 	name_input.text = ""
 	message_label.text = "Name set successfully"
 	go_to_main()
@@ -48,7 +48,7 @@ func _on_create_user_failed(err: Dictionary) -> void:
 func _on_enter_pressed() -> void:
 	message_label.text = ""
 	PlayerApi.create_user({
-		"device_id": player_stats.get_device_id(),
+		"device_id": player_stats_resource.get_device_id(),
 		"name": name_input.text,
 	})
 
