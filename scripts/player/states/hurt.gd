@@ -10,12 +10,14 @@ class_name Hurt
 @export var cancel_upward_velocity: bool = true
 @export var downward_impulse: float = 80.0
 
+var hurt_sfx = preload("res://audios/hurt (1).mp3")
 var _lockout_timer: float = 0.1
 var _connected: bool = false
 
 func enter():
 	player.is_hurt = true
 	player.block_jump_after_hurt = true
+	AudioManager.play_sfx(hurt_sfx)
 	_lockout_timer = jump_lockout_time
 	player.velocity.x = 0.0
 	if cancel_upward_velocity and player.velocity.y < 0.0:

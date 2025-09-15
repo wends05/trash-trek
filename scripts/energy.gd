@@ -13,7 +13,6 @@ func _ready() -> void:
 	
 func change_energy_value(energy: int):
 	zero_energy(energy)
-	# Kill previous tween if still running
 	if _tween and _tween.is_valid():
 		_tween.kill()
 	# Create a new tween to smoothly animate the bar value

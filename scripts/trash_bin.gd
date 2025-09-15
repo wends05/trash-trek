@@ -5,7 +5,7 @@ class_name TrashBin
 
 var type: Utils.TrashType
 var trash_bin_resource: TrashBinResource
-
+var energyREgen_sfx = preload("res://audios/rising-bubbly-pop-351023.mp3")
 @onready var player_collision_area: StaticBody2D = $PlayerCollisionArea
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var icon: TextureRect = $Icon
@@ -66,6 +66,7 @@ func throw_trash() -> void:
 	animating = true
 	
 	animated_sprite.play("open")
+	AudioManager.play_sfx(energyREgen_sfx)
 	await animated_sprite.animation_finished
 	
 	animated_sprite.play("idle")

@@ -23,6 +23,7 @@ var final_jump_boost: float = 0
 @export var animation: AnimationPlayer
 @export var player: Player
 
+var jump_sfx = preload("res://audios/jump.mp3")
 var rise_timer: float = 0.0
 var float_timer: float = 0.0
 var fall_time: float = 0.0
@@ -63,12 +64,14 @@ func enter():
 	is_jumping = true
 	is_floating = false
 	player.velocity.y = final_jump_boost
+	AudioManager.play_sfx(jump_sfx)
 
 func physics_update(delta: float):
 	var gravity_y := player.get_gravity().y # positive downward
 
 	if player.velocity.y < 0: # Rising phase
 		fall_time = 0.0
+		
 		# While holding jump during rise, cap velocity to allow a higher jump (variable height)
 		if Input.is_action_pressed("jump") and is_jumping and rise_timer < rise_sustain_time:
 			rise_timer += delta

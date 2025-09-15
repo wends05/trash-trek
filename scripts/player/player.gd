@@ -9,7 +9,7 @@ class_name Player
 
 var is_hurt: bool = false
 var block_jump_after_hurt: bool = false # Prevent accidental jump buffered during hurt
-
+var trashCollection_sfx = preload("res://audios/pop.mp3")
 var player_stats_resource: PlayerStatsResource = PlayerStatsResource.get_instance()
 
 func _ready() -> void:
@@ -35,6 +35,7 @@ func _on_trash_collection_area_area_entered(area: Area2D) -> void:
 		var trash: Trash = area.get_parent()
 		Game.trash_collected.emit(trash.type)
 		trash.remove()
+		AudioManager.play_sfx(trashCollection_sfx)
 
 
 ## Throw Trash Logic
