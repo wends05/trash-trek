@@ -2,6 +2,7 @@ extends Node2D
 
 class_name Trash
 
+
 @export var type: Utils.TrashType = Utils.TrashType.Recyclable
 @onready var trash_label: Label = $Label
 @onready var trash_texture: Sprite2D = $Area/Sprite2D
@@ -21,6 +22,7 @@ func _process(delta):
 
 func remove():
 	queue_free()
+	
 
 func load_trash() -> void:
 	trash_item_resource = Utils.get_random_trash_item()
