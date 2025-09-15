@@ -1,6 +1,9 @@
 extends Control
+
 class_name UITextController
-@onready var ui: UI = $".."
+
+@export var ui: UI
+
 @export var game_status_label: Control
 @export var game_stats_label: RichTextLabel
 @export var game_reason_label: Control
@@ -23,37 +26,40 @@ var trash_collected
 var score_collected
 var coins_collected
 
-func update_ui_text(state: Utils.UIStateType, reason: Utils.GameOverReason) -> void:
+func update_ui_text_state(state: Utils.UIStateType) -> void:
 	match state:
 		Utils.UIStateType.PauseMenu:
 			game_status_label.text = "PAUSED MENU"
 		Utils.UIStateType.GameOver:
 			game_status_label.text = "GAME OVER"
-			match reason:
-				Utils.GameOverReason.OutOfBounds:
-					game_reason_label.text = "Player left behind"
-				Utils.GameOverReason.Fell:
-					game_reason_label.text = "Player fell out of the world"
-				Utils.GameOverReason.OutOfEnergy:
-					game_reason_label.text = "Player ran out of energy"
+			
+
+func update_ui_text_game_over(reason: Utils.GameOverReason) -> void:
+		match reason:
+			Utils.GameOverReason.OutOfBounds:
+				game_reason_label.text = "Player left behind"
+			Utils.GameOverReason.Fell:
+				game_reason_label.text = "Player fell out of the world"
+			Utils.GameOverReason.OutOfEnergy:
+				game_reason_label.text = "Player ran out of energy"
 			
 			#var energy = Game.energy
-			coins_collected = Game.calculate_coins()
-			score_collected = Game.calculate_score()
-			distance_collected = int(Game.distance_traveled)
-			trash_collected = int(Game.accumulated_trash)
-			
-			displayed_coins = 0
-			displayed_score = 0
-			await	$"..".text_player.animation_finished
-			var timer = get_tree().create_timer(0.3)
-			timer.timeout.connect(func():
-				animating = true
-				animating_distance = false 
-				animating_trash = true
-				animating_coins = false
-				animating_score = false
-			)
+		coins_collected = Game.calculate_coins()
+		score_collected = Game.calculate_score()
+		distance_collected = int(Game.distance_traveled)
+		trash_collected = int(Game.accumulated_trash)
+	
+		displayed_coins = 0
+		displayed_score = 0
+		await $"..".text_player.animation_finished
+		var timer = get_tree().create_timer(0.3)
+		timer.timeout.connect(func():
+			animating = true
+			animating_distance = false
+			animating_trash = true
+			animating_coins = false
+			animating_score = false
+		)
 			
 			#var text = ""
 			#if distance >= 1000:
@@ -73,7 +79,6 @@ func update_ui_text(state: Utils.UIStateType, reason: Utils.GameOverReason) -> v
 			#game_stats_label.text = text
 			
 			
-
 func _process(delta: float) -> void:
 	if animating:
 		var updated := false
@@ -91,7 +96,7 @@ func _process(delta: float) -> void:
 				animating_trash = false
 				await_delay_then_start("distance")
 		
-		elif animating_distance:	
+		elif animating_distance:
 			if displayed_distance < distance_collected:
 				displayed_distance += 1
 				AudioManager.play_sfx(SFX_FILL, -3)
@@ -125,7 +130,6 @@ func _process(delta: float) -> void:
 
 
 func update_game_stats() -> void:
-	
 	var text = "[center]"
 	text += "[font_size=30]Overall Score:[/font_size] \n[color=white][font_size=50]%d[/font_size][/color]\n" % displayed_score
 
@@ -156,7 +160,7 @@ func update_game_stats() -> void:
 			#text += "[img=50x50]res://assets/menu/player_run.png[/img] %d m\n" % distance_collected
 	#if animating_coins or animating_score:
 		#text += " [img=50x25]res://assets/menu/badge.png[/img]%d    " % displayed_coins
-	text += "[/center]"	
+	text += "[/center]"
 	game_stats_label.text = text
 		
 func await_delay_then_start(next: String) -> void:
@@ -168,5 +172,5 @@ func await_delay_then_start(next: String) -> void:
 			animating_coins = true
 		"score":
 			$"../UIVisibilityController".toggle_nodes(ui.game_over_buttons)
-			ui.enable_buttons(ui.game_over_buttons) 
+			ui.enable_buttons(ui.game_over_buttons)
 			animating_score = true
