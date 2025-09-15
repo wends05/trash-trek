@@ -39,6 +39,7 @@ func _ready() -> void:
 	
 	Game.updated_stats.connect(update_trash_counts)
 	Game.update_ui_state.connect(update_ui_state)
+	Game.game_over.connect(update_game_over)
 	Game.update_game_state.connect(update_game_state)
 	
 	
@@ -116,10 +117,13 @@ func _on_pause_button_mouse_entered() -> void:
 func _on_pause_button_mouse_exited() -> void:
 	pause_animation.play_backwards("pause_hover")
 
-func update_ui_state(state: Utils.UIStateType, reason: Utils.GameOverReason = Utils.GameOverReason.None) -> void:
+func update_ui_state(state: Utils.UIStateType) -> void:
 	ui_visibility_controller.update_ui_visibility(state)
-	ui_text_controller.update_ui_text(state, reason)
-	
+	ui_text_controller.update_ui_text_state(state)
+
+func update_game_over(reason: Utils.GameOverReason) -> void:
+	ui_text_controller.update_ui_text_game_over(reason)
+
 func update_game_state(state: Utils.GameStateType) -> void:
 	match state:
 		Utils.GameStateType.Pause:

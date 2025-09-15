@@ -14,7 +14,7 @@ signal energy_changed(value: int)
 signal updated_stats
 signal time_changed(time: float)
 
-signal update_ui_state(type: Utils.UIStateType, reason: Utils.GameOverReason)
+signal update_ui_state(type: Utils.UIStateType)
 signal game_over(reason: Utils.GameOverReason)
 signal update_game_state(type: Utils.GameStateType)
 
