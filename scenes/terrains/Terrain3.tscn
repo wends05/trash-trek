@@ -1,20 +1,19 @@
-[gd_scene load_steps=14 format=4 uid="uid://cj1pwr1ncbm4t"]
+[gd_scene load_steps=13 format=4 uid="uid://cj1pwr1ncbm4t"]
 
 [ext_resource type="Script" uid="uid://cskjjcjavic6o" path="res://scripts/terrain.gd" id="1_l3giw"]
 [ext_resource type="Texture2D" uid="uid://dayocjoqiump8" path="res://assets/background/tile2.png" id="3_ejf2b"]
 [ext_resource type="Script" uid="uid://q01hxgi1lqgv" path="res://scripts/monster_spawn.gd" id="4_l3giw"]
 [ext_resource type="Texture2D" uid="uid://b62fax2s726de" path="res://assets/background/tile3.png" id="4_s8lg7"]
 [ext_resource type="Texture2D" uid="uid://cyu2yaa6na7hj" path="res://assets/background/tile.png" id="5_lvfhc"]
-[ext_resource type="PackedScene" uid="uid://ce4uowuphqpho" path="res://scenes/TrashBin.tscn" id="6_s8lg7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3giw"]
-size = Vector2(293, 143)
+size = Vector2(294, 138)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qm0yi"]
-size = Vector2(289, 75)
+size = Vector2(291, 71)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s8lg7"]
-size = Vector2(159, 75)
+size = Vector2(160, 71)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d0h3b"]
 texture = ExtResource("3_ejf2b")
@@ -76,7 +75,7 @@ sources/1 = SubResource("TileSetAtlasSource_w36fm")
 
 [node name="Terrain3" type="Node2D" node_paths=PackedStringArray("trash_bin_spawn")]
 script = ExtResource("1_l3giw")
-trash_bin_spawn = NodePath("TrashSpawns/trashbin")
+trash_bin_spawn = NodePath("TrashSpawns/TrashBinSpawn")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -84,21 +83,22 @@ collision_mask = 4
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 z_index = 1
-position = Vector2(147.5, 578.5)
+position = Vector2(147, 581)
 shape = SubResource("RectangleShape2D_l3giw")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 z_index = 1
-position = Vector2(642.5, 609.5)
+position = Vector2(641.5, 611.5)
 shape = SubResource("RectangleShape2D_qm0yi")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 z_index = 2
-position = Vector2(1070.5, 609.5)
+position = Vector2(1072, 611.5)
 shape = SubResource("RectangleShape2D_s8lg7")
 
 [node name="MonsterSpawner" type="Marker2D" parent="."]
 position = Vector2(664, 564)
+gizmo_extents = 50.0
 script = ExtResource("4_l3giw")
 
 [node name="TileMap2" type="TileMapLayer" parent="."]
@@ -113,10 +113,9 @@ position = Vector2(367, 342)
 [node name="Marker2D3" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(770, 472)
 
-[node name="trashbin" type="Marker2D" parent="TrashSpawns"]
+[node name="TrashBinSpawn" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(544, 512)
-
-[node name="TrashBin" parent="TrashSpawns/trashbin" instance=ExtResource("6_s8lg7")]
+metadata/_edit_lock_ = true
 
 [node name="Marker2D7" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(1098, 493)
@@ -126,3 +125,6 @@ position = Vector2(941, 419)
 
 [node name="Marker2D6" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(196, 436)
+
+[node name="Marker2D8" type="Marker2D" parent="TrashSpawns"]
+position = Vector2(0, 440)

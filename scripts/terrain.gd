@@ -25,10 +25,11 @@ func _ready() -> void:
 func spawn_trashes():
 	if max_markers == 0:
 		return
+		
 	var chosen_spawners = range(max_markers)
 	chosen_spawners.shuffle()
 	chosen_spawners = chosen_spawners.slice(0, randi_range(1, max_markers - 2))
-	print(name, " ", chosen_spawners)
+
 	for i in chosen_spawners:
 		var trash: Trash = preload("res://scenes/trash.tscn").instantiate()
 

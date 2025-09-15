@@ -7,13 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://b62fax2s726de" path="res://assets/background/tile3.png" id="3_uk3k6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_roftw"]
-size = Vector2(295, 71.6255)
+size = Vector2(298, 66.6257)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_itxum"]
-size = Vector2(129, 69)
+size = Vector2(162, 65)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ny86d"]
-size = Vector2(360, 72)
+size = Vector2(359, 72)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8d62s"]
 texture = ExtResource("2_kn0qc")
@@ -75,10 +75,11 @@ sources/1 = SubResource("TileSetAtlasSource_qy7kg")
 
 [node name="Terrain5" type="Node2D" node_paths=PackedStringArray("trash_bin_spawn")]
 script = ExtResource("1_kn0qc")
-trash_bin_spawn = NodePath("TrashSpawns/Marker2D4")
+trash_bin_spawn = NodePath("TrashSpawns/TrashBinSpawn")
 
 [node name="MonsterSpawn" type="Marker2D" parent="."]
 position = Vector2(1079, 565)
+gizmo_extents = 50.0
 script = ExtResource("2_uk3k6")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -87,17 +88,17 @@ collision_mask = 13
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 z_index = 1
-position = Vector2(478.5, 606.813)
+position = Vector2(477, 609.313)
 shape = SubResource("RectangleShape2D_roftw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 z_index = 1
-position = Vector2(65.5, 606.5)
+position = Vector2(49, 608.5)
 shape = SubResource("RectangleShape2D_itxum")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
 z_index = 1
-position = Vector2(1003, 612)
+position = Vector2(1003.5, 612)
 shape = SubResource("RectangleShape2D_ny86d")
 
 [node name="TileMap2" type="TileMapLayer" parent="."]
@@ -106,23 +107,21 @@ tile_set = SubResource("TileSet_qa3u4")
 
 [node name="TrashSpawns" type="Node2D" parent="."]
 
-[node name="Marker2D2" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(816, 512)
-
 [node name="Marker2D3" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(83, 518)
 
-[node name="Marker2D4" type="Marker2D" parent="TrashSpawns"]
+[node name="TrashBinSpawn" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(952, 512)
+metadata/_edit_lock_ = true
 
 [node name="Marker2D5" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(503, 508)
+position = Vector2(576, 512)
 
 [node name="Marker2D6" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(1016, 448)
+position = Vector2(960, 384)
 
 [node name="Marker2D7" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(453, 509)
+position = Vector2(448, 512)
 
 [node name="Marker2D8" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(296, 464)
+position = Vector2(448, 384)

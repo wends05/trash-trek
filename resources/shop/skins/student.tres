@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SkinResource" load_steps=3 format=3 uid="uid://bghihevoiyspg"]
+[gd_resource type="Resource" script_class="SkinResource" load_steps=3 format=3 uid="uid://dlay7llmmyj4x"]
 
 [ext_resource type="Script" uid="uid://cwumjoef44cd" path="res://scripts/shop/skin_resource.gd" id="1_1e1sc"]
 [ext_resource type="Texture2D" uid="uid://dp7cub05id1rc" path="res://assets/Player/student.png" id="2_qio3y"]

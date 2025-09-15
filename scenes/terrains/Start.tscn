@@ -64,7 +64,7 @@ sources/0 = SubResource("TileSetAtlasSource_ve2x2")
 sources/1 = SubResource("TileSetAtlasSource_tg8ce")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w20fd"]
-size = Vector2(1187, 76.25)
+size = Vector2(1185, 72.375)
 
 [node name="Start" type="Node2D"]
 script = ExtResource("1_iynp7")
@@ -79,5 +79,5 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 z_index = 1
-position = Vector2(591.5, 610.25)
+position = Vector2(592.5, 612.188)
 shape = SubResource("RectangleShape2D_w20fd")

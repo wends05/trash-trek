@@ -7,10 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://b62fax2s726de" path="res://assets/background/tile3.png" id="4_uggdn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w20fd"]
-size = Vector2(557, 76.3755)
+size = Vector2(541, 68.3757)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qm0yi"]
-size = Vector2(439, 76)
+size = Vector2(456, 71)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hjqgp"]
 texture = ExtResource("3_hyh5j")
@@ -72,7 +72,7 @@ sources/1 = SubResource("TileSetAtlasSource_hyh5j")
 
 [node name="Terrain1" type="Node2D" node_paths=PackedStringArray("trash_bin_spawn")]
 script = ExtResource("1_s3xfo")
-trash_bin_spawn = NodePath("TrashSpawns/Marker2D3")
+trash_bin_spawn = NodePath("TrashSpawns/TrashBinSpawn")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -80,12 +80,12 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 z_index = 1
-position = Vector2(246.5, 610.188)
+position = Vector2(254.5, 610.188)
 shape = SubResource("RectangleShape2D_w20fd")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 z_index = 1
-position = Vector2(948.5, 609)
+position = Vector2(956, 611.5)
 shape = SubResource("RectangleShape2D_qm0yi")
 
 [node name="TileMap" type="TileMapLayer" parent="."]
@@ -98,17 +98,23 @@ tile_set = SubResource("TileSet_hyh5j")
 position = Vector2(449, 510)
 
 [node name="Marker2D3" type="Marker2D" parent="TrashSpawns"]
+position = Vector2(344, 384)
+
+[node name="TrashBinSpawn" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(341, 510)
+metadata/_edit_lock_ = true
 
 [node name="Marker2D4" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(1074, 522)
+position = Vector2(964, 524)
 
 [node name="Marker2D5" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(1072, 416)
+position = Vector2(962, 418)
 
 [node name="Marker2D6" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(840, 416)
 
 [node name="MonsterSpawn" type="Marker2D" parent="."]
 position = Vector2(230, 566)
+gizmo_extents = 50.0
 script = ExtResource("4_qm0yi")
+metadata/_edit_lock_ = true
