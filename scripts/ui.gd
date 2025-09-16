@@ -140,9 +140,11 @@ func update_game_state(state: Utils.GameStateType) -> void:
 				)
 					
 			else:
-				get_tree().paused = true
+				if is_inside_tree():
+					get_tree().paused = false
 		Utils.GameStateType.Play:
-			get_tree().paused = false
+			if is_inside_tree():
+				get_tree().paused = false
 
 func disable_buttons(buttons: Array):
 	for button in buttons:
