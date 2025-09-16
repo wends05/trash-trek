@@ -324,10 +324,10 @@ justification_flags = 34
 
 [node name="MainMenuButton" type="Button" parent="."]
 process_mode = 3
-offset_left = 489.0
-offset_top = 684.0
-offset_right = 593.0
-offset_bottom = 720.0
+offset_left = 472.0
+offset_top = 688.0
+offset_right = 576.0
+offset_bottom = 724.0
 scale = Vector2(1.43271, 1.43271)
 text = "Main Menu"
 

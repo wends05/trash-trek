@@ -141,7 +141,7 @@ func update_game_state(state: Utils.GameStateType) -> void:
 					
 			else:
 				if is_inside_tree():
-					get_tree().paused = false
+					get_tree().paused = true
 		Utils.GameStateType.Play:
 			if is_inside_tree():
 				get_tree().paused = false
