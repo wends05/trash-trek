@@ -36,20 +36,13 @@ func get_player_skin():
 	return skin_resource.player_stats_resource.find_skin(skin_resource.name)
 
 func _display_buy_button():
-	if skin_resource.name == "Default":
-		upgrade_button.disabled = true
-		upgrade_button_label.text = "Owned"
-		return
-
 	var is_owned = get_player_skin()
-
-	if is_owned != -1:
+	if skin_resource.name == "Default" or is_owned != -1:
 		upgrade_button.disabled = true
 		upgrade_button_label.text = "Owned"
-		return
-
-	cost = skin_resource.base_price
-	super._display_buy_button()
+	else:
+		cost = skin_resource.base_price
+		super._display_buy_button()
 
 func _display_item_stats():
 	print_stack()
@@ -58,8 +51,11 @@ func _display_item_stats():
 	var equipped_skin = skin_resource.player_stats_resource.get_equipped_skin()
 	var is_owned = get_player_skin()
 
-	if is_owned == -1 and skin_resource.name != "Default":
-		equip_button_label.text = "Not Owned"
+	if is_owned == -1:
+		if skin_resource.name != "Default":
+			equip_button_label.text = "Not Owned"
+			equip_button.disabled = true
+		return
 
 	if equipped_skin == skin_resource.name:
 		equip_button_label.text = "Equipped"

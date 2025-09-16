@@ -42,6 +42,7 @@ func prepare_skin(item: String):
 	var skin_node: SkinDisplay = ITEMS["skin"].instantiate()
 	
 	skin_node.skin_resource = skin
+	skin_node.coin_upgrade_error.connect(shop_interface.display_coin_error)
 
 	skins_hb.add_child(skin_node)
 
