@@ -11,6 +11,35 @@ extends Control
 @onready var trans_player = $TransPlayer
 @onready var text_player = $"../TextPlayer"
 @onready var ui : UI = $".."
+var animations_finished := false
+var input_locked := false
+
+func _ready() -> void:
+	$"../UITextController".anim_finished.connect(_on_animations_done)
+
+func _on_animations_done() -> void:
+	animations_finished = true
+
+func _input(event: InputEvent) -> void:	
+	if input_locked:
+		return
+	if event is InputEventKey and event.is_pressed():
+		if Game.is_game_over and not Game.is_game_pause and	animations_finished:
+			lock_input()
+			await _on_restart_button_pressed()
+			unlock_input()
+		elif not Game.is_game_over and Game.is_game_pause:
+			if not Input.is_action_just_pressed("esc"):
+				lock_input()
+				await  _on_resume_button_pressed()
+				unlock_input()
+			
+func lock_input() -> void:
+	input_locked = true
+
+func unlock_input() -> void:
+	input_locked = false
+		
 
 func _on_resume_button_pressed() -> void:
 	AudioManager.play_sfx(ui.SFX_UNPAUSED, -3)

@@ -26,6 +26,8 @@ var trash_collected
 var score_collected
 var coins_collected
 
+signal anim_finished
+
 func update_ui_text_state(state: Utils.UIStateType) -> void:
 	match state:
 		Utils.UIStateType.PauseMenu:
@@ -98,9 +100,16 @@ func _process(delta: float) -> void:
 		
 		elif animating_distance:
 			if displayed_distance < distance_collected:
-				displayed_distance += 1
-				AudioManager.play_sfx(SFX_FILL, -3)
-				updated = true
+				if displayed_distance < 200:
+					displayed_distance += 1
+					AudioManager.play_sfx(SFX_FILL, -3)
+					updated = true
+				else:
+					displayed_distance = distance_collected
+					AudioManager.play_sfx(SFX_FILL, -3)
+					updated = true
+					animating_distance = false
+					await_delay_then_start("coins")
 			else:
 				animating_distance = false
 				await_delay_then_start("coins")
@@ -124,6 +133,7 @@ func _process(delta: float) -> void:
 				AudioManager.play_sfx(SFX_SUCCESS, -10)
 				animating_score = false
 				animating = false
+				anim_finished.emit()
 
 		if updated:
 			update_game_stats()

@@ -16,13 +16,18 @@ var tutorial_audio = preload("res://audios/Tutorial/the-return-of-the-8-bit-era-
 @onready var exit_button = $Buttons/ExitButton
 
 @onready var scene_container = $SceneContainer
-
+var game_started := false
 
 func _ready():
 	AudioManager.play_music(preload("res://audios/main_menu3.mp3"), -3)
 	SceneTransition.credits_end.connect(exit_credits)
 	is_intro_scene()
 	cam.make_current()
+
+func _input(event: InputEvent) -> void:	
+	if not game_started and event is InputEventKey and event.is_pressed():
+		game_started = true
+		start_game()
 
 func exit_credits():
 	enable_buttons([credits_button, exit_button, start_button, tutorial_button])
