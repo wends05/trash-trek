@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://cshov0pw3ybab"]
+[gd_scene load_steps=18 format=3 uid="uid://cshov0pw3ybab"]
 
-[ext_resource type="Script" path="res://scripts/tutorial.gd" id="1_288ch"]
+[ext_resource type="Script" uid="uid://do2ilb1qn4e16" path="res://scripts/tutorial.gd" id="1_288ch"]
 [ext_resource type="Texture2D" uid="uid://bn803xu6uqhoh" path="res://assets/background/Screenshot 2025-09-10 011723.png" id="1_ci5ev"]
 [ext_resource type="Texture2D" uid="uid://dyy22jdslekwu" path="res://assets/trashbins/Bio.png" id="2_ebau5"]
 [ext_resource type="Texture2D" uid="uid://bgx6pwwb50ios" path="res://assets/TutorialGuide.png" id="2_pgr2e"]
 [ext_resource type="Texture2D" uid="uid://c8wkxhffuun85" path="res://assets/monsters/Rmonster/Rmonster13.png" id="3_288ch"]
+[ext_resource type="Texture2D" uid="uid://c8djme6vt6yn5" path="res://assets/trashbins/labels/Biodegradable.png" id="5_u5f0c"]
 [ext_resource type="Texture2D" uid="uid://csqdugpmfu16o" path="res://assets/Scroll.png" id="6_y0w3d"]
 [ext_resource type="FontFile" uid="uid://cbwhuecpnnapj" path="res://fonts/ByteBounce.ttf" id="7_u5f0c"]
 
@@ -34,6 +35,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(421, 489), Vector2(523, 66)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenuButton:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(34, 12.0001)]
+}
 
 [sub_resource type="Animation" id="Animation_ebau5"]
 resource_name = "2 Trash"
@@ -60,6 +73,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(4.12511, 0.48336), Vector2(0.763233, 0.458586)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenuButton:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(34, 12.0001)]
 }
 
 [sub_resource type="Animation" id="Animation_twv1b"]
@@ -101,7 +126,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(840, 546), Vector2(1016, 556)]
+"values": [Vector2(840, 546), Vector2(1019, 535)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -113,7 +138,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(1.417, 0.972), Vector2(0.889535, 0.770212)]
+"values": [Vector2(1.417, 0.972), Vector2(0.871083, 1.10274)]
 }
 
 [sub_resource type="Animation" id="Animation_u5f0c"]
@@ -141,6 +166,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0.889999, 0.790001), Vector2(1.96081, 0.695618)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenuButton:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(34, 12.0001)]
 }
 
 [sub_resource type="Animation" id="Animation_0g6v0"]
@@ -179,7 +216,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(489, 684), Vector2(495, 447)]
+"values": [Vector2(34, 12.0001), Vector2(619, 569)]
 }
 
 [sub_resource type="Animation" id="Animation_ci5ev"]
@@ -247,6 +284,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(9.73306, 3.59123), Vector2(9.73306, 3.59123)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenuButton:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(34, 12.0001)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_288ch"]
 _data = {
@@ -282,6 +331,39 @@ texture = ExtResource("2_ebau5")
 position = Vector2(868, 502)
 scale = Vector2(0.155, 0.155)
 texture = ExtResource("3_288ch")
+
+[node name="quantity" type="Sprite2D" parent="."]
+position = Vector2(1033, 411)
+scale = Vector2(0.215, 0.215)
+texture = ExtResource("5_u5f0c")
+
+[node name="Label2" type="Label" parent="quantity"]
+layout_direction = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -552.325
+offset_top = -375.581
+offset_right = -367.325
+offset_bottom = -294.581
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3.31435, 2.89416)
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = -1
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 4
+theme_override_fonts/font = ExtResource("7_u5f0c")
+theme_override_font_sizes/font_size = 60
+text = "9"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+justification_flags = 34
 
 [node name="Guide" type="Sprite2D" parent="."]
 position = Vector2(440, 498)
@@ -324,10 +406,10 @@ justification_flags = 34
 
 [node name="MainMenuButton" type="Button" parent="."]
 process_mode = 3
-offset_left = 472.0
-offset_top = 688.0
-offset_right = 576.0
-offset_bottom = 724.0
+offset_left = 489.0
+offset_top = 684.0
+offset_right = 593.0
+offset_bottom = 720.0
 scale = Vector2(1.43271, 1.43271)
 text = "Main Menu"
 
