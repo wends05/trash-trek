@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://41pdkr7cyd1k"]
+[gd_scene load_steps=19 format=3 uid="uid://41pdkr7cyd1k"]
 
 [ext_resource type="Script" uid="uid://cgceewwcvxwth" path="res://scripts/scene/scene_transition.gd" id="1_rujfs"]
 [ext_resource type="Texture2D" uid="uid://c36ux6awwi56f" path="res://assets/background/sky.jpg" id="3_2sgj6"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://cf3y580tv5shs" path="res://assets/background/21.png" id="4_non66"]
 [ext_resource type="Texture2D" uid="uid://bxug1ni6gb5ru" path="res://assets/background/23.png" id="5_h8vuu"]
 [ext_resource type="Texture2D" uid="uid://cj7r2pyy74b8d" path="res://assets/background/5.png" id="6_l5v6o"]
-[ext_resource type="Texture2D" uid="uid://qas3koyaoy7h" path="res://assets/background/ktown2.png" id="8_h8vuu"]
+[ext_resource type="Texture2D" uid="uid://by2di8ginwmnb" path="res://assets/background/bldg1.png" id="8_l5v6o"]
+[ext_resource type="Texture2D" uid="uid://3jun76ke2f5q" path="res://assets/background/bldg2.png" id="9_73nkw"]
+[ext_resource type="Texture2D" uid="uid://cjycekvxg3hbt" path="res://assets/background/ktown1.png" id="10_73nkw"]
 
 [sub_resource type="Animation" id="Animation_2sgj6"]
 length = 0.001
@@ -614,9 +616,24 @@ texture = ExtResource("6_l5v6o")
 centered = false
 
 [node name="Sprite2D3" type="Sprite2D" parent="Parallax/Foreground"]
-position = Vector2(540, 70)
-scale = Vector2(0.86679, 1.01982)
-texture = ExtResource("8_h8vuu")
+position = Vector2(1152, 8)
+scale = Vector2(2.01215, 1.74383)
+texture = ExtResource("6_l5v6o")
+centered = false
+
+[node name="Bldg1" type="Sprite2D" parent="Parallax/Foreground"]
+position = Vector2(560, 376)
+scale = Vector2(0.436, 0.436)
+texture = ExtResource("8_l5v6o")
+
+[node name="Bldg2" type="Sprite2D" parent="Parallax/Foreground"]
+position = Vector2(852, 392)
+scale = Vector2(0.396, 0.396)
+texture = ExtResource("9_73nkw")
+
+[node name="Ktown1" type="Sprite2D" parent="Parallax/Foreground"]
+position = Vector2(1672, 104)
+texture = ExtResource("10_73nkw")
 
 [node name="Parallax2D" type="Parallax2D" parent="Parallax"]
 visible = false

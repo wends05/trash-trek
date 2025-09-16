@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bjlwocmldl2p1"]
+[gd_scene load_steps=21 format=3 uid="uid://bjlwocmldl2p1"]
 
 [ext_resource type="Script" uid="uid://djvk4e4r7ppdn" path="res://scripts/main.gd" id="1_h6nst"]
 [ext_resource type="PackedScene" uid="uid://dyac4ihj46tig" path="res://scenes/Player.tscn" id="1_nbc6x"]
@@ -11,7 +11,9 @@
 [ext_resource type="Script" uid="uid://go4n0wcu27jd" path="res://scripts/trash_remover.gd" id="6_c01mt"]
 [ext_resource type="PackedScene" uid="uid://b3evh0nyta6a3" path="res://scenes/death_zones.tscn" id="7_jlsqs"]
 [ext_resource type="PackedScene" uid="uid://cnvc3c5c6c8mj" path="res://scenes/ui.tscn" id="7_nxtc6"]
-[ext_resource type="Texture2D" uid="uid://qas3koyaoy7h" path="res://assets/background/ktown2.png" id="13_qmy6f"]
+[ext_resource type="Texture2D" uid="uid://by2di8ginwmnb" path="res://assets/background/bldg1.png" id="12_qmy6f"]
+[ext_resource type="Texture2D" uid="uid://3jun76ke2f5q" path="res://assets/background/bldg2.png" id="13_mwfav"]
+[ext_resource type="Texture2D" uid="uid://cjycekvxg3hbt" path="res://assets/background/ktown1.png" id="14_mwfav"]
 
 [sub_resource type="Gradient" id="Gradient_bjd11"]
 offsets = PackedFloat32Array(0.603896, 1)
@@ -243,7 +245,7 @@ centered = false
 
 [node name="Foreground" type="Parallax2D" parent="Background"]
 z_index = -1
-repeat_size = Vector2(1150, 0)
+repeat_size = Vector2(2304, 0)
 autoscroll = Vector2(-150, 0)
 repeat_times = 2
 
@@ -254,9 +256,24 @@ texture = ExtResource("5_3p2gp")
 centered = false
 
 [node name="Sprite2D3" type="Sprite2D" parent="Background/Foreground"]
-position = Vector2(540, 70)
-scale = Vector2(0.86679, 1.01982)
-texture = ExtResource("13_qmy6f")
+position = Vector2(1152, 8)
+scale = Vector2(2.01215, 1.74383)
+texture = ExtResource("5_3p2gp")
+centered = false
+
+[node name="Bldg1" type="Sprite2D" parent="Background/Foreground"]
+position = Vector2(560, 376)
+scale = Vector2(0.436, 0.436)
+texture = ExtResource("12_qmy6f")
+
+[node name="Bldg2" type="Sprite2D" parent="Background/Foreground"]
+position = Vector2(852, 392)
+scale = Vector2(0.396, 0.396)
+texture = ExtResource("13_mwfav")
+
+[node name="Ktown1" type="Sprite2D" parent="Background/Foreground"]
+position = Vector2(1672, 104)
+texture = ExtResource("14_mwfav")
 
 [node name="Parallax2D" type="Parallax2D" parent="Background"]
 
