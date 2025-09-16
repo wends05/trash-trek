@@ -10,10 +10,16 @@ var monster_scenes: Array[PackedScene] = [
 
 
 func _ready() -> void:
-	if Game.elapsed_time >= 20:
-		var spawn_rate = randf()
-		if spawn_rate < 0.5:
-			spawn_monster()
+	var spawn_rate := 0.0
+	if Game.elapsed_time >= 60:
+		spawn_rate = 0.5 
+	elif Game.elapsed_time >= 20:
+		spawn_rate = 0.4 
+	else:
+		return 
+		
+	if randf() < spawn_rate:
+		spawn_monster()
 
 func spawn_monster() -> void:
 	var idx: int = randi_range(0, monster_scenes.size() - 1)

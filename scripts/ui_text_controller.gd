@@ -131,6 +131,8 @@ func _process(delta: float) -> void:
 				updated = true
 			else:
 				AudioManager.play_sfx(SFX_SUCCESS, -10)
+				$"../UIVisibilityController".toggle_nodes(ui.game_over_buttons)
+				ui.enable_buttons(ui.game_over_buttons)
 				animating_score = false
 				animating = false
 				anim_finished.emit()
@@ -181,6 +183,4 @@ func await_delay_then_start(next: String) -> void:
 		"coins":
 			animating_coins = true
 		"score":
-			$"../UIVisibilityController".toggle_nodes(ui.game_over_buttons)
-			ui.enable_buttons(ui.game_over_buttons)
 			animating_score = true

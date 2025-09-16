@@ -125,6 +125,8 @@ func update_game_over(reason: Utils.GameOverReason) -> void:
 	ui_text_controller.update_ui_text_game_over(reason)
 
 func update_game_state(state: Utils.GameStateType) -> void:
+	if not is_inside_tree():
+		return
 	match state:
 		Utils.GameStateType.Pause:
 			if Game.is_game_over:
