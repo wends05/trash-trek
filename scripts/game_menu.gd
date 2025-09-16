@@ -26,19 +26,19 @@ func _on_restart_button_pressed() -> void:
 	Utils.anim_player(button_player, "restart_press")
 	await button_player.animation_finished
 	ui.game_menu_animation(false)
+	Game.update_game_state.emit(Utils.GameStateType.Play)
 	await text_player.animation_finished
 	get_tree().change_scene_to_file("res://scenes/Main.tscn")
 	Game.is_game_over = false
-	Game.update_game_state.emit(Utils.GameStateType.Play)
 	Game.reset_stats()
 
 func _on_retry_button_pressed() -> void:
 	check_for_pause()
 	ui.game_menu_animation(false)
+	Game.update_game_state.emit(Utils.GameStateType.Play)
 	await text_player.animation_finished
 	get_tree().change_scene_to_file("res://scenes/Main.tscn")
 	Game.is_game_over = false
-	Game.update_game_state.emit(Utils.GameStateType.Play)
 	Game.reset_stats()
 	
 func _on_main_menu_button_pressed() -> void:
