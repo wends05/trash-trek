@@ -605,7 +605,7 @@ centered = false
 visible = false
 modulate = Color(1, 1, 1, 0)
 z_index = -1
-repeat_size = Vector2(1150, 0)
+repeat_size = Vector2(2304, 0)
 autoscroll = Vector2(-150, 0)
 repeat_times = 2
 
@@ -634,6 +634,3 @@ texture = ExtResource("9_73nkw")
 [node name="Ktown1" type="Sprite2D" parent="Parallax/Foreground"]
 position = Vector2(1672, 104)
 texture = ExtResource("10_73nkw")
-
-[node name="Parallax2D" type="Parallax2D" parent="Parallax"]
-visible = false
