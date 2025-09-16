@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cyu2yaa6na7hj" path="res://assets/background/tile.png" id="5_lvfhc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3giw"]
-size = Vector2(326, 78)
+size = Vector2(295, 78)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qm0yi"]
 size = Vector2(291, 137)
@@ -83,7 +83,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
 z_index = 1
-position = Vector2(131, 611)
+position = Vector2(115.5, 611)
 shape = SubResource("RectangleShape2D_l3giw")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
