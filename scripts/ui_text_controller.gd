@@ -26,6 +26,8 @@ var trash_collected
 var score_collected
 var coins_collected
 
+signal anim_finished
+
 func update_ui_text_state(state: Utils.UIStateType) -> void:
 	match state:
 		Utils.UIStateType.PauseMenu:
@@ -131,6 +133,7 @@ func _process(delta: float) -> void:
 				AudioManager.play_sfx(SFX_SUCCESS, -10)
 				animating_score = false
 				animating = false
+				anim_finished.emit()
 
 		if updated:
 			update_game_stats()
