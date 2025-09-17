@@ -69,11 +69,41 @@ animations = [{
 "texture": ExtResource("2_dkrhh")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_jbiie")
+"texture": ExtResource("2_dkrhh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_vrqp7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_g8217")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7cufh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tq2t5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_d0hx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_222wc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8ic41")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vdedv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0u5g8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nxr34")
 }],
 "loop": true,
 "name": &"spawn",
-"speed": 10.0
+"speed": 15.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dkrhh"]
@@ -90,8 +120,7 @@ scale = Vector2(0.125455, 0.125455)
 sprite_frames = SubResource("SpriteFrames_l5q2v")
 animation = &"spawn"
 autoplay = "spawn"
-frame = 9
-frame_progress = 0.785098
+frame_progress = 0.339513
 
 [node name="Area2D" type="Area2D" parent="RecyclableMonster"]
 position = Vector2(0.000187949, -140.936)
