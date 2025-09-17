@@ -113,10 +113,7 @@ tile_set = SubResource("TileSet_cd1ji")
 [node name="TrashSpawns" type="Node2D" parent="."]
 
 [node name="Marker2D2" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(367, 342)
-
-[node name="Marker2D3" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(770, 472)
+position = Vector2(368, 296)
 
 [node name="TrashBinSpawn" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(88, 517)
@@ -125,13 +122,10 @@ position = Vector2(88, 517)
 position = Vector2(1098, 493)
 
 [node name="Marker2D5" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(941, 419)
+position = Vector2(928, 384)
 
 [node name="Marker2D6" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(196, 436)
-
-[node name="Marker2D8" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(0, 440)
 
 [node name="TrashBinSpawn2" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(574, 456)

@@ -72,7 +72,7 @@ sources/1 = SubResource("TileSetAtlasSource_hyh5j")
 
 [node name="Terrain1" type="Node2D" node_paths=PackedStringArray("trash_bin_spawns")]
 script = ExtResource("1_s3xfo")
-trash_bin_spawns = [NodePath("TrashSpawns/TrashBinSpawn"), NodePath("TrashSpawns/TrashBinSpawn2")]
+trash_bin_spawns = [NodePath("TrashSpawns/TrashBinSpawn"), NodePath("")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -95,25 +95,23 @@ tile_set = SubResource("TileSet_hyh5j")
 [node name="TrashSpawns" type="Node2D" parent="."]
 
 [node name="Marker2D2" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(449, 510)
+position = Vector2(384, 512)
 
 [node name="Marker2D3" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(344, 384)
+position = Vector2(232, 384)
 
 [node name="TrashBinSpawn" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(832, 512)
+position = Vector2(880, 512)
+gizmo_extents = 20.0
 
 [node name="Marker2D4" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(964, 524)
+position = Vector2(1024, 512)
 
 [node name="Marker2D5" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(962, 418)
+position = Vector2(1024, 416)
 
 [node name="Marker2D6" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(840, 416)
-
-[node name="TrashBinSpawn2" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(338, 513)
+position = Vector2(880, 416)
 
 [node name="MonsterSpawn" type="Marker2D" parent="."]
 position = Vector2(230, 566)
