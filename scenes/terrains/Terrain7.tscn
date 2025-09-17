@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://d2r4xifwwbcul"]
+[gd_scene load_steps=13 format=4 uid="uid://ip5td3ugqin3"]
 
 [ext_resource type="Script" uid="uid://cskjjcjavic6o" path="res://scripts/terrain.gd" id="1_y5qwo"]
 [ext_resource type="Script" uid="uid://q01hxgi1lqgv" path="res://scripts/monster_spawn.gd" id="2_o62h2"]

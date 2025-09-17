@@ -8,16 +8,20 @@ var final_jump_boost: float = 0
 # Variable height  settings
 @export var rise_sustain_time: float = 0.38 # How long holding jump keeps velocity capped (gives taller jump)
 
-
+ 
 # Float 
 @export var enable_float: bool = true
 @export var float_hold_time: float = 1.2
-@export var unlimited_float: bool = true #float activation
+@export var unlimited_float: bool = true # float activation
 @export var float_gravity_multiplier: float = 0.08 # Gravity multiplier while floating (smaller = slower fall)
 @export var float_activation_delay: float = 0.4 # Time after starting to fall before float engages (prevents instant float at apex)
 
 # General fall tuning
 @export var fall_gravity_multiplier: float = 1.5 # Gravity when not floating (faster fall feel)
+ 
+# Jump buffer + landing grace
+@export var jump_buffer_time: float = 0.1 # Press before landing; fires on touchdown
+@export var post_land_grace_time: float = 0.1 # Time after landing you can still press to re-jump
 
 @export_category("Nodes")
 @export var animation: AnimationPlayer
@@ -30,6 +34,11 @@ var fall_time: float = 0.0
 var is_jumping: bool = false
 var is_floating: bool = false
 var _current_force: float = 0.0
+
+# Timers/flags for buffering
+var _jump_buffer_timer: float = 0.0
+var _land_grace_timer: float = 0.0
+var _was_on_floor: bool = false
 
 @export var jump_boost_resource: UpgradeResource = preload("res://resources/shop/upgrades/jumpboost.tres")
 
@@ -45,6 +54,9 @@ func _ready() -> void:
 	
 
 func enter():
+	_was_on_floor = player.is_on_floor()
+	_land_grace_timer = 0.0
+	
 	# If a hurt-triggered lockout is active, immediately abort to running/falling state
 	if player.block_jump_after_hurt:
 		# Decide appropriate fallback state
@@ -66,8 +78,19 @@ func enter():
 	player.velocity.y = final_jump_boost
 	AudioManager.play_sfx(jump_sfx)
 
+	# Initialize buffer/grace tracking
+	_jump_buffer_timer = 0.0
+	_land_grace_timer = 0.0
+	_was_on_floor = player.is_on_floor()
+
 func physics_update(delta: float):
 	var gravity_y := player.get_gravity().y # positive downward
+
+	# Record buffered jump while airborne
+	if Input.is_action_just_pressed("jump"):
+		_jump_buffer_timer = jump_buffer_time
+	else:
+		_jump_buffer_timer = max(0.0, _jump_buffer_timer - delta)
 
 	if player.velocity.y < 0: # Rising phase
 		fall_time = 0.0
@@ -93,11 +116,26 @@ func physics_update(delta: float):
 		player.velocity.y += gravity_y * g_mult * delta
 	
 	player.move_and_slide()
-	
-	# Transition to running when landing
-	if player.is_on_floor():
-		transitioned.emit(self, "running")
-		return
+
+	# Landing/grace handling
+	var on_floor := player.is_on_floor()
+	if on_floor and not _was_on_floor:
+		# Just landed
+		_land_grace_timer = post_land_grace_time
+	_was_on_floor = on_floor
+
+	if on_floor:
+		_land_grace_timer = max(0.0, _land_grace_timer - delta)
+		# Fire buffered pre-landing press OR allow press during grace
+		if _jump_buffer_timer > 0.0 or (Input.is_action_pressed("jump") and _land_grace_timer > 0.0):
+			_jump_buffer_timer = 0.0
+			_land_grace_timer = 0.0
+			transitioned.emit(self, "jump")
+			return
+		# If no jump during grace => go to running when grace ends
+		if _land_grace_timer <= 0.0:
+			transitioned.emit(self, "running")
+			return
 	
 	# Transition to falling if we're heading downward
 	if player.velocity.y > 0:
