@@ -98,10 +98,12 @@ shape = SubResource("RectangleShape2D_4gsq6")
 position = Vector2(528, 456)
 
 [node name="Marker2D3" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(160, 384)
+position = Vector2(208, 384)
 
 [node name="TrashBinSpawn" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(970, 521)
+position = Vector2(1024, 520)
+gizmo_extents = 20.0
+metadata/_edit_lock_ = true
 
 [node name="Marker2D6" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(1024, 360)
@@ -110,11 +112,11 @@ position = Vector2(1024, 360)
 position = Vector2(768, 360)
 
 [node name="MonsterSpawner2" type="Marker2D" parent="."]
-position = Vector2(159, 562)
+position = Vector2(208, 568)
 gizmo_extents = 50.0
 script = ExtResource("4_4gsq6")
 
 [node name="MonsterSpawner" type="Marker2D" parent="."]
-position = Vector2(667, 569)
+position = Vector2(760, 568)
 gizmo_extents = 50.0
 script = ExtResource("4_4gsq6")

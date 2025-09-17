@@ -31,8 +31,8 @@ var is_game_pause: bool = false
 
 var trash_bin_countdown = randi_range(2, 4)
 
-var selected_trash_type: Utils.TrashType
-signal changed_trash_type(type: Utils.TrashType)
+var selected_trash_type: Utils.TrashType = Utils.TrashType.Recyclable
+signal changed_trash_type()
 
 var energy_timer: Timer
 var player_stats_resource: PlayerStatsResource = PlayerStatsResource.get_instance()
@@ -99,7 +99,7 @@ func update_trash_count(type: Utils.TrashType):
 
 func select_trash_type(type: Utils.TrashType):
 	selected_trash_type = type
-	changed_trash_type.emit(type)
+	changed_trash_type.emit()
 
 
 ## Trashbin related
