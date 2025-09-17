@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cnvc3c5c6c8mj" path="res://scenes/ui.tscn" id="7_nxtc6"]
 [ext_resource type="Texture2D" uid="uid://by2di8ginwmnb" path="res://assets/background/bldg1.png" id="12_qmy6f"]
 [ext_resource type="Texture2D" uid="uid://3jun76ke2f5q" path="res://assets/background/bldg2.png" id="13_mwfav"]
-[ext_resource type="Texture2D" uid="uid://cjycekvxg3hbt" path="res://assets/background/ktown1.png" id="14_mwfav"]
+[ext_resource type="Texture2D" uid="uid://bqtxwwvoso5gl" path="res://assets/Buildings Image 1.png" id="14_mwfav"]
 
 [sub_resource type="Gradient" id="Gradient_bjd11"]
 offsets = PackedFloat32Array(0.603896, 1)
@@ -272,7 +272,7 @@ scale = Vector2(0.396, 0.396)
 texture = ExtResource("13_mwfav")
 
 [node name="Ktown1" type="Sprite2D" parent="Background/Foreground"]
-position = Vector2(1672, 104)
+position = Vector2(1672, 288)
 texture = ExtResource("14_mwfav")
 
 [node name="Parallax2D" type="Parallax2D" parent="Background"]
