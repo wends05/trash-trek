@@ -8,6 +8,15 @@ var skin_resource: SkinResource
 @onready var equip_button: BaseButton = $%EquipButton
 @onready var equip_button_label: Label = $%EquipButtonLabel
 
+func check_unavailable():
+	if skin_resource.texture_tilemap.resource_path == "res://assets/Player/unavailable.png":
+		upgrade_button.disabled = true
+		upgrade_button_label.text = "Unavailable"
+		equip_button.disabled = true
+		equip_button_label.text = "Unavailable"
+		skin_display.modulate = Color(0, 0, 0, 1)
+		return
+
 func _ready_item():
 	if not skin_resource:
 		printerr("No resource added")
@@ -23,12 +32,14 @@ func _ready_item():
 
 
 func create_atlas_texture():
+	check_unavailable()
 	var atlas_texture = AtlasTexture.new()
 	atlas_texture.region = Rect2(0, 0, 1536, 1536)
 	atlas_texture.atlas = skin_resource.texture_tilemap
 	return atlas_texture
 
 func _display_item():
+	check_unavailable()
 	name_label.text = skin_resource.name
 	super._display_item()
 
@@ -36,6 +47,7 @@ func get_player_skin():
 	return skin_resource.player_stats_resource.find_skin(skin_resource.name)
 
 func _display_buy_button():
+	check_unavailable()
 	var is_owned = get_player_skin()
 	if skin_resource.name == "Default" or is_owned != -1:
 		upgrade_button.disabled = true
@@ -45,9 +57,7 @@ func _display_buy_button():
 		super._display_buy_button()
 
 func _display_item_stats():
-	print_stack()
-	print_debug("Displaying item stats for %s" % skin_resource.name)
-	
+	check_unavailable()
 	var equipped_skin = skin_resource.player_stats_resource.get_equipped_skin()
 	var is_owned = get_player_skin()
 

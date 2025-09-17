@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SkinResource" load_steps=3 format=3 uid="uid://fktxknjf3xw1"]
+
+[ext_resource type="Script" uid="uid://cwumjoef44cd" path="res://scripts/shop/skin_resource.gd" id="1_lxky6"]
+[ext_resource type="Texture2D" uid="uid://cyta6uhnejw5" path="res://assets/Player/unavailable.png" id="2_utgsg"]
+
+[resource]
+script = ExtResource("1_lxky6")
+name = "Student Girl"
+base_price = 0
+texture_tilemap = ExtResource("2_utgsg")
+metadata/_custom_type_script = "uid://cwumjoef44cd"
