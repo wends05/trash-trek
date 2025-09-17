@@ -14,7 +14,7 @@ region = Rect2(0, 0, 1536, 1536)
 
 [sub_resource type="LabelSettings" id="LabelSettings_unxcl"]
 font = ExtResource("5_o02k5")
-font_size = 24
+font_size = 22
 
 [sub_resource type="LabelSettings" id="LabelSettings_o02k5"]
 font = ExtResource("5_o02k5")

@@ -13,6 +13,7 @@ signal coin_upgrade_error(message: String)
 
 func _ready() -> void:
 	upgrade_button.pressed.connect(_on_upgrade_button_pressed)
+	
 
 	_ready_item()
 	_display_item()

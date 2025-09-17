@@ -20,6 +20,10 @@ func display_upgrades():
 
 func display_skins():
 	var skins = Utils.get_files_from_local_dir("res://resources/shop/skins")
+	skins.erase("default.tres")
+	skins.insert(0, "default.tres")
+
+	print_debug(skins)
 	for skin in skins:
 		prepare_skin(skin)
 

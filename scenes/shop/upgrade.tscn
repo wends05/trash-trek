@@ -19,6 +19,7 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yvixy"]
 font = ExtResource("3_3wnwl")
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4xv4e"]
 font = ExtResource("3_3wnwl")

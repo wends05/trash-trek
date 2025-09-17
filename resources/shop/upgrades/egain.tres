@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_8mg5w")
 name = "Energy Gain"
-description = "Increase energy gainf rom throwing trash"
+description = "Increase energy gain from throwing trash"
 icon = ExtResource("1_8h2kb")
 base_price = 300
 price_per_level_multiplier = 2.5
