@@ -11,7 +11,7 @@ class_name Hurt
 @export var downward_impulse: float = 80.0
 
 var hurt_sfx = preload("res://audios/hurt (1).mp3")
-var _lockout_timer: float = 0.1
+var _lockout_timer: float = 0.05
 var _connected: bool = false
 
 func enter():
