@@ -1,4 +1,4 @@
-extends Node2D
+extends Node2D 
 
 class_name Terrain
 
@@ -6,10 +6,8 @@ class_name Terrain
 var max_markers: int = 0
 @export var trash_bin_spawns: Array[Marker2D] = []
 
-var trash_node = preload("res://scenes/trash.tscn")
-var trash_bin_node = preload("res://scenes/Trashbin.tscn")
-
 func _ready() -> void:
+
 	if name == "Start":
 		return
 	
@@ -33,7 +31,7 @@ func spawn_trashes():
 	chosen_spawners = chosen_spawners.slice(0, randi_range(1, max_markers - 2))
 
 	for i in chosen_spawners:
-		var trash: Trash = trash_node.instantiate()
+		var trash: Trash = preload("res://scenes/trash.tscn").instantiate()
 
 		var randtype = randi_range(0, Utils.TrashType.size() - 1)
 		trash.type = randtype as Utils.TrashType
@@ -42,7 +40,7 @@ func spawn_trashes():
 func spawn_trash_bin():
 	if max_markers == 0:
 		return
-	if not trash_bin_spawns.is_empty():
+	if trash_bin_spawns.is_empty():
 		printerr("No trash bin spawn set")
 		return
 		
@@ -50,18 +48,18 @@ func spawn_trash_bin():
 	if Game.elapsed_time >= 30:
 		var chance := 0.4
 		if Game.elapsed_time >= 60:
-			chance = 0.6
+			chance = 0.6 
 		if randf() < chance:
 			count = 2
-
+		print("TRUEE ELAPSED")
 	var chosen = trash_bin_spawns.duplicate()
 	chosen.shuffle()
-	chosen = chosen.slice(0, count)
-
+	chosen = chosen.slice(0, count)	
 	for marker in chosen:
-		var trash_bin: TrashBin = trash_bin_node.instantiate()
+		var trash_bin: TrashBin = preload("res://scenes/TrashBin.tscn").instantiate()
 
 		var randtype = randi_range(0, Utils.TrashType.size() - 1)
 		trash_bin.type = randtype as Utils.TrashType
+
 
 		marker.add_child(trash_bin)
