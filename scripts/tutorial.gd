@@ -4,13 +4,13 @@ extends Node2D
 @onready var steps = ["Start", "1 energy bar", "2 Trash", "3 Monster", "4 TrashCan", "5 Trash Buttons", "6 Game Over"]
 @onready var instruction_label = $Label
 @onready var instructions = [
-	"Welcome to the tutorial. Press D to navigate.",
+	"Welcome to the tutorial. Press the right arrow to navigate.",
 	"This is your energy bar. If it runs out, it's game over.",
 	"Collect trash and sort it later on the trash cans.",
 	"Beware of monsters. They can deplete your energy.",
 	"Sort your trash properly to gain energy, but take note of the quantity needed.",
-	"Use the Z, X, and C buttons to select what type of trash goes into the colored trash bins (you can also see how much trash you have).",
-	"Be careful of cliffs. They mean instant death. Jump over them!"
+	"Use the Z, X, and C buttons to select what type of trash goes into the colored trash bins, you can also see the number of trash collected.",
+	"Be careful of cliffs, They mean instant death. Use the space bar to jump over them!"
 ]
 
 var current_step := 0
@@ -18,7 +18,7 @@ var current_step := 0
 # typing animation vars
 var full_text := ""
 var char_index := 0
-var typing_speed := 0.03  # seconds per character
+var typing_speed := 0.02  # seconds per character
 var typing_timer := Timer.new()
 
 func _ready():
@@ -30,11 +30,10 @@ func _ready():
 	play_step()
 
 func _input(event):
-	if event.is_action_pressed("ui_right"):  # Right Arrow
+	if event.is_action_pressed("ui_text_caret_right"):
 		next_step()
-	elif event.is_action_pressed("ui_left"): # Left Arrow
+	elif event.is_action_pressed("ui_text_caret_left"):
 		prev_step()
-	# Optional: skip typing and show full text instantly if player presses Enter/Space
 	elif event.is_action_pressed("ui_accept"):
 		if typing_timer.is_stopped() == false:
 			typing_timer.stop()

@@ -1,0 +1,135 @@
+[gd_scene load_steps=13 format=4 uid="uid://d2r4xifwwbcul"]
+
+[ext_resource type="Script" uid="uid://cskjjcjavic6o" path="res://scripts/terrain.gd" id="1_y5qwo"]
+[ext_resource type="Script" uid="uid://q01hxgi1lqgv" path="res://scripts/monster_spawn.gd" id="2_o62h2"]
+[ext_resource type="Texture2D" uid="uid://dayocjoqiump8" path="res://assets/background/tile2.png" id="3_7gmdi"]
+[ext_resource type="Texture2D" uid="uid://b62fax2s726de" path="res://assets/background/tile3.png" id="4_kx3u5"]
+[ext_resource type="Texture2D" uid="uid://cyu2yaa6na7hj" path="res://assets/background/tile.png" id="5_ma0wr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pqwhm"]
+size = Vector2(197, 111)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_holkq"]
+size = Vector2(232, 108)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lx4t"]
+size = Vector2(429, 174)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k2pwk"]
+texture = ExtResource("3_7gmdi")
+texture_region_size = Vector2i(34, 34)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f3yfi"]
+texture = ExtResource("4_kx3u5")
+texture_region_size = Vector2i(33, 33)
+0:0/0 = 0
+1:1/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+2:1/0 = 0
+0:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gihec"]
+texture = ExtResource("5_ma0wr")
+texture_region_size = Vector2i(33, 33)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:1/0 = 0
+3:2/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+6:1/0 = 0
+5:1/0 = 0
+4:1/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+8:1/0 = 0
+8:0/0 = 0
+7:0/0 = 0
+7:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qpcp8"]
+tile_size = Vector2i(33, 33)
+sources/2 = SubResource("TileSetAtlasSource_gihec")
+sources/0 = SubResource("TileSetAtlasSource_k2pwk")
+sources/1 = SubResource("TileSetAtlasSource_f3yfi")
+
+[node name="Terrain7" type="Node2D" node_paths=PackedStringArray("trash_bin_spawns")]
+script = ExtResource("1_y5qwo")
+trash_bin_spawns = [NodePath("TrashSpawns/TrashBinSpawn"), NodePath("TrashSpawns/TrashBinSpawn2")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+z_index = 1
+position = Vector2(65.5, 594.5)
+shape = SubResource("RectangleShape2D_pqwhm")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+z_index = 1
+position = Vector2(479, 593)
+shape = SubResource("RectangleShape2D_holkq")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+z_index = 2
+position = Vector2(809.5, 561)
+shape = SubResource("RectangleShape2D_8lx4t")
+
+[node name="MonsterSpawner" type="Marker2D" parent="."]
+position = Vector2(993, 462)
+gizmo_extents = 50.0
+script = ExtResource("2_o62h2")
+
+[node name="TileMap2" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAJABEAAgAHAAAAAAAKABEAAgAIAAAAAAALABEAAgADAAEAAAAYABEAAQABAAIAAAAZABEAAQABAAIAAAAaABEAAQABAAIAAAAbABEAAQABAAIAAAAcABEAAQABAAIAAAAdABEAAQABAAIAAAAeABEAAgAFAAEAAAAJABIAAgAHAAEAAAAKABIAAgAIAAEAAAALABIAAgADAAEAAAAMABEAAQABAAEAAAAMABIAAQABAAEAAAANABEAAQABAAEAAAANABIAAQABAAEAAAAOABEAAQABAAEAAAAOABIAAQABAAEAAAAPABEAAQABAAEAAAAPABIAAQABAAEAAAAQABEAAQABAAEAAAAQABIAAQABAAEAAAARABEAAQABAAEAAAARABIAAQABAAEAAAASABEAAQABAAEAAAASABIAAQABAAEAAAATABEAAQABAAEAAAATABIAAQABAAEAAAAUABEAAQABAAIAAAAUABIAAQACAAIAAAAVABEAAQABAAEAAAAVABIAAQABAAIAAAAWABEAAQABAAIAAAAWABIAAQACAAIAAAAXABEAAQACAAIAAAAXABIAAQABAAIAAAAYABIAAQACAAIAAAAZABIAAQABAAEAAAAaABIAAQACAAEAAAAbABIAAQABAAEAAAAcABIAAQACAAEAAAAdABIAAQABAAEAAAAeABIAAgAFAAEAAAAJABMAAgAHAAIAAAAKABMAAgAIAAIAAAALABMAAgADAAIAAAAMABMAAQACAAIAAAANABMAAQABAAIAAAAOABMAAQABAAEAAAAPABMAAQABAAEAAAAQABMAAQABAAEAAAARABMAAQABAAEAAAASABMAAQABAAEAAAATABMAAQABAAIAAAAUABMAAQACAAIAAAAVABMAAQABAAIAAAAWABMAAQACAAIAAAAXABMAAQABAAIAAAAYABMAAQACAAIAAAAZABMAAQABAAIAAAAaABMAAQACAAIAAAAbABMAAQABAAIAAAAcABMAAQACAAIAAAAdABMAAQABAAIAAAAeABMAAgAFAAIAAAAAABEAAQABAAEAAAAAABIAAQABAAIAAAAAABMAAQABAAIAAAABABEAAQABAAEAAAABABIAAQABAAEAAAABABMAAQABAAEAAAAAABAAAgAEAAAAAAABABAAAQABAAAAAAACABEAAQABAAEAAAACABIAAQABAAEAAAACABMAAQABAAIAAAADABEAAQABAAEAAAADABIAAQABAAEAAAADABMAAQABAAEAAAACABAAAQABAAAAAAADABAAAQABAAAAAAALABAAAQAAAAAAAAAMABAAAQABAAAAAAANABAAAQABAAAAAAAOABAAAQABAAAAAAAQABAAAQABAAAAAAAPABAAAQABAAAAAAARABAAAQABAAAAAAASABAAAQABAAIAAAASAA8AAQAAAAEAAAATAA8AAgAEAAEAAAAUAA8AAgAEAAEAAAAVAA8AAgAEAAEAAAAWAA8AAgAEAAEAAAAXAA8AAgAEAAEAAAAYAA8AAgAEAAEAAAAZAA8AAgAEAAEAAAAaAA8AAgAEAAEAAAAbAA8AAgAEAAEAAAAcAA8AAgAEAAEAAAAdAA8AAgAEAAEAAAAeAA8AAgAEAAEAAAATABAAAgAEAAIAAAAUABAAAgAEAAIAAAAVABAAAgAEAAIAAAAWABAAAgAEAAIAAAAXABAAAgAEAAIAAAAYABAAAgAEAAIAAAAZABAAAgAEAAIAAAAbABAAAgAEAAIAAAAcABAAAgAEAAIAAAAdABAAAgAEAAIAAAAeABAAAgAEAAIAAAAaABAAAgAEAAIAAAAGABEAAgAAAAAAAAAGABIAAgAAAAEAAAAGABMAAgAAAAIAAAAHABEAAgABAAAAAAAHABIAAgABAAEAAAAHABMAAgABAAIAAAAIABEAAgABAAAAAAAIABMAAgAHAAIAAAATAA4AAgAEAAAAAAAUAA4AAgAEAAAAAAAVAA4AAgAEAAAAAAAWAA4AAgAEAAAAAAAXAA4AAgAEAAAAAAAYAA4AAgAEAAAAAAAZAA4AAgAEAAAAAAAaAA4AAgAEAAAAAAAbAA4AAgAEAAAAAAAcAA4AAgAEAAAAAAAdAA4AAgAEAAAAAAAeAA4AAgAEAAAAAAASAA4AAQAAAAAAAAD//xAAAQAAAAAAAAD//xEAAgAEAAEAAAD//xIAAgAEAAIAAAD//xMAAgAEAAIAAAAIABIAAgABAAEAAAAEABAAAQACAAAAAAAEABEAAQACAAEAAAAEABIAAQACAAIAAAAEABMAAQACAAIAAAAFABEAAgAAAAAAAAAFABIAAgAAAAEAAAAFABMAAgAAAAIAAAAfABEAAgAHAAAAAAAfABIAAgAHAAEAAAAfABMAAgAHAAIAAAAgABEAAgAIAAAAAAAgABIAAgAIAAEAAAAgABMAAgAIAAIAAAAhABEAAgAHAAAAAAAhABIAAgAHAAEAAAAhABMAAgAHAAIAAAAiABEAAgAIAAAAAAAiABIAAgAIAAEAAAAiABMAAgAIAAIAAAA=")
+tile_set = SubResource("TileSet_qpcp8")
+
+[node name="TrashSpawns" type="Node2D" parent="."]
+
+[node name="Marker2D2" type="Marker2D" parent="TrashSpawns"]
+position = Vector2(283, 423)
+
+[node name="Marker2D3" type="Marker2D" parent="TrashSpawns"]
+position = Vector2(668, 450)
+
+[node name="TrashBinSpawn" type="Marker2D" parent="TrashSpawns"]
+position = Vector2(396, 479)
+
+[node name="Marker2D7" type="Marker2D" parent="TrashSpawns"]
+position = Vector2(874, 437)
+
+[node name="Marker2D5" type="Marker2D" parent="TrashSpawns"]
+position = Vector2(452, 482)
+
+[node name="Marker2D6" type="Marker2D" parent="TrashSpawns"]
+position = Vector2(88, 489)
+
+[node name="Marker2D8" type="Marker2D" parent="TrashSpawns"]
+position = Vector2(9, 488)
+
+[node name="Marker2D4" type="Marker2D" parent="TrashSpawns"]
+position = Vector2(815, 427)
+
+[node name="TrashBinSpawn2" type="Marker2D" parent="TrashSpawns"]
+position = Vector2(759, 426)

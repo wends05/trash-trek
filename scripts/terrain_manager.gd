@@ -16,7 +16,7 @@ class_name TerrainManager
 var last_terrains := [] # stores recent terrain types (most recent appended)
 const MAX_HISTORY := 2 # Number of terrains to remember and avoid
 
-enum TerrainType {Start, Terrain1, Terrain2, Terrain3, Terrain4, Terrain5, Terrain6}
+enum TerrainType {Start, Terrain1, Terrain2, Terrain3, Terrain4, Terrain5, Terrain6, Terrain7}
 
 var terrain_scenes := {
 	TerrainType.Start: preload("res://scenes/terrains/Start.tscn"),
@@ -25,7 +25,8 @@ var terrain_scenes := {
 	TerrainType.Terrain3: preload("res://scenes/terrains/Terrain3.tscn"),
 	TerrainType.Terrain4: preload("res://scenes/terrains/Terrain4.tscn"),
 	TerrainType.Terrain5: preload("res://scenes/terrains/Terrain5.tscn"),
-	TerrainType.Terrain6: preload("res://scenes/terrains/Terrain6.tscn")
+	TerrainType.Terrain6: preload("res://scenes/terrains/Terrain6.tscn"),
+	TerrainType.Terrain7: preload("res://scenes/terrains/Terrain7.tscn"),
 }
 
 var current_terrain_index := 0
@@ -65,7 +66,8 @@ func load_terrain(x, y):
 				TerrainType.Terrain3,
 				TerrainType.Terrain4,
 				TerrainType.Terrain5,
-				TerrainType.Terrain6
+				TerrainType.Terrain6,
+				TerrainType.Terrain7
 			]
 			
 		# Remove the last two used terrains from available options
@@ -76,7 +78,7 @@ func load_terrain(x, y):
 		# If we've run out of terrain types (shouldn't happen with 6+ terrains)
 		if terrain_types.is_empty():
 			terrain_types = [TerrainType.Terrain1, TerrainType.Terrain2, TerrainType.Terrain3,
-								TerrainType.Terrain4, TerrainType.Terrain5, TerrainType.Terrain6]
+								TerrainType.Terrain4, TerrainType.Terrain5, TerrainType.Terrain6, TerrainType.Terrain7]
 			# Still avoid the most recent terrain if possible
 			if not last_terrains.is_empty():
 				terrain_types.erase(last_terrains[0])

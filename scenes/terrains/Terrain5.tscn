@@ -73,9 +73,9 @@ sources/2 = SubResource("TileSetAtlasSource_2q252")
 sources/0 = SubResource("TileSetAtlasSource_8d62s")
 sources/1 = SubResource("TileSetAtlasSource_qy7kg")
 
-[node name="Terrain5" type="Node2D" node_paths=PackedStringArray("trash_bin_spawn")]
+[node name="Terrain5" type="Node2D" node_paths=PackedStringArray("trash_bin_spawns")]
 script = ExtResource("1_kn0qc")
-trash_bin_spawn = NodePath("TrashSpawns/TrashBinSpawn")
+trash_bin_spawns = [NodePath("TrashSpawns/TrashBinSpawn")]
 
 [node name="MonsterSpawn" type="Marker2D" parent="."]
 position = Vector2(1079, 565)
@@ -110,6 +110,9 @@ tile_set = SubResource("TileSet_qa3u4")
 [node name="Marker2D3" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(83, 518)
 
+[node name="TrashBinSpawn2" type="Marker2D" parent="TrashSpawns"]
+position = Vector2(444, 518)
+
 [node name="TrashBinSpawn" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(952, 512)
 metadata/_edit_lock_ = true
@@ -125,3 +128,8 @@ position = Vector2(448, 512)
 
 [node name="Marker2D8" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(448, 384)
+
+[node name="MonsterSpawn2" type="Marker2D" parent="."]
+position = Vector2(384, 560)
+gizmo_extents = 50.0
+script = ExtResource("2_uk3k6")
