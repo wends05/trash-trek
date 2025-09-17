@@ -87,13 +87,13 @@ func update_trash_count(type: Utils.TrashType):
 	var base_energy_increment = calculate_value("egain", 0)
 	if type == Utils.TrashType.Recyclable:
 		collected_recyclable += 1
-		_increase_energy(base_energy_increment + 2)
+		# _increase_energy(base_energy_increment + 2)
 	elif type == Utils.TrashType.Biodegradable:
 		collected_biodegradable += 1
-		_increase_energy(base_energy_increment + 1)
+		# _increase_energy(base_energy_increment + 1)
 	elif type == Utils.TrashType.ToxicWaste:
 		collected_toxic_waste += 1
-		_increase_energy(base_energy_increment + 3)
+		# _increase_energy(base_energy_increment + 3)
 
 	updated_stats.emit()
 
