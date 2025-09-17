@@ -93,11 +93,6 @@ z_index = 1
 position = Vector2(993, 611.5)
 shape = SubResource("RectangleShape2D_qm0yi")
 
-[node name="MonsterSpawn2" type="Marker2D" parent="."]
-position = Vector2(456, 560)
-gizmo_extents = 50.0
-script = ExtResource("4_olla4")
-
 [node name="MonsterSpawn" type="Marker2D" parent="."]
 position = Vector2(120, 560)
 gizmo_extents = 50.0
