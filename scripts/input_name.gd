@@ -47,11 +47,8 @@ func _on_create_user_failed(err: Dictionary) -> void:
 
 func _on_enter_pressed() -> void:
 	message_label.text = ""
-	PlayerApi.create_user({
-		"device_id": player_stats_resource.get_device_id(),
-		"name": name_input.text,
-		"skins": player_stats_resource.get_skins(),
-	})
+
+	player_stats_resource.create_user(name_input.text)
 
 func _process(_delta: float) -> void:
 	if show_timer:

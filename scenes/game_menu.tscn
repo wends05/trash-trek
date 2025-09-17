@@ -745,7 +745,7 @@ offset_right = 806.0
 offset_bottom = 398.0
 theme = SubResource("Theme_yr8n5")
 theme_override_fonts/font = SubResource("FontVariation_u3xmg")
-text = "Press [ESC] or Click Anywhere to Resume
+text = "Press any key or Click Anywhere to Resume
 "
 horizontal_alignment = 1
 vertical_alignment = 1

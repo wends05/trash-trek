@@ -31,8 +31,8 @@ var is_game_pause: bool = false
 
 var trash_bin_countdown = randi_range(2, 4)
 
-var selected_trash_type: Utils.TrashType
-signal changed_trash_type(type: Utils.TrashType)
+var selected_trash_type: Utils.TrashType = Utils.TrashType.Recyclable
+signal changed_trash_type()
 
 var energy_timer: Timer
 var player_stats_resource: PlayerStatsResource = PlayerStatsResource.get_instance()
@@ -87,19 +87,19 @@ func update_trash_count(type: Utils.TrashType):
 	var base_energy_increment = calculate_value("egain", 0)
 	if type == Utils.TrashType.Recyclable:
 		collected_recyclable += 1
-		_increase_energy(base_energy_increment + 2)
+		# _increase_energy(base_energy_increment + 2)
 	elif type == Utils.TrashType.Biodegradable:
 		collected_biodegradable += 1
-		_increase_energy(base_energy_increment + 1)
+		# _increase_energy(base_energy_increment + 1)
 	elif type == Utils.TrashType.ToxicWaste:
 		collected_toxic_waste += 1
-		_increase_energy(base_energy_increment + 3)
+		# _increase_energy(base_energy_increment + 3)
 
 	updated_stats.emit()
 
 func select_trash_type(type: Utils.TrashType):
 	selected_trash_type = type
-	changed_trash_type.emit(type)
+	changed_trash_type.emit()
 
 
 ## Trashbin related

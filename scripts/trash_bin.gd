@@ -19,13 +19,11 @@ var amount_required: int = 0
 @onready var amount_required_label: Label = $AmountRequiredLabel
 
 func _ready() -> void:
-	load_trash_bin()
-	Game.changed_trash_type.connect(change_player_collision)
-	Game.trash_collected.connect(change_player_collision)
 	amount_required = [3, 6, 9].pick_random()
 	amount_required_label.text = "%s" % amount_required
-
-	update_debug_label()
+	Game.changed_trash_type.connect(change_player_collision)
+	Game.trash_collected.connect(change_player_collision.unbind(1))
+	load_trash_bin()
 
 func load_trash_bin():
 	trash_bin_resource = Utils.get_trash_bin(type)
@@ -34,22 +32,24 @@ func load_trash_bin():
 	type = trash_bin_resource.type
 	icon.texture = trash_bin_resource.icon_image
 
-	change_player_collision(Game.selected_trash_type)
+	change_player_collision()
 	animated_sprite.play("idle")
 
 
-func change_player_collision(trash_type: Utils.TrashType) -> void:
-	var has_enough: bool = Game.get_trash_count(trash_type) >= amount_required
-	var should_block: bool = not (has_enough and trash_type == type)
+func change_player_collision() -> void:
+	var has_enough: bool = Game.get_trash_count(Game.selected_trash_type) >= amount_required
+	var should_block: bool = not (has_enough and Game.selected_trash_type == type)
+
 	player_collision_area.set_collision_layer_value(4, should_block)
-	update_debug_label()
+	update_debug_label(Game.selected_trash_type)
 
 
-func update_debug_label() -> void:
+func update_debug_label(trash_type: Utils.TrashType) -> void:
 	debug_label.text = \
-		"Collision: %s\nTrash Count: %s\n" % [
-			player_collision_area.get_collision_layer_value(4),
-			Game.get_trash_count(type)
+		"Collision: %s\nTrash Count for bin type: %s\nSelected Trash Type: %s" % [
+			"Collide" if player_collision_area.get_collision_layer_value(4) else "Pass",
+			Game.get_trash_count(type),
+			Utils.get_enum_name(Utils.TrashType, trash_type)
 		]
 
 func throw_trash() -> void:
@@ -72,4 +72,4 @@ func throw_trash() -> void:
 	animated_sprite.play("idle")
 	animating = false
 	
-	change_player_collision(Game.selected_trash_type)
+	change_player_collision()

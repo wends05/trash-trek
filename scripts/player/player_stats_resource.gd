@@ -78,6 +78,7 @@ func save_stats(player_stats: Dictionary) -> void:
 	high_score = player_stats.get("high_score", high_score)
 	upgrades = player_stats.get("upgrades", upgrades)
 	skins = player_stats.get("skins", skins)
+	current_skin = player_stats.get("current_skin", current_skin)
 	lastModified = player_stats.get("lastModified", lastModified)
 	_save()
 
@@ -170,7 +171,27 @@ func get_equipped_skin() -> String:
 	return current_skin
 #endregion
 
-#region Saving
+#region creating user
+func create_user(new_name: String):
+	var player_resource = PlayerStatsResource.new()
+
+	print_debug("Initial player resource: %s" % player_resource.to_dict())
+	player_resource.name = new_name
+	player_resource.device_id = get_device_id()
+	player_resource.lastModified = Time.get_datetime_string_from_datetime_dict(Time.get_datetime_dict_from_system(true), false)
+
+	print_debug("Final player resource: %s" % player_resource.to_dict())
+	if not PlayerApi.create_user_success.is_connected(_on_create_user_success):
+		PlayerApi.create_user_success.connect(_on_create_user_success)
+	PlayerApi.create_user(player_resource.to_dict())
+
+func _on_create_user_success(result: Dictionary) -> void:
+	print_debug("Create user success: %s" % result)
+	save_stats(result)
+#endregion
+
+
+#region Saving to Database
 func save_to_database() -> void:
 	var final_dict = self.to_dict().duplicate()
 	print_debug("Saving to database: %s" % final_dict)
@@ -198,6 +219,7 @@ func delete_account():
 	PlayerApi.delete_user()
 
 func _on_delete_user_success(_is_success: bool) -> void:
-	print_debug("Delete user success: %s" % _is_success)
-	ResourceSaver.save(PlayerStatsResource.new(), PLAYER_STATS_SAVE_PATH)
+	var player_stats = PlayerStatsResource.new()
+	ResourceSaver.save(player_stats, PLAYER_STATS_SAVE_PATH)
+	save_stats(player_stats.to_dict())
 #endregion
