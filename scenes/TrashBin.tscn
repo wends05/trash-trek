@@ -70,7 +70,6 @@ label_settings = SubResource("LabelSettings_r1e8c")
 horizontal_alignment = 1
 
 [node name="debug label" type="Label" parent="."]
-visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 

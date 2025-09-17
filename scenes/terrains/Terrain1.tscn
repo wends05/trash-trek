@@ -102,6 +102,8 @@ position = Vector2(344, 384)
 
 [node name="TrashBinSpawn" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(832, 512)
+gizmo_extents = 20.0
+metadata/_edit_lock_ = true
 
 [node name="Marker2D4" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(964, 524)
@@ -114,9 +116,10 @@ position = Vector2(840, 416)
 
 [node name="TrashBinSpawn2" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(338, 513)
+metadata/_edit_lock_ = true
 
 [node name="MonsterSpawn" type="Marker2D" parent="."]
-position = Vector2(230, 566)
+position = Vector2(88, 568)
 gizmo_extents = 50.0
 script = ExtResource("4_qm0yi")
 metadata/_edit_lock_ = true

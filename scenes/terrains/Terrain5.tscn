@@ -113,12 +113,12 @@ metadata/_edit_lock_ = true
 position = Vector2(576, 512)
 
 [node name="Marker2D6" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(960, 336)
+position = Vector2(864, 512)
 
 [node name="Marker2D8" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(448, 384)
 
 [node name="MonsterSpawn2" type="Marker2D" parent="."]
-position = Vector2(960, 560)
+position = Vector2(1088, 560)
 gizmo_extents = 50.0
 script = ExtResource("2_uk3k6")
