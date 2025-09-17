@@ -100,7 +100,7 @@ func _process(delta: float) -> void:
 		
 		elif animating_distance:
 			if displayed_distance < distance_collected:
-				if displayed_distance < 200:
+				if displayed_distance < 100:
 					displayed_distance += 1
 					AudioManager.play_sfx(SFX_FILL, -3)
 					updated = true
