@@ -75,7 +75,7 @@ sources/1 = SubResource("TileSetAtlasSource_f3yfi")
 
 [node name="Terrain7" type="Node2D" node_paths=PackedStringArray("trash_bin_spawns")]
 script = ExtResource("1_y5qwo")
-trash_bin_spawns = [NodePath("TrashSpawns/TrashBinSpawn"), NodePath("")]
+trash_bin_spawns = [NodePath("TrashSpawns/TrashBinSpawn"), NodePath("TrashSpawns/TrashBinSpawn2")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -97,7 +97,7 @@ position = Vector2(809.5, 561)
 shape = SubResource("RectangleShape2D_8lx4t")
 
 [node name="MonsterSpawner" type="Marker2D" parent="."]
-position = Vector2(808, 464)
+position = Vector2(993, 462)
 gizmo_extents = 50.0
 script = ExtResource("2_o62h2")
 
@@ -108,16 +108,28 @@ tile_set = SubResource("TileSet_qpcp8")
 [node name="TrashSpawns" type="Node2D" parent="."]
 
 [node name="Marker2D2" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(264, 368)
+position = Vector2(283, 423)
 
 [node name="Marker2D3" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(808, 224)
+position = Vector2(668, 450)
 
 [node name="TrashBinSpawn" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(480, 480)
+position = Vector2(396, 479)
+
+[node name="Marker2D7" type="Marker2D" parent="TrashSpawns"]
+position = Vector2(874, 437)
+
+[node name="Marker2D5" type="Marker2D" parent="TrashSpawns"]
+position = Vector2(452, 482)
 
 [node name="Marker2D6" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(88, 489)
 
 [node name="Marker2D8" type="Marker2D" parent="TrashSpawns"]
 position = Vector2(9, 488)
+
+[node name="Marker2D4" type="Marker2D" parent="TrashSpawns"]
+position = Vector2(815, 427)
+
+[node name="TrashBinSpawn2" type="Marker2D" parent="TrashSpawns"]
+position = Vector2(759, 426)
