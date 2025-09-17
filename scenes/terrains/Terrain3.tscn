@@ -96,13 +96,8 @@ z_index = 2
 position = Vector2(1072, 611.5)
 shape = SubResource("RectangleShape2D_s8lg7")
 
-[node name="MonsterSpawner2" type="Marker2D" parent="."]
-position = Vector2(141, 560)
-gizmo_extents = 50.0
-script = ExtResource("4_l3giw")
-
 [node name="MonsterSpawner" type="Marker2D" parent="."]
-position = Vector2(675, 495)
+position = Vector2(1072, 568)
 gizmo_extents = 50.0
 script = ExtResource("4_l3giw")
 
@@ -113,25 +108,16 @@ tile_set = SubResource("TileSet_cd1ji")
 [node name="TrashSpawns" type="Node2D" parent="."]
 
 [node name="Marker2D2" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(367, 342)
+position = Vector2(392, 336)
 
 [node name="Marker2D3" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(770, 472)
+position = Vector2(728, 448)
 
 [node name="TrashBinSpawn" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(88, 517)
-
-[node name="Marker2D7" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(1098, 493)
-
-[node name="Marker2D5" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(941, 419)
+position = Vector2(8, 512)
 
 [node name="Marker2D6" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(196, 436)
-
-[node name="Marker2D8" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(0, 440)
+position = Vector2(192, 512)
 
 [node name="TrashBinSpawn2" type="Marker2D" parent="TrashSpawns"]
-position = Vector2(574, 456)
+position = Vector2(576, 448)
